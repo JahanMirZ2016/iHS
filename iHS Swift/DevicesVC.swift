@@ -18,22 +18,23 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     @IBOutlet weak var tableView: UITableView!
     
     var section1 = SectionModel()
-    var sectionArray = [SectionModel]()
+    var sectionArray = [SectionModel() , SectionModel() , SectionModel() , SectionModel() , SectionModel()]
     
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 5
+        return sectionArray[section].collapsed ? 5 : 0
     }
     
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = CellRooms(frame: CGRectMake(0 , 0 , tableView.frame.width , 80))
+        cell.selectionStyle = .None
         return cell
     }
     
     internal func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return sectionArray.count
     }
     
     
@@ -41,22 +42,26 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         let sectionRooms = SectionRooms(frame: CGRectMake(0 , 0 , tableView.frame.width , 60))
         sectionRooms.sectionID = section
         sectionRooms.context = self
+        switch sectionArray[section].collapsed {
+        case true :
+            sectionRooms.outletArrow.setImage(UIImage(named: "lay_expandablelist_parrent_arrow_open"), forState: .Normal)
+        case false :
+            sectionRooms.outletArrow.setImage(UIImage(named: "lay_expandablelist_parrent_arrow_close"), forState: .Normal)
+            
+        }
         return sectionRooms
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 80
+        return 60
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        return 60
+        return 40
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    }
-    
-    
+
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = UIColor.clearColor()
@@ -68,6 +73,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         view.backgroundColor = UIColor(patternImage: UIImage(named: "lay_back_welcome")!)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.backgroundColor = UIColor.clearColor()
+        
         section1 = SectionModel()
         section1.collapsed = false
         sectionArray.append(section1)
