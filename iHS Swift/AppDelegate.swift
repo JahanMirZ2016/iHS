@@ -17,7 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         
         /// BinMan1 : Set selected language id from db
-        SetLangIDToVar(DBManager.getLanguageID())
+        if let langID = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.LanguageID) {
+            SetLangIDToVar(Int(langID)!)
+        } else {
+            Printer("AppDelegate Error : Can't get Language ID From Settings Table of DB")
+        }
         
         return true
     }

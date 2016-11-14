@@ -10,7 +10,7 @@ import Foundation
 
 
 /*
-    BinMan1 : Class For managing the DataBase
+ BinMan1 : Class For managing the DataBase
  */
 class DBManager {
     /// BinMan1 : Get Some Translation of Sentense
@@ -36,36 +36,40 @@ class DBManager {
     }
     
     
-    /// BinMan1 : Get Language ID From DB
-    class func getLanguageID () -> Int {
+    /// BinMan1 : Get specific value of Settings types
+    class func getValueOfSettingsDB (Type type : String ) -> String? {
         let db = GetDBFromPath()
         db.open()
         do {
-            var LangID : Int = Int()
-            let result = try db.executeQuery("SELECT * FROM Settings WHERE type = 'LanguageID'", values: nil)
+            var resultString = String()
+            let query = "SELECT * FROM Settings WHERE Settings.type = \(type)"
+            let result = try db.executeQuery(query, values: nil)
             if result.next() {
-                LangID = Int(result.intForColumn("value"))
+                resultString = result.stringForColumn("value")
             }
             db.close()
-            return LangID
-        } catch let error as NSError {
-            Printer("DBManger Get Language ID Error : \(error.debugDescription)")
+            return resultString
+        } catch let err as NSError {
+            Printer("DBManger update settings error : \(err.debugDescription)")
             db.close()
-            return -1
+            return nil
         }
+        
     }
     
-    
-    /// BinMan1 : Set Language ID To DB
-    class func setLanguageID (SelectedLanguageID id : Int) {
+    /// BinMan1 : Update value of types in Setting DB
+    class func updateValuesOfSettingsDB (Type type : String , UpdateValue value : String) -> Bool {
         let db = GetDBFromPath()
         db.open()
         do {
-            try db.executeUpdate("UPDATE Settings SET value = %d WHERE type = 'LanguageID'", values: [id])
-        } catch let error as NSError {
-            Printer("DBManager Set Language ID Error : \(error.debugDescription)")
+            let query = "UPDATE Settings SET Settings.value = \(value) WHERE Settings.type = \(type)"
+            try db.executeUpdate(query, values: nil)
+            db.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManger update settings error : \(err.debugDescription)")
+            db.close()
+            return false
         }
-        db.close()
     }
-    
 }

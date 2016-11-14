@@ -53,3 +53,22 @@ func Printer(object : AnyObject) {
 func SetLangIDToVar(id : Int) {
     SELECTEDLANGID = id
 }
+
+
+/// BinMan1 : Structor of Setttings table types
+struct TypeOfSettings {
+    static let LanguageID = "LanguageID"
+    static let ServerIP = "ServerIP"
+    static let ServerPort = "ServerPort"
+    static let CustomerID = "CustomerID"
+    static let MobileID = "MobileID"
+    static let WiFiSSID = "WiFiSSID"
+    static let WiFiMac = "WiFiMac"
+    static let CenterIP = "CenterIP"
+    static let CenterPort = "CenterPort"
+    static let LastMessageID = "LastMessageID"
+    static let ExKey = "ExKey"
+    static let CustomerName = "CustomerName"
+    static let Register = "Register"
+    static let Ver = "Ver"
+}
