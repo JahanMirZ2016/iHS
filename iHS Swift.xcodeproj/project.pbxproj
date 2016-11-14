@@ -14,6 +14,9 @@
 		5B6247C31DD700BB00760F10 /* CellRooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6247C21DD700BB00760F10 /* CellRooms.swift */; };
 		5B6247C51DD700D500760F10 /* SectionRooms.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6247C41DD700D500760F10 /* SectionRooms.xib */; };
 		5B6247C71DD700E800760F10 /* SectionRooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6247C61DD700E800760F10 /* SectionRooms.swift */; };
+		5BA3915B1DD9D1C0009B0D2F /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3915A1DD9D1C0009B0D2F /* SettingsModel.swift */; };
+		5BA3915D1DD9D203009B0D2F /* SwitchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3915C1DD9D203009B0D2F /* SwitchModel.swift */; };
+		5BA3915F1DD9D28D009B0D2F /* TranslationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3915E1DD9D28D009B0D2F /* TranslationModel.swift */; };
 		5BCDCD5D1DD47FAE00CC3372 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BCDCD5C1DD47FAE00CC3372 /* Main.storyboard */; };
 		5BCDCD631DD47FDE00CC3372 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDCD5F1DD47FDE00CC3372 /* LanguageVC.swift */; };
 		5BCDCD641DD47FDE00CC3372 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDCD601DD47FDE00CC3372 /* WelcomeVC.swift */; };
@@ -68,6 +71,9 @@
 		5B6247C21DD700BB00760F10 /* CellRooms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellRooms.swift; sourceTree = "<group>"; };
 		5B6247C41DD700D500760F10 /* SectionRooms.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionRooms.xib; sourceTree = "<group>"; };
 		5B6247C61DD700E800760F10 /* SectionRooms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionRooms.swift; sourceTree = "<group>"; };
+		5BA3915A1DD9D1C0009B0D2F /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		5BA3915C1DD9D203009B0D2F /* SwitchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchModel.swift; sourceTree = "<group>"; };
+		5BA3915E1DD9D28D009B0D2F /* TranslationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationModel.swift; sourceTree = "<group>"; };
 		5BCDCD5C1DD47FAE00CC3372 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5BCDCD5F1DD47FDE00CC3372 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		5BCDCD601DD47FDE00CC3372 /* WelcomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
@@ -294,6 +300,9 @@
 				5BDC76E21DD99EBE00F63E55 /* NodeModel.swift */,
 				5BDC76E41DD99F3000F63E55 /* NotifyModel.swift */,
 				5BDC76E61DD99F7A00F63E55 /* ScenarioModel.swift */,
+				5BA3915A1DD9D1C0009B0D2F /* SettingsModel.swift */,
+				5BA3915C1DD9D203009B0D2F /* SwitchModel.swift */,
+				5BA3915E1DD9D28D009B0D2F /* TranslationModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -650,13 +659,16 @@
 				5BDC76DF1DD993AD00F63E55 /* RoomModel.swift in Sources */,
 				5BCDCD6D1DD47FF600CC3372 /* SecondPageTBC.swift in Sources */,
 				5BDC76E11DD993BF00F63E55 /* SectionModel.swift in Sources */,
+				5BA3915B1DD9D1C0009B0D2F /* SettingsModel.swift in Sources */,
 				5B06B69A1DD35F0A004E9877 /* TopBar.swift in Sources */,
 				5BCDCD711DD47FF600CC3372 /* SettingVC.swift in Sources */,
 				EE0D95EA1DD45AD1004581C4 /* A.swift in Sources */,
 				5BCDCD651DD47FDE00CC3372 /* RegisterVC.swift in Sources */,
 				5B6247C31DD700BB00760F10 /* CellRooms.swift in Sources */,
 				5B6247C71DD700E800760F10 /* SectionRooms.swift in Sources */,
+				5BA3915D1DD9D203009B0D2F /* SwitchModel.swift in Sources */,
 				5BCDCD6E1DD47FF600CC3372 /* FavoritesVC.swift in Sources */,
+				5BA3915F1DD9D28D009B0D2F /* TranslationModel.swift in Sources */,
 				5BCDCD661DD47FDE00CC3372 /* BarcodeVC.swift in Sources */,
 				5BCDCD6F1DD47FF600CC3372 /* DevicesVC.swift in Sources */,
 				5BDC76E71DD99F7A00F63E55 /* ScenarioModel.swift in Sources */,

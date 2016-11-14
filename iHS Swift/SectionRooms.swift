@@ -12,6 +12,9 @@ class SectionRooms: UIView {
     @IBOutlet var view : UIView!
     
 
+    var sectionID = -1
+    var context : DevicesVC!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         createNib()
@@ -23,6 +26,10 @@ class SectionRooms: UIView {
     }
     
     
+    @IBAction func tappinSelector(sender: UITapGestureRecognizer) {
+        Printer(sectionID)
+        
+    }
     
     func createNib() {
         let bundle = NSBundle(forClass: self.dynamicType)
