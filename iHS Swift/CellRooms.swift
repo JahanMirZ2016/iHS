@@ -1,0 +1,67 @@
+//
+//  CellRooms.swift
+//  iHS Swift
+//
+//  Created by arash on 11/12/16.
+//  Copyright © 2016 Ali Zare Sh. All rights reserved.
+//
+
+/*
+ Arash : Cell for rooms viewcontroller
+ */
+
+import UIKit
+
+class CellRooms: UITableViewCell {
+    
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var viewMiddle: UIView!
+    
+    var labelText:String {
+        get {
+            return label.text!
+        }
+        
+        set {
+            label.text = newValue
+        }
+    }
+    
+    var imgImage:UIImage {
+        get {
+            return img.image!
+        }
+        set {
+            img.image = newValue
+        }
+    }
+    
+    
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        createNib()
+    }
+    
+    @IBOutlet var view : UIView!
+    
+    func createNib() {
+        let bundle = NSBundle(forClass: self.dynamicType)
+        let nib = UINib(nibName: "CellRooms", bundle: bundle)
+        
+        
+        view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+        view.frame = bounds
+        view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
+        viewMiddle.layer.cornerRadius = 10
+
+        addSubview(view)
+    }
+    
+    
+}

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11760" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11755"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopBar" customModule="iHS_Swift" customModuleProvider="target">
+            <connections>
+                <outlet property="imgConnection" destination="UO1-8j-o87" id="kMV-LW-efo"/>
+                <outlet property="labelMessage" destination="Ft0-QI-8yP" id="3q6-yO-PeT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="593" height="65"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aGb-Cg-Zhy">
+                    <rect key="frame" x="0.0" y="0.0" width="593" height="65"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_main_connection_status_local" translatesAutoresizingMaskIntoConstraints="NO" id="UO1-8j-o87">
+                            <rect key="frame" x="553" y="26" width="35" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="35" id="A28-hh-dau"/>
+                                <constraint firstAttribute="height" constant="35" id="pa3-L7-YAE"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6AD-Tr-tIt">
+                            <rect key="frame" x="512" y="23" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="b6S-f3-XYm"/>
+                                <constraint firstAttribute="height" constant="40" id="xA0-f9-CGd"/>
+                            </constraints>
+                            <state key="normal" image="lay_icon_alarm"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Digital Home Controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nQ-nn-q2q">
+                            <rect key="frame" x="61" y="33" width="431" height="27"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="27" id="qzg-cR-PPM"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ft0-QI-8yP">
+                            <rect key="frame" x="500" y="33" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="LWV-8C-Y84"/>
+                                <constraint firstAttribute="height" constant="25" id="VEL-yj-FLS"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_logo_ihs_small" translatesAutoresizingMaskIntoConstraints="NO" id="vWa-ul-Hp2">
+                            <rect key="frame" x="8" y="34" width="45" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="H4i-yn-OdZ"/>
+                                <constraint firstAttribute="width" constant="45" id="opB-d6-HeO"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="vWa-ul-Hp2" secondAttribute="bottom" constant="11" id="9PG-hr-kXX"/>
+                        <constraint firstItem="UO1-8j-o87" firstAttribute="top" secondItem="aGb-Cg-Zhy" secondAttribute="top" constant="26" id="9hs-0J-NDk"/>
+                        <constraint firstItem="6AD-Tr-tIt" firstAttribute="top" secondItem="aGb-Cg-Zhy" secondAttribute="top" constant="23" id="H7T-YV-sUG"/>
+                        <constraint firstAttribute="bottom" secondItem="Ft0-QI-8yP" secondAttribute="bottom" constant="7" id="L7l-wx-y7j"/>
+                        <constraint firstItem="UO1-8j-o87" firstAttribute="leading" secondItem="Ft0-QI-8yP" secondAttribute="trailing" constant="28" id="O9K-JU-K8P"/>
+                        <constraint firstItem="Ft0-QI-8yP" firstAttribute="leading" secondItem="8nQ-nn-q2q" secondAttribute="trailing" constant="8" id="Ud0-iv-mxN"/>
+                        <constraint firstItem="UO1-8j-o87" firstAttribute="leading" secondItem="6AD-Tr-tIt" secondAttribute="trailing" constant="1" id="WEz-tJ-H46"/>
+                        <constraint firstAttribute="trailing" secondItem="UO1-8j-o87" secondAttribute="trailing" constant="5" id="ZRF-zA-DkL"/>
+                        <constraint firstAttribute="bottom" secondItem="UO1-8j-o87" secondAttribute="bottom" constant="4" id="a27-Bs-rOx"/>
+                        <constraint firstItem="8nQ-nn-q2q" firstAttribute="top" secondItem="aGb-Cg-Zhy" secondAttribute="top" constant="33" id="dC8-Jx-blY"/>
+                        <constraint firstItem="vWa-ul-Hp2" firstAttribute="leading" secondItem="aGb-Cg-Zhy" secondAttribute="leading" constant="8" id="kOj-jg-dxk"/>
+                        <constraint firstItem="8nQ-nn-q2q" firstAttribute="leading" secondItem="vWa-ul-Hp2" secondAttribute="trailing" constant="8" id="n2L-Qk-s2H"/>
+                        <constraint firstAttribute="bottom" secondItem="8nQ-nn-q2q" secondAttribute="bottom" constant="5" id="r3X-nw-fbz"/>
+                        <constraint firstItem="vWa-ul-Hp2" firstAttribute="top" secondItem="aGb-Cg-Zhy" secondAttribute="top" constant="34" id="rfK-7v-s7c"/>
+                        <constraint firstItem="Ft0-QI-8yP" firstAttribute="top" secondItem="aGb-Cg-Zhy" secondAttribute="top" constant="33" id="xwM-sl-2gf"/>
+                        <constraint firstAttribute="bottom" secondItem="6AD-Tr-tIt" secondAttribute="bottom" constant="2" id="zML-Oh-lDM"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="aGb-Cg-Zhy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Jzi-0k-Tto"/>
+                <constraint firstAttribute="bottom" secondItem="aGb-Cg-Zhy" secondAttribute="bottom" id="kjL-NZ-WCU"/>
+                <constraint firstAttribute="trailing" secondItem="aGb-Cg-Zhy" secondAttribute="trailing" id="nwf-4u-LaU"/>
+                <constraint firstItem="aGb-Cg-Zhy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uw3-ez-CX5"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="168.5" y="102.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_logo_ihs_small" width="54" height="28"/>
+        <image name="icon_main_connection_status_local" width="24" height="24"/>
+        <image name="lay_icon_alarm" width="24" height="24"/>
+    </resources>
+</document>
