@@ -36,6 +36,7 @@ class DBManager {
     }
     
     
+    
     /// BinMan1 : Get specific value of Settings types
     class func getValueOfSettingsDB (Type type : String ) -> String? {
         let db = GetDBFromPath()
