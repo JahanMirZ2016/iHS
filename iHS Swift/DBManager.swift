@@ -285,13 +285,13 @@ class DBManager {
         }
     }
     
-    /// BinMan1 : Insert Notify to table
+    /// BinMan1 : Insert Scenario to table
     class func insertScenario(ScenarioModel scenario : ScenarioModel) -> Bool {
         let db = GetDBFromPath()
         db.open()
         do {
-            let query = "INSERT INTO Scenario (ID, Name , Active , IsStarted ,Lat ,Long, Distance , Description ,Result,Condition, Des ) VALUES (?, ? , ? , ? )"
-            try db.executeUpdate(query, values: [scenario.id , scenario.name , scenario.])
+            let query = "INSERT INTO Scenario (ID, Name , Active , IsStarted ,Lat ,Long, Distance , Description ,Result,Condition, Des ) VALUES (?, ? , ? , ?, ?, ? , ? , ?, ?, ? , ?)"
+            try db.executeUpdate(query, values: [scenario.id , scenario.name , scenario.active , scenario.isStarted , scenario.lat , scenario.long , scenario.distance , scenario.description , scenario.result , scenario.condition , scenario.des])
             db.close()
             return true
         }catch let err as NSError {
@@ -301,19 +301,26 @@ class DBManager {
         }
     }
     
-    /// BinMan1 : Get a notify object of nodes from table
-    class func getNotify(NodeID id : Int) -> NotifyModel? {
+    /// BinMan1 : Get a Scenario object of Scenarios from table
+    class func getScenario(ScenarioID id : Int) -> ScenarioModel? {
         let db = GetDBFromPath()
         db.open()
         do {
-            let query = "SELECT * FROM Notify WHERE Notify.ID = ?"
+            let query = "SELECT * FROM Scenario WHERE Scenario.ID = ?"
             let result = try db.executeQuery(query, values: [id])
-            let model = NotifyModel()
+            let model = ScenarioModel()
             if result.next() {
                 model.id = Int(result.intForColumn("ID"))
-                model.notifyTitle = result.stringForColumn("NotifyTitle")
-                model.notifyText = result.stringForColumn("NotifyText")
-                model.seen = result.boolForColumn("Seen")
+                model.name = result.stringForColumn("Name")
+                model.active = Int(result.intForColumn("Active"))
+                model.isStarted = Int(result.intForColumn("IsStarted"))
+                model.lat = result.doubleForColumn("Lat")
+                model.long = result.doubleForColumn("Long")
+                model.distance = result.doubleForColumn("Distance")
+                model.description = result.stringForColumn("Description")
+                model.result = result.stringForColumn("Result")
+                model.condition = result.stringForColumn("Condition")
+                model.des = result.stringForColumn("Des")
             }
             db.close()
             return model
@@ -325,21 +332,28 @@ class DBManager {
     }
     
     
-    /// BinMan1 : Get All Nodes From Node table
-    class func getAllNotifies() -> [NotifyModel]? {
+    /// BinMan1 : Get All Scenarios From Scenario table
+    class func getAllScenarios() -> [ScenarioModel]? {
         let db = GetDBFromPath()
         db.open()
         
         do {
-            let query = "SELECT * FROM Notify"
+            let query = "SELECT * FROM Scenario"
             let result = try db.executeQuery(query, values: nil)
-            var models = [NotifyModel]()
+            var models = [ScenarioModel]()
             while result.next() {
-                let model = NotifyModel()
+                let model = ScenarioModel()
                 model.id = Int(result.intForColumn("ID"))
-                model.notifyTitle = result.stringForColumn("NotifyTitle")
-                model.notifyText = result.stringForColumn("NotifyText")
-                model.seen = result.boolForColumn("Seen")
+                model.name = result.stringForColumn("Name")
+                model.active = Int(result.intForColumn("Active"))
+                model.isStarted = Int(result.intForColumn("IsStarted"))
+                model.lat = result.doubleForColumn("Lat")
+                model.long = result.doubleForColumn("Long")
+                model.distance = result.doubleForColumn("Distance")
+                model.description = result.stringForColumn("Description")
+                model.result = result.stringForColumn("Result")
+                model.condition = result.stringForColumn("Condition")
+                model.des = result.stringForColumn("Des")
                 models.append(model)
             }
             db.close()
@@ -352,18 +366,18 @@ class DBManager {
     }
     
     
-    /// BinMan1 : Delete specific record from Notify table
-    class func deleteNotify(NotifyID  id : Int) -> Bool {
+    /// BinMan1 : Delete specific record from Scenario table
+    class func deleteScenario(ScnarioID  id : Int) -> Bool {
         let db = GetDBFromPath()
         db.open()
         
         do {
-            let query = "DELETE FROM Notify WHERE ID = ?"
+            let query = "DELETE FROM Scenario WHERE ID = ?"
             try db.executeUpdate(query, values: [id])
             db.close()
             return true
         } catch let err as NSError {
-            Printer("DBManager get All nodes error : \(err.debugDescription)")
+            Printer("DBManager get All Scenarios error : \(err.debugDescription)")
             db.close()
             return false
         }
@@ -371,17 +385,330 @@ class DBManager {
     
     
     /// BinMan1 : Delete All Notifies from Notify table
-    class func deleteAllNotifies () -> Bool {
+    class func deleteAllScenarios () -> Bool {
         let db = GetDBFromPath()
         db.open()
         
         do {
-            let query = "DELETE FROM Notify"
+            let query = "DELETE FROM Scenario"
             try db.executeUpdate(query, values: nil)
             db.close()
             return true
         } catch let err as NSError {
-            Printer("DBManager get All nodes error : \(err.debugDescription)")
+            Printer("DBManager get All Scenarios error : \(err.debugDescription)")
+            db.close()
+            return false
+        }
+    }
+    
+    
+    
+    /// BinMan1 : Insert Switch to table
+    class func insertSwitch(SwitchModel switchModel : SwitchModel) -> Bool {
+        let db = GetDBFromPath()
+        db.open()
+        do {
+            let query = "INSERT INTO Switch (ID, Code , Name , Value ,NodeID) VALUES (?, ? , ? , ?, ?)"
+            try db.executeUpdate(query, values: [switchModel.id , switchModel.code , switchModel.name , switchModel.value , switchModel.nodeID ])
+            db.close()
+            return true
+        }catch let err as NSError {
+            Printer("DBManager insert switch error : \(err.debugDescription)")
+            db.close()
+            return false
+        }
+    }
+    
+    /// BinMan1 : Get a Scenario object of Scenarios from table
+    class func getSwitch(SwitchID id : Int) -> SwitchModel? {
+        let db = GetDBFromPath()
+        db.open()
+        do {
+            let query = "SELECT * FROM Switch WHERE Switch.ID = ?"
+            let result = try db.executeQuery(query, values: [id])
+            let model = SwitchModel()
+            if result.next() {
+                model.id = Int(result.intForColumn("ID"))
+                model.code = Int(result.intForColumn("Code"))
+                model.name = result.stringForColumn("Name")
+                model.value = result.doubleForColumn("Value")
+                model.nodeID = Int(result.intForColumn("NodeID"))
+            }
+            db.close()
+            return model
+        }catch let err as NSError {
+            Printer("DBManager get specific switch error : \(err.debugDescription)")
+            db.close()
+            return nil
+        }
+    }
+    
+    
+    /// BinMan1 : Get All Scenarios From Scenario table
+    class func getAllSwitches() -> [SwitchModel]? {
+        let db = GetDBFromPath()
+        db.open()
+        
+        do {
+            let query = "SELECT * FROM Switch"
+            let result = try db.executeQuery(query, values: nil)
+            var models = [SwitchModel]()
+            while result.next() {
+                let model = SwitchModel()
+                model.id = Int(result.intForColumn("ID"))
+                model.name = result.stringForColumn("Name")
+                model.code = Int(result.intForColumn("Code"))
+                model.value = result.doubleForColumn("Value")
+                model.nodeID = Int(result.intForColumn("NodeID"))
+                models.append(model)
+            }
+            db.close()
+            return models
+        } catch let err as NSError {
+            Printer("DBManager get All Switches error : \(err.debugDescription)")
+            db.close()
+            return nil
+        }
+    }
+    
+    
+    /// BinMan1 : Delete specific record from Scenario table
+    class func deleteSwitch(SwitchID  id : Int) -> Bool {
+        let db = GetDBFromPath()
+        db.open()
+        
+        do {
+            let query = "DELETE FROM Switch WHERE ID = ?"
+            try db.executeUpdate(query, values: [id])
+            db.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager get All Switch error : \(err.debugDescription)")
+            db.close()
+            return false
+        }
+    }
+    
+    
+    /// BinMan1 : Delete All Notifies from Notify table
+    class func deleteAllSwitches () -> Bool {
+        let db = GetDBFromPath()
+        db.open()
+        
+        do {
+            let query = "DELETE FROM Switch"
+            try db.executeUpdate(query, values: nil)
+            db.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager get All Switches error : \(err.debugDescription)")
+            db.close()
+            return false
+        }
+    }
+    
+    /// BinMan1 : Insert Switch to table
+    class func insertSection(SectionModel section : SectionModel) -> Bool {
+        let db = GetDBFromPath()
+        db.open()
+        do {
+            let query = "INSERT INTO Switch (ID, Name , Icon , Sort ) VALUES (? , ? , ?, ?)"
+            try db.executeUpdate(query, values: [section.id , section.name , section.icon , section.sort])
+            db.close()
+            return true
+        }catch let err as NSError {
+            Printer("DBManager insert switch error : \(err.debugDescription)")
+            db.close()
+            return false
+        }
+    }
+    
+    /// BinMan1 : Get a Section object of Sections from table
+    class func getSection(SwitchID id : Int) -> SectionModel? {
+        let db = GetDBFromPath()
+        db.open()
+        do {
+            let query = "SELECT * FROM Section WHERE Section.ID = ?"
+            let result = try db.executeQuery(query, values: [id])
+            let model = SectionModel()
+            if result.next() {
+                model.id = Int(result.intForColumn("ID"))
+                model.icon = result.stringForColumn("Icon")
+                model.name = result.stringForColumn("Name")
+                model.sort = Int(result.intForColumn("Sort"))
+            }
+            db.close()
+            return model
+        }catch let err as NSError {
+            Printer("DBManager get specific Section error : \(err.debugDescription)")
+            db.close()
+            return nil
+        }
+    }
+    
+    
+    /// BinMan1 : Get All Sections From Section table
+    class func getAllSections() -> [SectionModel]? {
+        let db = GetDBFromPath()
+        db.open()
+        
+        do {
+            let query = "SELECT * FROM Section"
+            let result = try db.executeQuery(query, values: nil)
+            var models = [SectionModel]()
+            while result.next() {
+                let model = SectionModel()
+                model.id = Int(result.intForColumn("ID"))
+                model.name = result.stringForColumn("Name")
+                model.icon = result.stringForColumn("Icon")
+                model.sort = Int(result.intForColumn("Sort"))
+                models.append(model)
+            }
+            db.close()
+            return models
+        } catch let err as NSError {
+            Printer("DBManager get All Sectoin error : \(err.debugDescription)")
+            db.close()
+            return nil
+        }
+    }
+    
+    
+    /// BinMan1 : Delete Section record from Section table
+    class func deleteSwitch(SectionID  id : Int) -> Bool {
+        let db = GetDBFromPath()
+        db.open()
+        
+        do {
+            let query = "DELETE FROM Section WHERE ID = ?"
+            try db.executeUpdate(query, values: [id])
+            db.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager get All Section error : \(err.debugDescription)")
+            db.close()
+            return false
+        }
+    }
+    
+    
+    /// BinMan1 : Delete All Sections from Notify table
+    class func deleteAllSections () -> Bool {
+        let db = GetDBFromPath()
+        db.open()
+        
+        do {
+            let query = "DELETE FROM Sectoin"
+            try db.executeUpdate(query, values: nil)
+            db.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager get All Sections error : \(err.debugDescription)")
+            db.close()
+            return false
+        }
+    }
+
+    
+    /// BinMan1 : Insert Room to table
+    class func insertRoom(RoomModel room : RoomModel) -> Bool {
+        let db = GetDBFromPath()
+        db.open()
+        do {
+            let query = "INSERT INTO Room (ID, Name , Icon , Sort , SectionID) VALUES (? , ? , ?, ?)"
+            try db.executeUpdate(query, values: [room.id , room.name , room.icon , room.sectionID])
+            db.close()
+            return true
+        }catch let err as NSError {
+            Printer("DBManager insert Room error : \(err.debugDescription)")
+            db.close()
+            return false
+        }
+    }
+    
+    /// BinMan1 : Get a Room object of Rooms from table
+    class func getRoom(RoomID id : Int) -> SectionModel? {
+        let db = GetDBFromPath()
+        db.open()
+        do {
+            let query = "SELECT * FROM Room WHERE Room.ID = ?"
+            let result = try db.executeQuery(query, values: [id])
+            let model = SectionModel()
+            if result.next() {
+                model.id = Int(result.intForColumn("ID"))
+                model.icon = result.stringForColumn("Icon")
+                model.name = result.stringForColumn("Name")
+                model.sort = Int(result.intForColumn("Sort"))
+                model.sort = Int(result.intForColumn("SectionID"))
+            }
+            db.close()
+            return model
+        }catch let err as NSError {
+            Printer("DBManager get specific Room error : \(err.debugDescription)")
+            db.close()
+            return nil
+        }
+    }
+    
+    
+    /// BinMan1 : Get All Rooms From Room table
+    class func getAllSections() -> [RoomModel]? {
+        let db = GetDBFromPath()
+        db.open()
+        
+        do {
+            let query = "SELECT * FROM Room"
+            let result = try db.executeQuery(query, values: nil)
+            var models = [RoomModel]()
+            while result.next() {
+                let model = RoomModel()
+                model.id = Int(result.intForColumn("ID"))
+                model.name = result.stringForColumn("Name")
+                model.icon = result.stringForColumn("Icon")
+                model.sort = Int(result.intForColumn("Sort"))
+                model.sort = Int(result.intForColumn("SectionID"))
+                models.append(model)
+            }
+            db.close()
+            return models
+        } catch let err as NSError {
+            Printer("DBManager get All Sectoin error : \(err.debugDescription)")
+            db.close()
+            return nil
+        }
+    }
+    
+    
+    /// BinMan1 : Delete Room record from Room table
+    class func deleteRoom(RoomID  id : Int) -> Bool {
+        let db = GetDBFromPath()
+        db.open()
+        
+        do {
+            let query = "DELETE FROM Room WHERE ID = ?"
+            try db.executeUpdate(query, values: [id])
+            db.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager Delete Specific Room error : \(err.debugDescription)")
+            db.close()
+            return false
+        }
+    }
+    
+    
+    /// BinMan1 : Delete All Rooms from Room table
+    class func deleteAllRooms () -> Bool {
+        let db = GetDBFromPath()
+        db.open()
+        
+        do {
+            let query = "DELETE FROM Room"
+            try db.executeUpdate(query, values: nil)
+            db.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager delete All Rooms error : \(err.debugDescription)")
             db.close()
             return false
         }
