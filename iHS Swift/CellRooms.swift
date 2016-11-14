@@ -42,6 +42,7 @@ class CellRooms: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        createNib()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -59,7 +60,7 @@ class CellRooms: UITableViewCell {
         view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         view.frame = bounds
         view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
-        viewMiddle.layer.cornerRadius = 10
+        viewMiddle.layer.cornerRadius = 15
 
         addSubview(view)
     }

@@ -11,9 +11,25 @@ import UIKit
 class SectionRooms: UIView {
     @IBOutlet var view : UIView!
     
+    @IBOutlet weak var imgSection: UIImageView!
+    @IBOutlet weak var outletArrow: UIButton!
+
 
     var sectionID = -1
     var context : DevicesVC!
+    
+    
+    
+    var setImage:UIImage? {
+        get {
+            return nil
+        }
+        set {
+            imgSection.image = newValue
+        }
+        
+    }
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,8 +42,12 @@ class SectionRooms: UIView {
     }
     
     
+    /// Arash : tap gesture recognizer for each tableview header.
     @IBAction func tappinSelector(sender: UITapGestureRecognizer) {
-        Printer(sectionID)
+        context.tableView.beginUpdates()
+        context.sectionArray[sectionID].collapsed = !context.sectionArray[sectionID].collapsed
+        context.tableView.reloadSections(NSIndexSet(index: sectionID), withRowAnimation: .Fade)
+        context.tableView.endUpdates()
         
     }
     
