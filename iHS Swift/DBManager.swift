@@ -42,15 +42,15 @@ class DBManager {
         db.open()
         do {
             var resultString = String()
-            let query = "SELECT * FROM Settings WHERE Settings.type = \(type)"
-            let result = try db.executeQuery(query, values: nil)
+            let query = "SELECT * FROM Settings WHERE Settings.type = ?"
+            let result = try db.executeQuery(query, values: [type])
             if result.next() {
                 resultString = result.stringForColumn("value")
             }
             db.close()
             return resultString
         } catch let err as NSError {
-            Printer("DBManger update settings error : \(err.debugDescription)")
+            Printer("DBManger Getting settings error : \(err.debugDescription)")
             db.close()
             return nil
         }
@@ -62,8 +62,8 @@ class DBManager {
         let db = GetDBFromPath()
         db.open()
         do {
-            let query = "UPDATE Settings SET Settings.value = \(value) WHERE Settings.type = \(type)"
-            try db.executeUpdate(query, values: nil)
+            let query = "UPDATE Settings SET Settings.value = ? WHERE Settings.type = ?"
+            try db.executeUpdate(query, values: [value , type])
             db.close()
             return true
         } catch let err as NSError {
