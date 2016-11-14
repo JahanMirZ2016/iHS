@@ -6,6 +6,10 @@
 //  Copyright © 2016 Ali Zare Sh. All rights reserved.
 //
 
+/*
+ Arash : Switch Model
+ */
+
 import Foundation
 
 class SwitchModel {

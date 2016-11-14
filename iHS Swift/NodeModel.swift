@@ -6,6 +6,11 @@
 //  Copyright © 2016 Ali Zare Sh. All rights reserved.
 //
 
+
+/*
+ Arash : Node Model
+ */
+
 import Foundation
 
 class NodeModel {

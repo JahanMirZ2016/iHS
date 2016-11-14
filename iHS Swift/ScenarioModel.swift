@@ -6,6 +6,10 @@
 //  Copyright © 2016 Ali Zare Sh. All rights reserved.
 //
 
+/*
+ Arash : Scenario Model
+ */
+
 import Foundation
 
 class ScenarioModel {
