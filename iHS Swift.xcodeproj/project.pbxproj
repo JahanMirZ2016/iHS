@@ -39,6 +39,7 @@
 		EE0D95F01DD45BAA004581C4 /* Socket.c in Sources */ = {isa = PBXBuildFile; fileRef = EE0D95ED1DD45BAA004581C4 /* Socket.c */; };
 		EE0D95F11DD45BAA004581C4 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D95EF1DD45BAA004581C4 /* SocketManager.swift */; };
 		EE0D95F41DD46076004581C4 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D95F31DD46076004581C4 /* DBManager.swift */; };
+		EE16FC4A1DDAD4D10039A1CC /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE16FC491DDAD4D10039A1CC /* Welcome.storyboard */; };
 		EEDA15211DD33AC0007D1F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDA15201DD33AC0007D1F3F /* AppDelegate.swift */; };
 		EEDA15281DD33AC0007D1F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEDA15271DD33AC0007D1F3F /* Assets.xcassets */; };
 		EEDA152B1DD33AC0007D1F3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEDA15291DD33AC0007D1F3F /* LaunchScreen.storyboard */; };
@@ -101,6 +102,7 @@
 		EE0D95EE1DD45BAA004581C4 /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
 		EE0D95EF1DD45BAA004581C4 /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		EE0D95F31DD46076004581C4 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		EE16FC491DDAD4D10039A1CC /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		EEDA151D1DD33AC0007D1F3F /* iHS Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iHS Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDA15201DD33AC0007D1F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEDA15271DD33AC0007D1F3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		5B06B68F1DD3487B004E9877 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EE16FC491DDAD4D10039A1CC /* Welcome.storyboard */,
 				5BCDCD5C1DD47FAE00CC3372 /* Main.storyboard */,
 				5B6247BD1DD7002600760F10 /* Rooms */,
 				5BBA15B91DD61E5E00983D23 /* TopBar */,
@@ -502,6 +505,7 @@
 				EEDA15281DD33AC0007D1F3F /* Assets.xcassets in Resources */,
 				5B06B69C1DD36199004E9877 /* TopBar.xib in Resources */,
 				5B6247C51DD700D500760F10 /* SectionRooms.xib in Resources */,
+				EE16FC4A1DDAD4D10039A1CC /* Welcome.storyboard in Resources */,
 				5B6247C11DD7007700760F10 /* CellRooms.xib in Resources */,
 				EE0D95E81DD45952004581C4 /* IHS15.sqlite in Resources */,
 			);
