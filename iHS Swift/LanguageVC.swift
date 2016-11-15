@@ -81,6 +81,7 @@ class LanguageVC: UIViewController {
         outletTr.setBackgroundImage(UIImage(named: "TrGray"), forState: .Normal)
         
         
+        
     }
     
     @IBAction func btnAr(sender: UIButton) {

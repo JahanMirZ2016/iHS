@@ -18,6 +18,7 @@ class BarcodeVC: UIViewController {
         super.viewDidLoad()
         setGestures()
         
+        
     }
     
     override func didReceiveMemoryWarning() {

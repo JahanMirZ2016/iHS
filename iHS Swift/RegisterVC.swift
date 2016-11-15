@@ -50,6 +50,7 @@ class RegisterVC: UIViewController {
 
     
     
+    
     /// Arash : Register Button
     @IBAction func btnRegister(sender: UIButton) {
         if edtRegisterName.text?.characters.count > 0 {

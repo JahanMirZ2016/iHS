@@ -82,6 +82,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.backgroundColor = UIColor.clearColor()
         
+        
         section1 = SectionModel()
         section1.collapsed = false
         sectionArrayy.append(section1)

@@ -51,7 +51,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djD-n9-2LP">
-                                <rect key="frame" x="83" y="528.5" width="40.5" height="41"/>
+                                <rect key="frame" x="82.5" y="528.5" width="41" height="41"/>
                                 <state key="normal" backgroundImage="EnGray"/>
                                 <connections>
                                     <action selector="btnEn:" destination="9KR-M0-vUY" eventType="touchUpInside" id="Ltk-31-8th"/>
@@ -97,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ix7-M8-4tq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3649" y="45"/>
+            <point key="canvasLocation" x="-3714" y="45"/>
         </scene>
         <!--WelcomeVC-->
         <scene sceneID="osB-fo-Mhu">

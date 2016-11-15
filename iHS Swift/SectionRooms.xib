@@ -84,7 +84,7 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="168.5" y="119.5"/>
+            <point key="canvasLocation" x="193" y="87"/>
         </view>
         <tapGestureRecognizer id="Eug-MA-hPR">
             <connections>

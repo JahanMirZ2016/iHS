@@ -20,6 +20,7 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
     var scenarioArray = [ScenarioModel]() {
         didSet {
             tableView.reloadData()
+            
         }
     }
     

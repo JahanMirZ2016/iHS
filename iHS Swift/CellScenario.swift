@@ -14,6 +14,7 @@ import UIKit
 
 class CellScenarios: UITableViewCell {
     
+    
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var img: UIImageView!

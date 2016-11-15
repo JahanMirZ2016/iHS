@@ -14,6 +14,7 @@ import Foundation
 
 class NotifyModel {
     
+    
     var id:Int = 0
     var notifyTitle:String = ""
     var notifyText:String = ""

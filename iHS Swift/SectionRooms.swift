@@ -56,8 +56,7 @@ class SectionRooms: UIView {
         context.sectionArrayy[sectionID].collapsed = !context.sectionArrayy[sectionID].collapsed
         context.tableView.reloadSections(NSIndexSet(index: sectionID), withRowAnimation: .Fade)
         context.tableView.endUpdates()
-        
-  
+
     }
     
     func createNib() {

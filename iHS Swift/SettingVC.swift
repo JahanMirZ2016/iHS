@@ -52,6 +52,7 @@ class SettingVC: UIViewController {
         outletIr.setBackgroundImage(UIImage(named: "FaGray"), forState: .Normal)
         outletTr.setBackgroundImage(UIImage(named: "TrGray"), forState: .Normal)
         
+        
     }
     
     @IBAction func btnTr(sender: UIButton) {

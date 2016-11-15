@@ -17,6 +17,7 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    
     /// reload the collectionview.
     var nodeArray = [NodeModel]() {
         didSet {

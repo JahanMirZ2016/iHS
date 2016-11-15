@@ -22,6 +22,7 @@ let HEIGHTPHONE = UIScreen.mainScreen().bounds.height
 let WIDTHPHONE = UIScreen.mainScreen().bounds.width
 
 
+
 /// Name of DB
 let DBNAME = "IHS15.sqlite"
 
