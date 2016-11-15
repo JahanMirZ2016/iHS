@@ -37,7 +37,7 @@ class WelcomeVC: UIViewController {
         let transition = sender.translationInView(self.view)
         print(transition.x)
         if transition.x < -10 {
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let storyBoard = UIStoryboard(name: "Welcome", bundle: nil)
             let registerVC = storyBoard.instantiateViewControllerWithIdentifier("registerVC")
             let transitionStyle = UIModalTransitionStyle.FlipHorizontal
             registerVC.modalTransitionStyle = transitionStyle

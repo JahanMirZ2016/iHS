@@ -53,7 +53,7 @@ class RegisterVC: UIViewController {
     /// Arash : Register Button
     @IBAction func btnRegister(sender: UIButton) {
         if edtRegisterName.text?.characters.count > 0 {
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let storyBoard = UIStoryboard(name: "Welcome", bundle: nil)
             let barcodeVC = storyBoard.instantiateViewControllerWithIdentifier("barcodeVC") as! BarcodeVC
             let transitionStyle = UIModalTransitionStyle.FlipHorizontal
             barcodeVC.modalTransitionStyle = transitionStyle
