@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,29 +25,29 @@
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uz1-w2-611">
                     <rect key="frame" x="30" y="8" width="782" height="190"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5f-1j-skB">
-                            <rect key="frame" x="225" y="10" width="534" height="171"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="w8A-2r-QVD">
-                            <rect key="frame" x="26" y="2" width="171" height="171"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w8A-2r-QVD">
+                            <rect key="frame" x="600" y="8" width="182" height="182"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="w8A-2r-QVD" secondAttribute="height" multiplier="1:1" id="sCz-6y-LCQ"/>
+                                <constraint firstAttribute="width" secondItem="w8A-2r-QVD" secondAttribute="height" id="VMi-mm-1VI"/>
                             </constraints>
                         </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5f-1j-skB">
+                            <rect key="frame" x="8" y="8" width="584" height="182"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="0.19973060344827587" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="C5f-1j-skB" firstAttribute="leading" secondItem="w8A-2r-QVD" secondAttribute="trailing" constant="28" id="1tM-Zq-FeF"/>
-                        <constraint firstItem="w8A-2r-QVD" firstAttribute="top" secondItem="Uz1-w2-611" secondAttribute="top" constant="2" id="JrI-gf-90X"/>
-                        <constraint firstItem="C5f-1j-skB" firstAttribute="top" secondItem="Uz1-w2-611" secondAttribute="top" constant="10" id="ZgM-cC-yFS"/>
-                        <constraint firstAttribute="trailing" secondItem="C5f-1j-skB" secondAttribute="trailing" constant="23" id="cvQ-tk-x4T"/>
-                        <constraint firstAttribute="bottom" secondItem="C5f-1j-skB" secondAttribute="bottom" constant="9" id="gDu-k5-lCh"/>
-                        <constraint firstItem="w8A-2r-QVD" firstAttribute="height" secondItem="Uz1-w2-611" secondAttribute="height" multiplier="0.9" id="wgg-PO-jhe"/>
-                        <constraint firstItem="w8A-2r-QVD" firstAttribute="leading" secondItem="Uz1-w2-611" secondAttribute="leading" constant="26" id="zc3-0S-V6V"/>
+                        <constraint firstItem="w8A-2r-QVD" firstAttribute="top" secondItem="Uz1-w2-611" secondAttribute="top" constant="8" id="H29-Tu-xEu"/>
+                        <constraint firstAttribute="bottom" secondItem="w8A-2r-QVD" secondAttribute="bottom" id="IBR-D2-Yoc"/>
+                        <constraint firstItem="w8A-2r-QVD" firstAttribute="leading" secondItem="C5f-1j-skB" secondAttribute="trailing" constant="8" id="Szq-Qu-uJa"/>
+                        <constraint firstItem="C5f-1j-skB" firstAttribute="leading" secondItem="Uz1-w2-611" secondAttribute="leading" constant="8" id="Vhe-Tg-79w"/>
+                        <constraint firstAttribute="bottom" secondItem="C5f-1j-skB" secondAttribute="bottom" id="YXw-jg-qAI"/>
+                        <constraint firstItem="C5f-1j-skB" firstAttribute="top" secondItem="Uz1-w2-611" secondAttribute="top" constant="8" id="o0B-lu-VkA"/>
+                        <constraint firstAttribute="trailing" secondItem="w8A-2r-QVD" secondAttribute="trailing" id="vMP-MQ-2c9"/>
                     </constraints>
                 </view>
             </subviews>
@@ -63,10 +62,7 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="34" y="-210"/>
+            <point key="canvasLocation" x="63" y="-165"/>
         </view>
     </objects>
-    <resources>
-        <image name="2" width="320" height="568"/>
-    </resources>
 </document>

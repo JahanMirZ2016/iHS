@@ -9,7 +9,6 @@
 #ifndef Socket_h
 #define Socket_h
 
-
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>
