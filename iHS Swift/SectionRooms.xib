@@ -14,6 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SectionRooms" customModule="iHS_Swift" customModuleProvider="target">
             <connections>
                 <outlet property="imgSection" destination="zRN-VM-0d0" id="yO5-rF-YkL"/>
+                <outlet property="labelName" destination="N3h-LZ-BXg" id="cye-1i-1tD"/>
                 <outlet property="outletArrow" destination="DlP-F2-TAK" id="Nyx-U4-k68"/>
             </connections>
         </placeholder>
@@ -29,9 +30,9 @@
                             <rect key="frame" x="25" y="0.0" width="547" height="179"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sdadadasdas" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3h-LZ-BXg">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="واحد ۱" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3h-LZ-BXg">
                             <rect key="frame" x="93" y="36" width="333.5" height="107"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>

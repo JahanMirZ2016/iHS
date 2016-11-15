@@ -17,14 +17,21 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     
     @IBOutlet weak var tableView: UITableView!
     
+    /// reload the tableview.
+    var sectionArray = [SectionModel]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     var section1 = SectionModel()
-    var sectionArray = [SectionModel() , SectionModel() , SectionModel() , SectionModel() , SectionModel()]
+    var sectionArrayy = [SectionModel() , SectionModel() , SectionModel() , SectionModel() , SectionModel()]
     
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return sectionArray[section].collapsed ? 5 : 0
+        return sectionArrayy[section].collapsed ? 5 : 0
     }
     
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -34,15 +41,16 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     }
     
     internal func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return sectionArray.count
+        return sectionArrayy.count
     }
     
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionRooms = SectionRooms(frame: CGRectMake(0 , 0 , tableView.frame.width , 60))
+        
         sectionRooms.sectionID = section
         sectionRooms.context = self
-        switch sectionArray[section].collapsed {
+        switch sectionArrayy[section].collapsed {
         case true :
             sectionRooms.outletArrow.setImage(UIImage(named: "lay_expandablelist_parrent_arrow_open"), forState: .Normal)
         case false :
@@ -53,12 +61,12 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        return 80
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        return 40
+        return 50
     }
     
 
@@ -76,7 +84,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         
         section1 = SectionModel()
         section1.collapsed = false
-        sectionArray.append(section1)
+        sectionArrayy.append(section1)
         
         // Do any additional setup after loading the view.
     }
