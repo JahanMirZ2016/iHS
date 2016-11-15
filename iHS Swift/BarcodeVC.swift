@@ -35,7 +35,7 @@ class BarcodeVC: UIViewController {
     }
     
     /// Arash : dismiss BarcodeVC and go to RegisterVC.
-    func goToRegisterVC(sender : UIPanGestureRecognizer) {
+     func goToRegisterVC(sender : UIPanGestureRecognizer) {
         let transition = sender.translationInView(self.view)
         if transition.x > 0 {
             dismissViewControllerAnimated(true, completion: nil)
