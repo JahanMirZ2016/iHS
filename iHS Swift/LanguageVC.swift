@@ -24,9 +24,8 @@ class LanguageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setGestures()
-        
-        
-        
+        setLangID(LangID: SELECTEDLANGID)
+        setSelectedLangImage()
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,8 +34,32 @@ class LanguageVC: UIViewController {
     }
     
     
+    /// BinMan1 : Set Image Selected Language
+    private func setSelectedLangImage() {
+        switch SELECTEDLANGID {
+        case LangID.ENGLISH :
+            outletEn.setBackgroundImage(UIImage(named: "En"), forState: .Normal)
+            break
+        case LangID.TURKISH :
+            outletTr.setBackgroundImage(UIImage(named: "Tr"), forState: .Normal)
+            break
+        case LangID.PERSIAN :
+            outletIr.setBackgroundImage(UIImage(named: "Fa"), forState: .Normal)
+            break
+        case LangID.ARABIC :
+            outletAr.setBackgroundImage(UIImage(named: "Ar"), forState: .Normal)
+            break
+        default :
+            break
+        }
+    }
     
     
+    /// BinMan1 : Set LangID 
+    private func setLangID(LangID id : Int) {
+        SELECTEDLANGID = id
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.LanguageID, UpdateValue: "\(id)")
+    }
     
     
     /// Set Edge Gestures
@@ -66,6 +89,7 @@ class LanguageVC: UIViewController {
     /// Language Buttons
     @IBAction func btnEn(sender: UIButton) {
         print("AA")
+        setLangID(LangID: LangID.ENGLISH)
         outletEn.setBackgroundImage(UIImage(named: "En"), forState: .Normal)
         outletAr.setBackgroundImage(UIImage(named: "ArGray"), forState: .Normal)
         outletIr.setBackgroundImage(UIImage(named: "FaGray"), forState: .Normal)
@@ -75,16 +99,17 @@ class LanguageVC: UIViewController {
     }
     
     @IBAction func btnIr(sender: UIButton) {
+        setLangID(LangID: LangID.PERSIAN)
         outletIr.setBackgroundImage(UIImage(named: "Fa"), forState: .Normal)
         outletEn.setBackgroundImage(UIImage(named: "EnGray"), forState: .Normal)
         outletAr.setBackgroundImage(UIImage(named: "ArGray"), forState: .Normal)
         outletTr.setBackgroundImage(UIImage(named: "TrGray"), forState: .Normal)
         
         
-        
     }
     
     @IBAction func btnAr(sender: UIButton) {
+        setLangID(LangID: LangID.ARABIC)
         outletAr.setBackgroundImage(UIImage(named: "Ar"), forState: .Normal)
         outletEn.setBackgroundImage(UIImage(named: "EnGray"), forState: .Normal)
         outletIr.setBackgroundImage(UIImage(named: "FaGray"), forState: .Normal)
@@ -93,6 +118,7 @@ class LanguageVC: UIViewController {
     }
     
     @IBAction func btnTr(sender: UIButton) {
+        setLangID(LangID: LangID.TURKISH)
         outletTr.setBackgroundImage(UIImage(named: "Tr"), forState: .Normal)
         outletEn.setBackgroundImage(UIImage(named: "EnGray"), forState: .Normal)
         outletAr.setBackgroundImage(UIImage(named: "ArGray"), forState: .Normal)

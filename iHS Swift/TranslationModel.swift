@@ -13,7 +13,6 @@
 import Foundation
 
 class TranslationModel {
-    
     var langID:Int = 0
     var sentenseID:Int = 0
     var sentenseText:String = ""

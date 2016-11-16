@@ -70,7 +70,6 @@ class SecondPageTBC: UITabBarController {
     }
     
     
-    
     /// Setup Tabbar (remove shadowImage, set backgroundImage and ...)
     func setUpTabBar() {
         UITabBar.appearance().barTintColor = UIColor.whiteColor()

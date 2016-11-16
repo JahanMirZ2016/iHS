@@ -7,7 +7,7 @@
 //
 
 /*
- Arash : Cell for rooms viewcontroller.(tableview)
+ Arash : Cell for rooms viewcontroller
  */
 
 import UIKit
@@ -36,6 +36,8 @@ class CellRooms: UITableViewCell {
             img.image = newValue
         }
     }
+    
+    
 
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

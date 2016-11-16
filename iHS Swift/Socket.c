@@ -9,7 +9,6 @@
 #include "Socket.h"
 
 
-
 int connectToSocket(char* server_ip , int server_port) {
     sock = socket(AF_INET, SOCK_STREAM, 0);
     
