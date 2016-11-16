@@ -25,7 +25,6 @@ import UIKit
         }
     }
     
-    
     /// Set number of Messages. (Notifications) (String)
     @IBInspectable var messageCount:String {
         set {

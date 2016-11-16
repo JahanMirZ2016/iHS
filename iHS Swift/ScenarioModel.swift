@@ -12,8 +12,7 @@
 
 import Foundation
 
-class ScenarioModel{
-    
+class ScenarioModel {
     
     var id:Int = 0
     var name:String = ""

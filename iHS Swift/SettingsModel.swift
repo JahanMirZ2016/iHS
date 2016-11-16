@@ -14,7 +14,6 @@ import Foundation
 
 class SettingsModel {
     
-    
     var type:String = ""
     var value:String = ""
 }
