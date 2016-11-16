@@ -86,7 +86,7 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
                 let story = UIStoryboard(name: "Main", bundle: nil)
                 let vc = story.instantiateViewControllerWithIdentifier("SecondPageTBC")
                 appDel.window?.rootViewController = vc
-                //                appDel.socket.openSocket()
+                appDel.socket.open(IP: centerIP, Port: centerPort)
                 presentViewController(vc, animated: true, completion: nil)
             }
         } catch let err as NSError {

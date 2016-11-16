@@ -22,7 +22,7 @@ class SocketManager {
     var rDelegate : RecieveSocketDelegate?
     
     /// Open socket to ip and port of socket server-side
-    func open(socketIP : String , Port socketPort : Int) -> Bool {
+    func open(IP socketIP : String , Port socketPort : Int) -> Bool {
         SOCKET_IP = socketIP
         SOCKET_PORT = socketPort
         
@@ -45,13 +45,23 @@ class SocketManager {
     
     /// Recieve data from socket server-side
     func recieve() {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) { 
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+            var temp = NSString()
             while true {
                 let data = NSString(UTF8String: recieveData())
                 if data != "" && data != nil {
-//                    data = data?.stringByReplacingOccurrencesOfString("}\n", withString: "}")
-//                    data = data?.stringByReplacingOccurrencesOfString("]\n", withString: "]")
-                    self.rDelegate!.recieve(data!)
+                    temp.stringByAppendingString(data as! String)
+                    if temp.lowercaseString.rangeOfString("]\n") != nil {
+                        self.rDelegate?.recieve(temp)
+                        Printer("Socket Data : \(temp.debugDescription)")
+                        temp = NSString()
+                    }
+                    
+                    if temp.lowercaseString.rangeOfString("}\n") != nil {
+                        self.rDelegate?.recieve(temp)
+                        Printer("Socket Data : \(temp.debugDescription)")
+                        temp = NSString()
+                    }
                 }
             }
         }

@@ -12,7 +12,9 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    /// BinMan1 : A socket object for use in all of the project from appdelegate
+    var socket : SocketManager!
     
     /// BinMan1 : Choose the init view controller
     private func chooseVC () {
@@ -30,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        
+        socket = SocketManager()
         
         /// BinMan1 : Set selected language id from db
         if let langID = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.LanguageID) {

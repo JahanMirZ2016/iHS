@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 
-/* 
-    BinMan1 : This file is for All global variables, functions or structors
+/*
+ BinMan1 : This file is for All global variables, functions or structors
  */
 
 
@@ -22,14 +22,29 @@ let HEIGHTPHONE = UIScreen.mainScreen().bounds.height
 let WIDTHPHONE = UIScreen.mainScreen().bounds.width
 
 
-
 /// Name of DB
 let DBNAME = "IHS15.sqlite"
 
-/// Get DB From db path for all uses 
-func GetDBFromPath () -> FMDatabase {
-    let path = NSBundle.mainBundle().resourcePath?.stringByAppendingString("/\(DBNAME)")
-    return FMDatabase(path: path)
+/// Get DB From db path for all uses
+func GetDBFromPath () -> FMDatabase? {
+    
+    let fileManager = NSFileManager.defaultManager()
+    var dbPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+    dbPath = dbPath.stringByAppendingString("/\(DBNAME)")
+    
+    if fileManager.fileExistsAtPath(dbPath) {
+        return FMDatabase(path: dbPath)
+    } else {
+        do {
+            let path = NSBundle.mainBundle().resourcePath!.stringByAppendingString("/\(DBNAME)")
+            try fileManager.copyItemAtPath(path, toPath: dbPath)
+            return FMDatabase(path: dbPath)
+        } catch let error as NSError {
+            Printer("Make DB Error : \(error.debugDescription)")
+            return nil
+        }
+    }
+    
 }
 
 /// Language ID Selected By User
