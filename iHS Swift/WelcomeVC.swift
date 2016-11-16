@@ -32,6 +32,7 @@ class WelcomeVC: UIViewController {
         view.addGestureRecognizer(gestureScreen)
     }
     
+    
     ///selector func
     func goToVC(sender : UIPanGestureRecognizer) {
         let transition = sender.translationInView(self.view)

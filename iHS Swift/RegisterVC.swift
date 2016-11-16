@@ -15,14 +15,12 @@ import UIKit
 class RegisterVC: UIViewController {
     
     @IBOutlet weak var edtRegisterName: UITextField!
-    @IBOutlet weak var titleLB: UILabel!
-    @IBOutlet weak var regBtn: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setGestures()
-        setMultipleLangToWidgets()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,6 +38,7 @@ class RegisterVC: UIViewController {
     func setGestures() {
         let leftGestureScreen = UIPanGestureRecognizer(target: self, action: #selector(goToWelcomeVC))
         view.addGestureRecognizer(leftGestureScreen)
+        
     }
     
     func goToWelcomeVC(sender : UIPanGestureRecognizer) {
@@ -49,19 +48,8 @@ class RegisterVC: UIViewController {
         }
     }
 
-    /// BinMan1 : Set Multiple language to widgets 
-    private func setMultipleLangToWidgets() {
-        let sentences = DBManager.getTranslationOfSentences(SentencesID: [20 , 21])
-        regBtn.setTitle(sentences[0], forState: .Normal)
-        titleLB.text = sentences[1]
-        
-        if SELECTEDLANGID == LangID.ARABIC || SELECTEDLANGID == LangID.PERSIAN {
-            titleLB.textAlignment = .Right
-        } else {
-            titleLB.textAlignment = .Left
-        }
-        
-    }
+    
+    
     
     /// Arash : Register Button
     @IBAction func btnRegister(sender: UIButton) {
@@ -72,7 +60,7 @@ class RegisterVC: UIViewController {
             barcodeVC.modalTransitionStyle = transitionStyle
             self.presentViewController(barcodeVC, animated: true, completion: nil)
         }else {
-            Printer("Error")
+            print("Error")
         }
     }
     

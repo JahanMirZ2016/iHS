@@ -1,41 +1,42 @@
 //
-//  TopBar.swift
+//  CellFavorites.swift
 //  iHS Swift
 //
-//  Created by arash on 11/9/16.
+//  Created by arash on 11/15/16.
 //  Copyright © 2016 Ali Zare Sh. All rights reserved.
 //
 
+/*
+ Arash : Cell for favorites viewcontroller.(collectionview)
+ */
+
 import UIKit
 
-@IBDesignable class TopBar: UIView {
+
+ class CellFavorites: UICollectionViewCell {
     
+    @IBOutlet weak var imgCell: UIImageView!
+    @IBOutlet weak var labelCell: UILabel!
     
-    @IBOutlet weak var imgConnection: UIImageView!
-    
-    @IBOutlet weak var labelMessage: UILabel!
-    
-    /// Set Image for different kind of connections. (UIImage)
-    var connectionImage:UIImage! {
+    var image:UIImage? {
         set {
-            imgConnection.image = newValue
+            imgCell.image = newValue
         }
         get {
             return nil
         }
     }
     
-    
-    /// Set number of Messages. (Notifications) (String)
-    @IBInspectable var messageCount:String {
-        set {
-            labelMessage.text = newValue
-        }
+    var text:String? {
         get {
-            return labelMessage.text!
+          return labelCell.text
+        }
+        set {
+            labelCell.text = newValue
         }
         
     }
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,19 +51,13 @@ import UIKit
     
     @IBOutlet var view : UIView!
     
-    
-    
     func createNib() {
         let bundle = NSBundle(forClass: self.dynamicType)
-        let nib = UINib(nibName: "TopBar", bundle: bundle)
-        
-        
+        let nib = UINib(nibName: "CellFavorites", bundle: bundle)
         view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         view.frame = bounds
         view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
-        
         addSubview(view)
     }
-    
     
 }

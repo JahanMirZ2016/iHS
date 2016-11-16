@@ -14,6 +14,7 @@ import Foundation
 
 class SwitchModel {
     
+    
     var id:Int = 0
     var code:Int = 0
     var name:String = ""

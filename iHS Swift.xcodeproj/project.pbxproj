@@ -32,6 +32,10 @@
 		5BDC76E31DD99EBE00F63E55 /* NodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDC76E21DD99EBE00F63E55 /* NodeModel.swift */; };
 		5BDC76E51DD99F3000F63E55 /* NotifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDC76E41DD99F3000F63E55 /* NotifyModel.swift */; };
 		5BDC76E71DD99F7A00F63E55 /* ScenarioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDC76E61DD99F7A00F63E55 /* ScenarioModel.swift */; };
+		5BEA78CC1DDAD91700A71068 /* CellFavorites.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BEA78CB1DDAD91700A71068 /* CellFavorites.xib */; };
+		5BEA78CE1DDAD94300A71068 /* CellFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA78CD1DDAD94300A71068 /* CellFavorites.swift */; };
+		5BEA78D11DDAE4F000A71068 /* CellScenarios.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BEA78D01DDAE4F000A71068 /* CellScenarios.xib */; };
+		5BEA78D31DDAE50F00A71068 /* CellScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA78D21DDAE50F00A71068 /* CellScenario.swift */; };
 		9076CD0CDE56C977F16A007A /* libPods-iHS SwiftTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC69544FCADE95E58F157AC /* libPods-iHS SwiftTests.a */; };
 		911903B57F293EBD6D3B3C27 /* libPods-iHS Swift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE73A0A9454D190F3B4AF36 /* libPods-iHS Swift.a */; };
 		EE0D95E81DD45952004581C4 /* IHS15.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = EE0D95E71DD45952004581C4 /* IHS15.sqlite */; };
@@ -40,8 +44,6 @@
 		EE0D95F11DD45BAA004581C4 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D95EF1DD45BAA004581C4 /* SocketManager.swift */; };
 		EE0D95F41DD46076004581C4 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D95F31DD46076004581C4 /* DBManager.swift */; };
 		EE16FC4A1DDAD4D10039A1CC /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE16FC491DDAD4D10039A1CC /* Welcome.storyboard */; };
-		EE16FC4D1DDADF880039A1CC /* JsonMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE16FC4B1DDADF880039A1CC /* JsonMaker.swift */; };
-		EE16FC4E1DDADF880039A1CC /* JsonSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE16FC4C1DDADF880039A1CC /* JsonSerializer.swift */; };
 		EEDA15211DD33AC0007D1F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDA15201DD33AC0007D1F3F /* AppDelegate.swift */; };
 		EEDA15281DD33AC0007D1F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEDA15271DD33AC0007D1F3F /* Assets.xcassets */; };
 		EEDA152B1DD33AC0007D1F3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEDA15291DD33AC0007D1F3F /* LaunchScreen.storyboard */; };
@@ -92,6 +94,10 @@
 		5BDC76E21DD99EBE00F63E55 /* NodeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeModel.swift; sourceTree = "<group>"; };
 		5BDC76E41DD99F3000F63E55 /* NotifyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifyModel.swift; sourceTree = "<group>"; };
 		5BDC76E61DD99F7A00F63E55 /* ScenarioModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenarioModel.swift; sourceTree = "<group>"; };
+		5BEA78CB1DDAD91700A71068 /* CellFavorites.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellFavorites.xib; sourceTree = "<group>"; };
+		5BEA78CD1DDAD94300A71068 /* CellFavorites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellFavorites.swift; sourceTree = "<group>"; };
+		5BEA78D01DDAE4F000A71068 /* CellScenarios.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellScenarios.xib; sourceTree = "<group>"; };
+		5BEA78D21DDAE50F00A71068 /* CellScenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellScenario.swift; sourceTree = "<group>"; };
 		696FC33BFC8868DAEABD38FF /* Pods-iHS SwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHS SwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iHS SwiftTests/Pods-iHS SwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		6EAD22B47A02235459A4EAEA /* Pods-iHS SwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHS SwiftUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iHS SwiftUITests/Pods-iHS SwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A5CC00DA651E7762CE8EF54B /* libPods-iHS SwiftUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iHS SwiftUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,8 +111,6 @@
 		EE0D95EF1DD45BAA004581C4 /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		EE0D95F31DD46076004581C4 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		EE16FC491DDAD4D10039A1CC /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
-		EE16FC4B1DDADF880039A1CC /* JsonMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonMaker.swift; sourceTree = "<group>"; };
-		EE16FC4C1DDADF880039A1CC /* JsonSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonSerializer.swift; sourceTree = "<group>"; };
 		EEDA151D1DD33AC0007D1F3F /* iHS Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iHS Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDA15201DD33AC0007D1F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEDA15271DD33AC0007D1F3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 			children = (
 				EE16FC491DDAD4D10039A1CC /* Welcome.storyboard */,
 				5BCDCD5C1DD47FAE00CC3372 /* Main.storyboard */,
+				5BEA78CF1DDAE4C500A71068 /* Scenarios */,
+				5BEA78CA1DDAD8E200A71068 /* Favorites */,
 				5B6247BD1DD7002600760F10 /* Rooms */,
 				5BBA15B91DD61E5E00983D23 /* TopBar */,
 			);
@@ -284,6 +290,24 @@
 			name = "Room Models";
 			sourceTree = "<group>";
 		};
+		5BEA78CA1DDAD8E200A71068 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				5BEA78CB1DDAD91700A71068 /* CellFavorites.xib */,
+				5BEA78CD1DDAD94300A71068 /* CellFavorites.swift */,
+			);
+			name = Favorites;
+			sourceTree = "<group>";
+		};
+		5BEA78CF1DDAE4C500A71068 /* Scenarios */ = {
+			isa = PBXGroup;
+			children = (
+				5BEA78D01DDAE4F000A71068 /* CellScenarios.xib */,
+				5BEA78D21DDAE50F00A71068 /* CellScenario.swift */,
+			);
+			name = Scenarios;
+			sourceTree = "<group>";
+		};
 		EE0D95E31DD45475004581C4 /* DB */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,7 +319,6 @@
 		EE0D95E41DD45480004581C4 /* Net */ = {
 			isa = PBXGroup;
 			children = (
-				EE16FC4F1DDADF8D0039A1CC /* Libs */,
 				EE0D95EB1DD45B9C004581C4 /* Socket */,
 			);
 			name = Net;
@@ -331,15 +354,6 @@
 				EE0D95EF1DD45BAA004581C4 /* SocketManager.swift */,
 			);
 			name = Socket;
-			sourceTree = "<group>";
-		};
-		EE16FC4F1DDADF8D0039A1CC /* Libs */ = {
-			isa = PBXGroup;
-			children = (
-				EE16FC4B1DDADF880039A1CC /* JsonMaker.swift */,
-				EE16FC4C1DDADF880039A1CC /* JsonSerializer.swift */,
-			);
-			name = Libs;
 			sourceTree = "<group>";
 		};
 		EEDA15141DD33ABF007D1F3F = {
@@ -514,12 +528,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BEA78CC1DDAD91700A71068 /* CellFavorites.xib in Resources */,
 				EEDA152B1DD33AC0007D1F3F /* LaunchScreen.storyboard in Resources */,
 				5BCDCD5D1DD47FAE00CC3372 /* Main.storyboard in Resources */,
 				EEDA15281DD33AC0007D1F3F /* Assets.xcassets in Resources */,
 				5B06B69C1DD36199004E9877 /* TopBar.xib in Resources */,
 				5B6247C51DD700D500760F10 /* SectionRooms.xib in Resources */,
 				EE16FC4A1DDAD4D10039A1CC /* Welcome.storyboard in Resources */,
+				5BEA78D11DDAE4F000A71068 /* CellScenarios.xib in Resources */,
 				5B6247C11DD7007700760F10 /* CellRooms.xib in Resources */,
 				EE0D95E81DD45952004581C4 /* IHS15.sqlite in Resources */,
 			);
@@ -669,9 +685,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE16FC4D1DDADF880039A1CC /* JsonMaker.swift in Sources */,
 				EE0D95F01DD45BAA004581C4 /* Socket.c in Sources */,
-				EE16FC4E1DDADF880039A1CC /* JsonSerializer.swift in Sources */,
 				EE0D95F11DD45BAA004581C4 /* SocketManager.swift in Sources */,
 				5BCDCD701DD47FF600CC3372 /* ScenarioVC.swift in Sources */,
 				5BCDCD631DD47FDE00CC3372 /* LanguageVC.swift in Sources */,
@@ -692,9 +706,11 @@
 				5BCDCD661DD47FDE00CC3372 /* BarcodeVC.swift in Sources */,
 				5BCDCD6F1DD47FF600CC3372 /* DevicesVC.swift in Sources */,
 				5BDC76E71DD99F7A00F63E55 /* ScenarioModel.swift in Sources */,
+				5BEA78CE1DDAD94300A71068 /* CellFavorites.swift in Sources */,
 				5BDC76E31DD99EBE00F63E55 /* NodeModel.swift in Sources */,
 				EEDA15211DD33AC0007D1F3F /* AppDelegate.swift in Sources */,
 				5BDC76E51DD99F3000F63E55 /* NotifyModel.swift in Sources */,
+				5BEA78D31DDAE50F00A71068 /* CellScenario.swift in Sources */,
 				5BCDCD641DD47FDE00CC3372 /* WelcomeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
