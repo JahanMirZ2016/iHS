@@ -35,10 +35,16 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     }
     
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if SELECTEDLANGID == LangID.PERSIAN || SELECTEDLANGID == LangID.ARABIC {
         let cell = CellRooms(frame: CGRectMake(0 , 0 , tableView.frame.width , 80))
         cell.selectionStyle = .None
         return cell
+        }
+        let cell = CellRoomsLeftAllignment(frame: CGRectMake(0 , 0 , tableView.frame.width , 80))
+        cell.selectionStyle = .None
+        return cell
     }
+    
     
     internal func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return sectionArrayy.count
@@ -46,18 +52,18 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionRooms = SectionRooms(frame: CGRectMake(0 , 0 , tableView.frame.width , 60))
-        
-        sectionRooms.sectionID = section
-        sectionRooms.context = self
-        switch sectionArrayy[section].collapsed {
-        case true :
-            sectionRooms.outletArrow.setImage(UIImage(named: "lay_expandablelist_parrent_arrow_open"), forState: .Normal)
-        case false :
-            sectionRooms.outletArrow.setImage(UIImage(named: "lay_expandablelist_parrent_arrow_close"), forState: .Normal)
-            
+        if SELECTEDLANGID == LangID.PERSIAN || SELECTEDLANGID == LangID.ARABIC {
+            let sectionRooms = SectionRooms(frame: CGRectMake(0 , 0 , tableView.frame.width , 60))
+            sectionRoomClick(sectionRooms, viewForHeaderInSection: section)
+            return sectionRooms
         }
+        
+        let sectionRooms = SectionRoomsLeftAllignment(frame: CGRectMake(0 , 0 , tableView.frame.width , 60))
+        sectionRoomLeftAllignmentClick(sectionRooms, viewForHeaderInSection: section)
+        
         return sectionRooms
+        
+        
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -69,7 +75,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         return 50
     }
     
-
+    
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = UIColor.clearColor()
@@ -90,8 +96,34 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         // Do any additional setup after loading the view.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    /// Arash : Reloaddata for different view allignments.
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
+    }
+    
+    /// Arash : Set sectionroom click .
+    func sectionRoomClick(sectionRooms : SectionRooms , viewForHeaderInSection section: Int) {
+        sectionRooms.sectionID = section
+        sectionRooms.context = self
+        switch sectionArrayy[section].collapsed {
+        case true :
+            sectionRooms.outletArrow.setImage(UIImage(named: "lay_expandablelist_parrent_arrow_open"), forState: .Normal)
+        case false :
+            sectionRooms.outletArrow.setImage(UIImage(named: "lay_expandablelist_parrent_arrow_close"), forState: .Normal)
+        }
+    }
+    
+    
+    func sectionRoomLeftAllignmentClick(sectionRooms : SectionRoomsLeftAllignment , viewForHeaderInSection section: Int) {
+        sectionRooms.sectionID = section
+        sectionRooms.context = self
+        switch sectionArrayy[section].collapsed {
+        case true :
+            sectionRooms.outletArrow.setImage(UIImage(named: "lay_expandablelist_parrent_arrow_open"), forState: .Normal)
+        case false :
+            sectionRooms.outletArrow.setImage(UIImage(named: "lay_expandablelist_parrent_arrow_close"), forState: .Normal)
+        }
+        
     }
 }

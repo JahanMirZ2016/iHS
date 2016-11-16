@@ -21,7 +21,7 @@ class DBManager {
         do {
             var resultStringArray = Array<String>()
             for id in ids {
-                let result = try db.executeQuery("SELECT * FROM Translation WHERE Translation.LangID = \(SELECTEDLANGID) AND Translation.SentenseID = \(id)", values: nil)
+                let result = try db.executeQuery("SELECT * FROM Translation WHERE LangID = \(SELECTEDLANGID) AND SentenseID = \(id)", values: nil)
                 if result.next() {
                     resultStringArray.append(result.stringForColumn("SentenseText"))
                 }
@@ -44,7 +44,7 @@ class DBManager {
         db.open()
         do {
             var resultString = String()
-            let query = "SELECT * FROM Settings WHERE Settings.type = ?"
+            let query = "SELECT * FROM Settings WHERE type = ?"
             let result = try db.executeQuery(query, values: [type])
             if result.next() {
                 resultString = result.stringForColumn("value")
@@ -64,7 +64,7 @@ class DBManager {
         let db = GetDBFromPath()
         db.open()
         do {
-            let query = "UPDATE Settings SET Settings.value = ? WHERE Settings.type = ?"
+            let query = "UPDATE Settings SET value = ? WHERE type = ?"
             try db.executeUpdate(query, values: [value , type])
             db.close()
             return true
@@ -97,7 +97,7 @@ class DBManager {
         let db = GetDBFromPath()
         db.open()
         do {
-            let query = "SELECT * FROM Node WHERE Node.ID = ?"
+            let query = "SELECT * FROM Node WHERE ID = ?"
             let result = try db.executeQuery(query, values: [id])
             let model = NodeModel()
             if result.next() {
@@ -205,7 +205,7 @@ class DBManager {
         let db = GetDBFromPath()
         db.open()
         do {
-            let query = "SELECT * FROM Notify WHERE Notify.ID = ?"
+            let query = "SELECT * FROM Notify WHERE ID = ?"
             let result = try db.executeQuery(query, values: [id])
             let model = NotifyModel()
             if result.next() {
@@ -307,7 +307,7 @@ class DBManager {
         let db = GetDBFromPath()
         db.open()
         do {
-            let query = "SELECT * FROM Scenario WHERE Scenario.ID = ?"
+            let query = "SELECT * FROM Scenario WHERE ID = ?"
             let result = try db.executeQuery(query, values: [id])
             let model = ScenarioModel()
             if result.next() {
@@ -425,7 +425,7 @@ class DBManager {
         let db = GetDBFromPath()
         db.open()
         do {
-            let query = "SELECT * FROM Switch WHERE Switch.ID = ?"
+            let query = "SELECT * FROM Switch WHERE ID = ?"
             let result = try db.executeQuery(query, values: [id])
             let model = SwitchModel()
             if result.next() {
@@ -529,7 +529,7 @@ class DBManager {
         let db = GetDBFromPath()
         db.open()
         do {
-            let query = "SELECT * FROM Section WHERE Section.ID = ?"
+            let query = "SELECT * FROM Section WHERE ID = ?"
             let result = try db.executeQuery(query, values: [id])
             let model = SectionModel()
             if result.next() {
@@ -568,7 +568,7 @@ class DBManager {
             db.close()
             return models
         } catch let err as NSError {
-            Printer("DBManager get All Sectoin error : \(err.debugDescription)")
+            Printer("DBManager get All Section error : \(err.debugDescription)")
             db.close()
             return nil
         }
@@ -599,7 +599,7 @@ class DBManager {
         db.open()
         
         do {
-            let query = "DELETE FROM Sectoin"
+            let query = "DELETE FROM Section"
             try db.executeUpdate(query, values: nil)
             db.close()
             return true
@@ -632,7 +632,7 @@ class DBManager {
         let db = GetDBFromPath()
         db.open()
         do {
-            let query = "SELECT * FROM Room WHERE Room.ID = ?"
+            let query = "SELECT * FROM Room WHERE ID = ?"
             let result = try db.executeQuery(query, values: [id])
             let model = SectionModel()
             if result.next() {
@@ -673,7 +673,7 @@ class DBManager {
             db.close()
             return models
         } catch let err as NSError {
-            Printer("DBManager get All Sectoin error : \(err.debugDescription)")
+            Printer("DBManager get All Section error : \(err.debugDescription)")
             db.close()
             return nil
         }

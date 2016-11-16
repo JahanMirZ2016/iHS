@@ -14,10 +14,10 @@ import UIKit
 
 class RegisterVC: UIViewController {
     
+
     @IBOutlet weak var edtRegisterName: UITextField!
     @IBOutlet weak var titleLB: UILabel!
     @IBOutlet weak var regBtn: UIButton!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +74,12 @@ class RegisterVC: UIViewController {
         }else {
             Printer("Error")
         }
+    }
+    
+    /// Arash : Set language.
+    private func setLanguage() {
+        
+        
     }
     
     

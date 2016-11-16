@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zSE-GM-PFz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -82,7 +82,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3w-20-wfq">
                                 <rect key="frame" x="141" y="251" width="40.5" height="41"/>
-                                <state key="normal" backgroundImage="Fa"/>
+                                <state key="normal" backgroundImage="FaGray"/>
                                 <connections>
                                     <action selector="btnIr:" destination="IOF-DN-c8N" eventType="touchUpInside" id="sq8-oe-Ymf"/>
                                 </connections>
@@ -121,6 +121,9 @@
                                 <state key="normal" title="Reset Register" backgroundImage="BtnRegister">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnResetRegister:" destination="IOF-DN-c8N" eventType="touchUpInside" id="i6i-MX-fRs"/>
+                                </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="XuO-0J-yeJ">
                                 <rect key="frame" x="177" y="400" width="20" height="20"/>
@@ -292,7 +295,7 @@
         <!--Second PageTBC-->
         <scene sceneID="6j6-Cl-YMe">
             <objects>
-                <tabBarController id="zSE-GM-PFz" customClass="SecondPageTBC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="SecondPageTBC" id="zSE-GM-PFz" customClass="SecondPageTBC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="cmV-Az-dBF">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="JWQ-F2-icZ"/>
                         <rightBarButtonItems>
@@ -321,7 +324,7 @@
         <image name="ArGray" width="128" height="128"/>
         <image name="BtnRegister" width="120" height="40"/>
         <image name="EnGray" width="128" height="128"/>
-        <image name="Fa" width="128" height="128"/>
+        <image name="FaGray" width="128" height="128"/>
         <image name="TrGray" width="128" height="128"/>
         <image name="icon_main_connection_status_local" width="24" height="24"/>
         <image name="lay_icon_alarm" width="24" height="24"/>

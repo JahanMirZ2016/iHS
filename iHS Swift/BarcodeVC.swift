@@ -82,8 +82,12 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
             Printer("Json Of Barcode : \(jsonQRData)")
             
             if DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterIP, UpdateValue: centerIP) && DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterPort, UpdateValue: String(centerPort)) && DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ExKey, UpdateValue: exkey) {
-                //                let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+                let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+                let story = UIStoryboard(name: "Main", bundle: nil)
+                let vc = story.instantiateViewControllerWithIdentifier("SecondPageTBC")
+                appDel.window?.rootViewController = vc
                 //                appDel.socket.openSocket()
+                presentViewController(vc, animated: true, completion: nil)
             }
         } catch let err as NSError {
             Printer(err.debugDescription)
@@ -119,7 +123,7 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
                 metadataOutput.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
                 metadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
                 
-//                viewForQRReader.layer.removeFromSuperlayer()
+                //                viewForQRReader.layer.removeFromSuperlayer()
                 videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
                 videoPreviewLayer!.frame = CGRectMake(0 , 0 , WIDTHPHONE/1.5 , HEIGHTPHONE/2.4)
                 videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill

@@ -10,6 +10,10 @@
 		2566916F5A3B6A68D81AC50A /* libPods-iHS SwiftUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CC00DA651E7762CE8EF54B /* libPods-iHS SwiftUITests.a */; };
 		5B06B69A1DD35F0A004E9877 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06B6991DD35F0A004E9877 /* TopBar.swift */; };
 		5B06B69C1DD36199004E9877 /* TopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B06B69B1DD36199004E9877 /* TopBar.xib */; };
+		5B3937FD1DDC515600808098 /* SectionRoomsLeftAllignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3937FC1DDC515600808098 /* SectionRoomsLeftAllignment.swift */; };
+		5B3937FF1DDC516E00808098 /* SectionRoomsLeftAllignment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3937FE1DDC516E00808098 /* SectionRoomsLeftAllignment.xib */; };
+		5B3938011DDC544700808098 /* CellRoomsLeftAllignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3938001DDC544700808098 /* CellRoomsLeftAllignment.swift */; };
+		5B3938031DDC547500808098 /* CellRoomsLeftAllignment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3938021DDC547500808098 /* CellRoomsLeftAllignment.xib */; };
 		5B6247C11DD7007700760F10 /* CellRooms.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6247C01DD7007700760F10 /* CellRooms.xib */; };
 		5B6247C31DD700BB00760F10 /* CellRooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6247C21DD700BB00760F10 /* CellRooms.swift */; };
 		5B6247C51DD700D500760F10 /* SectionRooms.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6247C41DD700D500760F10 /* SectionRooms.xib */; };
@@ -74,6 +78,10 @@
 		02749164C035E008FF644075 /* Pods-iHS SwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHS SwiftUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHS SwiftUITests/Pods-iHS SwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B06B6991DD35F0A004E9877 /* TopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		5B06B69B1DD36199004E9877 /* TopBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopBar.xib; sourceTree = "<group>"; };
+		5B3937FC1DDC515600808098 /* SectionRoomsLeftAllignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionRoomsLeftAllignment.swift; sourceTree = "<group>"; };
+		5B3937FE1DDC516E00808098 /* SectionRoomsLeftAllignment.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionRoomsLeftAllignment.xib; sourceTree = "<group>"; };
+		5B3938001DDC544700808098 /* CellRoomsLeftAllignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellRoomsLeftAllignment.swift; sourceTree = "<group>"; };
+		5B3938021DDC547500808098 /* CellRoomsLeftAllignment.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellRoomsLeftAllignment.xib; sourceTree = "<group>"; };
 		5B6247C01DD7007700760F10 /* CellRooms.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellRooms.xib; sourceTree = "<group>"; };
 		5B6247C21DD700BB00760F10 /* CellRooms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellRooms.swift; sourceTree = "<group>"; };
 		5B6247C41DD700D500760F10 /* SectionRooms.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionRooms.xib; sourceTree = "<group>"; };
@@ -240,6 +248,8 @@
 			children = (
 				5B6247C41DD700D500760F10 /* SectionRooms.xib */,
 				5B6247C61DD700E800760F10 /* SectionRooms.swift */,
+				5B3937FC1DDC515600808098 /* SectionRoomsLeftAllignment.swift */,
+				5B3937FE1DDC516E00808098 /* SectionRoomsLeftAllignment.xib */,
 			);
 			name = Section;
 			sourceTree = "<group>";
@@ -247,8 +257,10 @@
 		5B6247BF1DD7004400760F10 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				5B6247C01DD7007700760F10 /* CellRooms.xib */,
 				5B6247C21DD700BB00760F10 /* CellRooms.swift */,
+				5B3938001DDC544700808098 /* CellRoomsLeftAllignment.swift */,
+				5B6247C01DD7007700760F10 /* CellRooms.xib */,
+				5B3938021DDC547500808098 /* CellRoomsLeftAllignment.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -548,9 +560,11 @@
 				EEDA15281DD33AC0007D1F3F /* Assets.xcassets in Resources */,
 				5B06B69C1DD36199004E9877 /* TopBar.xib in Resources */,
 				EED4DA091DDC36B400299ED0 /* Welcome.storyboard in Resources */,
+				5B3937FF1DDC516E00808098 /* SectionRoomsLeftAllignment.xib in Resources */,
 				5B6247C51DD700D500760F10 /* SectionRooms.xib in Resources */,
 				5BEA78D11DDAE4F000A71068 /* CellScenarios.xib in Resources */,
 				5B6247C11DD7007700760F10 /* CellRooms.xib in Resources */,
+				5B3938031DDC547500808098 /* CellRoomsLeftAllignment.xib in Resources */,
 				EE0D95E81DD45952004581C4 /* IHS15.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -703,6 +717,7 @@
 				EE0D95F11DD45BAA004581C4 /* SocketManager.swift in Sources */,
 				5BCDCD701DD47FF600CC3372 /* ScenarioVC.swift in Sources */,
 				EE0D95F41DD46076004581C4 /* DBManager.swift in Sources */,
+				5B3937FD1DDC515600808098 /* SectionRoomsLeftAllignment.swift in Sources */,
 				5BDC76DF1DD993AD00F63E55 /* RoomModel.swift in Sources */,
 				5BCDCD6D1DD47FF600CC3372 /* SecondPageTBC.swift in Sources */,
 				5BDC76E11DD993BF00F63E55 /* SectionModel.swift in Sources */,
@@ -710,6 +725,7 @@
 				EED4DA161DDC49C500299ED0 /* BarcodeVC.swift in Sources */,
 				EED4DA131DDC49C500299ED0 /* LanguageVC.swift in Sources */,
 				5B06B69A1DD35F0A004E9877 /* TopBar.swift in Sources */,
+				5B3938011DDC544700808098 /* CellRoomsLeftAllignment.swift in Sources */,
 				5BCDCD711DD47FF600CC3372 /* SettingVC.swift in Sources */,
 				EE0D95EA1DD45AD1004581C4 /* A.swift in Sources */,
 				EED4DA0D1DDC372C00299ED0 /* JsonMaker.swift in Sources */,

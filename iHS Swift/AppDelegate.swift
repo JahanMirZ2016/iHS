@@ -12,7 +12,21 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+
     
+    /// BinMan1 : Choose the init view controller
+    private func chooseVC () {
+        if DBManager.getValueOfSettingsDB(Type: TypeOfSettings.ServerIP) == "" {
+            let story = UIStoryboard(name: "Welcome", bundle: nil)
+            let vc = story.instantiateViewControllerWithIdentifier("languageVC")
+            window?.rootViewController = vc
+            return
+        }
+        
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewControllerWithIdentifier("SecondPageTBC")
+        window?.rootViewController = vc
+    }
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
@@ -23,6 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             Printer("AppDelegate Error : Can't get Language ID From Settings Table of DB")
         }
+        
+//        chooseVC()
+        
         
         return true
     }

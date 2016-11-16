@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9KR-M0-vUY">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,7 +14,7 @@
         <!--LanguageVC-->
         <scene sceneID="qGN-ZK-Ywv">
             <objects>
-                <viewController id="9KR-M0-vUY" customClass="LanguageVC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="languageVC" id="9KR-M0-vUY" customClass="LanguageVC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VB1-qC-gQT"/>
                         <viewControllerLayoutGuide type="bottom" id="A7J-Ao-G6U"/>
@@ -193,13 +193,13 @@
                     </view>
                     <connections>
                         <outlet property="edtRegisterName" destination="dXx-FS-2hb" id="rCu-cG-ifY"/>
-                        <outlet property="regBtn" destination="Lam-6h-YfW" id="tBf-Ga-2BM"/>
-                        <outlet property="titleLB" destination="JNd-Dq-Uc8" id="cmg-nQ-4Za"/>
+                        <outlet property="regBtn" destination="Lam-6h-YfW" id="nmZ-jn-IH1"/>
+                        <outlet property="titleLB" destination="JNd-Dq-Uc8" id="s5G-Xi-T4Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hy7-Vg-R61" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2186.4000000000001" y="53.523238380809602"/>
+            <point key="canvasLocation" x="-2186" y="50"/>
         </scene>
         <!--BarcodeVC-->
         <scene sceneID="6UC-Yc-D6m">
