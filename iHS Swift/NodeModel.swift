@@ -13,6 +13,7 @@
 
 import Foundation
 
+
 class NodeModel {
     var id:Int = 0
     var name:String = ""

@@ -12,6 +12,7 @@
 
 import Foundation
 
+
 class RoomModel {
     
     var id:Int = 0

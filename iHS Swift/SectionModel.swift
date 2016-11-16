@@ -14,6 +14,7 @@ import Foundation
 
 class SectionModel {
     
+    
     var id:Int = 0
     var name:String = ""
     var icon:String = ""
