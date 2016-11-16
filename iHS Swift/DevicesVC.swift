@@ -38,10 +38,12 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         if SELECTEDLANGID == LangID.PERSIAN || SELECTEDLANGID == LangID.ARABIC {
         let cell = CellRooms(frame: CGRectMake(0 , 0 , tableView.frame.width , 80))
         cell.selectionStyle = .None
+            cell.labelText = "22"
         return cell
         }
         let cell = CellRoomsLeftAllignment(frame: CGRectMake(0 , 0 , tableView.frame.width , 80))
         cell.selectionStyle = .None
+        cell.labelText = "22"
         return cell
     }
     
@@ -99,6 +101,10 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     /// Arash : Reloaddata for different view allignments.
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        for section in sectionArrayy {
+            section.collapsed = false
+        }
+        // Arash : baad az set kardan e db va araye asli pak shavad.
         tableView.reloadData()
     }
     
@@ -114,7 +120,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         }
     }
     
-    
+    /// Arash : Set sectionroom (left allignment) click .
     func sectionRoomLeftAllignmentClick(sectionRooms : SectionRoomsLeftAllignment , viewForHeaderInSection section: Int) {
         sectionRooms.sectionID = section
         sectionRooms.context = self
@@ -126,4 +132,6 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         }
         
     }
+    
+
 }

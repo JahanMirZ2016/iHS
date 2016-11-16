@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zSE-GM-PFz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -33,7 +33,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LQv-hv-42o">
-                                <rect key="frame" x="0.0" y="66" width="375" height="552"/>
+                                <rect key="frame" x="0.0" y="66" width="375" height="514"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="zRu-tt-wFt" id="qLt-o9-L1K"/>
@@ -44,7 +44,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CIM-9l-Hcf" firstAttribute="leading" secondItem="38j-cg-T45" secondAttribute="leading" id="EsA-88-MRo"/>
-                            <constraint firstItem="DTo-U3-KBk" firstAttribute="top" secondItem="LQv-hv-42o" secondAttribute="bottom" id="Rls-fW-Vsf"/>
+                            <constraint firstItem="DTo-U3-KBk" firstAttribute="top" secondItem="LQv-hv-42o" secondAttribute="bottom" constant="38" id="Rls-fW-Vsf"/>
                             <constraint firstAttribute="trailing" secondItem="CIM-9l-Hcf" secondAttribute="trailing" id="Zzn-YZ-ds5"/>
                             <constraint firstItem="CIM-9l-Hcf" firstAttribute="top" secondItem="38j-cg-T45" secondAttribute="top" id="ia9-m7-Ord"/>
                             <constraint firstItem="LQv-hv-42o" firstAttribute="top" secondItem="CIM-9l-Hcf" secondAttribute="bottom" constant="1" id="jkT-ks-H5Z"/>
@@ -125,7 +125,7 @@
                                     <action selector="btnResetRegister:" destination="IOF-DN-c8N" eventType="touchUpInside" id="i6i-MX-fRs"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="XuO-0J-yeJ">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="XuO-0J-yeJ">
                                 <rect key="frame" x="177" y="400" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>

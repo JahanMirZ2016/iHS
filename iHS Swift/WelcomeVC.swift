@@ -36,7 +36,7 @@ class WelcomeVC: UIViewController {
     func goToVC(sender : UIPanGestureRecognizer) {
         let transition = sender.translationInView(self.view)
         print(transition.x)
-        if transition.x < -10 {
+        if transition.x < -5 {
             let storyBoard = UIStoryboard(name: "Welcome", bundle: nil)
             let registerVC = storyBoard.instantiateViewControllerWithIdentifier("registerVC")
             let transitionStyle = UIModalTransitionStyle.FlipHorizontal

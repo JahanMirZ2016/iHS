@@ -27,28 +27,28 @@
                     <rect key="frame" x="30" y="8" width="782" height="190"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="RXH-kI-gSc">
-                            <rect key="frame" x="572" y="8" width="171" height="171"/>
+                            <rect key="frame" x="572" y="10" width="171" height="171"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="RXH-kI-gSc" secondAttribute="height" multiplier="1:1" id="grH-T5-hq6"/>
+                                <constraint firstAttribute="width" secondItem="RXH-kI-gSc" secondAttribute="height" multiplier="1:1" id="wXi-z6-2aA"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F78-nf-Y89">
                             <rect key="frame" x="30" y="11" width="534" height="171"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="0.19973060340000001" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="RXH-kI-gSc" firstAttribute="top" secondItem="2HT-65-cx0" secondAttribute="top" constant="8" id="2WK-nM-jKk"/>
-                        <constraint firstAttribute="bottom" secondItem="F78-nf-Y89" secondAttribute="bottom" constant="8" id="FsV-D3-iG9"/>
-                        <constraint firstItem="RXH-kI-gSc" firstAttribute="height" secondItem="2HT-65-cx0" secondAttribute="height" multiplier="0.9" id="SDV-rd-k3h"/>
-                        <constraint firstAttribute="trailing" secondItem="F78-nf-Y89" secondAttribute="trailing" constant="218" id="ZBb-Wf-LPN"/>
-                        <constraint firstItem="F78-nf-Y89" firstAttribute="top" secondItem="2HT-65-cx0" secondAttribute="top" constant="11" id="cN4-FB-Emt"/>
-                        <constraint firstItem="F78-nf-Y89" firstAttribute="leading" secondItem="RXH-kI-gSc" secondAttribute="trailing" constant="-713" id="jAS-PE-SOz"/>
-                        <constraint firstItem="RXH-kI-gSc" firstAttribute="leading" secondItem="2HT-65-cx0" secondAttribute="leading" constant="572" id="y0O-P4-MHn"/>
+                        <constraint firstItem="F78-nf-Y89" firstAttribute="leading" secondItem="2HT-65-cx0" secondAttribute="leading" constant="30" id="6Og-v1-sFv"/>
+                        <constraint firstItem="RXH-kI-gSc" firstAttribute="leading" secondItem="F78-nf-Y89" secondAttribute="trailing" constant="8" id="Zxx-rS-f19"/>
+                        <constraint firstAttribute="trailing" secondItem="RXH-kI-gSc" secondAttribute="trailing" constant="39" id="a8f-Qv-qPC"/>
+                        <constraint firstItem="RXH-kI-gSc" firstAttribute="centerY" secondItem="2HT-65-cx0" secondAttribute="centerY" constant="0.5" id="d3i-an-DlN"/>
+                        <constraint firstItem="RXH-kI-gSc" firstAttribute="height" secondItem="2HT-65-cx0" secondAttribute="height" multiplier="0.9" id="tYZ-v1-icG"/>
+                        <constraint firstItem="F78-nf-Y89" firstAttribute="height" secondItem="RXH-kI-gSc" secondAttribute="height" id="z09-A7-Rb8"/>
+                        <constraint firstItem="F78-nf-Y89" firstAttribute="centerY" secondItem="2HT-65-cx0" secondAttribute="centerY" constant="1.5" id="zBI-Cn-ChX"/>
                     </constraints>
                 </view>
             </subviews>

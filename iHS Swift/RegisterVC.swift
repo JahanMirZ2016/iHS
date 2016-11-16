@@ -25,11 +25,11 @@ class RegisterVC: UIViewController {
         setMultipleLangToWidgets()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        edtRegisterName.text = ""
     }
-    
+
     /// Arash : Dismiss keyboard.
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
@@ -42,6 +42,7 @@ class RegisterVC: UIViewController {
         view.addGestureRecognizer(leftGestureScreen)
     }
     
+    /// Arash : Navigate to welcomeVC
     func goToWelcomeVC(sender : UIPanGestureRecognizer) {
         let transition = sender.translationInView(self.view)
         if transition.x > 0 {
@@ -75,12 +76,6 @@ class RegisterVC: UIViewController {
             Printer("Error")
         }
     }
-    
-    /// Arash : Set language.
-    private func setLanguage() {
-        
-        
-    }
-    
+
     
 }
