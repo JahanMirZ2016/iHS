@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Printer("AppDelegate Error : Can't get Language ID From Settings Table of DB")
         }
         
-//        chooseVC()
+        chooseVC()
         
         
         return true

@@ -35,7 +35,7 @@ class SocketManager {
     }
     
     /// Send string data to existing opened socket
-    func send(stringData : NSString) -> Bool {
+    func send(stringData : NSString)->Bool {
         if sendData(UnsafeMutablePointer<Int8>(stringData.UTF8String)) < 0 {
             return false
         }
@@ -50,16 +50,21 @@ class SocketManager {
             while true {
                 let data = NSString(UTF8String: recieveData())
                 if data != "" && data != nil {
-                    temp.stringByAppendingString(data as! String)
-                    if temp.lowercaseString.rangeOfString("]\n") != nil {
-                        self.rDelegate?.recieve(temp)
-                        Printer("Socket Data : \(temp.debugDescription)")
-                        temp = NSString()
-                    }
-                    
-                    if temp.lowercaseString.rangeOfString("}\n") != nil {
-                        self.rDelegate?.recieve(temp)
-                        Printer("Socket Data : \(temp.debugDescription)")
+                    temp = (temp as String) + (data! as String)
+                    //                    if temp.lowercaseString.rangeOfString("]\n") != nil {
+                    //                        self.rDelegate?.recieve(temp)
+                    //                        Printer("Socket Data : \(temp.debugDescription)")
+                    //                        temp = NSString()
+                    //                    }
+                    //
+                    //                    if temp.lowercaseString.rangeOfString("}\n") != nil {
+                    //                        self.rDelegate?.recieve(temp)
+                    //                        Printer("Socket Data : \(temp.debugDescription)")
+                    //                        temp = NSString()
+                    //                    }
+                } else {
+                    if temp != "" {
+                        Printer("Socket Data Recived : \(temp.debugDescription)")
                         temp = NSString()
                     }
                 }

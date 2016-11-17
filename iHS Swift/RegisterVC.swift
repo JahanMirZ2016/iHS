@@ -14,7 +14,7 @@ import UIKit
 
 class RegisterVC: UIViewController {
     
-
+    
     @IBOutlet weak var edtRegisterName: UITextField!
     @IBOutlet weak var titleLB: UILabel!
     @IBOutlet weak var regBtn: UIButton!
@@ -29,7 +29,7 @@ class RegisterVC: UIViewController {
         super.viewWillAppear(true)
         edtRegisterName.text = ""
     }
-
+    
     /// Arash : Dismiss keyboard.
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
@@ -49,8 +49,8 @@ class RegisterVC: UIViewController {
             dismissViewControllerAnimated(true, completion: nil)
         }
     }
-
-    /// BinMan1 : Set Multiple language to widgets 
+    
+    /// BinMan1 : Set Multiple language to widgets
     private func setMultipleLangToWidgets() {
         let sentences = DBManager.getTranslationOfSentences(SentencesID: [20 , 21])
         regBtn.setTitle(sentences[0], forState: .Normal)
@@ -69,6 +69,7 @@ class RegisterVC: UIViewController {
         if edtRegisterName.text?.characters.count > 0 {
             let storyBoard = UIStoryboard(name: "Welcome", bundle: nil)
             let barcodeVC = storyBoard.instantiateViewControllerWithIdentifier("barcodeVC") as! BarcodeVC
+            barcodeVC.registerName = edtRegisterName.text!
             let transitionStyle = UIModalTransitionStyle.FlipHorizontal
             barcodeVC.modalTransitionStyle = transitionStyle
             self.presentViewController(barcodeVC, animated: true, completion: nil)
@@ -76,6 +77,6 @@ class RegisterVC: UIViewController {
             Printer("Error")
         }
     }
-
+    
     
 }

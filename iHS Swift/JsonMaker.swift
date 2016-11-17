@@ -22,6 +22,19 @@ public class JsonMaker {
         return str
     }
     
+    public class func arrayToJson(array : NSArray) ->String {
+        var str = String()
+        do {
+            let json = try NSJSONSerialization.dataWithJSONObject(array, options: NSJSONWritingOptions(rawValue: 0))
+            str = String(data: json, encoding: NSUTF8StringEncoding)!
+            str += "\n"
+            print(str)
+        } catch let error as NSError {
+            print(error)
+        }
+        return str
+    }
+    
     public class func stringToJson (dataString : NSMutableString) -> Dictionary<String , AnyObject> {
         let data = dataString.dataUsingEncoding(NSUTF8StringEncoding)
         var json = Dictionary<String , AnyObject>()

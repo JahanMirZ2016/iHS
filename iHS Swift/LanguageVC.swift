@@ -26,6 +26,7 @@ class LanguageVC: UIViewController {
         setGestures()
         setLangID(LangID: SELECTEDLANGID)
         setSelectedLangImage()
+
     }
     
     override func didReceiveMemoryWarning() {

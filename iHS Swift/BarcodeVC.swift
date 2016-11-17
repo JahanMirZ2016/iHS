@@ -17,6 +17,7 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
     
     @IBOutlet weak var viewForQRReader: UIView!
     
+    var registerName = String()
     var captureSession : AVCaptureSession?
     var videoPreviewLayer : AVCaptureVideoPreviewLayer?
     var qrCodeFrameView : UIView?
@@ -83,11 +84,31 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
             
             if DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterIP, UpdateValue: centerIP) && DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterPort, UpdateValue: String(centerPort)) && DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ExKey, UpdateValue: exkey) {
                 let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-                let story = UIStoryboard(name: "Main", bundle: nil)
-                let vc = story.instantiateViewControllerWithIdentifier("SecondPageTBC")
-                appDel.window?.rootViewController = vc
                 appDel.socket.open(IP: centerIP, Port: centerPort)
-                presentViewController(vc, animated: true, completion: nil)
+                let serial = UIDevice.currentDevice().identifierForVendor?.UUIDString
+                // Arash : Creating model for sending json.
+                let verificationModel = VerificationModel()
+                verificationModel.Type = "RequestRegisterMobile"
+                verificationModel.MobileName = registerName
+                verificationModel.ExKey = exkey
+                verificationModel.Serial = serial!
+                
+                let jsonData = JSONSerializer.toJson(verificationModel).stringByAppendingString("\n")
+                Printer(jsonData)
+                if appDel.socket.send(jsonData as NSString) {
+                    if sendCustomerId(){
+                        if Sync() {
+                            Printer("Socket Sucessful")
+                            let story = UIStoryboard(name: "Main", bundle: nil)
+                            let vc = story.instantiateViewControllerWithIdentifier("SecondPageTBC")
+                            appDel.window?.rootViewController = vc
+                            presentViewController(vc, animated: true, completion: nil)
+                        }
+                    }
+                } else {
+                    Printer("Socket Failed")
+                }
+                
             }
         } catch let err as NSError {
             Printer(err.debugDescription)
@@ -103,7 +124,7 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
         
         do {
             for device in captureDevices {
-                if device.position == AVCaptureDevicePosition.Back {
+                if device.position == AVCaptureDevicePosition.Front {
                     videoInput = try AVCaptureDeviceInput(device: device as! AVCaptureDevice)
                 }
             }
