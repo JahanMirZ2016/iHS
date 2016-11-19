@@ -96,31 +96,14 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
                 let jsonData = JSONSerializer.toJson(verificationModel).stringByAppendingString("\n")
                 Printer(jsonData)
                 
-                appDel.socket.send(jsonData, completion: { (result) in
-                    guard result else {
-                        Printer("Socket Error : can't send introduce")
-                        return
+                
+                
+                if appDel.socket.send(jsonData) {
+                    if SendCustomerId() {
+                        Sync()
                     }
-                    
-                    SendCustomerId({ (result) in
-                        guard result else {
-                            Printer("Socket Error : can't send customer id")
-                            return
-                        }
-                        
-                        Sync({ (result) in
-                            guard result else {
-                                Printer("Socket Error : can't send Sync for socket")
-                                return
-                            }
-                            
-                            let story = UIStoryboard(name: "Main", bundle: nil)
-                            let vc = story.instantiateViewControllerWithIdentifier("SecondPageTBC")
-                            appDel.window?.rootViewController = vc
-                            self.presentViewController(vc, animated: true, completion: nil)
-                        })
-                    })
-                })
+                }
+            
             }
         } catch let err as NSError {
             Printer(err.debugDescription)

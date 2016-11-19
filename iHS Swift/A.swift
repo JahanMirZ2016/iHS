@@ -66,7 +66,7 @@ func SetLangIDToVar(id : Int) {
 }
 
 /// Arash : A function to sync and send data.
-func Sync(completion : (Bool) -> ()) {
+func Sync() -> Bool {
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     // Arash : Creating SyncDataModel
     let lastMessageID = DBManager.getValueOfSettingsDB(Type: "LastMessageID")!
@@ -77,19 +77,17 @@ func Sync(completion : (Bool) -> ()) {
     var arrayMain = Array<NSDictionary>()
     var array = Array<NSDictionary>()
     
-    let dic2:NSDictionary = ["LastMessageID" : 20 , "AppVerCode" : appVerCode! , "LanguageID" : languageID!]
+    let dic2:NSDictionary = ["LastMessageID" : lastMessageID , "AppVerCode" : appVerCode! , "LanguageID" : languageID!]
     array.append(dic2)
     
     let dic3:NSDictionary = ["SyncData" : array , "MessageID" : "0" , "RecieverID" : mobileID! , "Type" : "SyncData" , "Action" : "" , "Date" : "2015-01-01 12:00:00"]
     arrayMain.append(dic3)
     
     let jsonData = JsonMaker.arrayToJson(arrayMain)
-    appDel.socket.send(jsonData) { (result) in
-        completion(result)
-    }
+    return appDel.socket.send(jsonData)
 }
 
-func SendCustomerId(completion : (Bool) -> ()){
+func SendCustomerId() -> Bool {
     let customerID = DBManager.getValueOfSettingsDB(Type: "CustomerID")
     let mobileID = DBManager.getValueOfSettingsDB(Type: "MobileID")
     let exKey = DBManager.getValueOfSettingsDB(Type: "ExKey")
@@ -100,10 +98,7 @@ func SendCustomerId(completion : (Bool) -> ()){
     
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     
-    appDel.socket.send(jsonData) { (result) in
-        completion(result)
-    }
-
+    return appDel.socket.send(jsonData)
 }
 
 

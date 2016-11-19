@@ -35,39 +35,33 @@ class SocketManager {
     }
     
     /// Send string data to existing opened socket
-    func send(stringData : NSString , completion : (Bool)->()){
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) { 
-            if sendData(UnsafeMutablePointer<Int8>(stringData.UTF8String)) < 0 {
-                dispatch_async(dispatch_get_main_queue(), { 
-                    completion(false)
-                })
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), { 
-                completion(true)
-            })
+    func send(stringData : NSString) -> Bool{
+        if sendData(UnsafeMutablePointer<Int8>(stringData.UTF8String)) < 0 {
+            return false
         }
+        
+        return true
     }
     
     /// Recieve data from socket server-side
     func recieve() {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-            var temp = NSString()
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+//            var temp = NSString()
             while true {
                 let data = NSString(UTF8String: recieveData())
                 if data != "" && data != nil {
-                    temp = (temp as String) + (data! as String)
-                } else {
-                    if temp != "" {
-                        Printer("Socket Data Recived : \(temp.debugDescription)")
-                        dispatch_async(dispatch_get_main_queue(), { 
-                            self.rDelegate?.recieve(temp)
-                        })
-                        temp = NSString()
-                    }
+                    self.rDelegate?.recieve(data!)
                 }
+//                else {
+//                    if temp != "" {
+//                        Printer("Socket Data Recived : \(temp.debugDescription)")
+//                        self.rDelegate?.recieve(temp)
+//                        temp = NSString()
+//                    }
+//                }
             }
         }
+        
+        
     }
 }

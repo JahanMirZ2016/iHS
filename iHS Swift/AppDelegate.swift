@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
 
     var window: UIWindow?
     
@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         
         socket = SocketManager()
+        socket.rDelegate = self
         
         /// BinMan1 : Set selected language id from db
         if let langID = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.LanguageID) {
@@ -70,5 +71,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    
+    /// BinMan1 : delegate function for get data and pass to datamanager
+    func recieve(rData: NSString) {
+        dispatch_async(dispatch_get_main_queue()) {
+            Printer("khkhkhkh : \(rData)")
+            DataManager.JSONAnalyzer(JsonString: rData)
+        }
+    }
 }
 

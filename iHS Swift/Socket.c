@@ -30,7 +30,7 @@ int connectToSocket(char* server_ip , int server_port) {
         return conn;
     }
     
-    printf("Connect to socket successfully\n");
+    printf("Connect to socket successfully\n\n");
     return 1;
 }
 

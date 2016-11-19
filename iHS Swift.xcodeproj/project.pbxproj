@@ -21,6 +21,7 @@
 		5BA3915B1DD9D1C0009B0D2F /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3915A1DD9D1C0009B0D2F /* SettingsModel.swift */; };
 		5BA3915D1DD9D203009B0D2F /* SwitchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3915C1DD9D203009B0D2F /* SwitchModel.swift */; };
 		5BA3915F1DD9D28D009B0D2F /* TranslationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3915E1DD9D28D009B0D2F /* TranslationModel.swift */; };
+		5BC2B5911DE02F1800D3F597 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC2B5901DE02F1800D3F597 /* DataManager.swift */; };
 		5BCDCD5D1DD47FAE00CC3372 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BCDCD5C1DD47FAE00CC3372 /* Main.storyboard */; };
 		5BCDCD6D1DD47FF600CC3372 /* SecondPageTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDCD681DD47FF600CC3372 /* SecondPageTBC.swift */; };
 		5BCDCD6E1DD47FF600CC3372 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDCD691DD47FF600CC3372 /* FavoritesVC.swift */; };
@@ -92,6 +93,7 @@
 		5BA3915A1DD9D1C0009B0D2F /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		5BA3915C1DD9D203009B0D2F /* SwitchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchModel.swift; sourceTree = "<group>"; };
 		5BA3915E1DD9D28D009B0D2F /* TranslationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationModel.swift; sourceTree = "<group>"; };
+		5BC2B5901DE02F1800D3F597 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5BCDCD5C1DD47FAE00CC3372 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5BCDCD681DD47FF600CC3372 /* SecondPageTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondPageTBC.swift; sourceTree = "<group>"; };
 		5BCDCD691DD47FF600CC3372 /* FavoritesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				EE0D95F31DD46076004581C4 /* DBManager.swift */,
+				5BC2B5901DE02F1800D3F597 /* DataManager.swift */,
 			);
 			name = DB;
 			sourceTree = "<group>";
@@ -769,6 +772,7 @@
 				EEDA15211DD33AC0007D1F3F /* AppDelegate.swift in Sources */,
 				5BDC76E51DD99F3000F63E55 /* NotifyModel.swift in Sources */,
 				EED4DA141DDC49C500299ED0 /* WelcomeVC.swift in Sources */,
+				5BC2B5911DE02F1800D3F597 /* DataManager.swift in Sources */,
 				EED4DA151DDC49C500299ED0 /* RegisterVC.swift in Sources */,
 				5BEA78D31DDAE50F00A71068 /* CellScenario.swift in Sources */,
 				EED4DA0E1DDC372C00299ED0 /* JsonSerializer.swift in Sources */,
@@ -923,6 +927,7 @@
 				INFOPLIST_FILE = "iHS Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "ir.jahanmir.iHS-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "daab38f3-b82d-431d-8184-d0fdf9a73319";
@@ -943,6 +948,7 @@
 				INFOPLIST_FILE = "iHS Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "ir.jahanmir.iHS-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "daab38f3-b82d-431d-8184-d0fdf9a73319";
