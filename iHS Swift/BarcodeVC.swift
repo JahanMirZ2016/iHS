@@ -95,20 +95,32 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
                 
                 let jsonData = JSONSerializer.toJson(verificationModel).stringByAppendingString("\n")
                 Printer(jsonData)
-                if appDel.socket.send(jsonData as NSString) {
-                    if sendCustomerId(){
-                        if Sync() {
-                            Printer("Socket Sucessful")
+                
+                appDel.socket.send(jsonData, completion: { (result) in
+                    guard result else {
+                        Printer("Socket Error : can't send introduce")
+                        return
+                    }
+                    
+                    SendCustomerId({ (result) in
+                        guard result else {
+                            Printer("Socket Error : can't send customer id")
+                            return
+                        }
+                        
+                        Sync({ (result) in
+                            guard result else {
+                                Printer("Socket Error : can't send Sync for socket")
+                                return
+                            }
+                            
                             let story = UIStoryboard(name: "Main", bundle: nil)
                             let vc = story.instantiateViewControllerWithIdentifier("SecondPageTBC")
                             appDel.window?.rootViewController = vc
-                            presentViewController(vc, animated: true, completion: nil)
-                        }
-                    }
-                } else {
-                    Printer("Socket Failed")
-                }
-                
+                            self.presentViewController(vc, animated: true, completion: nil)
+                        })
+                    })
+                })
             }
         } catch let err as NSError {
             Printer(err.debugDescription)
@@ -124,7 +136,7 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
         
         do {
             for device in captureDevices {
-                if device.position == AVCaptureDevicePosition.Front {
+                if device.position == AVCaptureDevicePosition.Back {
                     videoInput = try AVCaptureDeviceInput(device: device as! AVCaptureDevice)
                 }
             }

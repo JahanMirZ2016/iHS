@@ -9,7 +9,7 @@
 
 import Foundation
 
-protocol RecieveSocketDelegate {
+protocol RecieveSocketDelegate : class {
     func recieve(rData : NSString)
 }
 
@@ -19,7 +19,7 @@ class SocketManager {
     private var SOCKET_IP : NSString = ""
     private var SOCKET_PORT = -1
     
-    var rDelegate : RecieveSocketDelegate?
+    weak var rDelegate : RecieveSocketDelegate?
     
     /// Open socket to ip and port of socket server-side
     func open(IP socketIP : String , Port socketPort : Int) -> Bool {
@@ -35,12 +35,19 @@ class SocketManager {
     }
     
     /// Send string data to existing opened socket
-    func send(stringData : NSString)->Bool {
-        if sendData(UnsafeMutablePointer<Int8>(stringData.UTF8String)) < 0 {
-            return false
-        }
+    func send(stringData : NSString , completion : (Bool)->()){
         
-        return true
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) { 
+            if sendData(UnsafeMutablePointer<Int8>(stringData.UTF8String)) < 0 {
+                dispatch_async(dispatch_get_main_queue(), { 
+                    completion(false)
+                })
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), { 
+                completion(true)
+            })
+        }
     }
     
     /// Recieve data from socket server-side
@@ -51,20 +58,12 @@ class SocketManager {
                 let data = NSString(UTF8String: recieveData())
                 if data != "" && data != nil {
                     temp = (temp as String) + (data! as String)
-                    //                    if temp.lowercaseString.rangeOfString("]\n") != nil {
-                    //                        self.rDelegate?.recieve(temp)
-                    //                        Printer("Socket Data : \(temp.debugDescription)")
-                    //                        temp = NSString()
-                    //                    }
-                    //
-                    //                    if temp.lowercaseString.rangeOfString("}\n") != nil {
-                    //                        self.rDelegate?.recieve(temp)
-                    //                        Printer("Socket Data : \(temp.debugDescription)")
-                    //                        temp = NSString()
-                    //                    }
                 } else {
                     if temp != "" {
                         Printer("Socket Data Recived : \(temp.debugDescription)")
+                        dispatch_async(dispatch_get_main_queue(), { 
+                            self.rDelegate?.recieve(temp)
+                        })
                         temp = NSString()
                     }
                 }

@@ -10,12 +10,6 @@ import Foundation
 import UIKit
 
 
-/*
- BinMan1 : This file is for All global variables, functions or structors
- */
-let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-
-
 /// Height of Phone screan
 let HEIGHTPHONE = UIScreen.mainScreen().bounds.height
 
@@ -72,45 +66,30 @@ func SetLangIDToVar(id : Int) {
 }
 
 /// Arash : A function to sync and send data.
-func Sync()->Bool {
+func Sync(completion : (Bool) -> ()) {
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     // Arash : Creating SyncDataModel
     let lastMessageID = DBManager.getValueOfSettingsDB(Type: "LastMessageID")!
     let appVerCode = DBManager.getValueOfSettingsDB(Type: "AppVerCode")
     let languageID = DBManager.getValueOfSettingsDB(Type: "LanguageID")
     let mobileID = DBManager.getValueOfSettingsDB(Type: "MobileID")
-//    let syncDataModel = SyncDataModel()
-//    syncDataModel.LanguageID = DBManager.getValueOfSettingsDB(Type: "LanguageID")!
-//    syncDataModel.AppVerCode = DBManager.getValueOfSettingsDB(Type: "AppVerCode")!
-//    syncDataModel.LastMessageID = DBManager.getValueOfSettingsDB(Type: "LastMessageID")!
-//    
-//    // Arash : Creating SyncSendModel
-//    let syncSendModel = SyncSendModel()
-//    syncSendModel.SyncData = [syncDataModel]
-//    syncSendModel.MessageID = "0"
-//    syncSendModel.RecieverID = DBManager.getValueOfSettingsDB(Type: "MobileID")!
-//    syncSendModel.Type = "SyncData"
-//    syncSendModel.Action = ""
-//    syncSendModel.Date = "2015-01-01 12:00:00"
     
     var arrayMain = Array<NSDictionary>()
     var array = Array<NSDictionary>()
     
-    let dic2:NSDictionary = ["LastMessageID" : lastMessageID , "AppVerCode" : appVerCode! , "LanguageID" : languageID!]
+    let dic2:NSDictionary = ["LastMessageID" : 20 , "AppVerCode" : appVerCode! , "LanguageID" : languageID!]
     array.append(dic2)
     
     let dic3:NSDictionary = ["SyncData" : array , "MessageID" : "0" , "RecieverID" : mobileID! , "Type" : "SyncData" , "Action" : "" , "Date" : "2015-01-01 12:00:00"]
     arrayMain.append(dic3)
     
     let jsonData = JsonMaker.arrayToJson(arrayMain)
-    if appDel.socket.send(jsonData) {
-        return true
+    appDel.socket.send(jsonData) { (result) in
+        completion(result)
     }
-    
-    return false
 }
 
-func sendCustomerId()->Bool {
+func SendCustomerId(completion : (Bool) -> ()){
     let customerID = DBManager.getValueOfSettingsDB(Type: "CustomerID")
     let mobileID = DBManager.getValueOfSettingsDB(Type: "MobileID")
     let exKey = DBManager.getValueOfSettingsDB(Type: "ExKey")
@@ -118,12 +97,12 @@ func sendCustomerId()->Bool {
     let dic:Dictionary<String , AnyObject> = ["CustomerID" : customerID! , "MobileID" : mobileID! , "ExKey" : exKey!]
     
     let jsonData = JsonMaker.dictionaryToJson(dic)
-    Printer(jsonData.debugDescription)
     
-    if appDel.socket.send(jsonData) {
-        return true
+    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    appDel.socket.send(jsonData) { (result) in
+        completion(result)
     }
-    return false
 
 }
 
