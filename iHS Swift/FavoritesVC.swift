@@ -48,7 +48,7 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "lay_back_welcome")!)
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         
         
         
