@@ -19,8 +19,8 @@ class DataManager {
     internal class func JSONAnalyzer(JsonString json: NSString) {
         var jsonDic = NSDictionary()
         do {
-            jsonDic = try JSONSerializer.toDictionary(json as String)
             
+            jsonDic = try JSONSerializer.toDictionary(json as String)
             sectionJSON(jsonDic["Sections"] as! NSArray)
             roomJSON(jsonDic["Rooms"] as! NSArray)
             nodeJSON(jsonDic["Nodes"] as! NSArray)
@@ -28,8 +28,7 @@ class DataManager {
             scenarioJSON(jsonDic["Scenarios"] as! NSArray)
 //            let settingArray = try JSONSerializer.toArray(jsonDic["Setting"] as! String)
             settingJSON(jsonDic["Setting"] as! NSArray)
-            
-            
+
         } catch let error as NSError {
             Printer("DataManager Parse jsonreceive error : \(error.debugDescription)")
         }

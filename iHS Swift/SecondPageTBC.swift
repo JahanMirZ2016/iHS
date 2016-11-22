@@ -33,18 +33,19 @@ class SecondPageTBC: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-    /// Set Tabbar Height
+    /// Arash :Set Tabbar Height
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         var tabFrame = self.tabBar.frame
         tabFrame.size.height = 80
         tabFrame.origin.y = self.view.frame.size.height - 80
         self.tabBar.frame = tabFrame
+        
 
         
     }
     
-    /// Set Tabbar Item Images
+    /// Arash :Set Tabbar Item Images
     func selectItemImage() {
         if let count = self.tabBar.items?.count {
             for i in 0...(count-1) {
@@ -59,16 +60,14 @@ class SecondPageTBC: UITabBarController {
         
     }
     
-    /// Set Tabbar Item Titles For Each Language.
+    /// Arash: Set Tabbar Item Titles For Each Language.
     func setItemNames(nameArray : Array<String>) {
         if let count = self.tabBar.items?.count {
             for i in 0...(count-1) {
                 self.tabBar.items?[i].title = nameArray[i]
             }
         }
-        
     }
-    
     
     
     /// Setup Tabbar (remove shadowImage, set backgroundImage and ...)

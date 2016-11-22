@@ -26,7 +26,7 @@ class LanguageVC: UIViewController {
         setGestures()
         setLangID(LangID: SELECTEDLANGID)
         setSelectedLangImage()
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,7 +56,7 @@ class LanguageVC: UIViewController {
     }
     
     
-    /// BinMan1 : Set LangID 
+    /// BinMan1 : Set LangID
     private func setLangID(LangID id : Int) {
         SELECTEDLANGID = id
         DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.LanguageID, UpdateValue: "\(id)")
@@ -84,9 +84,7 @@ class LanguageVC: UIViewController {
         }
     }
     
-    
-    
-    
+
     /// Language Buttons
     @IBAction func btnEn(sender: UIButton) {
         print("AA")

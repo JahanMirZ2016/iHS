@@ -16,7 +16,7 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
     
     @IBOutlet weak var tableView: UITableView!
     
-    /// reload the tableview.
+    /// Arash: reload the tableview.
     var scenarioArray = [ScenarioModel]() {
         didSet {
             tableView.reloadData()

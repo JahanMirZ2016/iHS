@@ -24,6 +24,7 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellScenarioDetail", forIndexPath: indexPath)
+        cell.tag = indexPath.row
         return cell
         
     }
@@ -33,22 +34,29 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
         
     }
     
-    /// Arash : Set header images.
-    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row {
-        case 0: setImageDescription()
-            break
-        case 1: setImageConditions()
-            break
-        case 2: setImageResults()
-            break
-        default: break
+    /// Arash: Set header images.
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let visibleRect = CGRect(origin: self.collectionView.contentOffset, size: self.collectionView.bounds.size)
+        let visiblePoint = CGPointMake(CGRectGetMidX(visibleRect), CGRectGetMidY(visibleRect))
+        let visibleIndexPath = self.collectionView.indexPathForItemAtPoint(visiblePoint)
+        if let v = visibleIndexPath {
+            switch v.item {
+            case 0: setImageDescription()
+                break
+            case 1: setImageConditions()
+                break
+            case 2: setImageResults()
+                break
+            default: break
+            }
         }
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -59,14 +67,14 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
         btnResults.setTitle(headerTitles[2], forState: .Normal)
     }
     
-
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         roundCollectionView()
     }
     
-    /// Arash : Corner radious for collectionview (for its parent.)
+    /// Arash: Corner radious for collectionview (for its parent.)
     private func roundCollectionView() {
         let path = UIBezierPath(roundedRect: viewCollection.bounds, byRoundingCorners: [.BottomLeft , .BottomRight], cornerRadii: CGSizeMake(35, 35))
         let maskLayer = CAShapeLayer()
@@ -88,6 +96,7 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
         setImageConditions()
     }
     
+    
     @IBAction func selectorResults(sender: UIButton) {
         let indexPath = NSIndexPath(forRow: 2, inSection: 0)
         collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .None, animated: false)
@@ -95,21 +104,22 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
         
     }
     
-    /// Arash : Set header images when description selected scrolled to..
+    /// Arash: Set header images when description selected scrolled to..
     private func setImageDescription() {
         btnDescription.setBackgroundImage(UIImage(named: "ScenarioHeader2"), forState: .Normal)
         btnResults.setBackgroundImage(UIImage(named: "ScenarioHeader1"), forState: .Normal)
         btnConditions.setBackgroundImage(UIImage(named: "ScenarioHeader1"), forState: .Normal)
     }
     
-    /// Arash : Set header images when conditions selected or scrolled to.
+    /// Arash: Set header images when conditions selected or scrolled to.
     private func setImageConditions() {
         btnDescription.setBackgroundImage(UIImage(named: "ScenarioHeader1"), forState: .Normal)
         btnResults.setBackgroundImage(UIImage(named: "ScenarioHeader1"), forState: .Normal)
         btnConditions.setBackgroundImage(UIImage(named: "ScenarioHeader2"), forState: .Normal)
+        
     }
     
-    /// Arash : Set header images when results selected or scrolled to.
+    /// Arash: Set header images when results selected or scrolled to.
     private func setImageResults() {
         btnDescription.setBackgroundImage(UIImage(named: "ScenarioHeader1"), forState: .Normal)
         btnResults.setBackgroundImage(UIImage(named: "ScenarioHeader2"), forState: .Normal)

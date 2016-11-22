@@ -162,7 +162,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnM-fo-88G">
                                 <rect key="frame" x="13" y="145" width="113" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <state key="normal" title="Description" backgroundImage="ScenarioHeader1">
+                                <state key="normal" title="Description" backgroundImage="ScenarioHeader2">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -476,6 +476,7 @@
         <image name="EnGray" width="128" height="128"/>
         <image name="FaGray" width="128" height="128"/>
         <image name="ScenarioHeader1" width="100" height="18"/>
+        <image name="ScenarioHeader2" width="100" height="18"/>
         <image name="TrGray" width="128" height="128"/>
         <image name="icon_main_connection_status_local" width="24" height="24"/>
         <image name="lay_icon_alarm" width="24" height="24"/>
