@@ -99,9 +99,7 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
                 
                 
                 if appDel.socket.send(jsonData) {
-                    if SendCustomerId() {
-                        Sync()
-                    }
+                    Printer("register : Socket data register sent!!!!")
                 }
             
             }

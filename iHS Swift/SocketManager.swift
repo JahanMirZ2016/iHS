@@ -46,19 +46,19 @@ class SocketManager {
     /// Recieve data from socket server-side
     func recieve() {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-//            var temp = NSString()
+            var temp = NSString()
             while true {
                 let data = NSString(UTF8String: recieveData())
                 if data != "" && data != nil {
-                    self.rDelegate?.recieve(data!)
+                    temp = (temp as String) + (data as! String)
                 }
-//                else {
-//                    if temp != "" {
-//                        Printer("Socket Data Recived : \(temp.debugDescription)")
-//                        self.rDelegate?.recieve(temp)
-//                        temp = NSString()
-//                    }
-//                }
+                else {
+                    if temp != "" {
+                        Printer("Socket Data Recived : \(temp.debugDescription)")
+                        self.rDelegate?.recieve(temp)
+                        temp = NSString()
+                    }
+                }
             }
         }
         
