@@ -110,11 +110,11 @@ class DataManager {
     private class func settingJSON(json : NSArray) {
         for object in json {
             
-            for keyValue in (object as! NSDictionary) {
-                let type = keyValue.key as! String
-                let value = keyValue.value as! String
-                DBManager.updateValuesOfSettingsDB(Type: type, UpdateValue: value)
-            }
+//            for keyValue in (object as! NSDictionary) {
+//                let type = keyValue.key as! String
+//                let value = keyValue.value as! String
+//                DBManager.updateValuesOfSettingsDB(Type: type, UpdateValue: value)
+//            }
 
             
         }

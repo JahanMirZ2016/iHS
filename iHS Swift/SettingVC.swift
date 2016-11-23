@@ -30,7 +30,7 @@ class SettingVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    /// Arash : Reset all registers and go to LanguaceVC.
+    /// Arash: Reset all registers and go to LanguageVC.
     @IBAction func btnResetRegister(sender: UIButton) {
         dbUpdate()
         startAppAgain()

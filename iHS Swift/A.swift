@@ -65,22 +65,22 @@ func SetLangIDToVar(id : Int) {
     SELECTEDLANGID = id
 }
 
-/// Arash : A function to sync and send data.
+/// Arash: A function to sync and send data.
 func Sync() -> Bool {
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     // Arash : Creating SyncDataModel
     let lastMessageID = DBManager.getValueOfSettingsDB(Type: "LastMessageID")!
-    let appVerCode = DBManager.getValueOfSettingsDB(Type: "AppVerCode")
+    let appVerCode = "1"
     let languageID = DBManager.getValueOfSettingsDB(Type: "LanguageID")
-    let mobileID = DBManager.getValueOfSettingsDB(Type: "MobileID")
+    let mobileID = "2"
     
     var arrayMain = Array<NSDictionary>()
     var array = Array<NSDictionary>()
     
-    let dic2:NSDictionary = ["LastMessageID" : lastMessageID , "AppVerCode" : appVerCode! , "LanguageID" : languageID!]
+    let dic2:NSDictionary = ["LastMessageID" : lastMessageID , "AppVerCode" : appVerCode , "LanguageID" : languageID!]
     array.append(dic2)
     
-    let dic3:NSDictionary = ["SyncData" : array , "MessageID" : "0" , "RecieverID" : mobileID! , "Type" : "SyncData" , "Action" : "" , "Date" : "2015-01-01 12:00:00"]
+    let dic3:NSDictionary = ["SyncData" : array , "MessageID" : "0" , "RecieverID" : mobileID , "Type" : "SyncData" , "Action" : "Update" , "Date" : "2015-01-01 12:00:00"]
     arrayMain.append(dic3)
     
     let jsonData = JsonMaker.arrayToJson(arrayMain)
@@ -88,13 +88,16 @@ func Sync() -> Bool {
 }
 
 func SendCustomerId() -> Bool {
-    let customerID = DBManager.getValueOfSettingsDB(Type: "CustomerID")
-    let mobileID = DBManager.getValueOfSettingsDB(Type: "MobileID")
-    let exKey = DBManager.getValueOfSettingsDB(Type: "ExKey")
+    let customerID = "30242"
+    let mobileID = "2"
+    let exKey = "8B7543B008A5154F55EDE31158ED7228"
     
-    let dic:Dictionary<String , AnyObject> = ["CustomerID" : customerID! , "MobileID" : mobileID! , "ExKey" : exKey!]
+    let dic:Dictionary<String , AnyObject> = ["CustomerID" : customerID , "MobileID" : mobileID , "ExKey" : exKey]
     
-    let jsonData = JsonMaker.dictionaryToJson(dic)
+    var array = [Dictionary<String , AnyObject>]()
+    array = [dic]
+    
+    let jsonData = JsonMaker.arrayToJson(array)
     
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     

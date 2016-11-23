@@ -24,6 +24,10 @@ class SecondPageTBC: UITabBarController {
         selectItemImage()
         setUpTabBar()
         setItemNames(DBManager.getTranslationOfSentences(SentencesID: [1 , 9 , 10 , 4]))
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDel.socket.open(IP: "192.168.1.13", Port: 54127)
+        SendCustomerId()
+        Sync()
         
         
     }
@@ -40,12 +44,10 @@ class SecondPageTBC: UITabBarController {
         tabFrame.size.height = 80
         tabFrame.origin.y = self.view.frame.size.height - 80
         self.tabBar.frame = tabFrame
-        
 
-        
     }
     
-    /// Arash :Set Tabbar Item Images
+    /// Arash: Set Tabbar Item Images
     func selectItemImage() {
         if let count = self.tabBar.items?.count {
             for i in 0...(count-1) {
@@ -70,7 +72,7 @@ class SecondPageTBC: UITabBarController {
     }
     
     
-    /// Setup Tabbar (remove shadowImage, set backgroundImage and ...)
+    /// Arash: Setup Tabbar (remove shadowImage, set backgroundImage and ...)
     func setUpTabBar() {
         UITabBar.appearance().barTintColor = UIColor.whiteColor()
         UITabBar.appearance().shadowImage = UIImage()
