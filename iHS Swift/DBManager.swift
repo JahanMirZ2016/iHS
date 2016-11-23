@@ -513,7 +513,7 @@ class DBManager {
         let db = GetDBFromPath()
         db!.open()
         do {
-            let query = "INSERT INTO Switch (ID, Name , Icon , Sort ) VALUES (? , ? , ?, ?)"
+            let query = "INSERT INTO Section (ID, Name , Icon , Sort ) VALUES (? , ? , ?, ?)"
             try db!.executeUpdate(query, values: [section.id , section.name , section.icon , section.sort])
             db!.close()
             return true
@@ -616,7 +616,7 @@ class DBManager {
         let db = GetDBFromPath()
         db!.open()
         do {
-            let query = "INSERT INTO Room (ID, Name , Icon , Sort , SectionID) VALUES (? , ? , ?, ?)"
+            let query = "INSERT INTO Room (ID, Name , Icon , Sort , SectionID) VALUES (? , ? , ?, ? , ?)"
             try db!.executeUpdate(query, values: [room.id , room.name , room.icon , room.sectionID])
             db!.close()
             return true

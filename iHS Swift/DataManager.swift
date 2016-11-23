@@ -97,7 +97,7 @@ class DataManager {
             scenarioModel.condition = (object as! NSDictionary)["DetailsConditions"] as! String
             scenarioModel.des = (object as! NSDictionary)["Des"] as! String
             scenarioModel.description = (object as! NSDictionary)["DetailsDescription"] as! String
-            scenarioModel.distance = (object as! NSDictionary)["Distance"] as! Double
+//            scenarioModel.distance = (object as! NSDictionary)["Distance"] as! Double
             scenarioModel.id = (object as! NSDictionary)["ID"] as! Int
             scenarioModel.isStarted = (object as! NSDictionary)["IsStarted"] as! Int
             scenarioModel.result = (object as! NSDictionary)["DetailsResults"] as! String
@@ -109,7 +109,34 @@ class DataManager {
     /// Arash : Insert into setting table.
     private class func settingJSON(json : NSArray) {
         for object in json {
-            
+            let LanguageID = (object as! NSDictionary)["LanguageID"] as! String
+            let ServerIP = (object as! NSDictionary)["ServerIP"] as! String
+            let ServerPort = (object as! NSDictionary)["ServerPort"] as! String
+            let CustomerID = (object as! NSDictionary)["CustomerID"] as! String
+            let MobileID = (object as! NSDictionary)["MobileID"] as! String
+            let WiFiSSID = (object as! NSDictionary)["WiFiSSID"] as! String
+            let WiFiMac = (object as! NSDictionary)["WiFiMac"] as! String
+            let CenterIP = (object as! NSDictionary)["CenterIP"] as! String
+            let CenterPort = (object as! NSDictionary)["CenterPort"] as! String
+            let LastMessageID = (object as! NSDictionary)["LastMessageID"] as! String
+            let ExKey = (object as! NSDictionary)["ExKey"] as! String
+            let CustomerName = (object as! NSDictionary)["CustomerName"] as! String
+            let Register = (object as! NSDictionary)["Register"] as! String
+            let Ver = (object as! NSDictionary)["Ver"] as! String
+            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ServerIP, UpdateValue: ServerIP)
+            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ServerPort, UpdateValue: ServerPort)
+            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CustomerID, UpdateValue: CustomerID)
+            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.MobileID, UpdateValue: MobileID)
+            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.WiFiSSID, UpdateValue: WiFiSSID)
+            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.WiFiMac, UpdateValue: WiFiMac)
+            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterIP, UpdateValue: CenterIP)
+            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterPort, UpdateValue: CenterPort)
+            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.LastMessageID, UpdateValue: LastMessageID)
+            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ExKey, UpdateValue: ExKey)
+            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CustomerName, UpdateValue: CustomerName)
+            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Register, UpdateValue: Register)
+            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Ver, UpdateValue: Ver)
+            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.LanguageID, UpdateValue: LanguageID)
 //            for keyValue in (object as! NSDictionary) {
 //                let type = keyValue.key as! String
 //                let value = keyValue.value as! String

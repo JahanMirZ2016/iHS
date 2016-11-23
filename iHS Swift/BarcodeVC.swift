@@ -96,8 +96,7 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
                 let jsonData = JSONSerializer.toJson(verificationModel).stringByAppendingString("\n")
                 Printer(jsonData)
                 
-                
-                
+
                 if appDel.socket.send(jsonData) {
                     Printer("register : Socket data register sent!!!!")
                 }
