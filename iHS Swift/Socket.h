@@ -21,7 +21,7 @@
 struct sockaddr_in server_in;
 int sock, conn;
 //struct hostent *server;
-char buffer[1024];
+char buffer[1];
 
 
 int connectToSocket(char* server_ip , int server_port);

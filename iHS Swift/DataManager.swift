@@ -143,7 +143,6 @@ class DataManager {
 //                DBManager.updateValuesOfSettingsDB(Type: type, UpdateValue: value)
 //            }
 
-            
         }
         
     }
