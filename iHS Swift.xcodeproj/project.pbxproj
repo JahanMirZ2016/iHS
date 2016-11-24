@@ -11,6 +11,7 @@
 		5B06B69A1DD35F0A004E9877 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06B6991DD35F0A004E9877 /* TopBar.swift */; };
 		5B06B69C1DD36199004E9877 /* TopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B06B69B1DD36199004E9877 /* TopBar.xib */; };
 		5B0C51331DE2D3AE00EE4AF4 /* CellScenarioDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0C51321DE2D3AE00EE4AF4 /* CellScenarioDetail.swift */; };
+		5B35C82A1DE6AC9A0054470B /* SyncRecieveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35C8291DE6AC9A0054470B /* SyncRecieveModel.swift */; };
 		5B3937FD1DDC515600808098 /* SectionRoomsLeftAllignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3937FC1DDC515600808098 /* SectionRoomsLeftAllignment.swift */; };
 		5B3937FF1DDC516E00808098 /* SectionRoomsLeftAllignment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3937FE1DDC516E00808098 /* SectionRoomsLeftAllignment.xib */; };
 		5B3938011DDC544700808098 /* CellRoomsLeftAllignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3938001DDC544700808098 /* CellRoomsLeftAllignment.swift */; };
@@ -87,6 +88,7 @@
 		5B06B6991DD35F0A004E9877 /* TopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		5B06B69B1DD36199004E9877 /* TopBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopBar.xib; sourceTree = "<group>"; };
 		5B0C51321DE2D3AE00EE4AF4 /* CellScenarioDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellScenarioDetail.swift; sourceTree = "<group>"; };
+		5B35C8291DE6AC9A0054470B /* SyncRecieveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncRecieveModel.swift; sourceTree = "<group>"; };
 		5B3937FC1DDC515600808098 /* SectionRoomsLeftAllignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionRoomsLeftAllignment.swift; sourceTree = "<group>"; };
 		5B3937FE1DDC516E00808098 /* SectionRoomsLeftAllignment.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionRoomsLeftAllignment.xib; sourceTree = "<group>"; };
 		5B3938001DDC544700808098 /* CellRoomsLeftAllignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellRoomsLeftAllignment.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 			children = (
 				5BE487541DDD885700635116 /* SyncDataModel.swift */,
 				5BE487561DDD887900635116 /* SyncSendModel.swift */,
+				5B35C8291DE6AC9A0054470B /* SyncRecieveModel.swift */,
 			);
 			name = "Sync Models";
 			sourceTree = "<group>";
@@ -788,6 +791,7 @@
 				EEDA15211DD33AC0007D1F3F /* AppDelegate.swift in Sources */,
 				5BDC76E51DD99F3000F63E55 /* NotifyModel.swift in Sources */,
 				EED4DA141DDC49C500299ED0 /* WelcomeVC.swift in Sources */,
+				5B35C82A1DE6AC9A0054470B /* SyncRecieveModel.swift in Sources */,
 				5BC2B5911DE02F1800D3F597 /* DataManager.swift in Sources */,
 				EED4DA151DDC49C500299ED0 /* RegisterVC.swift in Sources */,
 				5BEA78D31DDAE50F00A71068 /* CellScenario.swift in Sources */,

@@ -15,22 +15,20 @@ import Foundation
 class DataManager {
     
     
-    /// Arash : func for analyze and parse json for saving in database and later use.
-    internal class func JSONAnalyzer(JsonString json: NSString) {
-        var jsonDic = NSDictionary()
+    /// Arash : func for analyze and parse jsonObject for saving in database and later use.
+    private class func JSONObjectAnalyzer(JsonDic jsonDic: NSDictionary) {
         do {
             
-            jsonDic = try JSONSerializer.toDictionary(json as String)
             sectionJSON(jsonDic["Sections"] as! NSArray)
             roomJSON(jsonDic["Rooms"] as! NSArray)
             nodeJSON(jsonDic["Nodes"] as! NSArray)
             switchJSON(jsonDic["Switches"] as! NSArray)
             scenarioJSON(jsonDic["Scenarios"] as! NSArray)
-//            let settingArray = try JSONSerializer.toArray(jsonDic["Setting"] as! String)
+            //            let settingArray = try JSONSerializer.toArray(jsonDic["Setting"] as! String)
             settingJSON(jsonDic["Setting"] as! NSArray)
-
+            
         } catch let error as NSError {
-            Printer("DataManager Parse jsonreceive error : \(error.debugDescription)")
+            Printer("DataManager Parse jsonreceive Object error : \(error.debugDescription)")
         }
     }
     
@@ -97,7 +95,7 @@ class DataManager {
             scenarioModel.condition = (object as! NSDictionary)["DetailsConditions"] as! String
             scenarioModel.des = (object as! NSDictionary)["Des"] as! String
             scenarioModel.description = (object as! NSDictionary)["DetailsDescription"] as! String
-//            scenarioModel.distance = (object as! NSDictionary)["Distance"] as! Double
+            //            scenarioModel.distance = (object as! NSDictionary)["Distance"] as! Double
             scenarioModel.id = (object as! NSDictionary)["ID"] as! Int
             scenarioModel.isStarted = (object as! NSDictionary)["IsStarted"] as! Int
             scenarioModel.result = (object as! NSDictionary)["DetailsResults"] as! String
@@ -110,7 +108,7 @@ class DataManager {
     private class func settingJSON(json : NSArray) {
         for object in json {
             
-//            let LanguageID = (object as! NSDictionary)["LanguageID"] as! String
+            //            let LanguageID = (object as! NSDictionary)["LanguageID"] as! String
             let ServerIP = (object as! NSDictionary)["ServerIP"] as! String
             let ServerPort = (object as! NSDictionary)["ServerPort"] as! Int
             let CustomerID = (object as! NSDictionary)["CustomerID"] as! Int
@@ -122,7 +120,7 @@ class DataManager {
             let LastMessageID = (object as! NSDictionary)["LastMessageID"] as! Int
             let ExKey = (object as! NSDictionary)["ExKey"] as! String
             let CustomerName = (object as! NSDictionary)["CustomerName"] as! String
-//            let Register = (object as! NSDictionary)["Register"] as! String
+            //            let Register = (object as! NSDictionary)["Register"] as! String
             let Ver = (object as! NSDictionary)["Ver"] as! String
             DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ServerIP, UpdateValue: ServerIP)
             DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ServerPort, UpdateValue: String(ServerPort))
@@ -135,19 +133,213 @@ class DataManager {
             DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.LastMessageID, UpdateValue: String(LastMessageID))
             DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ExKey, UpdateValue: ExKey)
             DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CustomerName, UpdateValue: CustomerName)
-//            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Register, UpdateValue: Register)
+            //            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Register, UpdateValue: Register)
             DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Ver, UpdateValue: Ver)
-//            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.LanguageID, UpdateValue: LanguageID)
-//            for keyValue in (object as! NSDictionary) {
-//                let type = keyValue.key as! String
-//                let value = keyValue.value as! String
-//                DBManager.updateValuesOfSettingsDB(Type: type, UpdateValue: value)
-//            }
-
+            //            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.LanguageID, UpdateValue: LanguageID)
+            //            for keyValue in (object as! NSDictionary) {
+            //                let type = keyValue.key as! String
+            //                let value = keyValue.value as! String
+            //                DBManager.updateValuesOfSettingsDB(Type: type, UpdateValue: value)
+            //            }
+            
         }
         
     }
     
+    /// Arash : func for analyze and parse jsonArray for saving in database and later use.
+    private class func JSONArrayAnalyzer(jsonArray:Array<NSDictionary>) {
+        
+        for object in jsonArray {
+            
+            let messageID = String(object["MessageID"] as! Int)
+            let type = object["Type"] as! String
+            let action = object["Action"] as! String
+            switch type {
+            ///RecieveType.ScenarioData
+            case RecieveType.ScenarioData:
+                
+                let scenarioArray = object["ScenarioData"] as! Array<NSDictionary>
+                for dic in scenarioArray {
+                    
+                    //                syncRecieveModel.RecieverIDs = object["RecieverID"] as! NSDictionary
+                    let scenario = ScenarioModel()
+                    scenario.active = dic["Active"] as! Int
+                    scenario.condition = dic["DetailsConditions"] as!  String
+                    scenario.description = dic["DetailsDescription"] as! String
+                    scenario.des = dic["Des"] as! String
+                    scenario.id = dic["ID"] as! Int
+                    scenario.name = dic["Name"] as! String
+                    scenario.result = dic["DetailsResults"] as! String
+                    switch action {
+                    case RecieveAction.Insert:
+                        DBManager.insertScenario(ScenarioModel: scenario); break
+                    case RecieveAction.Delete:
+                        DBManager.deleteScenario(ScnarioID: scenario.id); break
+                    case RecieveAction.Update:
+                        //DBManager.updateScenario (Model)
+                        break
+                    default: break
+                    }
+                }
+                break
+            /// RecieveType.SwitchStatus
+            case RecieveType.SwitchStatus:
+                let switchStatusArray = object["SwitchStatus"] as! Array<NSDictionary>
+                for dic in switchStatusArray {
+                    //                    let switchStatus = object["SwitchStatus"] as! NSDictionary
+                    let id = dic["ID"] as! Int
+                    let value = dic["Value"] as! Float
+                    //
+                }
+                break
+            /// RecieveType.ScenarioStatus
+            case RecieveType.ScenarioStatus:
+                let scenarioStatusArray = object["ScenarioStatus"] as! Array<NSDictionary>
+                for dic in scenarioStatusArray {
+                    //                    let switchStatus = object["SwitchStatus"] as! NSDictionary
+                    let id = dic["ID"] as! Int
+                    let active = dic["Active"] as! Float
+                    if active < 2 {
+                        //DBManager.activeScenario
+                    }else {
+                        //DBManager.startScenario
+                    }
+                }
+                break
+            /// RecieveType.Setting
+            case RecieveType.Setting :
+                let settingArray = object["Setting"] as! Array<NSDictionary>
+                for dic in settingArray {
+                    DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ServerIP , UpdateValue: dic["ServerIP"] as! String)
+                    DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ServerPort, UpdateValue: dic["ServerPort"] as! String)
+                    DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterIP, UpdateValue: dic["CenterIP"] as! String)
+                    DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterPort, UpdateValue: dic["CenterPort"] as! String)
+                    DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.WiFiSSID, UpdateValue: dic["WiFiSSID"] as! String)
+                    DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.WiFiMac, UpdateValue: dic["WiFiMac"] as! String)
+                }
+                break
+            ///RecieveType.SwitchData
+            case RecieveType.SwitchData :
+                let switchDataArray = object["SwitchData"] as! Array<NSDictionary>
+                for dic in switchDataArray {
+                    let switchModel = SwitchModel()
+                    switchModel.code = dic["Code"] as! Int
+                    switchModel.id = dic["ID"] as! Int
+                    switchModel.name = dic["Name"] as! String
+                    switchModel.nodeID = dic["NodeID"] as! Int
+                    switchModel.value = dic["Value"] as! Double //
+                    if action == RecieveAction.Insert {
+                        DBManager.insertSwitch(SwitchModel: switchModel)
+                    }else if action == RecieveAction.Delete {
+                        DBManager.deleteSwitch(SwitchID: switchModel.id)
+                    }else if action == RecieveAction.Update {
+                        ///DBManager.updateSwitch (Model)
+                    }
+                }
+                break
+            ///RecieveType.SwitchData
+            case RecieveType.NodeData :
+                let nodeDataArray = object["NodeData"] as! Array<NSDictionary>
+                for dic in nodeDataArray {
+                    let nodeModel = NodeModel()
+                    nodeModel.id = dic["ID"] as! Int
+                    nodeModel.name = dic["Name"] as! String
+                    nodeModel.nodeType = dic["NodeTypeID"] as! Int
+                    nodeModel.status = dic["Status"] as! Int
+                    nodeModel.roomID = dic["RoomID"] as! Int
+                    nodeModel.icon = "Node" + (dic["Icon"] as! String)
+                    if action == RecieveAction.Insert {
+                        DBManager.insertNode(NodeModel: nodeModel)
+                    }  else if action == RecieveAction.Delete {
+                        DBManager.deleteNode(NodeID: nodeModel.id)
+                    }  else if action == RecieveAction.Update {
+                        ///DBManager.updateNode (Model)
+                    }
+                }
+                break
+            ///RecieveType.SectionData
+            case RecieveType.SectionData :
+                let sectionDataArray = object["SectionData"] as! Array<NSDictionary>
+                for dic in sectionDataArray {
+                    let sectionModel = SectionModel()
+                    sectionModel.id = dic["ID"] as! Int
+                    sectionModel.name = dic["Name"] as! String
+                    sectionModel.sort = dic["Sort"] as! Int
+                    sectionModel.icon = "Section" + (dic["Icon"] as! String)
+                    if action == RecieveAction.Insert {
+                        DBManager.insertSection(SectionModel: sectionModel)
+                    }else if action == RecieveAction.Delete {
+                        ///DBManager.deleteSection (sectionModel.id)
+                    }else if action == RecieveAction.Update {
+                        ///DBManager.updateSection (Model)
+                    }
+                }
+                break
+            ///RecieveType.RoomData
+            case RecieveType.RoomData :
+                let roomDataArray = object["RoomData"] as! Array<NSDictionary>
+                for dic in roomDataArray {
+                    let roomModel = RoomModel()
+                    roomModel.id = dic["ID"] as! Int
+                    roomModel.name = dic["Name"] as! String
+                    roomModel.icon = "Section" + (dic["Icon"] as! String)
+                    roomModel.sort = dic["Sort"] as! Int
+                    roomModel.sectionID = dic["SectionID"] as! Int
+                    if action == RecieveAction.Insert {
+                        DBManager.insertRoom(RoomModel: roomModel)
+                    }else if action == RecieveAction.Delete {
+                        DBManager.deleteRoom(RoomID: roomModel.id)
+                    }else if action == RecieveAction.Update {
+                        ///DBManager.updateRoom (Model)
+                    }
+                }
+                break
+            ///RecieveType.Notify
+            case RecieveType.Notify :
+                let notifyArray = object["Notify"] as! Array<NSDictionary>
+                for dic in notifyArray {
+                    let notifyModel = NotifyModel()
+                    notifyModel.notifyTitle = dic["NotifyTitle"] as! String
+                    notifyModel.notifyText = dic["NotifyText"] as! String
+                    notifyModel.seen = false
+                    DBManager.insertNotify(NotifyModel: notifyModel)
+                    /// master.setNotify
+                    /// callNotification
+                }
+                break
+            ///RecieveType.SyncData
+            case RecieveType.SyncData :
+                if action == RecieveAction.Delete {
+                    /// reset factory
+                }
+                break
+            case RecieveType.RefreshData :
+                let refreshDataArray = object["Notify"] as! Array<NSDictionary>
+                let dic = refreshDataArray[0]
+                ///JSONObjectAnalyzer(dic)
+                DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Register, UpdateValue: "1")
+                break
+                
+            default:
+                break
+            }
+        }
+    }
+    
+    class func JSONAnalyzer(json:NSString ) {
+        do {
+            let jsonArray = try JSONSerializer.toArray(json as String)
+            JSONArrayAnalyzer(jsonArray as! Array<NSDictionary>)
+        } catch let error as NSError {
+            do {
+                Printer("Json Array Failed : \(error.debugDescription)")
+                let jsonObject = try JSONSerializer.toDictionary(json as String)
+                JSONObjectAnalyzer(JsonDic: jsonObject)
+            } catch let e as NSError {
+                Printer("Json Object Failed : \(e.debugDescription)")
+            }
+        }
+    }
     
 }
 

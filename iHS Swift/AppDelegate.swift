@@ -75,8 +75,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
     /// BinMan1 : delegate function for get data and pass to datamanager
     func recieve(rData: NSString) {
         dispatch_async(dispatch_get_main_queue()) {
+            DataManager.JSONAnalyzer(rData)
             Printer("khkhkhkh : \(rData)")
-            DataManager.JSONAnalyzer(JsonString: rData)
+            
         }
     }
 }

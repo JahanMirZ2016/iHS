@@ -154,3 +154,58 @@ struct TypeOfSettings {
     static let Register = "Register"
     static let Ver = "Ver"
 }
+
+struct RecieveType {
+    static let ScenarioStatus = "ScenarioStatus"
+    static let Setting = "Setting"
+    static let SwitchStatus = "SwitchStatus"
+    static let SwitchData = "SwitchData"
+    static let ScenarioData = "ScenarioData"
+    static let NodeData = "NodeData"
+    static let SectionData = "SectionData"
+    static let RoomData = "RoomData"
+    static let Notify = "Notify"
+    static let SyncData = "SyncData"
+    static let RefreshData = "RefreshData"
+    
+}
+
+/// Arash: Enum of RecieveArray Types
+//    enum RecieveType:CustomStringConvertible {
+//        case ScenarioStatus
+//        case Setting
+//        case SwitchStatus
+//        case SwitchData
+//        case ScenarioData
+//        case NodeData
+//        case SectionData
+//        case RoomData
+//        case Notify
+//        case SyncData
+//        case RefreshData
+//        
+//        var description : String {
+//            switch self {
+//            // Use Internationalization, as appropriate.
+//            case .ScenarioStatus: return "Bing";
+//            case .Setting: return "Setting";
+//            case .SwitchStatus: return "SwitchStatus";
+//            case .SwitchData: return "SwitchData";
+//            case .ScenarioData: return "ScenarioData";
+//            case .NodeData: return "NodeData";
+//            case .SectionData: return "SectionData";
+//            case .RoomData: return "RoomData";
+//            case .Notify: return "Notify";
+//            case .SyncData: return "SyncData";
+//            case .RefreshData: return "RefreshData";
+//     
+//            }
+//        }
+//    }
+
+/// Arash: Enum of RecieveArray Actions
+struct RecieveAction {
+    static let Insert = "Insert"
+    static let Delete = "Delete"
+    static let Update = "Update"
+}

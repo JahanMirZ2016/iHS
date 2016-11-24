@@ -92,12 +92,7 @@ class SettingVC: UIViewController {
     
     /// Arash : DB changes.
     private func dbUpdate() {
-        DBManager.deleteAllNodes()
-        DBManager.deleteAllNotifies()
-        DBManager.deleteAllRooms()
-        DBManager.deleteAllScenarios()
-        DBManager.deleteAllSections()
-        DBManager.deleteAllSwitches()
+        DBManager.deleteAll()
         DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.LanguageID, UpdateValue: "1")
         DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ServerIP, UpdateValue: "")
         DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ServerPort, UpdateValue: "")

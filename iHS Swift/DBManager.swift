@@ -714,4 +714,14 @@ class DBManager {
             return false
         }
     }
+    
+    /// Arash: Delete All
+    class func deleteAll() {
+        deleteAllNodes()
+        deleteAllRooms()
+        deleteAllNotifies()
+        deleteAllSections()
+        deleteAllSwitches()
+        deleteAllScenarios()
+    }
 }
