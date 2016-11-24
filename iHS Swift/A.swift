@@ -109,34 +109,6 @@ func SendCustomerId() -> Bool {
     return appDel.socket.send(jsonData)
 }
 
-/// Arash: Send location data.
-func GPS() -> Bool {
-    locationManager = CLLocationManager()
-    locationManager!.distanceFilter = kCLDistanceFilterNone // whenever we move
-    locationManager!.desiredAccuracy = kCLLocationAccuracyHundredMeters // 100 m
-    locationManager!.requestAlwaysAuthorization()
-    locationManager!.startUpdatingLocation()
-    
-    let mobileID = DBManager.getValueOfSettingsDB(Type: "MobileID")
-    var array = Array<NSDictionary>()
-    let dic:NSDictionary = ["MobileID" : mobileID! , "Latitude" : String(locationManager!.location!.coordinate.latitude) , "Longitude" : String(locationManager!.location!.coordinate.longitude)]
-    array.append(dic)
-    let dic2:NSDictionary = ["GPSAnnounce" : array , "MessageID" : "0" , "RecieverID" : mobileID! , "Type" : "GPSAnnounce" , "Action" : "Update" , "Date" : "2015-01-01 12:00:00"]
-    var array2 = Array<NSDictionary>()
-    array2.append(dic2)
-    let jsonData = JsonMaker.arrayToJson(array2)
-    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-    
-    let returnBool = appDel.socket.send(jsonData)
-    let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(10.0 * Double(NSEC_PER_SEC)))
-    dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-        GPS()
-    })
-    
-    return returnBool
-}
-
-
 /// BinMan1 : Structor of Setttings table types
 struct TypeOfSettings {
     static let LanguageID = "LanguageID"

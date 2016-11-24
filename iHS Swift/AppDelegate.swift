@@ -15,16 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
     
     /// BinMan1 : A socket object for use in all of the project from appdelegate
     var socket : SocketManager!
+    var network : Internet!
     
     /// BinMan1 : Choose the init view controller
     private func chooseVC () {
-        if DBManager.getValueOfSettingsDB(Type: TypeOfSettings.ServerIP) == "" {
+        if DBManager.getValueOfSettingsDB(Type: TypeOfSettings.Register) == "0" {
             let story = UIStoryboard(name: "Welcome", bundle: nil)
             let vc = story.instantiateViewControllerWithIdentifier("languageVC")
             window?.rootViewController = vc
             return
         }
         
+        self.startCheckingInternet()
         let story = UIStoryboard(name: "Main", bundle: nil)
         let vc = story.instantiateViewControllerWithIdentifier("SecondPageTBC")
         window?.rootViewController = vc
@@ -43,8 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
             Printer("AppDelegate Error : Can't get Language ID From Settings Table of DB")
         }
         
-//        chooseVC()
-        
+        chooseVC()
         
         return true
     }
@@ -71,6 +72,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    /// BinMan1 : function for start reachability and checking and managing internet connections
+    func startCheckingInternet () {
+        network = Internet()
+        network.checkNetwork()
+    }
     
     /// BinMan1 : delegate function for get data and pass to datamanager
     func recieve(rData: NSString) {

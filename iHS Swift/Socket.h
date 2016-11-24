@@ -27,5 +27,6 @@ char buffer[1];
 int connectToSocket(char* server_ip , int server_port);
 long sendData(char* message);
 char* recieveData();
+int closeSocket();
 
 #endif /* Socket_h */

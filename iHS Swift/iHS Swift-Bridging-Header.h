@@ -4,3 +4,4 @@
 
 #import "Socket.h"
 #import "FMDB.h"
+#import "Reachability.h"
