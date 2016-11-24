@@ -13,8 +13,18 @@ protocol RecieveSocketDelegate : class {
     func recieve(rData : NSString)
 }
 
+enum SocketState {
+    case none
+    case disconnect
+    case connectToServer
+    case connectToLocal
+    case tryConnecting
+}
 
 class SocketManager {
+    
+    // BinMan1 : Socket States
+    var state = SocketState.none
     
     private var SOCKET_IP : NSString = ""
     private var SOCKET_PORT = -1
@@ -61,7 +71,15 @@ class SocketManager {
                 }
             }
         }
+    }
+    
+    /// BinMan1 : Close socket connection
+    
+    func close() -> Bool {
+        if closeSocket() < 0 {
+            return false
+        }
         
-        
+        return true
     }
 }

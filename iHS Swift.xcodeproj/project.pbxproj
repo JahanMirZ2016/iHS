@@ -51,6 +51,8 @@
 		EE0D95F01DD45BAA004581C4 /* Socket.c in Sources */ = {isa = PBXBuildFile; fileRef = EE0D95ED1DD45BAA004581C4 /* Socket.c */; };
 		EE0D95F11DD45BAA004581C4 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D95EF1DD45BAA004581C4 /* SocketManager.swift */; };
 		EE0D95F41DD46076004581C4 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D95F31DD46076004581C4 /* DBManager.swift */; };
+		EECF73891DE6AB5F006DA1B4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EECF73871DE6AB5F006DA1B4 /* Reachability.m */; };
+		EECF738B1DE6AB75006DA1B4 /* Internet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECF738A1DE6AB75006DA1B4 /* Internet.swift */; };
 		EED4DA091DDC36B400299ED0 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EED4DA081DDC36B400299ED0 /* Welcome.storyboard */; };
 		EED4DA0D1DDC372C00299ED0 /* JsonMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED4DA0B1DDC372C00299ED0 /* JsonMaker.swift */; };
 		EED4DA0E1DDC372C00299ED0 /* JsonSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED4DA0C1DDC372C00299ED0 /* JsonSerializer.swift */; };
@@ -132,6 +134,9 @@
 		EE0D95EE1DD45BAA004581C4 /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
 		EE0D95EF1DD45BAA004581C4 /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		EE0D95F31DD46076004581C4 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		EECF73861DE6AB5F006DA1B4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		EECF73871DE6AB5F006DA1B4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		EECF738A1DE6AB75006DA1B4 /* Internet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Internet.swift; sourceTree = "<group>"; };
 		EED4DA081DDC36B400299ED0 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		EED4DA0B1DDC372C00299ED0 /* JsonMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonMaker.swift; sourceTree = "<group>"; };
 		EED4DA0C1DDC372C00299ED0 /* JsonSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonSerializer.swift; sourceTree = "<group>"; };
@@ -416,8 +421,11 @@
 		EED4DA0A1DDC372500299ED0 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				EECF73861DE6AB5F006DA1B4 /* Reachability.h */,
+				EECF73871DE6AB5F006DA1B4 /* Reachability.m */,
 				EED4DA0B1DDC372C00299ED0 /* JsonMaker.swift */,
 				EED4DA0C1DDC372C00299ED0 /* JsonSerializer.swift */,
+				EECF738A1DE6AB75006DA1B4 /* Internet.swift */,
 			);
 			name = Libs;
 			sourceTree = "<group>";
@@ -769,6 +777,7 @@
 				5BE487551DDD885700635116 /* SyncDataModel.swift in Sources */,
 				5B43C5641DE2BEDF00F8EDEF /* TopBarScenario.swift in Sources */,
 				EED4DA161DDC49C500299ED0 /* BarcodeVC.swift in Sources */,
+				EECF738B1DE6AB75006DA1B4 /* Internet.swift in Sources */,
 				EED4DA131DDC49C500299ED0 /* LanguageVC.swift in Sources */,
 				5B06B69A1DD35F0A004E9877 /* TopBar.swift in Sources */,
 				5B3938011DDC544700808098 /* CellRoomsLeftAllignment.swift in Sources */,
@@ -787,6 +796,7 @@
 				5BDC76E31DD99EBE00F63E55 /* NodeModel.swift in Sources */,
 				EEDA15211DD33AC0007D1F3F /* AppDelegate.swift in Sources */,
 				5BDC76E51DD99F3000F63E55 /* NotifyModel.swift in Sources */,
+				EECF73891DE6AB5F006DA1B4 /* Reachability.m in Sources */,
 				EED4DA141DDC49C500299ED0 /* WelcomeVC.swift in Sources */,
 				5BC2B5911DE02F1800D3F597 /* DataManager.swift in Sources */,
 				EED4DA151DDC49C500299ED0 /* RegisterVC.swift in Sources */,

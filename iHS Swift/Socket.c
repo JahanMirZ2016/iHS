@@ -48,3 +48,7 @@ char* recieveData() {
     
     return buffer;
 }
+
+int closeSocket() {
+    return shutdown(sock, SHUT_RDWR);
+}
