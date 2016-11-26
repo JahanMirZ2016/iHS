@@ -609,7 +609,7 @@ class DBManager {
             return false
         }
     }
-
+    
     
     /// BinMan1 : Insert Room to table
     class func insertRoom(RoomModel room : RoomModel) -> Bool {
@@ -624,6 +624,7 @@ class DBManager {
             Printer("DBManager insert Room error : \(err.debugDescription)")
             db!.close()
             return false
+            
         }
     }
     
@@ -715,6 +716,158 @@ class DBManager {
         }
     }
     
+    /// Arash: Update scenario
+    class func updateScenario(model: ScenarioModel)->Bool {
+        let db = GetDBFromPath()
+        db!.open()
+        
+        do {
+            let query = "UPDATE Scenario SET Name=?,Active=?,ISStarted=?,Lat=?,Long=?,Distance=?,Description=?,Result=?,Condition=?,Des=? where ID=?"
+            try db!.executeUpdate(query, values: [model.name , model.active , model.isStarted , model.lat , model.long , model.distance ,model.description , model.result , model.condition , model.des , model.id])
+            db!.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager update scenario error : \(err.debugDescription)")
+            db!.close()
+            return false
+        }
+    }
+    /// Arash: Update switch status
+    class func updateSwitchStatus(id : Int , value : Float)->Bool {
+        let db = GetDBFromPath()
+        db!.open()
+        
+        do {
+            let query = "UPDATE Switch SET Value=? where ID=?"
+            try db!.executeUpdate(query, values: [value , id] )
+            db!.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager update scenario error : \(err.debugDescription)")
+            db!.close()
+            return false
+        }
+    }
+    /// Arash: active scenario
+    class func activeScenario(id: Int , active : Int)->Bool {
+        let db = GetDBFromPath()
+        db!.open()
+        
+        do {
+            let query = "update Scenario set Active=? where ID=?"
+            try db!.executeUpdate(query, values: [active , id] )
+            db!.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager active scenario error : \(err.debugDescription)")
+            db!.close()
+            return false
+        }
+    }
+    /// Arash: start scenario
+    class func startScenario(id: Int , active : Int)->Bool {
+        let db = GetDBFromPath()
+        db!.open()
+        
+        do {
+            let query = "update Scenario set IsStarted=? where ID=?"
+            try db!.executeUpdate(query, values: [active , id] )
+            db!.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager active scenario error : \(err.debugDescription)")
+            db!.close()
+            return false
+        }
+    }
+    /// Arash: Update switch
+    class func updateSwitch(model : SwitchModel)->Bool {
+        let db = GetDBFromPath()
+        db!.open()
+        
+        do {
+            let query = "update Switch set Name=?,Code=?,Value=? where ID=?"
+            try db!.executeUpdate(query, values: [model.name , model.code , model.value , model.id])
+            db!.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager update switch error : \(err.debugDescription)")
+            db!.close()
+            return false
+        }
+    }
+    /// Arash: Update node
+    class func updateNode(model : NodeModel)->Bool {
+        let db = GetDBFromPath()
+        db!.open()
+        
+        do {
+            let query = "update Node set Name=?,Icon=?,NodeType=?,Status=? where ID=?"
+            try db!.executeUpdate(query, values: [model.name , model.icon , model.nodeType , model.status , model.id])
+            db!.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager update node error : \(err.debugDescription)")
+            db!.close()
+            return false
+        }
+    }
+    /// Arash: Delete section
+    class func deleteSection(id : Int)->Bool {
+        let db = GetDBFromPath()
+        db!.open()
+        
+        do {
+            let query = "DELETE FROM Section WHERE ID=?"
+            try db!.executeUpdate(query, values: [id])
+            db!.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager delete section error : \(err.debugDescription)")
+            db!.close()
+            return false
+        }
+    }
+    /// ArashL Update section
+    class func updateSection(model : SectionModel)-> Bool {
+        let db = GetDBFromPath()
+        db!.open()
+        
+        do {
+            let query = "UPDATE Section SET Name=?,Icon=?,Sort=? WHERE ID=?"
+            try db!.executeUpdate(query, values: [model.name , model.icon , model.sort , model.id])
+            db!.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager update section error : \(err.debugDescription)")
+            db!.close()
+            return false
+        }
+    }
+    
+    /// Arash: Update room
+    class func updateRoom(model : RoomModel)->Bool {
+        let db = GetDBFromPath()
+        db!.open()
+        
+        do {
+            let query = "UPDATE Room SET Name=?,Icon=?,Sort=? WHERE ID=?"
+            try db!.executeUpdate(query, values: [model.name , model.icon , model.sort , model.id])
+            db!.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager update room error : \(err.debugDescription)")
+            db!.close()
+            return false
+        }
+    }
+    
+    
+     
+    
+    
+    
+
     /// Arash: Delete All
     class func deleteAll() {
         deleteAllNodes()
@@ -724,4 +877,24 @@ class DBManager {
         deleteAllSwitches()
         deleteAllScenarios()
     }
+    
+    /// Arash: Resetfactory
+    class func resetFactory() {
+        DBManager.deleteAll()
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.LanguageID, UpdateValue: "1")
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ServerIP, UpdateValue: "")
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ServerPort, UpdateValue: "")
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CustomerID, UpdateValue: "")
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.MobileID, UpdateValue: "")
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.WiFiSSID, UpdateValue: "")
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.WiFiMac, UpdateValue: "")
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterIP, UpdateValue: "")
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterPort, UpdateValue: "")
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.LastMessageID, UpdateValue: "0")
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ExKey, UpdateValue: "")
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CustomerName, UpdateValue: "")
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Register, UpdateValue: "0")
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Ver, UpdateValue: "1")
+    }
 }
+

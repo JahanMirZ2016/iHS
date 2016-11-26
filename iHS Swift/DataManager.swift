@@ -17,19 +17,14 @@ class DataManager {
     
     /// Arash : func for analyze and parse jsonObject for saving in database and later use.
     private class func JSONObjectAnalyzer(JsonDic jsonDic: NSDictionary) {
-        do {
-            
+
             sectionJSON(jsonDic["Sections"] as! NSArray)
             roomJSON(jsonDic["Rooms"] as! NSArray)
             nodeJSON(jsonDic["Nodes"] as! NSArray)
             switchJSON(jsonDic["Switches"] as! NSArray)
             scenarioJSON(jsonDic["Scenarios"] as! NSArray)
-            //            let settingArray = try JSONSerializer.toArray(jsonDic["Setting"] as! String)
             settingJSON(jsonDic["Setting"] as! NSArray)
-            
-        } catch let error as NSError {
-            Printer("DataManager Parse jsonreceive Object error : \(error.debugDescription)")
-        }
+        
     }
     
     /// Arash : Insert into section table.
@@ -176,7 +171,7 @@ class DataManager {
                     case RecieveAction.Delete:
                         DBManager.deleteScenario(ScnarioID: scenario.id); break
                     case RecieveAction.Update:
-                        //DBManager.updateScenario (Model)
+                        DBManager.updateScenario(scenario)
                         break
                     default: break
                     }
@@ -189,6 +184,7 @@ class DataManager {
                     //                    let switchStatus = object["SwitchStatus"] as! NSDictionary
                     let id = dic["ID"] as! Int
                     let value = dic["Value"] as! Float
+                    DBManager.updateSwitchStatus(id, value: value)
                     //
                 }
                 break
@@ -198,11 +194,11 @@ class DataManager {
                 for dic in scenarioStatusArray {
                     //                    let switchStatus = object["SwitchStatus"] as! NSDictionary
                     let id = dic["ID"] as! Int
-                    let active = dic["Active"] as! Float
+                    let active = dic["Active"] as! Int
                     if active < 2 {
-                        //DBManager.activeScenario
+                        DBManager.activeScenario(id, active: active)
                     }else {
-                        //DBManager.startScenario
+                        DBManager.startScenario(id, active: active)
                     }
                 }
                 break
@@ -233,7 +229,7 @@ class DataManager {
                     }else if action == RecieveAction.Delete {
                         DBManager.deleteSwitch(SwitchID: switchModel.id)
                     }else if action == RecieveAction.Update {
-                        ///DBManager.updateSwitch (Model)
+                        DBManager.updateSwitch(switchModel)
                     }
                 }
                 break
@@ -253,7 +249,7 @@ class DataManager {
                     }  else if action == RecieveAction.Delete {
                         DBManager.deleteNode(NodeID: nodeModel.id)
                     }  else if action == RecieveAction.Update {
-                        ///DBManager.updateNode (Model)
+                        DBManager.updateNode(nodeModel)
                     }
                 }
                 break
@@ -269,9 +265,9 @@ class DataManager {
                     if action == RecieveAction.Insert {
                         DBManager.insertSection(SectionModel: sectionModel)
                     }else if action == RecieveAction.Delete {
-                        ///DBManager.deleteSection (sectionModel.id)
+                        DBManager.deleteSection(sectionModel.id)
                     }else if action == RecieveAction.Update {
-                        ///DBManager.updateSection (Model)
+                        DBManager.updateSection(sectionModel)
                     }
                 }
                 break
@@ -290,7 +286,7 @@ class DataManager {
                     }else if action == RecieveAction.Delete {
                         DBManager.deleteRoom(RoomID: roomModel.id)
                     }else if action == RecieveAction.Update {
-                        ///DBManager.updateRoom (Model)
+                        DBManager.updateRoom(roomModel)
                     }
                 }
                 break
@@ -304,19 +300,20 @@ class DataManager {
                     notifyModel.seen = false
                     DBManager.insertNotify(NotifyModel: notifyModel)
                     /// master.setNotify
+                    
                     /// callNotification
                 }
                 break
             ///RecieveType.SyncData
-            case RecieveType.SyncData :
-                if action == RecieveAction.Delete {
-                    /// reset factory
-                }
+            case RecieveType.SyncData where action == RecieveAction.Delete :
+                DBManager.resetFactory()
                 break
+            ///RecieveType.SyncData
             case RecieveType.RefreshData :
-                let refreshDataArray = object["Notify"] as! Array<NSDictionary>
+                let refreshDataArray = object["Notify"] as! Array<Dictionary<String , AnyObject>>
                 let dic = refreshDataArray[0]
-                ///JSONObjectAnalyzer(dic)
+                let str:NSString = JsonMaker.dictionaryToJson(dic)
+                JSONAnalyzer(str)
                 DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Register, UpdateValue: "1")
                 break
                 
@@ -328,7 +325,7 @@ class DataManager {
     
     class func JSONAnalyzer(json:NSString ) {
         do {
-            let jsonArray = try JSONSerializer.toArray(json as String)
+            let jsonArray =  try JSONSerializer.toArray(json as String)
             JSONArrayAnalyzer(jsonArray as! Array<NSDictionary>)
         } catch let error as NSError {
             do {
@@ -340,7 +337,6 @@ class DataManager {
             }
         }
     }
-    
 }
 
 

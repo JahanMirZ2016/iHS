@@ -30,6 +30,7 @@ class SecondPageTBC: UITabBarController {
         SendCustomerId()
         let a = Sync()
         print(a)
+        
 
 //        GPS()
 //        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -85,9 +86,9 @@ class SecondPageTBC: UITabBarController {
         UITabBar.appearance().barTintColor = UIColor.whiteColor()
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage(named: "tab-bar-bg")
-        
-        
     }
+    
+
     
     
 }

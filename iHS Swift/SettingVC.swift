@@ -32,7 +32,7 @@ class SettingVC: UIViewController {
     
     /// Arash: Reset all registers and go to LanguageVC.
     @IBAction func btnResetRegister(sender: UIButton) {
-        dbUpdate()
+        DBManager.resetFactory()
         startAppAgain()
     }
     
@@ -90,24 +90,7 @@ class SettingVC: UIViewController {
         
     }
     
-    /// Arash : DB changes.
-    private func dbUpdate() {
-        DBManager.deleteAll()
-        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.LanguageID, UpdateValue: "1")
-        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ServerIP, UpdateValue: "")
-        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ServerPort, UpdateValue: "")
-        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CustomerID, UpdateValue: "")
-        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.MobileID, UpdateValue: "")
-        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.WiFiSSID, UpdateValue: "")
-        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.WiFiMac, UpdateValue: "")
-        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterIP, UpdateValue: "")
-        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterPort, UpdateValue: "")
-        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.LastMessageID, UpdateValue: "0")
-        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ExKey, UpdateValue: "")
-        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CustomerName, UpdateValue: "")
-        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Register, UpdateValue: "0")
-        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Ver, UpdateValue: "1")
-    }
+
     
     
     /// Arash : Run app from the start(LanguageVC).
