@@ -100,7 +100,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	zeroAddress.sin_len = sizeof(zeroAddress);
 	zeroAddress.sin_family = AF_INET;
     
-	return [self reachabilityWithAddress:&zeroAddress];
+	return [self reachabilityWithHostName:(__bridge NSString *)(&zeroAddress)];
 }
 
 
@@ -114,7 +114,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	// IN_LINKLOCALNETNUM is defined in <netinet/in.h> as 169.254.0.0.
 	localWifiAddress.sin_addr.s_addr = htonl(IN_LINKLOCALNETNUM);
 
-	Reachability* returnValue = [self reachabilityWithAddress: &localWifiAddress];
+	Reachability* returnValue = [self reachabilityWithHostName: (__bridge NSString *)(&localWifiAddress)];
 	if (returnValue != NULL)
 	{
 		returnValue->_alwaysReturnLocalWiFiStatus = YES;
