@@ -10,6 +10,7 @@ import UIKit
 
 class ScenarioDetailCell: UICollectionViewCell {
     
+    @IBOutlet weak var webView: UIWebView!
     
     
 }

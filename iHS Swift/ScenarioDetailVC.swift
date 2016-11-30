@@ -15,6 +15,19 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
     @IBOutlet weak var viewCollection: UIView!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var topBarScenario: TopBarScenario!
+    
+    
+    
+    /// Arash: Selected scenario ID.
+    var scenarioID:Int = -1
+    
+    /// Arash: reload the collectionview.
+    var scenarioModel = ScenarioModel() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
@@ -23,7 +36,22 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellScenarioDetail", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellScenarioDetail", forIndexPath: indexPath) as! ScenarioDetailCell
+        
+        // Arash: Set description, condition and result webViews.
+        switch indexPath.row {
+        case 0 :
+            cell.webView.loadHTMLString(scenarioModel.description, baseURL: nil)
+            break
+        case 1 :
+            cell.webView.loadHTMLString(scenarioModel.condition, baseURL: nil)
+            break
+        case 2 :
+            cell.webView.loadHTMLString(scenarioModel.result, baseURL: nil)
+            break
+        default: break
+        }
+        
         cell.tag = indexPath.row
         return cell
         
@@ -56,7 +84,19 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateView), name: SCENARIO_UPDATE_VIEW, object: nil)
+        topBarScenario.context = self
         
+    }
+    
+    /// Arash: Observer for Sectoins updated.(collectionview updated.)
+    @objc private func updateView(notification : NSNotification) {
+        fetchAndRefresh()
+    }
+    
+    /// Arash: Fetch all data and refresh view.
+    private func fetchAndRefresh() {
+        scenarioModel = DBManager.getScenario(ScenarioID: scenarioID)!
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -65,6 +105,7 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
         btnDescription.setTitle(headerTitles[0], forState: .Normal)
         btnConditions.setTitle(headerTitles[1], forState: .Normal)
         btnResults.setTitle(headerTitles[2], forState: .Normal)
+        fetchAndRefresh()
     }
     
     
@@ -82,7 +123,7 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
         viewCollection.layer.mask = maskLayer
     }
     
-    
+    /// Arash: Description button clicked. (switch to Description)
     @IBAction func selectorDescription(sender: UIButton) {
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .None, animated: false)
@@ -90,13 +131,14 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
         
     }
     
+    /// Arash: Conditions button clicked. (switch to Conditions)
     @IBAction func selectorConditions(sender: UIButton) {
         let indexPath = NSIndexPath(forRow: 1, inSection: 0)
         collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .None, animated: false)
         setImageConditions()
     }
     
-    
+    /// Arash: Results button clicked. (switch to Results)
     @IBAction func selectorResults(sender: UIButton) {
         let indexPath = NSIndexPath(forRow: 2, inSection: 0)
         collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .None, animated: false)
@@ -104,7 +146,7 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
         
     }
     
-    /// Arash: Set header images when description selected scrolled to..
+    /// Arash: Set header images when description selected scrolled to.
     private func setImageDescription() {
         btnDescription.setBackgroundImage(UIImage(named: "ScenarioHeader2"), forState: .Normal)
         btnResults.setBackgroundImage(UIImage(named: "ScenarioHeader1"), forState: .Normal)

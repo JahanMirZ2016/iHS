@@ -18,7 +18,7 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
     @IBOutlet weak var collectionView: UICollectionView!
     
     
-    /// reload the collectionview.
+    /// Arash: reload the collectionview.
     var nodeArray = [NodeModel]() {
         didSet {
             collectionView.reloadData()
@@ -55,13 +55,19 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchAndRefresh()
     }
     
-    ///Arash : Update collectionview
-    private func updateView(notification : NSNotification) {
+    
+    /// Arash: Observer for Sectoins updated.(collectionview updated.)
+    @objc private func updateView(notification : NSNotification) {
+        fetchAndRefresh()
+    }
+    
+    /// Arash: Fetch all data and refresh view
+    private func fetchAndRefresh() {
         nodeArray = DBManager.getAllFavorites()!
     }
     

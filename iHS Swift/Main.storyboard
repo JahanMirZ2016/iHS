@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zSE-GM-PFz">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zSE-GM-PFz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -64,7 +64,7 @@
         <!--Scenario DetailVC-->
         <scene sceneID="rYJ-rq-a5E">
             <objects>
-                <viewController id="30p-rV-Fhc" customClass="ScenarioDetailVC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scenarioDetailVC" id="30p-rV-Fhc" customClass="ScenarioDetailVC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xoa-9H-1R1"/>
                         <viewControllerLayoutGuide type="bottom" id="Ao6-fp-ZeB"/>
@@ -123,7 +123,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ScenarioDetailCell" id="Lp8-RG-EIs">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ScenarioDetailCell" id="Lp8-RG-EIs" customClass="ScenarioDetailCell" customModule="iHS_Swift" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="27" width="306" height="401"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -143,6 +143,9 @@
                                                     <constraint firstItem="b92-wW-9Kp" firstAttribute="trailing" secondItem="Lp8-RG-EIs" secondAttribute="trailingMargin" id="txc-cm-2q7"/>
                                                     <constraint firstItem="b92-wW-9Kp" firstAttribute="bottom" secondItem="Lp8-RG-EIs" secondAttribute="bottomMargin" id="z4l-r7-NYh"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outlet property="webView" destination="b92-wW-9Kp" id="abI-3g-ZHf"/>
+                                                </connections>
                                             </collectionViewCell>
                                         </cells>
                                         <connections>
@@ -204,6 +207,7 @@
                         <outlet property="btnDescription" destination="WnM-fo-88G" id="45B-68-Oky"/>
                         <outlet property="btnResults" destination="Xvn-AE-EWY" id="WFn-el-DQU"/>
                         <outlet property="collectionView" destination="MjR-Nt-2Jb" id="9Et-us-2fd"/>
+                        <outlet property="topBarScenario" destination="zCg-fy-doo" id="LDS-6c-tod"/>
                         <outlet property="viewCollection" destination="jdZ-bV-b9E" id="Z2A-ra-1IY"/>
                     </connections>
                 </viewController>

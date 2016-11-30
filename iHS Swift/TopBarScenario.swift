@@ -16,6 +16,8 @@ import UIKit
     @IBOutlet weak var btnRun: UIButton!
     @IBOutlet weak var btnOnOff: UIButton!
     
+    var context:ScenarioDetailVC?
+    
     var btnBackImage:UIImage? {
         get {
             return nil
@@ -75,6 +77,7 @@ import UIKit
     @IBAction func selectorRun(sender: UIButton) {
     }
     @IBAction func selectorBack(sender: UIButton) {
+        context?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     

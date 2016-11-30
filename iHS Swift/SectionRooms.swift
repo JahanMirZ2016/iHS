@@ -14,8 +14,8 @@ class SectionRooms: UIView {
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var imgSection: UIImageView!
     @IBOutlet weak var outletArrow: UIButton!
-
-
+    
+    
     var sectionID = -1
     var context : DevicesVC!
     
@@ -53,10 +53,10 @@ class SectionRooms: UIView {
     /// Arash : tap gesture recognizer for each tableview header.
     @IBAction func tappinSelector(sender: UITapGestureRecognizer) {
         context.tableView.beginUpdates()
-        context.sectionArrayy[sectionID].collapsed = !context.sectionArrayy[sectionID].collapsed
+        context.sectionArray![sectionID].collapsed = !context.sectionArray![sectionID].collapsed
         context.tableView.reloadSections(NSIndexSet(index: sectionID), withRowAnimation: .Fade)
         context.tableView.endUpdates()
-
+        
     }
     
     func createNib() {

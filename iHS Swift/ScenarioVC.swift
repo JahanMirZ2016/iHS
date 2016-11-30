@@ -16,6 +16,7 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
     
     @IBOutlet weak var tableView: UITableView!
     
+    
     /// Arash: reload the tableview.
     var scenarioArray = [ScenarioModel]() {
         didSet {
@@ -25,7 +26,7 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 5
+        return scenarioArray.count
     }
     
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -39,7 +40,10 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewControllerWithIdentifier("scenarioDetailVC") as! ScenarioDetailVC
+        vc.scenarioID = scenarioArray[indexPath.row].id
+        presentViewController(vc, animated: true, completion: nil)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
