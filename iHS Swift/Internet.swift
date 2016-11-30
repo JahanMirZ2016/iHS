@@ -53,11 +53,18 @@ class Internet {
                 }
                 
                 appDel.socket = nil
+                
+                let state = ActionBarState.noInternetConnection
+                NSNotificationCenter.defaultCenter().postNotificationName(ACTIONBAR_UPDATE_VIEW, object: state as? AnyObject)
             }
         } else if netStatus == Reachability.NetworkStatus.ReachableViaWiFi {
             // BinMan1 : Check that wifi is the center wifi and we are in the local network
             let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
             guard isConnectToLocalWifi() else {
+                
+                let state = ActionBarState.globalConnection
+                NSNotificationCenter.defaultCenter().postNotificationName(ACTIONBAR_UPDATE_VIEW, object: state as? AnyObject)
+                
                 // BinMan1 : socket should connect to server socket
                 let serverIP = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.ServerIP)!
                 let serverPort = Int(DBManager.getValueOfSettingsDB(Type: TypeOfSettings.ServerPort)!)!
@@ -86,6 +93,9 @@ class Internet {
                 
                 return
             }
+            
+            let state = ActionBarState.localConnection
+            NSNotificationCenter.defaultCenter().postNotificationName(ACTIONBAR_UPDATE_VIEW, object: state as? AnyObject)
             
             // BinMan1 : socket should connect to local socket connection
             let centerIP = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.CenterIP)!

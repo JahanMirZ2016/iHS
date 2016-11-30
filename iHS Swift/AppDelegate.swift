@@ -17,6 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
     var socket : SocketManager!
     var network : Internet!
     
+    /// BinMan1 : Action Bar Property
+    var actionBar : TopBar? {
+        set {
+            actionBarView = newValue!
+        }
+        
+        get {
+            return actionBarView
+        }
+    }
+    
+    private var actionBarView = TopBar()
+    
     /// BinMan1 : Choose the init view controller
     private func chooseVC () {
         if DBManager.getValueOfSettingsDB(Type: TypeOfSettings.Register) == "0" {
@@ -25,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
             window?.rootViewController = vc
             return
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateActionBar(_:)), name: ACTIONBAR_UPDATE_VIEW, object: nil)
         
         self.startCheckingInternet()
         let story = UIStoryboard(name: "Main", bundle: nil)
@@ -98,6 +113,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
             DataManager.JSONAnalyzer(rData)
             Printer("khkhkhkh : \(rData)")
             
+        }
+    }
+    
+    
+    /// BinMan1 : ActionBar Update View Observer
+    @objc private func updateActionBar(notification : NSNotification) {
+        let state = notification.object as! ActionBarState
+        switch state {
+        case .notify:
+            actionBar!.messageCount = "\(DBManager.getAllNotSeenNotifies()!.count)"
+            break
+        case .noInternetConnection:
+            actionBar!.connectionImage = UIImage(named: "icon_main_connection_status_disconnected")
+            break
+        case .localConnection:
+            actionBar!.connectionImage = UIImage(named: "icon_main_connection_status_local")
+            break
+        case .globalConnection:
+            actionBar!.connectionImage = UIImage(named: "icon_main_connection_status_server")
+            break
+        default:
+            break
         }
     }
 }

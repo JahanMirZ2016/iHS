@@ -87,7 +87,6 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         self.tableView.backgroundColor = UIColor.clearColor()
 
         // BinMan1 : Notificatoins comming
-        fetchAndRefresh()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateView(_:)), name: SECTION_UPDATE_VIEW, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateView(_:)), name: ROOM_UPDATE_VIEW, object: nil)
     }
@@ -95,11 +94,9 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     /// Arash : Reloaddata for different view allignments.
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        for section in sectionArray! {
-            section.collapsed = false
-        }
-        // Arash : baad az set kardan e db va araye asli pak shavad.
-        tableView.reloadData()
+        
+        // BinMan1 : Update View for first Time after loaded this view controller
+        fetchAndRefresh()
     }
     
     /// Arash : Set sectionroom click .

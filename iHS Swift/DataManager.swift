@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /*
  Arash : Class For managing JSON and inserting to database.
@@ -17,13 +18,20 @@ class DataManager {
     
     /// Arash : func for analyze and parse jsonObject for saving in database and later use.
     private class func JSONObjectAnalyzer(JsonDic jsonDic: NSDictionary) {
-
-            sectionJSON(jsonDic["Sections"] as! NSArray)
-            roomJSON(jsonDic["Rooms"] as! NSArray)
-            nodeJSON(jsonDic["Nodes"] as! NSArray)
-            switchJSON(jsonDic["Switches"] as! NSArray)
-            scenarioJSON(jsonDic["Scenarios"] as! NSArray)
-            settingJSON(jsonDic["Setting"] as! NSArray)
+        
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+       
+        if appDel.socket.close() {
+            appDel.socket = SocketManager()
+            appDel.startCheckingInternet()
+        }
+        
+        sectionJSON(jsonDic["Sections"] as! NSArray)
+        roomJSON(jsonDic["Rooms"] as! NSArray)
+        nodeJSON(jsonDic["Nodes"] as! NSArray)
+        switchJSON(jsonDic["Switches"] as! NSArray)
+        scenarioJSON(jsonDic["Scenarios"] as! NSArray)
+        settingJSON(jsonDic["Setting"] as! NSArray)
         
     }
     
@@ -146,7 +154,7 @@ class DataManager {
         
         for object in jsonArray {
             
-//            let messageID = String(object["MessageID"] as! Int)
+            //            let messageID = String(object["MessageID"] as! Int)
             let type = object["Type"] as! String
             let action = object["Action"] as! String
             switch type {
@@ -315,7 +323,7 @@ class DataManager {
                     
                     /// callNotification
                     
-                    NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_UPDATE_VIEW, object: nil)
+                    NSNotificationCenter.defaultCenter().postNotificationName(ACTIONBAR_UPDATE_VIEW, object: ActionBarState.notify as? AnyObject)
                 }
                 break
             ///RecieveType.SyncData
