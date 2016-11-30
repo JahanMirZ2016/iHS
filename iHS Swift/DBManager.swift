@@ -277,7 +277,32 @@ class DBManager {
             return nil
         }
     }
-    
+
+    /// BinMan1 : Get All Notifies that not seen From Node table
+    class func getAllNotSeenNotifies() -> [NotifyModel]? {
+        let db = GetDBFromPath()
+        db!.open()
+        
+        do {
+            let query = "SELECT * FROM Notify WHERE Seen = ?"
+            let result = try db!.executeQuery(query, values: [0])
+            var models = [NotifyModel]()
+            while result.next() {
+                let model = NotifyModel()
+                model.id = Int(result.intForColumn("ID"))
+                model.notifyTitle = result.stringForColumn("NotifyTitle")
+                model.notifyText = result.stringForColumn("NotifyText")
+                model.seen = result.boolForColumn("Seen")
+                models.append(model)
+            }
+            db!.close()
+            return models
+        } catch let err as NSError {
+            Printer("DBManager get All nodes error : \(err.debugDescription)")
+            db!.close()
+            return nil
+        }
+    }
     
     /// BinMan1 : Delete specific record from Notify table
     class func deleteNotify(NotifyID  id : Int) -> Bool {

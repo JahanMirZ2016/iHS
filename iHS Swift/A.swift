@@ -19,14 +19,22 @@ let HEIGHTPHONE = UIScreen.mainScreen().bounds.height
 /// Width of Phone screan
 let WIDTHPHONE = UIScreen.mainScreen().bounds.width
 
-
 /// BinMan1 : Notifcation names for update views
 let SCENARIO_UPDATE_VIEW = "scenarioUpdateView"
 let ROOM_UPDATE_VIEW = "roomUpdateView"
 let NODE_UPDATE_VIEW = "nodeUpdateView"
 let SECTION_UPDATE_VIEW = "sectionUpdateView"
 let SWITCH_UPDATE_VIEW = "switchUpdateView"
-let NOTIFY_UPDATE_VIEW = "notifyUpdateView"
+let ACTIONBAR_UPDATE_VIEW = "notifyUpdateView"
+
+
+/// BinMan1 : enumaration for control the state of actionbar View
+enum ActionBarState {
+    case notify
+    case noInternetConnection
+    case localConnection
+    case globalConnection
+}
 
 /// Name of DB
 let DBNAME = "IHS15.sqlite"

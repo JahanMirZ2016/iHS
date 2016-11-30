@@ -64,10 +64,14 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.backgroundColor = UIColor.clearColor()
         
-        fetchAndRefresh()
-        
         // BinMan1 : Notifcation observer for update view
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateView(_:)), name: SCENARIO_UPDATE_VIEW, object: nil)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // BinMan1 : Update View for first Time after loaded this view controller
+        fetchAndRefresh()
     }
 
     override func didReceiveMemoryWarning() {
