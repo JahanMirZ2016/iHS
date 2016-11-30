@@ -147,6 +147,34 @@ class DBManager {
         }
     }
     
+    /// BinMan1 : Get All Favorite Nodes From Node table
+    class func getAllFavorites() -> [NodeModel]? {
+        let db = GetDBFromPath()
+        db!.open()
+        
+        do {
+            let query = "SELECT * FROM Node WHERE IsBookmark = ?"
+            let result = try db!.executeQuery(query, values: [1])
+            var models = [NodeModel]()
+            while result.next() {
+                let model = NodeModel()
+                model.id = Int(result.intForColumn("ID"))
+                model.name = result.stringForColumn("Name")
+                model.icon = result.stringForColumn("Icon")
+                model.nodeType = Int(result.intForColumn("NodeType"))
+                model.isBookmark = result.boolForColumn("IsBookmark")
+                model.roomID = Int(result.intForColumn("RoomID"))
+                model.status = Int(result.intForColumn("Status"))
+                models.append(model)
+            }
+            db!.close()
+            return models
+        } catch let err as NSError {
+            Printer("DBManager get All nodes error : \(err.debugDescription)")
+            db!.close()
+            return nil
+        }
+    }
     
     /// BinMan1 : Delete specific record from Node table
     class func deleteNode(NodeID  id : Int) -> Bool {

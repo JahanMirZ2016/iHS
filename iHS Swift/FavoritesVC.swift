@@ -37,6 +37,8 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellFavorites", forIndexPath: indexPath) as! CellFavorites
+        cell.image = nodeArray[indexPath.item].icon
+        
         return cell
         
     }
@@ -49,14 +51,18 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
-        
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateView), name: NODE_UPDATE_VIEW, object: nil)
         
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    ///Arash : Update collectionview
+    private func updateView(notification : NSNotification) {
+        nodeArray = DBManager.getAllFavorites()!
     }
     
     

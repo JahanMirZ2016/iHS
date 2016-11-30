@@ -123,25 +123,25 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellScenarioDetail" id="Lp8-RG-EIs">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ScenarioDetailCell" id="Lp8-RG-EIs">
                                                 <rect key="frame" x="0.0" y="27" width="306" height="401"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="306" height="401"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6b-Qp-wid">
-                                                            <rect key="frame" x="132" y="190" width="42" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b92-wW-9Kp">
+                                                            <rect key="frame" x="8" y="8" width="290" height="385"/>
+                                                            <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </webView>
                                                     </subviews>
                                                 </view>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="Y6b-Qp-wid" firstAttribute="centerX" secondItem="Lp8-RG-EIs" secondAttribute="centerX" id="4rL-X0-6Bu"/>
-                                                    <constraint firstItem="Y6b-Qp-wid" firstAttribute="centerY" secondItem="Lp8-RG-EIs" secondAttribute="centerY" id="V8Y-Ad-YWg"/>
+                                                    <constraint firstItem="b92-wW-9Kp" firstAttribute="leading" secondItem="Lp8-RG-EIs" secondAttribute="leadingMargin" id="I3J-gj-ZOt"/>
+                                                    <constraint firstItem="b92-wW-9Kp" firstAttribute="top" secondItem="Lp8-RG-EIs" secondAttribute="topMargin" id="Tji-ft-XGH"/>
+                                                    <constraint firstItem="b92-wW-9Kp" firstAttribute="trailing" secondItem="Lp8-RG-EIs" secondAttribute="trailingMargin" id="txc-cm-2q7"/>
+                                                    <constraint firstItem="b92-wW-9Kp" firstAttribute="bottom" secondItem="Lp8-RG-EIs" secondAttribute="bottomMargin" id="z4l-r7-NYh"/>
                                                 </constraints>
                                             </collectionViewCell>
                                         </cells>

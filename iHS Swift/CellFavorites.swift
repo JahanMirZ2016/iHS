@@ -18,9 +18,9 @@ import UIKit
     @IBOutlet weak var imgCell: UIImageView!
     @IBOutlet weak var labelCell: UILabel!
     
-    var image:UIImage? {
+    var image:String? {
         set {
-            imgCell.image = newValue
+            imgCell.image = UIImage(named: newValue!)
         }
         get {
             return nil
