@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
             endingLineNumber = "23"
-            landmarkName = "JSONAnalyzer(JsonString:)"
+            landmarkName = "JSONObjectAnalyzer(JsonDic:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

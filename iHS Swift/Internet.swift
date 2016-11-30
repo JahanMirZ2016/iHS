@@ -23,11 +23,14 @@ class Internet {
     }
     
     private func checking() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.reachabilityChanged(_:)), name: kReachabilityChangedNotification, object: nil)
-        
-        self.network = Reachability.reachabilityForInternetConnection()
-        self.network.startNotifier()
-        self.updateInterfaceWithReachability(network)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.reachabilityChanged(_:)), name: ReachabilityChangedNotification, object: nil)
+        do {
+            self.network = try Reachability(hostname: "https://www.google.com")
+            try self.network.startNotifier()
+            self.updateInterfaceWithReachability(network)
+        } catch let err as NSError {
+            Printer("reachability error : \(err.debugDescription)")
+        }
     }
     
     
@@ -37,9 +40,9 @@ class Internet {
     }
     
     private func updateInterfaceWithReachability(reachability : Reachability) {
-        let netStatus = reachability.currentReachabilityStatus()
+        let netStatus = reachability.currentReachabilityStatus
         
-        if netStatus == NotReachable {
+        if netStatus == Reachability.NetworkStatus.NotReachable {
             let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
             
             // BinMan1 : in this case, because of have any internet connection socket should close
@@ -51,7 +54,7 @@ class Internet {
                 
                 appDel.socket = nil
             }
-        } else if netStatus == ReachableViaWiFi {
+        } else if netStatus == Reachability.NetworkStatus.ReachableViaWiFi {
             // BinMan1 : Check that wifi is the center wifi and we are in the local network
             let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
             guard isConnectToLocalWifi() else {
@@ -165,7 +168,7 @@ class Internet {
                 let rec = unsafeBitCast(interfaceName, AnyObject.self)
                 let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)")
                 if unsafeInterfaceData != nil {
-                    let interfaceData = unsafeInterfaceData! as Dictionary!
+                    let interfaceData = unsafeInterfaceData as! NSDictionary
                     currentSSID = interfaceData["SSID"] as! String
                     currentBSSID = interfaceData["BSSID"] as! String
                 }
