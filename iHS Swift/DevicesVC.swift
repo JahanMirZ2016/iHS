@@ -17,21 +17,17 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     
     @IBOutlet weak var tableView: UITableView!
     
-    /// reload the tableview.
-    var sectionArray = [SectionModel]() {
+    var sectionArray : [SectionModel]? {
         didSet {
             tableView.reloadData()
         }
     }
     
     var section1 = SectionModel()
-    var sectionArrayy = [SectionModel() , SectionModel() , SectionModel() , SectionModel() , SectionModel()]
-    
-    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return sectionArrayy[section].collapsed ? 5 : 0
+        return sectionArray![section].collapsed ? 5 : 0
     }
     
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -49,7 +45,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     
     
     internal func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return sectionArrayy.count
+        return sectionArray!.count
     }
     
     
@@ -89,19 +85,17 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.backgroundColor = UIColor.clearColor()
-        
-        
-        section1 = SectionModel()
-        section1.collapsed = false
-        sectionArrayy.append(section1)
-        
-        // Do any additional setup after loading the view.
+
+        // BinMan1 : Notificatoins comming
+        fetchAndRefresh()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateView(_:)), name: SECTION_UPDATE_VIEW, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateView(_:)), name: ROOM_UPDATE_VIEW, object: nil)
     }
     
     /// Arash : Reloaddata for different view allignments.
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        for section in sectionArrayy {
+        for section in sectionArray! {
             section.collapsed = false
         }
         // Arash : baad az set kardan e db va araye asli pak shavad.
@@ -112,7 +106,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     func sectionRoomClick(sectionRooms : SectionRooms , viewForHeaderInSection section: Int) {
         sectionRooms.sectionID = section
         sectionRooms.context = self
-        switch sectionArrayy[section].collapsed {
+        switch sectionArray![section].collapsed {
         case true :
             sectionRooms.outletArrow.setImage(UIImage(named: "lay_expandablelist_parrent_arrow_open"), forState: .Normal)
         case false :
@@ -124,7 +118,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     func sectionRoomLeftAllignmentClick(sectionRooms : SectionRoomsLeftAllignment , viewForHeaderInSection section: Int) {
         sectionRooms.sectionID = section
         sectionRooms.context = self
-        switch sectionArrayy[section].collapsed {
+        switch sectionArray![section].collapsed {
         case true :
             sectionRooms.outletArrow.setImage(UIImage(named: "lay_expandablelist_parrent_arrow_open"), forState: .Normal)
         case false :
@@ -133,5 +127,20 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         
     }
     
+    
+    /// BinMan1 : Fetch all data and refresh view
+    private func fetchAndRefresh() {
+        let sections = DBManager.getAllSections()
+        
+        for section in sections! {
+            section.cells = DBManager.getAllRoomsById(SectionID: section.id)!
+        }
+        
+        sectionArray = sections!
+    }
 
+    /// BinMan1 : Observer for Sectoins updated 
+    @objc private func updateView(notification : NSNotification) {
+        fetchAndRefresh()
+    }
 }

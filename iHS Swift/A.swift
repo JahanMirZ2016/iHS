@@ -20,6 +20,14 @@ let HEIGHTPHONE = UIScreen.mainScreen().bounds.height
 let WIDTHPHONE = UIScreen.mainScreen().bounds.width
 
 
+/// BinMan1 : Notifcation names for update views
+let SCENARIO_UPDATE_VIEW = "scenarioUpdateView"
+let ROOM_UPDATE_VIEW = "roomUpdateView"
+let NODE_UPDATE_VIEW = "nodeUpdateView"
+let SECTION_UPDATE_VIEW = "sectionUpdateView"
+let SWITCH_UPDATE_VIEW = "switchUpdateView"
+let NOTIFY_UPDATE_VIEW = "notifyUpdateView"
+
 /// Name of DB
 let DBNAME = "IHS15.sqlite"
 

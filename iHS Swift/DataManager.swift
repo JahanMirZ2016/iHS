@@ -146,7 +146,7 @@ class DataManager {
         
         for object in jsonArray {
             
-            let messageID = String(object["MessageID"] as! Int)
+//            let messageID = String(object["MessageID"] as! Int)
             let type = object["Type"] as! String
             let action = object["Action"] as! String
             switch type {
@@ -175,6 +175,8 @@ class DataManager {
                         break
                     default: break
                     }
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(SCENARIO_UPDATE_VIEW, object: nil)
                 }
                 break
             /// RecieveType.SwitchStatus
@@ -186,6 +188,8 @@ class DataManager {
                     let value = dic["Value"] as! Float
                     DBManager.updateSwitchStatus(id, value: value)
                     //
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(SWITCH_UPDATE_VIEW, object: nil)
                 }
                 break
             /// RecieveType.ScenarioStatus
@@ -200,6 +204,8 @@ class DataManager {
                     }else {
                         DBManager.startScenario(id, active: active)
                     }
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(SCENARIO_UPDATE_VIEW, object: nil)
                 }
                 break
             /// RecieveType.Setting
@@ -231,6 +237,8 @@ class DataManager {
                     }else if action == RecieveAction.Update {
                         DBManager.updateSwitch(switchModel)
                     }
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(SWITCH_UPDATE_VIEW, object: nil)
                 }
                 break
             ///RecieveType.SwitchData
@@ -251,6 +259,8 @@ class DataManager {
                     }  else if action == RecieveAction.Update {
                         DBManager.updateNode(nodeModel)
                     }
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(NODE_UPDATE_VIEW, object: nil)
                 }
                 break
             ///RecieveType.SectionData
@@ -269,6 +279,7 @@ class DataManager {
                     }else if action == RecieveAction.Update {
                         DBManager.updateSection(sectionModel)
                     }
+                    NSNotificationCenter.defaultCenter().postNotificationName(SECTION_UPDATE_VIEW, object: nil)
                 }
                 break
             ///RecieveType.RoomData
@@ -288,6 +299,7 @@ class DataManager {
                     }else if action == RecieveAction.Update {
                         DBManager.updateRoom(roomModel)
                     }
+                    NSNotificationCenter.defaultCenter().postNotificationName(ROOM_UPDATE_VIEW, object: nil)
                 }
                 break
             ///RecieveType.Notify
@@ -302,6 +314,8 @@ class DataManager {
                     /// master.setNotify
                     
                     /// callNotification
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_UPDATE_VIEW, object: nil)
                 }
                 break
             ///RecieveType.SyncData
