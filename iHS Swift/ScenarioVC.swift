@@ -20,7 +20,6 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
     var scenarioArray = [ScenarioModel]() {
         didSet {
             tableView.reloadData()
-            
         }
     }
     
@@ -60,6 +59,11 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.backgroundColor = UIColor.clearColor()
+        
+        fetchAndRefresh()
+        
+        // BinMan1 : Notifcation observer for update view
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateView(_:)), name: SCENARIO_UPDATE_VIEW, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,5 +72,13 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
     }
     
 
-
+    /// BinMan1 : fetch data from db and refresh view
+    private func fetchAndRefresh() {
+        scenarioArray = DBManager.getAllScenarios()!
+    }
+    
+    /// BinMan1 : observer for update scenario
+    @objc private func updateView(notification : NSNotification ) {
+        fetchAndRefresh()
+    }
 }

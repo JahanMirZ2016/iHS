@@ -654,13 +654,13 @@ class DBManager {
     
     
     /// BinMan1 : Get All Rooms From Room table
-    class func getAllSections() -> [RoomModel]? {
+    class func getAllRoomsById(SectionID id : Int) -> [RoomModel]? {
         let db = GetDBFromPath()
         db!.open()
         
         do {
-            let query = "SELECT * FROM Room"
-            let result = try db!.executeQuery(query, values: nil)
+            let query = "SELECT * FROM Room WHERE SectionID = ?"
+            let result = try db!.executeQuery(query, values: [id])
             var models = [RoomModel]()
             while result.next() {
                 let model = RoomModel()
