@@ -41,10 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateActionBar(_:)), name: ACTIONBAR_UPDATE_VIEW, object: nil)
         
-        self.startCheckingInternet()
         let story = UIStoryboard(name: "Main", bundle: nil)
         let vc = story.instantiateViewControllerWithIdentifier("SecondPageTBC")
         window?.rootViewController = vc
+        self.startCheckingInternet()
     }
     
     
@@ -110,8 +110,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
     /// BinMan1 : delegate function for get data and pass to datamanager
     func recieve(rData: NSString) {
         dispatch_async(dispatch_get_main_queue()) {
-            DataManager.JSONAnalyzer(rData)
             Printer("khkhkhkh : \(rData)")
+            DataManager.JSONAnalyzer(rData)
+            
             
         }
     }
@@ -119,18 +120,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
     
     /// BinMan1 : ActionBar Update View Observer
     @objc private func updateActionBar(notification : NSNotification) {
-        let state = notification.object as! ActionBarState
+        let state = notification.object as! String
         switch state {
-        case .notify:
+        case ActionBarState.notify:
             actionBar!.messageCount = "\(DBManager.getAllNotSeenNotifies()!.count)"
             break
-        case .noInternetConnection:
+        case ActionBarState.noInternetConnection:
             actionBar!.connectionImage = UIImage(named: "icon_main_connection_status_disconnected")
             break
-        case .localConnection:
+        case ActionBarState.localConnection:
             actionBar!.connectionImage = UIImage(named: "icon_main_connection_status_local")
             break
-        case .globalConnection:
+        case ActionBarState.globalConnection:
             actionBar!.connectionImage = UIImage(named: "icon_main_connection_status_server")
             break
         default:

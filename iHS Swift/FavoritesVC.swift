@@ -15,15 +15,16 @@ import UIKit
 
 class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet var collectionView: UICollectionView!
     
     
     /// Arash: reload the collectionview.
-    var nodeArray = [NodeModel]() {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+//    var nodeArray = [NodeModel]() {
+//        didSet {
+//            collectionView.reloadData()
+//        }
+//    }
+    var nodeArray = [NodeModel() , NodeModel()]
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -51,13 +52,14 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateView), name: NODE_UPDATE_VIEW, object: nil)
+        fetchAndRefresh()
         
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         fetchAndRefresh()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateView), name: NODE_UPDATE_VIEW, object: nil)
     }
     
     
@@ -69,6 +71,7 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
     /// Arash: Fetch all data and refresh view
     private func fetchAndRefresh() {
         nodeArray = DBManager.getAllFavorites()!
+        collectionView.reloadData()
     }
     
     

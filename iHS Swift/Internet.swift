@@ -11,23 +11,24 @@ import SystemConfiguration.CaptiveNetwork
 import UIKit
 import CoreLocation
 
-class Internet {
+class Internet :  NSObject ,CLLocationManagerDelegate{
     
     private var network : Reachability!
-    private var timer : NSTimer!
+    private var locationManager:CLLocationManager!
+    //    private var timer : NSTimer!
     
     
     func checkNetwork() {
-        timer = NSTimer(timeInterval: 30, target: self, selector: #selector(self.GPS), userInfo: nil, repeats: true)
+        //        timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: #selector(self.GPS), userInfo: nil, repeats: true)
         self.checking()
     }
+    
     
     private func checking() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.reachabilityChanged(_:)), name: ReachabilityChangedNotification, object: nil)
         do {
             self.network = try Reachability(hostname: "https://www.google.com")
             try self.network.startNotifier()
-            self.updateInterfaceWithReachability(network)
         } catch let err as NSError {
             Printer("reachability error : \(err.debugDescription)")
         }
@@ -50,6 +51,7 @@ class Internet {
                 if appDel.socket.state == .connectToServer || appDel.socket.state == .connectToLocal {
                     appDel.socket.close()
                     timer.invalidate()
+                    
                 }
                 
                 appDel.socket = nil
@@ -107,8 +109,10 @@ class Internet {
             
             if appDel.socket.state == .none || appDel.socket.state == .disconnect {
                 if appDel.socket.open(IP: centerIP, Port: centerPort) {
-                    timer.fire()
+                    //                    timer.fire()
                     appDel.socket.state = .connectToLocal
+                    SendCustomerId()
+                    Sync()
                     return
                 }
             }
@@ -119,6 +123,8 @@ class Internet {
                     if appDel.socket.open(IP: centerIP, Port: centerPort) {
                         timer.fire()
                         appDel.socket.state = .connectToLocal
+                        SendCustomerId()
+                        Sync()
                         return
                     }
                 }
@@ -172,15 +178,12 @@ class Internet {
     private func fetchSSIDAndBSSIDInfo() -> (String , String) {
         var currentSSID = ""
         var currentBSSID = ""
-        if let interfaces = CNCopySupportedInterfaces() {
-            for i in 0..<CFArrayGetCount(interfaces) {
-                let interfaceName: UnsafePointer<Void> = CFArrayGetValueAtIndex(interfaces, i)
-                let rec = unsafeBitCast(interfaceName, AnyObject.self)
-                let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)")
-                if unsafeInterfaceData != nil {
-                    let interfaceData = unsafeInterfaceData as! NSDictionary
-                    currentSSID = interfaceData["SSID"] as! String
-                    currentBSSID = interfaceData["BSSID"] as! String
+        
+        if let interfaces = CNCopySupportedInterfaces() as NSArray? {
+            for interface in interfaces {
+                if let interfaceInfo = CNCopyCurrentNetworkInfo(interface as! CFString) as NSDictionary? {
+                    currentSSID = (interfaceInfo[kCNNetworkInfoKeySSID as String] as? String)!
+                    currentBSSID = (interfaceInfo[kCNNetworkInfoKeyBSSID as String] as? String)!
                 }
             }
         }
@@ -190,21 +193,32 @@ class Internet {
     /// Arash: Send location data.
     @objc func GPS() {
         locationManager = CLLocationManager()
+        locationManager?.delegate = self
         locationManager!.distanceFilter = kCLDistanceFilterNone // whenever we move
         locationManager!.desiredAccuracy = kCLLocationAccuracyHundredMeters // 100 m
         locationManager!.requestAlwaysAuthorization()
         locationManager!.startUpdatingLocation()
         
+        
+    }
+    
+    
+    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let location = locations.last
+        let lang = location?.coordinate.longitude
+        let lat = location?.coordinate.latitude
+        
         let mobileID = DBManager.getValueOfSettingsDB(Type: "MobileID")
         var array = Array<NSDictionary>()
-        let dic:NSDictionary = ["MobileID" : mobileID! , "Latitude" : String(locationManager!.location!.coordinate.latitude) , "Longitude" : String(locationManager!.location!.coordinate.longitude)]
+        let dic:NSDictionary = ["MobileID" : mobileID! , "Latitude" : String(lat) , "Longitude" : String(lang)]
         array.append(dic)
         let dic2:NSDictionary = ["GPSAnnounce" : array , "MessageID" : "0" , "RecieverID" : mobileID! , "Type" : "GPSAnnounce" , "Action" : "Update" , "Date" : "2015-01-01 12:00:00"]
         var array2 = Array<NSDictionary>()
         array2.append(dic2)
         let jsonData = JsonMaker.arrayToJson(array2)
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-    
+        
         appDel.socket.send(jsonData)
     }
 }

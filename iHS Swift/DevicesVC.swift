@@ -23,7 +23,6 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         }
     }
     
-    var section1 = SectionModel()
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -85,6 +84,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.backgroundColor = UIColor.clearColor()
+        fetchAndRefresh()
 
         // BinMan1 : Notificatoins comming
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateView(_:)), name: SECTION_UPDATE_VIEW, object: nil)
@@ -93,7 +93,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     
     /// Arash : Reloaddata for different view allignments.
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         
         // BinMan1 : Update View for first Time after loaded this view controller
         fetchAndRefresh()

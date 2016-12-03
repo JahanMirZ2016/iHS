@@ -19,12 +19,6 @@ class DataManager {
     /// Arash : func for analyze and parse jsonObject for saving in database and later use.
     private class func JSONObjectAnalyzer(JsonDic jsonDic: NSDictionary) {
         
-        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-       
-        if appDel.socket.close() {
-            appDel.socket = SocketManager()
-            appDel.startCheckingInternet()
-        }
         
         sectionJSON(jsonDic["Sections"] as! NSArray)
         roomJSON(jsonDic["Rooms"] as! NSArray)
@@ -32,6 +26,15 @@ class DataManager {
         switchJSON(jsonDic["Switches"] as! NSArray)
         scenarioJSON(jsonDic["Scenarios"] as! NSArray)
         settingJSON(jsonDic["Setting"] as! NSArray)
+        
+        DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Register, UpdateValue: "1")
+        
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        if appDel.socket.close() {
+            appDel.socket = SocketManager()
+            appDel.startCheckingInternet()
+        }
         
     }
     
@@ -68,7 +71,7 @@ class DataManager {
             nodeModel.name = (object as! NSDictionary)["Name"] as! String
             nodeModel.icon = (object as! NSDictionary)["Icon"] as! String
             nodeModel.id = (object as! NSDictionary)["ID"] as! Int
-            nodeModel.isBookmark = (object as! NSDictionary)["IsBookmark"] as! Bool
+//            nodeModel.isBookmark = (object as! NSDictionary)["IsBookmark"] as! Bool
             nodeModel.nodeType = (object as! NSDictionary)["NodeType"] as! Int
             nodeModel.roomID = (object as! NSDictionary)["RoomID"] as! Int
             nodeModel.status = (object as! NSDictionary)["Status"] as! Int
@@ -82,7 +85,7 @@ class DataManager {
         for object in json {
             let switchModel = SwitchModel()
             switchModel.id = (object as! NSDictionary)["ID"] as! Int
-            switchModel.code = (object as! NSDictionary)["Code"] as! Int
+            switchModel.code = Int((object as! NSDictionary)["Code"] as! String)!
             switchModel.nodeID = (object as! NSDictionary)["NodeID"] as! Int
             switchModel.value = (object as! NSDictionary)["Value"] as! Double
             switchModel.name = (object as! NSDictionary)["Name"] as! String
@@ -346,12 +349,17 @@ class DataManager {
     }
     
     class func JSONAnalyzer(json:NSString ) {
-        do {
-            let jsonArray =  try JSONSerializer.toArray(json as String)
-            JSONArrayAnalyzer(jsonArray as! Array<NSDictionary>)
-        } catch let error as NSError {
+        
+        if json.substringWithRange(NSRange(location: 0, length: 1)) == "[" {
             do {
+                let jsonArray =  try JSONSerializer.toArray(json as String)
+                JSONArrayAnalyzer(jsonArray as! Array<NSDictionary>)
+            } catch let error as NSError {
                 Printer("Json Array Failed : \(error.debugDescription)")
+            }
+            
+        } else if json.substringWithRange(NSRange(location: 0, length: 1)) == "{" {
+            do {
                 let jsonObject = try JSONSerializer.toDictionary(json as String)
                 JSONObjectAnalyzer(JsonDic: jsonObject)
             } catch let e as NSError {

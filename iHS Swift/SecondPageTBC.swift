@@ -12,32 +12,38 @@
  */
 
 import UIKit
+import CoreLocation
 
-class SecondPageTBC: UITabBarController {
+class SecondPageTBC: UITabBarController , CLLocationManagerDelegate {
     
+    var locationManager:CLLocationManager?
     var selectedImageArray:[String] = ["Favorite" , "Node" , "Scenario" , "Setting"]
     var unselectedImageArray:[String] = ["FavoriteA" , "NodeA" , "ScenarioA" , "SettingA"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         selectItemImage()
         setUpTabBar()
         setItemNames(DBManager.getTranslationOfSentences(SentencesID: [1 , 9 , 10 , 4]))
-//        SendCustomerId()
-        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDel.socket.open(IP: "192.168.1.13" , Port: 54127)
-        SendCustomerId()
-        let a = Sync()
-        print(a)
+        //        SendCustomerId()
+        //        Sync()
+        //        let centerIP = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.CenterIP)
+        //        let centerPort = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.CenterPort)
+        //        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        //        appDel.socket.open(IP: DBManager.getValueOfSettingsDB(Type: centerIP!)! , Port: Int(centerPort!)!)
+        //        SendCustomerId()
+        //        let a = Sync()
+        //        print(a)
+        //
         
-
-//        GPS()
-//        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-//        appDel.socket.open(IP: "192.168.1.13", Port: 54127)
-//        SendCustomerId()
-//        Sync()
-//        
+        //        GPS()
+        //        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        //        appDel.socket.open(IP: "192.168.1.13", Port: 54127)
+        //        SendCustomerId()
+        //        Sync()
+        //
         
     }
     
@@ -53,7 +59,7 @@ class SecondPageTBC: UITabBarController {
         tabFrame.size.height = 80
         tabFrame.origin.y = self.view.frame.size.height - 80
         self.tabBar.frame = tabFrame
-
+        
     }
     
     /// Arash: Set Tabbar Item Images
@@ -88,7 +94,37 @@ class SecondPageTBC: UITabBarController {
         UITabBar.appearance().backgroundImage = UIImage(named: "tab-bar-bg")
     }
     
-
+//    /// Arash: Send location data.
+//    @objc func GPS() {
+//        locationManager = CLLocationManager()
+//        locationManager?.delegate = self
+//        locationManager!.distanceFilter = kCLDistanceFilterNone // whenever we move
+//        locationManager!.desiredAccuracy = kCLLocationAccuracyHundredMeters // 100 m
+//        locationManager!.requestAlwaysAuthorization()
+//        locationManager!.startUpdatingLocation()
+//        
+//        
+//    }
+//    
+//    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        
+//        var location = locations.last
+//        var lang = location?.coordinate.longitude
+//        var lat = location?.coordinate.latitude
+//        
+//        let mobileID = DBManager.getValueOfSettingsDB(Type: "MobileID")
+//        var array = Array<NSDictionary>()
+//        let dic:NSDictionary = ["MobileID" : mobileID! , "Latitude" : String(locationManager!.location!.coordinate.latitude) , "Longitude" : String(locationManager!.location!.coordinate.longitude)]
+//        array.append(dic)
+//        let dic2:NSDictionary = ["GPSAnnounce" : array , "MessageID" : "0" , "RecieverID" : mobileID! , "Type" : "GPSAnnounce" , "Action" : "Update" , "Date" : "2015-01-01 12:00:00"]
+//        var array2 = Array<NSDictionary>()
+//        array2.append(dic2)
+//        let jsonData = JsonMaker.arrayToJson(array2)
+//        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+//        
+//        appDel.socket.send(jsonData)
+//    }
+    
     
     
 }

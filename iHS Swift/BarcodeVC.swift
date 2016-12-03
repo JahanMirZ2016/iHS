@@ -94,16 +94,17 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
                 verificationModel.Serial = serial!
                 
                 let jsonData = JSONSerializer.toJson(verificationModel).stringByAppendingString("\n")
-                Printer(jsonData)
+                Printer("JsonData \(jsonData)")
                 
-
+                
                 if appDel.socket.send(jsonData) {
                     let vc = UIStoryboard(name: "Main" , bundle: nil).instantiateViewControllerWithIdentifier("SecondPageTBC")
                     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
                     appDel.window!.rootViewController = vc
                     appDel.window!.makeKeyAndVisible()
+                    
                 }
-            
+                
             }
         } catch let err as NSError {
             Printer(err.debugDescription)

@@ -277,7 +277,7 @@ class DBManager {
             return nil
         }
     }
-
+    
     /// BinMan1 : Get All Notifies that not seen From Node table
     class func getAllNotSeenNotifies() -> [NotifyModel]? {
         let db = GetDBFromPath()
@@ -563,18 +563,29 @@ class DBManager {
     
     /// BinMan1 : Insert Switch to table
     class func insertSection(SectionModel section : SectionModel) -> Bool {
-        let db = GetDBFromPath()
-        db!.open()
-        do {
-            let query = "INSERT INTO Section (ID, Name , Icon , Sort ) VALUES (? , ? , ?, ?)"
-            try db!.executeUpdate(query, values: [section.id , section.name , section.icon , section.sort])
-            db!.close()
-            return true
-        }catch let err as NSError {
-            Printer("DBManager insert switch error : \(err.debugDescription)")
-            db!.close()
+        var duplicate = false
+        let sectionModels = getAllSections()
+        for model in sectionModels! {
+            if model.id == section.id {
+                duplicate = true
+            }
+        }
+        guard duplicate == false else {
             return false
         }
+            let db = GetDBFromPath()
+            db!.open()
+            do {
+                let query = "INSERT INTO Section (ID, Name , Icon , Sort ) VALUES (? , ? , ?, ?)"
+                try db!.executeUpdate(query, values: [section.id , section.name , section.icon , section.sort])
+                db!.close()
+                return true
+            }catch let err as NSError {
+                Printer("DBManager insert switch error : \(err.debugDescription)")
+                db!.close()
+                return false
+            }
+        
     }
     
     /// BinMan1 : Get a Section object of Sections from table
@@ -666,6 +677,18 @@ class DBManager {
     
     /// BinMan1 : Insert Room to table
     class func insertRoom(RoomModel room : RoomModel) -> Bool {
+        var duplicate = false
+        let roomModels = getAllRooms()
+        for model in roomModels! {
+            if model.id == room.id {
+                duplicate = true
+            }
+        }
+        guard duplicate == false else {
+            return false
+        }
+        
+        
         let db = GetDBFromPath()
         db!.open()
         do {
@@ -714,6 +737,33 @@ class DBManager {
         do {
             let query = "SELECT * FROM Room WHERE SectionID = ?"
             let result = try db!.executeQuery(query, values: [id])
+            var models = [RoomModel]()
+            while result.next() {
+                let model = RoomModel()
+                model.id = Int(result.intForColumn("ID"))
+                model.name = result.stringForColumn("Name")
+                model.icon = result.stringForColumn("Icon")
+                model.sort = Int(result.intForColumn("Sort"))
+                model.sort = Int(result.intForColumn("SectionID"))
+                models.append(model)
+            }
+            db!.close()
+            return models
+        } catch let err as NSError {
+            Printer("DBManager get All Section error : \(err.debugDescription)")
+            db!.close()
+            return nil
+        }
+    }
+    
+    /// Arash: Get All Rooms.
+    class func getAllRooms()-> [RoomModel]?  {
+        let db = GetDBFromPath()
+        db!.open()
+        
+        do {
+            let query = "SELECT * FROM Room "
+            let result = try db!.executeQuery(query, values: nil)
             var models = [RoomModel]()
             while result.next() {
                 let model = RoomModel()
@@ -916,11 +966,11 @@ class DBManager {
     }
     
     
-     
     
     
     
-
+    
+    
     /// Arash: Delete All
     class func deleteAll() {
         deleteAllNodes()

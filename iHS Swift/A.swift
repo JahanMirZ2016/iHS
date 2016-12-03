@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 import CoreLocation
+import SystemConfiguration.CaptiveNetwork
 
-var locationManager:CLLocationManager?
 
+var timer:NSTimer!
 
 /// Height of Phone screan
 let HEIGHTPHONE = UIScreen.mainScreen().bounds.height
@@ -27,14 +28,21 @@ let SECTION_UPDATE_VIEW = "sectionUpdateView"
 let SWITCH_UPDATE_VIEW = "switchUpdateView"
 let ACTIONBAR_UPDATE_VIEW = "notifyUpdateView"
 
-
-/// BinMan1 : enumaration for control the state of actionbar View
-enum ActionBarState {
-    case notify
-    case noInternetConnection
-    case localConnection
-    case globalConnection
+/// Arash : Struct for control the state of actionbar View
+struct ActionBarState {
+    static let notify = "notify"
+    static let noInternetConnection = "noInternetConnection"
+    static let localConnection = "localConnection"
+    static let globalConnection = "globalConnection"
 }
+
+///// BinMan1 : enumaration for control the state of actionbar View
+//enum ActionBarState {
+//    case notify
+//    case noInternetConnection
+//    case localConnection
+//    case globalConnection
+//}
 
 /// Name of DB
 let DBNAME = "IHS15.sqlite"
@@ -88,18 +96,18 @@ func SetLangIDToVar(id : Int) {
 func Sync() -> Bool {
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     // Arash : Creating SyncDataModel
-    let lastMessageID = "0"
-    let appVerCode = "1"
-    let languageID = "1"
-    let mobileID = 26
+    let lastMessageID = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.LastMessageID)
+    let appVerCode = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.Ver)
+    let languageID = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.LanguageID)
+    let mobileID = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.MobileID)
     
     var arrayMain = Array<NSDictionary>()
     var array = Array<NSDictionary>()
     
-    let dic2:NSDictionary = ["LastMessageID" : lastMessageID , "AppVerCode" : appVerCode , "LanguageID" : languageID]
+    let dic2:NSDictionary = ["LastMessageID" : lastMessageID! , "AppVerCode" : appVerCode! , "LanguageID" : languageID!]
     array.append(dic2)
     
-    let dic3:NSDictionary = ["SyncData" : array , "MessageID" : "0" , "RecieverID" : mobileID , "Type" : "SyncData" , "Action" : "Update" , "Date" : "2015-01-01 12:00:00"]
+    let dic3:NSDictionary = ["SyncData" : array , "MessageID" : "0" , "RecieverID" : mobileID! , "Type" : "SyncData" , "Action" : "Update" , "Date" : "2015-01-01 12:00:00"]
     arrayMain.append(dic3)
     
     let jsonData = JsonMaker.arrayToJson(arrayMain)
@@ -109,11 +117,10 @@ func Sync() -> Bool {
 
 /// Arash: Send customer id.
 func SendCustomerId() -> Bool {
-    let customerID = 30242
-    let mobileID = 26
-    let exKey = "BF7E00CC32AFBDBD084AC3BBE2575CA5"
-    
-    let dic:Dictionary<String , AnyObject> = ["CustomerID" : customerID , "MobileID" : mobileID , "ExKey" : exKey]
+    let customerID = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.CustomerID)
+    let mobileID = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.MobileID)
+    let exKey = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.ExKey)
+    let dic:Dictionary<String , AnyObject> = ["CustomerID" : customerID! , "MobileID" : mobileID! , "ExKey" : exKey!]
     
     var array = [Dictionary<String , AnyObject>]()
     array = [dic]
@@ -171,7 +178,7 @@ struct RecieveType {
 //        case Notify
 //        case SyncData
 //        case RefreshData
-//        
+//
 //        var description : String {
 //            switch self {
 //            // Use Internationalization, as appropriate.
@@ -186,7 +193,7 @@ struct RecieveType {
 //            case .Notify: return "Notify";
 //            case .SyncData: return "SyncData";
 //            case .RefreshData: return "RefreshData";
-//     
+//
 //            }
 //        }
 //    }
@@ -197,3 +204,23 @@ struct RecieveAction {
     static let Delete = "Delete"
     static let Update = "Update"
 }
+
+//extension UIDevice {
+//    public var SSID: String {
+//        get {
+//            let interfaces:CFArray! = CNCopySupportedInterfaces()
+//            for i in 0..<CFArrayGetCount(interfaces){
+//                let interfaceName: UnsafePointer<Void>
+//                    =  CFArrayGetValueAtIndex(interfaces, i)
+//                let rec = unsafeBitCast(interfaceName, AnyObject.self)
+//                let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)")
+//                if unsafeInterfaceData != nil {
+//                    let interfaceData = unsafeInterfaceData! as NSDictionary
+//                    let currentSSID = interfaceData["SSID"] as! String
+//
+//            }
+//        }
+//    }
+//}
+
+

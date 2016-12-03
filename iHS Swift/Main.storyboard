@@ -385,7 +385,7 @@
         <!--FavoritesVC-->
         <scene sceneID="a84-fL-gbX">
             <objects>
-                <viewController id="9ky-IP-pAe" customClass="FavoritesVC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="9ky-IP-pAe" customClass="FavoritesVC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ffF-Xk-2if"/>
                         <viewControllerLayoutGuide type="bottom" id="UR5-hL-8Vw"/>
