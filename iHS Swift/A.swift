@@ -50,6 +50,17 @@ enum NodeType {
     case rooms
 }
 
+/// Arash: Enum for Switchstates (On and Off)
+enum SwitchType {
+    case switchh
+    case dimmer
+    case cooler
+    case curtain
+    case none
+}
+
+/// Arash: Enum for Coolerstates (Fast, Slow and Water Pump)
+
 /// Name of DB
 let DBNAME = "IHS15.sqlite"
 

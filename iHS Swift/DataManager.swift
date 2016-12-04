@@ -45,7 +45,7 @@ class DataManager {
             sectionModel.name = (object as! NSDictionary)["Name"] as! String
             sectionModel.id = (object as! NSDictionary)["ID"] as! Int
             sectionModel.sort = (object as! NSDictionary)["Sort"] as! Int
-            sectionModel.icon = (object as! NSDictionary)["Icon"] as! String
+            sectionModel.icon = "Section" + ((object as! NSDictionary)["Icon"] as! String)
             DBManager.insertSection(SectionModel: sectionModel)
             
         }
@@ -57,7 +57,7 @@ class DataManager {
             let roomModel = RoomModel()
             roomModel.name = (object as! NSDictionary)["Name"] as! String
             roomModel.id = (object as! NSDictionary)["ID"] as! Int
-            roomModel.icon = (object as! NSDictionary)["Icon"] as! String
+            roomModel.icon = "Room" + ((object as! NSDictionary)["Icon"] as! String)
             roomModel.sort = (object as! NSDictionary)["Sort"] as! Int
             roomModel.sectionID = (object as! NSDictionary)["SectionID"] as! Int
             DBManager.insertRoom(RoomModel: roomModel)
@@ -69,7 +69,7 @@ class DataManager {
         for object in json {
             let nodeModel = NodeModel()
             nodeModel.name = (object as! NSDictionary)["Name"] as! String
-            nodeModel.icon = (object as! NSDictionary)["Icon"] as! String
+            nodeModel.icon = "Node" + ((object as! NSDictionary)["Icon"] as! String)
             nodeModel.id = (object as! NSDictionary)["ID"] as! Int
 //            nodeModel.isBookmark = (object as! NSDictionary)["IsBookmark"] as! Bool
             nodeModel.nodeType = (object as! NSDictionary)["NodeType"] as! Int
@@ -300,7 +300,7 @@ class DataManager {
                     let roomModel = RoomModel()
                     roomModel.id = dic["ID"] as! Int
                     roomModel.name = dic["Name"] as! String
-                    roomModel.icon = "Section" + (dic["Icon"] as! String)
+                    roomModel.icon = "Room" + (dic["Icon"] as! String)
                     roomModel.sort = dic["Sort"] as! Int
                     roomModel.sectionID = dic["SectionID"] as! Int
                     if action == RecieveAction.Insert {

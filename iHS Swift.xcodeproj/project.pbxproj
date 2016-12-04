@@ -13,6 +13,15 @@
 		5B06CBF51DF40CAD000C4DE6 /* TopBarRooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06CBF41DF40CAD000C4DE6 /* TopBarRooms.swift */; };
 		5B06CBF71DF40CBE000C4DE6 /* TopBarRooms.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B06CBF61DF40CBD000C4DE6 /* TopBarRooms.xib */; };
 		5B06CBF91DF413CE000C4DE6 /* DeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06CBF81DF413CE000C4DE6 /* DeviceVC.swift */; };
+		5B06CBFD1DF42E6D000C4DE6 /* Cooler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06CBFC1DF42E6D000C4DE6 /* Cooler.swift */; };
+		5B06CBFF1DF42E78000C4DE6 /* Cooler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B06CBFE1DF42E78000C4DE6 /* Cooler.xib */; };
+		5B06CC031DF42EA5000C4DE6 /* Curtain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06CC021DF42EA5000C4DE6 /* Curtain.swift */; };
+		5B06CC051DF42EAE000C4DE6 /* Curtain.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B06CC041DF42EAE000C4DE6 /* Curtain.xib */; };
+		5B06CC081DF42F28000C4DE6 /* Switch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B06CC071DF42F28000C4DE6 /* Switch.xib */; };
+		5B06CC0A1DF42F30000C4DE6 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06CC091DF42F30000C4DE6 /* Switch.swift */; };
+		5B06CC0C1DF42F47000C4DE6 /* Dimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06CC0B1DF42F47000C4DE6 /* Dimmer.swift */; };
+		5B06CC0F1DF42F5E000C4DE6 /* Dimmer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B06CC0E1DF42F5E000C4DE6 /* Dimmer.xib */; };
+		5B06CC111DF44222000C4DE6 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06CC101DF44222000C4DE6 /* NotificationVC.swift */; };
 		5B35C82A1DE6AC9A0054470B /* SyncRecieveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35C8291DE6AC9A0054470B /* SyncRecieveModel.swift */; };
 		5B3937FD1DDC515600808098 /* SectionRoomsLeftAllignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3937FC1DDC515600808098 /* SectionRoomsLeftAllignment.swift */; };
 		5B3937FF1DDC516E00808098 /* SectionRoomsLeftAllignment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3937FE1DDC516E00808098 /* SectionRoomsLeftAllignment.xib */; };
@@ -95,6 +104,15 @@
 		5B06CBF41DF40CAD000C4DE6 /* TopBarRooms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarRooms.swift; sourceTree = "<group>"; };
 		5B06CBF61DF40CBD000C4DE6 /* TopBarRooms.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopBarRooms.xib; sourceTree = "<group>"; };
 		5B06CBF81DF413CE000C4DE6 /* DeviceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceVC.swift; sourceTree = "<group>"; };
+		5B06CBFC1DF42E6D000C4DE6 /* Cooler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cooler.swift; sourceTree = "<group>"; };
+		5B06CBFE1DF42E78000C4DE6 /* Cooler.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Cooler.xib; sourceTree = "<group>"; };
+		5B06CC021DF42EA5000C4DE6 /* Curtain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Curtain.swift; sourceTree = "<group>"; };
+		5B06CC041DF42EAE000C4DE6 /* Curtain.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Curtain.xib; sourceTree = "<group>"; };
+		5B06CC071DF42F28000C4DE6 /* Switch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Switch.xib; sourceTree = "<group>"; };
+		5B06CC091DF42F30000C4DE6 /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
+		5B06CC0B1DF42F47000C4DE6 /* Dimmer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimmer.swift; sourceTree = "<group>"; };
+		5B06CC0E1DF42F5E000C4DE6 /* Dimmer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Dimmer.xib; sourceTree = "<group>"; };
+		5B06CC101DF44222000C4DE6 /* NotificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
 		5B35C8291DE6AC9A0054470B /* SyncRecieveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncRecieveModel.swift; sourceTree = "<group>"; };
 		5B3937FC1DDC515600808098 /* SectionRoomsLeftAllignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionRoomsLeftAllignment.swift; sourceTree = "<group>"; };
 		5B3937FE1DDC516E00808098 /* SectionRoomsLeftAllignment.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionRoomsLeftAllignment.xib; sourceTree = "<group>"; };
@@ -225,6 +243,7 @@
 				5BCDCD5C1DD47FAE00CC3372 /* Main.storyboard */,
 				5BEA78CF1DDAE4C500A71068 /* Scenarios */,
 				5BEA78CA1DDAD8E200A71068 /* Favorites */,
+				5B06CBFB1DF42E14000C4DE6 /* Device */,
 				5B6247BD1DD7002600760F10 /* Rooms */,
 				5BBA15B91DD61E5E00983D23 /* TopBar */,
 			);
@@ -276,8 +295,56 @@
 			children = (
 				5B06CBF81DF413CE000C4DE6 /* DeviceVC.swift */,
 				5B43C56C1DE2C8E500F8EDEF /* ScenarioDetailVC.swift */,
+				5B06CC101DF44222000C4DE6 /* NotificationVC.swift */,
 			);
 			name = Secondary;
+			sourceTree = "<group>";
+		};
+		5B06CBFB1DF42E14000C4DE6 /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				5B06CC0D1DF42F4C000C4DE6 /* Dimmer */,
+				5B06CC061DF42F19000C4DE6 /* Switch */,
+				5B06CC011DF42E8D000C4DE6 /* Curtain */,
+				5B06CC001DF42E7C000C4DE6 /* Cooler */,
+			);
+			name = Device;
+			sourceTree = "<group>";
+		};
+		5B06CC001DF42E7C000C4DE6 /* Cooler */ = {
+			isa = PBXGroup;
+			children = (
+				5B06CBFC1DF42E6D000C4DE6 /* Cooler.swift */,
+				5B06CBFE1DF42E78000C4DE6 /* Cooler.xib */,
+			);
+			name = Cooler;
+			sourceTree = "<group>";
+		};
+		5B06CC011DF42E8D000C4DE6 /* Curtain */ = {
+			isa = PBXGroup;
+			children = (
+				5B06CC021DF42EA5000C4DE6 /* Curtain.swift */,
+				5B06CC041DF42EAE000C4DE6 /* Curtain.xib */,
+			);
+			name = Curtain;
+			sourceTree = "<group>";
+		};
+		5B06CC061DF42F19000C4DE6 /* Switch */ = {
+			isa = PBXGroup;
+			children = (
+				5B06CC071DF42F28000C4DE6 /* Switch.xib */,
+				5B06CC091DF42F30000C4DE6 /* Switch.swift */,
+			);
+			name = Switch;
+			sourceTree = "<group>";
+		};
+		5B06CC0D1DF42F4C000C4DE6 /* Dimmer */ = {
+			isa = PBXGroup;
+			children = (
+				5B06CC0B1DF42F47000C4DE6 /* Dimmer.swift */,
+				5B06CC0E1DF42F5E000C4DE6 /* Dimmer.xib */,
+			);
+			name = Dimmer;
 			sourceTree = "<group>";
 		};
 		5B6247BD1DD7002600760F10 /* Rooms */ = {
@@ -638,6 +705,8 @@
 			files = (
 				5BEA78CC1DDAD91700A71068 /* CellFavorites.xib in Resources */,
 				EEDA152B1DD33AC0007D1F3F /* LaunchScreen.storyboard in Resources */,
+				5B06CC051DF42EAE000C4DE6 /* Curtain.xib in Resources */,
+				5B06CC081DF42F28000C4DE6 /* Switch.xib in Resources */,
 				5BCDCD5D1DD47FAE00CC3372 /* Main.storyboard in Resources */,
 				EEDA15281DD33AC0007D1F3F /* Assets.xcassets in Resources */,
 				5B06B69C1DD36199004E9877 /* TopBar.xib in Resources */,
@@ -647,8 +716,10 @@
 				5B3937FF1DDC516E00808098 /* SectionRoomsLeftAllignment.xib in Resources */,
 				5B6247C51DD700D500760F10 /* SectionRooms.xib in Resources */,
 				5BEA78D11DDAE4F000A71068 /* CellScenarios.xib in Resources */,
+				5B06CC0F1DF42F5E000C4DE6 /* Dimmer.xib in Resources */,
 				5B6247C11DD7007700760F10 /* CellRooms.xib in Resources */,
 				5B3938031DDC547500808098 /* CellRoomsLeftAllignment.xib in Resources */,
+				5B06CBFF1DF42E78000C4DE6 /* Cooler.xib in Resources */,
 				EE0D95E81DD45952004581C4 /* IHS15.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -799,6 +870,7 @@
 			files = (
 				EE0D95F01DD45BAA004581C4 /* Socket.c in Sources */,
 				EE0D95F11DD45BAA004581C4 /* SocketManager.swift in Sources */,
+				5B06CC031DF42EA5000C4DE6 /* Curtain.swift in Sources */,
 				5BCDCD701DD47FF600CC3372 /* ScenarioVC.swift in Sources */,
 				EE0D95F41DD46076004581C4 /* DBManager.swift in Sources */,
 				5B3937FD1DDC515600808098 /* SectionRoomsLeftAllignment.swift in Sources */,
@@ -817,6 +889,8 @@
 				5B3938011DDC544700808098 /* CellRoomsLeftAllignment.swift in Sources */,
 				5BCDCD711DD47FF600CC3372 /* SettingVC.swift in Sources */,
 				5BDD8E821DEEE8EE007EFB62 /* ScenarioDetailCell.swift in Sources */,
+				5B06CC0A1DF42F30000C4DE6 /* Switch.swift in Sources */,
+				5B06CC0C1DF42F47000C4DE6 /* Dimmer.swift in Sources */,
 				EE0D95EA1DD45AD1004581C4 /* A.swift in Sources */,
 				EED4DA0D1DDC372C00299ED0 /* JsonMaker.swift in Sources */,
 				5B6247C31DD700BB00760F10 /* CellRooms.swift in Sources */,
@@ -825,9 +899,11 @@
 				5BCDCD6E1DD47FF600CC3372 /* FavoritesVC.swift in Sources */,
 				5B06CBF51DF40CAD000C4DE6 /* TopBarRooms.swift in Sources */,
 				5BE487571DDD887900635116 /* SyncSendModel.swift in Sources */,
+				5B06CC111DF44222000C4DE6 /* NotificationVC.swift in Sources */,
 				5BA3915F1DD9D28D009B0D2F /* TranslationModel.swift in Sources */,
 				5BCDCD6F1DD47FF600CC3372 /* DevicesVC.swift in Sources */,
 				5BDC76E71DD99F7A00F63E55 /* ScenarioModel.swift in Sources */,
+				5B06CBFD1DF42E6D000C4DE6 /* Cooler.swift in Sources */,
 				5BEA78CE1DDAD94300A71068 /* CellFavorites.swift in Sources */,
 				5BDC76E31DD99EBE00F63E55 /* NodeModel.swift in Sources */,
 				EE35A68F1DEEB3C90076DE76 /* Reachability.swift in Sources */,

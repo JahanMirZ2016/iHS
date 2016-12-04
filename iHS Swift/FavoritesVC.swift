@@ -52,7 +52,9 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let story = UIStoryboard(name: "Main", bundle: nil)
-        let vc = story.instantiateViewControllerWithIdentifier("deviceVC")
+        let vc = story.instantiateViewControllerWithIdentifier("deviceVC") as! DeviceVC
+        let nodeModel = nodeArray[indexPath.row]
+        vc.nodeModel = nodeModel
         presentViewController(vc, animated: true, completion: nil)
     }
     

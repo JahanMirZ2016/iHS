@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="364" height="560"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bgNode" translatesAutoresizingMaskIntoConstraints="NO" id="eiu-D6-7cj">
+                    <rect key="frame" x="0.0" y="0.0" width="364" height="560"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71n-C8-rTP">
+                    <rect key="frame" x="304" y="504" width="42" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="Wj9-iu-rH2"/>
+                        <constraint firstAttribute="height" constant="42" id="fQM-vd-OVN"/>
+                    </constraints>
+                    <state key="normal" image="FavoriteOK"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CoolerFastOff" translatesAutoresizingMaskIntoConstraints="NO" id="UMY-JS-hUY">
+                    <rect key="frame" x="147" y="30" width="70" height="70"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CoolerSlowOff" translatesAutoresizingMaskIntoConstraints="NO" id="nIm-ow-ygB">
+                    <rect key="frame" x="147" y="197" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="nIm-ow-ygB" secondAttribute="height" multiplier="1:1" id="K35-Ih-1FN"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CoolerWaterOff" translatesAutoresizingMaskIntoConstraints="NO" id="Idh-sR-KBq">
+                    <rect key="frame" x="147" y="364" width="70" height="70"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="کلید کولر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUY-h5-6jB">
+                    <rect key="frame" x="123" y="512" width="117" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="117" id="4qe-65-ZYC"/>
+                        <constraint firstAttribute="height" constant="28" id="gSO-mQ-Hcu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Idh-sR-KBq" firstAttribute="top" secondItem="nIm-ow-ygB" secondAttribute="bottom" constant="97" id="6yG-Lo-LWI"/>
+                <constraint firstItem="Idh-sR-KBq" firstAttribute="width" secondItem="nIm-ow-ygB" secondAttribute="width" id="8cG-SE-20H"/>
+                <constraint firstAttribute="trailing" secondItem="71n-C8-rTP" secondAttribute="trailing" constant="18" id="ED6-hY-0lg"/>
+                <constraint firstItem="UMY-JS-hUY" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ESC-41-yCy"/>
+                <constraint firstItem="nIm-ow-ygB" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.19" id="F98-YX-a8l"/>
+                <constraint firstItem="UMY-JS-hUY" firstAttribute="width" secondItem="nIm-ow-ygB" secondAttribute="width" id="JRl-g9-oRS"/>
+                <constraint firstAttribute="bottom" secondItem="yUY-h5-6jB" secondAttribute="bottom" constant="20" id="N59-yT-OWh"/>
+                <constraint firstItem="nIm-ow-ygB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Oli-o9-uQL"/>
+                <constraint firstItem="Idh-sR-KBq" firstAttribute="height" secondItem="nIm-ow-ygB" secondAttribute="height" id="PkS-Ot-yau"/>
+                <constraint firstItem="Idh-sR-KBq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TYB-cm-zs1"/>
+                <constraint firstItem="UMY-JS-hUY" firstAttribute="height" secondItem="nIm-ow-ygB" secondAttribute="height" id="Ut2-3r-PMv"/>
+                <constraint firstItem="nIm-ow-ygB" firstAttribute="top" secondItem="UMY-JS-hUY" secondAttribute="bottom" constant="97" id="V52-4G-OJM"/>
+                <constraint firstAttribute="bottom" secondItem="71n-C8-rTP" secondAttribute="bottom" constant="14" id="jeQ-4N-uIQ"/>
+                <constraint firstItem="yUY-h5-6jB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kAF-pP-qLJ"/>
+                <constraint firstItem="nIm-ow-ygB" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-48" id="xsx-rC-MWZ"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="27" y="161"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="CoolerFastOff" width="100" height="100"/>
+        <image name="CoolerSlowOff" width="100" height="100"/>
+        <image name="CoolerWaterOff" width="100" height="100"/>
+        <image name="FavoriteOK" width="42" height="42"/>
+        <image name="bgNode" width="177" height="290"/>
+    </resources>
+</document>

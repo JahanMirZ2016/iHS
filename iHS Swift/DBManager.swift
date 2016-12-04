@@ -489,7 +489,7 @@ class DBManager {
         let db = GetDBFromPath()
         db!.open()
         do {
-            let query = "SELECT * FROM Switch WHERE ID = ?"
+            let query = "SELECT * FROM Switch WHERE NodeID = ?"
             let result = try db!.executeQuery(query, values: [id])
             let model = SwitchModel()
             if result.next() {
@@ -976,6 +976,26 @@ class DBManager {
         }
     }
     
+    /// Arash: Get Node Value
+    class func getNodeValue(code : Int , nodeID node : Int)->Double? {
+        let db = GetDBFromPath()
+        db!.open()
+        
+        do {
+            var val = 0.0
+            let query = "select Value from Switch where NodeID=%d and Code=%d"
+            let result = try db!.executeQuery(query, values: [node , code])
+            while result.next() {
+                val = result.doubleForColumn("Value")
+            }
+            db!.close()
+            return val
+        } catch let err as NSError {
+            Printer("DBManager get NodeValue error : \(err.debugDescription)")
+            db!.close()
+            return nil
+        }
+    }
     
     
     
