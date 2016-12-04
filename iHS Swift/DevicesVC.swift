@@ -17,7 +17,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     
     @IBOutlet weak var tableView: UITableView!
     
-    var sectionArray : [SectionModel]? {
+    var sectionArray : [SectionModel]? = [SectionModel()] {
         didSet {
             tableView.reloadData()
         }
@@ -25,20 +25,28 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if sectionArray![section].collapsed {
+            return 0
+        }
+        return sectionArray![section].cells.count
         
-        return sectionArray![section].collapsed ? 5 : 0
+        //        return sectionArray![section].collapsed ? sectionArray![section].cells.count : 0
     }
     
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let section = indexPath.section
         if SELECTEDLANGID == LangID.PERSIAN || SELECTEDLANGID == LangID.ARABIC {
-        let cell = CellRooms(frame: CGRectMake(0 , 0 , tableView.frame.width , 80))
-        cell.selectionStyle = .None
-            cell.labelText = "22"
-        return cell
+            let cell = CellRooms(frame: CGRectMake(0 , 0 , tableView.frame.width , 80))
+            cell.selectionStyle = .None
+            cell.labelText = sectionArray![section].cells[indexPath.row].name
+            cell.imgImage = UIImage(named: sectionArray![section].cells[indexPath.row].icon)!
+            
+            return cell
         }
         let cell = CellRoomsLeftAllignment(frame: CGRectMake(0 , 0 , tableView.frame.width , 80))
         cell.selectionStyle = .None
-        cell.labelText = "22"
+        cell.labelText = sectionArray![section].cells[indexPath.row].name
+        cell.imgImage = UIImage(named: sectionArray![section].cells[indexPath.row].icon)!
         return cell
     }
     
@@ -72,6 +80,14 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         return 50
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewControllerWithIdentifier("favoritesVC") as! FavoritesVC
+        vc.type = .rooms
+        vc.topBarBackTitle = "\(sectionArray![indexPath.section].name) / \(sectionArray![indexPath.section].cells[indexPath.row].name)"
+        presentViewController(vc, animated: true, completion: nil)
+    }
+    
     
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -84,8 +100,8 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.backgroundColor = UIColor.clearColor()
-        fetchAndRefresh()
-
+        //        fetchAndRefresh()
+        
         // BinMan1 : Notificatoins comming
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateView(_:)), name: SECTION_UPDATE_VIEW, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateView(_:)), name: ROOM_UPDATE_VIEW, object: nil)
@@ -103,6 +119,8 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     func sectionRoomClick(sectionRooms : SectionRooms , viewForHeaderInSection section: Int) {
         sectionRooms.sectionID = section
         sectionRooms.context = self
+        sectionRooms.text = sectionArray![section].name
+        sectionRooms.setImage = UIImage(named: sectionArray![section].icon)
         switch sectionArray![section].collapsed {
         case true :
             sectionRooms.outletArrow.setImage(UIImage(named: "lay_expandablelist_parrent_arrow_open"), forState: .Normal)
@@ -115,6 +133,8 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     func sectionRoomLeftAllignmentClick(sectionRooms : SectionRoomsLeftAllignment , viewForHeaderInSection section: Int) {
         sectionRooms.sectionID = section
         sectionRooms.context = self
+        sectionRooms.text = sectionArray![section].name
+        sectionRooms.setImage = UIImage(named: sectionArray![section].icon)
         switch sectionArray![section].collapsed {
         case true :
             sectionRooms.outletArrow.setImage(UIImage(named: "lay_expandablelist_parrent_arrow_open"), forState: .Normal)
@@ -135,9 +155,11 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         
         sectionArray = sections!
     }
-
-    /// BinMan1 : Observer for Sectoins updated 
+    
+    /// BinMan1 : Observer for Sectoins updated
     @objc private func updateView(notification : NSNotification) {
         fetchAndRefresh()
     }
+    
+
 }

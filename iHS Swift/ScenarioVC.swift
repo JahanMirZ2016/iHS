@@ -32,13 +32,20 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = CellScenarios(frame: CGRectMake(0 , 0 , tableView.frame.width , 80))
         cell.selectionStyle = .None
+        if scenarioArray[indexPath.row].active == 1 {
+            cell.setImage = UIImage(named: "lay_scenario_status_on")
+        } else {
+            cell.setImage = UIImage(named: "lay_scenario_status_off")
+        }
+        cell.textName = scenarioArray[indexPath.row].name
+        cell.textDescription = scenarioArray[indexPath.row].condition
         return cell
     }
     
     internal func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewControllerWithIdentifier("scenarioDetailVC") as! ScenarioDetailVC
@@ -56,7 +63,7 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = UIColor.clearColor()
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,13 +80,13 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
         // BinMan1 : Update View for first Time after loaded this view controller
         fetchAndRefresh()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /// BinMan1 : fetch data from db and refresh view
     private func fetchAndRefresh() {
         scenarioArray = DBManager.getAllScenarios()!

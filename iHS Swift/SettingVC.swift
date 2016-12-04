@@ -49,7 +49,6 @@ class SettingVC: UIViewController {
         // Arash : Change tabbar language.
         (appDel.window?.rootViewController as! SecondPageTBC).setItemNames(DBManager.getTranslationOfSentences(SentencesID: [1 , 9 , 10 , 4]))
         
-        
     }
     
     @IBAction func btnIr(sender: UIButton) {
@@ -61,7 +60,6 @@ class SettingVC: UIViewController {
         SetLangIDToVar(LangID.PERSIAN)
         // Arash : Change tabbar language.
         (appDel.window?.rootViewController as! SecondPageTBC).setItemNames(DBManager.getTranslationOfSentences(SentencesID: [1 , 9 , 10 , 4]))
-        
         
     }
     
@@ -90,7 +88,7 @@ class SettingVC: UIViewController {
         
     }
     
-
+    
     
     
     /// Arash : Run app from the start(LanguageVC).

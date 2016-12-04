@@ -15,15 +15,19 @@ import UIKit
 
 class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
     
-    @IBOutlet var collectionView: UICollectionView!
+    var topBarBackTitle = ""
+    var type = NodeType.favorites
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var topBar: TopBar!
+    @IBOutlet weak var topBarBack: TopBarRooms!
     
     
     /// Arash: reload the collectionview.
-//    var nodeArray = [NodeModel]() {
-//        didSet {
-//            collectionView.reloadData()
-//        }
-//    }
+    //    var nodeArray = [NodeModel]() {
+    //        didSet {
+    //            collectionView.reloadData()
+    //        }
+    //    }
     var nodeArray = [NodeModel() , NodeModel()]
     
     
@@ -39,20 +43,28 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellFavorites", forIndexPath: indexPath) as! CellFavorites
         cell.image = nodeArray[indexPath.item].icon
-        
         return cell
-        
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewControllerWithIdentifier("deviceVC")
+        presentViewController(vc, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         fetchAndRefresh()
+        if type == .rooms {
+            topBarBack.hidden = false
+            topBarBack.context = self
+            topBarBack.setText = topBarBackTitle
+        }
         
     }
     
@@ -70,7 +82,11 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
     
     /// Arash: Fetch all data and refresh view
     private func fetchAndRefresh() {
-        nodeArray = DBManager.getAllFavorites()!
+        if type == .favorites {
+            nodeArray = DBManager.getAllFavorites()!
+        }else {
+            nodeArray = DBManager.getAllNodes()!
+        }
         collectionView.reloadData()
     }
     

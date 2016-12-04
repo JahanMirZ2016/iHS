@@ -93,38 +93,5 @@ class SecondPageTBC: UITabBarController , CLLocationManagerDelegate {
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage(named: "tab-bar-bg")
     }
-    
-//    /// Arash: Send location data.
-//    @objc func GPS() {
-//        locationManager = CLLocationManager()
-//        locationManager?.delegate = self
-//        locationManager!.distanceFilter = kCLDistanceFilterNone // whenever we move
-//        locationManager!.desiredAccuracy = kCLLocationAccuracyHundredMeters // 100 m
-//        locationManager!.requestAlwaysAuthorization()
-//        locationManager!.startUpdatingLocation()
-//        
-//        
-//    }
-//    
-//    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        
-//        var location = locations.last
-//        var lang = location?.coordinate.longitude
-//        var lat = location?.coordinate.latitude
-//        
-//        let mobileID = DBManager.getValueOfSettingsDB(Type: "MobileID")
-//        var array = Array<NSDictionary>()
-//        let dic:NSDictionary = ["MobileID" : mobileID! , "Latitude" : String(locationManager!.location!.coordinate.latitude) , "Longitude" : String(locationManager!.location!.coordinate.longitude)]
-//        array.append(dic)
-//        let dic2:NSDictionary = ["GPSAnnounce" : array , "MessageID" : "0" , "RecieverID" : mobileID! , "Type" : "GPSAnnounce" , "Action" : "Update" , "Date" : "2015-01-01 12:00:00"]
-//        var array2 = Array<NSDictionary>()
-//        array2.append(dic2)
-//        let jsonData = JsonMaker.arrayToJson(array2)
-//        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-//        
-//        appDel.socket.send(jsonData)
-//    }
-    
-    
-    
+  
 }

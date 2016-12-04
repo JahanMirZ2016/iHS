@@ -59,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfg-rZ-pPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="493.60000000000002" y="400.74962518740631"/>
+            <point key="canvasLocation" x="1065" y="395"/>
         </scene>
         <!--Scenario DetailVC-->
         <scene sceneID="rYJ-rq-a5E">
@@ -213,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZY-Et-2Eq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="608.54572713643188"/>
+            <point key="canvasLocation" x="612" y="1414"/>
         </scene>
         <!--SettingVC-->
         <scene sceneID="9y8-A2-wtw">
@@ -385,7 +385,7 @@
         <!--FavoritesVC-->
         <scene sceneID="a84-fL-gbX">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="9ky-IP-pAe" customClass="FavoritesVC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="favoritesVC" automaticallyAdjustsScrollViewInsets="NO" id="9ky-IP-pAe" customClass="FavoritesVC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ffF-Xk-2if"/>
                         <viewControllerLayoutGuide type="bottom" id="UR5-hL-8Vw"/>
@@ -402,7 +402,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="V8Y-Al-OGF">
-                                <rect key="frame" x="16" y="73" width="343" height="494"/>
+                                <rect key="frame" x="16" y="113" width="343" height="454"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="nGJ-OE-pXR">
                                     <size key="itemSize" width="110" height="111"/>
@@ -425,26 +425,56 @@
                                     <outlet property="delegate" destination="9ky-IP-pAe" id="qOO-LB-Rez"/>
                                 </connections>
                             </collectionView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xk3-ay-D0m" customClass="TopBarRooms" customModule="iHS_Swift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="65" width="375" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="MH4-Nf-8ou"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="V8Y-Al-OGF" firstAttribute="top" secondItem="spq-67-jYb" secondAttribute="bottom" constant="8" id="4d3-kX-If0"/>
+                            <constraint firstAttribute="trailing" secondItem="Xk3-ay-D0m" secondAttribute="trailing" id="2ih-Xg-cVC"/>
+                            <constraint firstItem="V8Y-Al-OGF" firstAttribute="top" secondItem="spq-67-jYb" secondAttribute="bottom" constant="48" id="4d3-kX-If0"/>
+                            <constraint firstItem="Xk3-ay-D0m" firstAttribute="leading" secondItem="Jr9-zZ-vhD" secondAttribute="leading" id="FAv-JQ-whu"/>
                             <constraint firstItem="V8Y-Al-OGF" firstAttribute="leading" secondItem="Jr9-zZ-vhD" secondAttribute="leadingMargin" id="JhX-ag-wsT"/>
                             <constraint firstItem="spq-67-jYb" firstAttribute="leading" secondItem="Jr9-zZ-vhD" secondAttribute="leading" id="d29-YU-pCq"/>
                             <constraint firstItem="spq-67-jYb" firstAttribute="top" secondItem="Jr9-zZ-vhD" secondAttribute="top" id="ghG-TW-6iW"/>
                             <constraint firstAttribute="trailing" secondItem="spq-67-jYb" secondAttribute="trailing" id="oNq-fi-2rb"/>
+                            <constraint firstItem="Xk3-ay-D0m" firstAttribute="top" secondItem="spq-67-jYb" secondAttribute="bottom" id="qby-uy-B9T"/>
                             <constraint firstItem="V8Y-Al-OGF" firstAttribute="trailing" secondItem="Jr9-zZ-vhD" secondAttribute="trailingMargin" id="svy-QI-4Pl"/>
                             <constraint firstItem="UR5-hL-8Vw" firstAttribute="top" secondItem="V8Y-Al-OGF" secondAttribute="bottom" constant="51" id="yAL-FK-AL3"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="AVr-6Q-pYW"/>
                     <connections>
-                        <outlet property="collectionView" destination="V8Y-Al-OGF" id="qvA-Hc-UFl"/>
+                        <outlet property="collectionView" destination="V8Y-Al-OGF" id="aTZ-wT-RdF"/>
+                        <outlet property="topBar" destination="spq-67-jYb" id="8c7-rA-NZV"/>
+                        <outlet property="topBarBack" destination="Xk3-ay-D0m" id="7Gj-xL-vpZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7e-0H-Qqp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="520.79999999999995" y="-308.09595202398805"/>
+            <point key="canvasLocation" x="304.80000000000001" y="-308.09595202398805"/>
+        </scene>
+        <!--DeviceVC-->
+        <scene sceneID="gRD-Iv-l3M">
+            <objects>
+                <viewController storyboardIdentifier="deviceVC" id="n9F-Xw-Vd9" customClass="DeviceVC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bRQ-lu-5yT"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZSa-lP-Pid"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c88-y4-krl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LKs-Hd-85u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1065" y="-563"/>
         </scene>
         <!--Second PageTBC-->
         <scene sceneID="6j6-Cl-YMe">

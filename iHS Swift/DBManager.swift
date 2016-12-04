@@ -341,6 +341,17 @@ class DBManager {
     
     /// BinMan1 : Insert Scenario to table
     class func insertScenario(ScenarioModel scenario : ScenarioModel) -> Bool {
+        var duplicate = false
+        let scenarioModels = getAllScenarios()
+        for model in scenarioModels! {
+            if model.id == scenario.id {
+                duplicate = true
+            }
+        }
+        guard duplicate == false else {
+            return false
+        }
+        
         let db = GetDBFromPath()
         db!.open()
         do {
@@ -744,7 +755,7 @@ class DBManager {
                 model.name = result.stringForColumn("Name")
                 model.icon = result.stringForColumn("Icon")
                 model.sort = Int(result.intForColumn("Sort"))
-                model.sort = Int(result.intForColumn("SectionID"))
+                model.sectionID = Int(result.intForColumn("SectionID"))
                 models.append(model)
             }
             db!.close()

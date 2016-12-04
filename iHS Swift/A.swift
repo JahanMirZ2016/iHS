@@ -44,6 +44,12 @@ struct ActionBarState {
 //    case globalConnection
 //}
 
+/// Arash: Node Type VC
+enum NodeType {
+    case favorites
+    case rooms
+}
+
 /// Name of DB
 let DBNAME = "IHS15.sqlite"
 

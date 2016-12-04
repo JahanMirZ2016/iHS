@@ -10,6 +10,9 @@
 		2566916F5A3B6A68D81AC50A /* libPods-iHS SwiftUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CC00DA651E7762CE8EF54B /* libPods-iHS SwiftUITests.a */; };
 		5B06B69A1DD35F0A004E9877 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06B6991DD35F0A004E9877 /* TopBar.swift */; };
 		5B06B69C1DD36199004E9877 /* TopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B06B69B1DD36199004E9877 /* TopBar.xib */; };
+		5B06CBF51DF40CAD000C4DE6 /* TopBarRooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06CBF41DF40CAD000C4DE6 /* TopBarRooms.swift */; };
+		5B06CBF71DF40CBE000C4DE6 /* TopBarRooms.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B06CBF61DF40CBD000C4DE6 /* TopBarRooms.xib */; };
+		5B06CBF91DF413CE000C4DE6 /* DeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06CBF81DF413CE000C4DE6 /* DeviceVC.swift */; };
 		5B35C82A1DE6AC9A0054470B /* SyncRecieveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35C8291DE6AC9A0054470B /* SyncRecieveModel.swift */; };
 		5B3937FD1DDC515600808098 /* SectionRoomsLeftAllignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3937FC1DDC515600808098 /* SectionRoomsLeftAllignment.swift */; };
 		5B3937FF1DDC516E00808098 /* SectionRoomsLeftAllignment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3937FE1DDC516E00808098 /* SectionRoomsLeftAllignment.xib */; };
@@ -89,6 +92,9 @@
 		02749164C035E008FF644075 /* Pods-iHS SwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHS SwiftUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHS SwiftUITests/Pods-iHS SwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B06B6991DD35F0A004E9877 /* TopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		5B06B69B1DD36199004E9877 /* TopBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopBar.xib; sourceTree = "<group>"; };
+		5B06CBF41DF40CAD000C4DE6 /* TopBarRooms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarRooms.swift; sourceTree = "<group>"; };
+		5B06CBF61DF40CBD000C4DE6 /* TopBarRooms.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopBarRooms.xib; sourceTree = "<group>"; };
+		5B06CBF81DF413CE000C4DE6 /* DeviceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceVC.swift; sourceTree = "<group>"; };
 		5B35C8291DE6AC9A0054470B /* SyncRecieveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncRecieveModel.swift; sourceTree = "<group>"; };
 		5B3937FC1DDC515600808098 /* SectionRoomsLeftAllignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionRoomsLeftAllignment.swift; sourceTree = "<group>"; };
 		5B3937FE1DDC516E00808098 /* SectionRoomsLeftAllignment.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionRoomsLeftAllignment.xib; sourceTree = "<group>"; };
@@ -217,7 +223,6 @@
 			children = (
 				EED4DA081DDC36B400299ED0 /* Welcome.storyboard */,
 				5BCDCD5C1DD47FAE00CC3372 /* Main.storyboard */,
-				5BDD8E801DEEE8AC007EFB62 /* ScenarioDetail */,
 				5BEA78CF1DDAE4C500A71068 /* Scenarios */,
 				5BEA78CA1DDAD8E200A71068 /* Favorites */,
 				5B6247BD1DD7002600760F10 /* Rooms */,
@@ -257,9 +262,28 @@
 			name = Support;
 			sourceTree = "<group>";
 		};
+		5B06CBF31DF40C74000C4DE6 /* SelectedCellNodes */ = {
+			isa = PBXGroup;
+			children = (
+				5B06CBF41DF40CAD000C4DE6 /* TopBarRooms.swift */,
+				5B06CBF61DF40CBD000C4DE6 /* TopBarRooms.xib */,
+			);
+			name = SelectedCellNodes;
+			sourceTree = "<group>";
+		};
+		5B06CBFA1DF4140A000C4DE6 /* Secondary */ = {
+			isa = PBXGroup;
+			children = (
+				5B06CBF81DF413CE000C4DE6 /* DeviceVC.swift */,
+				5B43C56C1DE2C8E500F8EDEF /* ScenarioDetailVC.swift */,
+			);
+			name = Secondary;
+			sourceTree = "<group>";
+		};
 		5B6247BD1DD7002600760F10 /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
+				5B06CBF31DF40C74000C4DE6 /* SelectedCellNodes */,
 				5B6247BF1DD7004400760F10 /* Cell */,
 				5B6247BE1DD7003500760F10 /* Section */,
 			);
@@ -316,7 +340,7 @@
 				5BCDCD6A1DD47FF600CC3372 /* DevicesVC.swift */,
 				5BCDCD6B1DD47FF600CC3372 /* ScenarioVC.swift */,
 				5BCDCD6C1DD47FF600CC3372 /* SettingVC.swift */,
-				5B43C56C1DE2C8E500F8EDEF /* ScenarioDetailVC.swift */,
+				5B06CBFA1DF4140A000C4DE6 /* Secondary */,
 			);
 			name = "Section 2";
 			sourceTree = "<group>";
@@ -334,6 +358,8 @@
 			isa = PBXGroup;
 			children = (
 				5BDD8E811DEEE8EE007EFB62 /* ScenarioDetailCell.swift */,
+				5B43C5631DE2BEDF00F8EDEF /* TopBarScenario.swift */,
+				5B43C5661DE2BEFD00F8EDEF /* TopBarScenario.xib */,
 			);
 			name = ScenarioDetail;
 			sourceTree = "<group>";
@@ -370,8 +396,7 @@
 			children = (
 				5BEA78D01DDAE4F000A71068 /* CellScenarios.xib */,
 				5BEA78D21DDAE50F00A71068 /* CellScenario.swift */,
-				5B43C5631DE2BEDF00F8EDEF /* TopBarScenario.swift */,
-				5B43C5661DE2BEFD00F8EDEF /* TopBarScenario.xib */,
+				5BDD8E801DEEE8AC007EFB62 /* ScenarioDetail */,
 			);
 			name = Scenarios;
 			sourceTree = "<group>";
@@ -617,6 +642,7 @@
 				EEDA15281DD33AC0007D1F3F /* Assets.xcassets in Resources */,
 				5B06B69C1DD36199004E9877 /* TopBar.xib in Resources */,
 				EED4DA091DDC36B400299ED0 /* Welcome.storyboard in Resources */,
+				5B06CBF71DF40CBE000C4DE6 /* TopBarRooms.xib in Resources */,
 				5B43C5671DE2BEFD00F8EDEF /* TopBarScenario.xib in Resources */,
 				5B3937FF1DDC516E00808098 /* SectionRoomsLeftAllignment.xib in Resources */,
 				5B6247C51DD700D500760F10 /* SectionRooms.xib in Resources */,
@@ -797,6 +823,7 @@
 				5B6247C71DD700E800760F10 /* SectionRooms.swift in Sources */,
 				5BA3915D1DD9D203009B0D2F /* SwitchModel.swift in Sources */,
 				5BCDCD6E1DD47FF600CC3372 /* FavoritesVC.swift in Sources */,
+				5B06CBF51DF40CAD000C4DE6 /* TopBarRooms.swift in Sources */,
 				5BE487571DDD887900635116 /* SyncSendModel.swift in Sources */,
 				5BA3915F1DD9D28D009B0D2F /* TranslationModel.swift in Sources */,
 				5BCDCD6F1DD47FF600CC3372 /* DevicesVC.swift in Sources */,
@@ -811,6 +838,7 @@
 				5BC2B5911DE02F1800D3F597 /* DataManager.swift in Sources */,
 				EED4DA151DDC49C500299ED0 /* RegisterVC.swift in Sources */,
 				5BEA78D31DDAE50F00A71068 /* CellScenario.swift in Sources */,
+				5B06CBF91DF413CE000C4DE6 /* DeviceVC.swift in Sources */,
 				EED4DA0E1DDC372C00299ED0 /* JsonSerializer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

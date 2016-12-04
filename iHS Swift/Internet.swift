@@ -19,7 +19,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
     
     
     func checkNetwork() {
-        //        timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: #selector(self.GPS), userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: #selector(self.GPS), userInfo: nil, repeats: true)
         self.checking()
     }
     
@@ -50,14 +50,12 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
             if appDel.socket != nil {
                 if appDel.socket.state == .connectToServer || appDel.socket.state == .connectToLocal {
                     appDel.socket.close()
-                    timer.invalidate()
-                    
                 }
-                
+                timer.invalidate()
                 appDel.socket = nil
                 
                 let state = ActionBarState.noInternetConnection
-                NSNotificationCenter.defaultCenter().postNotificationName(ACTIONBAR_UPDATE_VIEW, object: state as? AnyObject)
+                NSNotificationCenter.defaultCenter().postNotificationName(ACTIONBAR_UPDATE_VIEW, object: state as AnyObject)
             }
         } else if netStatus == Reachability.NetworkStatus.ReachableViaWiFi {
             // BinMan1 : Check that wifi is the center wifi and we are in the local network
@@ -65,7 +63,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
             guard isConnectToLocalWifi() else {
                 
                 let state = ActionBarState.globalConnection
-                NSNotificationCenter.defaultCenter().postNotificationName(ACTIONBAR_UPDATE_VIEW, object: state as? AnyObject)
+                NSNotificationCenter.defaultCenter().postNotificationName(ACTIONBAR_UPDATE_VIEW, object: state as AnyObject)
                 
                 // BinMan1 : socket should connect to server socket
                 let serverIP = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.ServerIP)!
@@ -76,7 +74,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
                 
                 if appDel.socket.state == .none || appDel.socket.state == .disconnect {
                     if appDel.socket.open(IP: serverIP, Port: serverPort) {
-                        timer.fire()
+                        fireTimer()
                         appDel.socket.state = .connectToServer
                         return
                     }
@@ -87,7 +85,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
                         timer.invalidate()
                         if appDel.socket.open(IP: serverIP, Port: serverPort) {
                             appDel.socket.state = .connectToServer
-                            timer.fire()
+                            fireTimer()
                             return
                         }
                     }
@@ -97,7 +95,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
             }
             
             let state = ActionBarState.localConnection
-            NSNotificationCenter.defaultCenter().postNotificationName(ACTIONBAR_UPDATE_VIEW, object: state as? AnyObject)
+            NSNotificationCenter.defaultCenter().postNotificationName(ACTIONBAR_UPDATE_VIEW, object: state as AnyObject)
             
             // BinMan1 : socket should connect to local socket connection
             let centerIP = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.CenterIP)!
@@ -109,7 +107,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
             
             if appDel.socket.state == .none || appDel.socket.state == .disconnect {
                 if appDel.socket.open(IP: centerIP, Port: centerPort) {
-                    //                    timer.fire()
+                    fireTimer()
                     appDel.socket.state = .connectToLocal
                     SendCustomerId()
                     Sync()
@@ -121,7 +119,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
                 if appDel.socket.close() {
                     timer.invalidate()
                     if appDel.socket.open(IP: centerIP, Port: centerPort) {
-                        timer.fire()
+                        fireTimer()
                         appDel.socket.state = .connectToLocal
                         SendCustomerId()
                         Sync()
@@ -140,7 +138,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
             
             if appDel.socket.state == .none || appDel.socket.state == .disconnect {
                 if appDel.socket.open(IP: serverIP, Port: serverPort) {
-                    timer.fire()
+                    fireTimer()
                     appDel.socket.state = .connectToServer
                     return
                 }
@@ -150,7 +148,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
                 if appDel.socket.close() {
                     timer.invalidate()
                     if appDel.socket.open(IP: serverIP, Port: serverPort) {
-                        timer.fire()
+                        fireTimer()
                         appDel.socket.state = .connectToServer
                         return
                     }
@@ -192,22 +190,26 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
     
     /// Arash: Send location data.
     @objc func GPS() {
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager!.distanceFilter = kCLDistanceFilterNone // whenever we move
-        locationManager!.desiredAccuracy = kCLLocationAccuracyHundredMeters // 100 m
-        locationManager!.requestAlwaysAuthorization()
-        locationManager!.startUpdatingLocation()
-        
-        
+        dispatch_async(dispatch_get_main_queue()) {
+            self.locationManager = CLLocationManager()
+            self.locationManager?.delegate = self
+            self.locationManager!.distanceFilter = kCLDistanceFilterNone // whenever we move
+            self.locationManager!.desiredAccuracy = kCLLocationAccuracyHundredMeters // 100 m
+            self.locationManager!.requestAlwaysAuthorization()
+            self.locationManager!.startUpdatingLocation()
+            self.locationManager.pausesLocationUpdatesAutomatically = false
+        }
+
     }
     
     
-    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    internal func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         
         let location = locations.last
         let lang = location?.coordinate.longitude
         let lat = location?.coordinate.latitude
+        Printer("Lang \(lang)")
         
         let mobileID = DBManager.getValueOfSettingsDB(Type: "MobileID")
         var array = Array<NSDictionary>()
@@ -219,6 +221,21 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
         let jsonData = JsonMaker.arrayToJson(array2)
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         
-        appDel.socket.send(jsonData)
+        if appDel.socket != nil {
+            if appDel.socket.state == .connectToServer || appDel.socket.state == .connectToLocal {
+                appDel.socket.send(jsonData)
+            }
+        }
+        locationManager.stopUpdatingLocation()
+    }
+    
+    internal func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        Printer(error.debugDescription)
+    }
+    
+    /// Arash: Func for initializing the timer after removing from memory.
+    private func fireTimer() {
+        timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: #selector(self.GPS), userInfo: nil, repeats: true)
+        timer.fire()
     }
 }
