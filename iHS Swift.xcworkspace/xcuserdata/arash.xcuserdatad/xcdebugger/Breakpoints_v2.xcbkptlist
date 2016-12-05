@@ -57,29 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iHS Swift/Internet.swift"
-            timestampString = "502524225.724728"
+            filePath = "iHS Swift/AppDelegate.swift"
+            timestampString = "502639311.962073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "updateInterfaceWithReachability(reachability:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iHS Swift/Internet.swift"
-            timestampString = "502524225.724728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "updateInterfaceWithReachability(reachability:)"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "updateActionBar(notification:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

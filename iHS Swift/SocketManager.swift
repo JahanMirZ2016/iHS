@@ -26,6 +26,7 @@ class SocketManager {
     // BinMan1 : Socket States
     var state = SocketState.none
     
+    
     private var SOCKET_IP : NSString = ""
     private var SOCKET_PORT = -1
     
@@ -54,14 +55,16 @@ class SocketManager {
     }
     
     /// Recieve data from socket server-side
-    var thread = NSThread()
     func recieve() {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-//            var temp = UnsafeMutablePointer<UInt8>()
-            self.thread = NSThread.currentThread()
+            //            var temp = UnsafeMutablePointer<UInt8>()
             var tempString = NSString()
             while true {
                 let data = recieveData()
+                if NSString(UTF8String: data) == "RecieveFailed" {
+                    break
+                }
+                
                 if data[0] == 10 || data[0] == 13 {
                     self.rDelegate?.recieve(tempString)
                     tempString = ""

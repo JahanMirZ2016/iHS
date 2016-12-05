@@ -112,31 +112,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
         dispatch_async(dispatch_get_main_queue()) {
             Printer("khkhkhkh : \(rData)")
             DataManager.JSONAnalyzer(rData)
-            
-            
         }
     }
     
     
     /// BinMan1 : ActionBar Update View Observer
     @objc private func updateActionBar(notification : NSNotification) {
-//        let state = notification.object as! String
-//        switch state {
-//        case ActionBarState.notify:
-//            actionBar!.messageCount = "\(DBManager.getAllNotSeenNotifies()!.count)"
-//            break
-//        case ActionBarState.noInternetConnection:
-//            actionBar!.connectionImage = UIImage(named: "icon_main_connection_status_disconnected")
-//            break
-//        case ActionBarState.localConnection:
-//            actionBar!.connectionImage = UIImage(named: "icon_main_connection_status_local")
-//            break
-//        case ActionBarState.globalConnection:
-//            actionBar!.connectionImage = UIImage(named: "icon_main_connection_status_server")
-//            break
-//        default:
-//            break
-//        }
+        let state = notification.object as! String
+        switch state {
+        case ActionBarState.notify:
+            actionBar!.messageCount = "\(DBManager.getAllNotSeenNotifies()!.count)"
+            break
+        case ActionBarState.noInternetConnection:
+            actionBar!.connectionImage = UIImage(named: "icon_main_connection_status_disconnected")
+            break
+        case ActionBarState.localConnection:
+            actionBar!.connectionImage = UIImage(named: "icon_main_connection_status_local")
+            break
+        case ActionBarState.globalConnection:
+            actionBar!.connectionImage = UIImage(named: "icon_main_connection_status_server")
+            break
+        default:
+            break
+        }
     }
 }
 

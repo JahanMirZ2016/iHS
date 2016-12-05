@@ -44,7 +44,7 @@ long sendData(char* message) {
 char* recieveData() {
     memset(buffer, 0, sizeof(buffer));
     if (recv(sock, buffer, sizeof(buffer), 0) < 0)
-        return "";
+        return "RecieveFailed";
     
     return buffer;
 }
