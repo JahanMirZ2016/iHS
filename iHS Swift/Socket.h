@@ -16,6 +16,7 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <string.h>
+#include <unistd.h>
 #include<arpa/inet.h>
 
 struct sockaddr_in server_in;

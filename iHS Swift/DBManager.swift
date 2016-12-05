@@ -584,18 +584,18 @@ class DBManager {
         guard duplicate == false else {
             return false
         }
-            let db = GetDBFromPath()
-            db!.open()
-            do {
-                let query = "INSERT INTO Section (ID, Name , Icon , Sort ) VALUES (? , ? , ?, ?)"
-                try db!.executeUpdate(query, values: [section.id , section.name , section.icon , section.sort])
-                db!.close()
-                return true
-            }catch let err as NSError {
-                Printer("DBManager insert switch error : \(err.debugDescription)")
-                db!.close()
-                return false
-            }
+        let db = GetDBFromPath()
+        db!.open()
+        do {
+            let query = "INSERT INTO Section (ID, Name , Icon , Sort ) VALUES (? , ? , ?, ?)"
+            try db!.executeUpdate(query, values: [section.id , section.name , section.icon , section.sort])
+            db!.close()
+            return true
+        }catch let err as NSError {
+            Printer("DBManager insert switch error : \(err.debugDescription)")
+            db!.close()
+            return false
+        }
         
     }
     
@@ -716,13 +716,13 @@ class DBManager {
     }
     
     /// BinMan1 : Get a Room object of Rooms from table
-    class func getRoom(RoomID id : Int) -> SectionModel? {
+    class func getRoom(RoomID id : Int) -> RoomModel? {
         let db = GetDBFromPath()
         db!.open()
         do {
             let query = "SELECT * FROM Room WHERE ID = ?"
             let result = try db!.executeQuery(query, values: [id])
-            let model = SectionModel()
+            let model = RoomModel()
             if result.next() {
                 model.id = Int(result.intForColumn("ID"))
                 model.icon = result.stringForColumn("Icon")
@@ -926,7 +926,7 @@ class DBManager {
             return false
         }
     }
-    /// Arash: Delete section
+    ///Arash: Delete section
     class func deleteSection(id : Int)->Bool {
         let db = GetDBFromPath()
         db!.open()
@@ -942,7 +942,7 @@ class DBManager {
             return false
         }
     }
-    /// ArashL Update section
+    /// Arash: Update section
     class func updateSection(model : SectionModel)-> Bool {
         let db = GetDBFromPath()
         db!.open()
@@ -983,7 +983,7 @@ class DBManager {
         
         do {
             var val = 0.0
-            let query = "select Value from Switch where NodeID=%d and Code=%d"
+            let query = "SELECT Value FROM Switch WHERE NodeID=? AND Code=?"
             let result = try db!.executeQuery(query, values: [node , code])
             while result.next() {
                 val = result.doubleForColumn("Value")
@@ -997,8 +997,41 @@ class DBManager {
         }
     }
     
+    ///Arash: Check if a node is favorite.
+    class func isBookmark(id : Int)->Int {
+        let db = GetDBFromPath()
+        db!.open()
+        defer {db!.close()}
+        var isBookmark = -1
+        do {
+            let query = "select IsBookmark from Node where ID=?"
+            let result = try db!.executeQuery(query, values: [id])
+            while result.next() {
+                isBookmark = Int(result.intForColumn("Value"))
+            }
+        } catch let err as NSError {
+            Printer("DBManager isBookmark error : \(err.debugDescription)")
+        }
+        return isBookmark
+    }
     
-    
+    ///Arash: Update a node bookmark(isfavorite or not.)
+    class func updateNodeBookmark(id : Int , isBookmark favorite : Int)->Bool {
+        let db = GetDBFromPath()
+        db!.open()
+        defer {db?.close()}
+        
+        do {
+            let query = "UPDATE Node SET IsBookmark=? WHERE ID=?"
+            try db!.executeUpdate(query, values: [favorite , id])
+            db!.close()
+            return true
+        } catch let err as NSError {
+            Printer("DBManager updateNodeBookmark error : \(err.debugDescription)")
+            db!.close()
+            return false
+        }
+    }
     
     
     

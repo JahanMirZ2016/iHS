@@ -50,5 +50,5 @@ char* recieveData() {
 }
 
 int closeSocket() {
-    return shutdown(sock, SHUT_RDWR);
+    return close(sock);
 }

@@ -32,6 +32,8 @@ class DataManager {
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         
         if appDel.socket.close() {
+//            appDel.socket.thread.cancel()
+            appDel.socket = nil
             appDel.socket = SocketManager()
             appDel.startCheckingInternet()
         }

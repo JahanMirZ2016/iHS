@@ -19,6 +19,6 @@ class SwitchModel {
     var code:Int = 0
     var name:String = ""
     var value:Double = 0
-    var nodeID:Int = 0
+    var nodeID:Int = -1
     
 }

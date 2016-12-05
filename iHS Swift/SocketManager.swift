@@ -54,9 +54,11 @@ class SocketManager {
     }
     
     /// Recieve data from socket server-side
+    var thread = NSThread()
     func recieve() {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
 //            var temp = UnsafeMutablePointer<UInt8>()
+            self.thread = NSThread.currentThread()
             var tempString = NSString()
             while true {
                 let data = recieveData()
@@ -81,5 +83,11 @@ class SocketManager {
         }
         
         return true
+    }
+    
+    
+    deinit {
+        SOCKET_IP = ""
+        SOCKET_PORT = -1
     }
 }

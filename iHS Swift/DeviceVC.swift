@@ -16,7 +16,7 @@ class DeviceVC: UIViewController {
     
     var switchModel:SwitchModel? {
         didSet {
-            
+            setSwitchType(switchType)
         }
     }
     var nodeModel:NodeModel!
@@ -87,7 +87,21 @@ class DeviceVC: UIViewController {
     
     ///Arash: Set switch type and refresh views based on data gathered from database.
     private func setSwitchType(switchType : SwitchType) {
-        
+        switch switchType {
+        case .cooler : (switchView as! Cooler).switchModel = switchModel
+        (switchView as! Cooler).nodeModel = nodeModel
+            break
+        case .curtain : (switchView as! Curtain).switchModel = switchModel
+        (switchView as! Cooler).nodeModel = nodeModel
+            break
+        case .dimmer : (switchView as! Dimmer).switchModel = switchModel
+        (switchView as! Cooler).nodeModel = nodeModel
+            break
+        case .switchh : (switchView as! Switch).switchModel = switchModel
+        (switchView as! Cooler).nodeModel = nodeModel
+            break
+        default : break
+        }
     }
     
     

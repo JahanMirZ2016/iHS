@@ -6,12 +6,17 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Dimmer" customModule="iHS_Swift" customModuleProvider="target">
+            <connections>
+                <outlet property="labelNodeName" destination="yUY-h5-6jB" id="1C0-r3-nrG"/>
+                <outlet property="labelValue" destination="L2h-RK-AG6" id="app-BQ-YdI"/>
+                <outlet property="slider" destination="Owf-pc-Ubf" id="PwY-KB-cDk"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="364" height="560"/>
@@ -28,20 +33,11 @@
                         <constraint firstAttribute="height" constant="42" id="fQM-vd-OVN"/>
                     </constraints>
                     <state key="normal" image="FavoriteOK"/>
+                    <connections>
+                        <action selector="selectorFav:" destination="-1" eventType="touchUpInside" id="aQT-bB-qol"/>
+                    </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CoolerFastOff" translatesAutoresizingMaskIntoConstraints="NO" id="UMY-JS-hUY">
-                    <rect key="frame" x="147" y="30" width="70" height="70"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CoolerSlowOff" translatesAutoresizingMaskIntoConstraints="NO" id="nIm-ow-ygB">
-                    <rect key="frame" x="147" y="197" width="70" height="70"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="nIm-ow-ygB" secondAttribute="height" multiplier="1:1" id="K35-Ih-1FN"/>
-                    </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CoolerWaterOff" translatesAutoresizingMaskIntoConstraints="NO" id="Idh-sR-KBq">
-                    <rect key="frame" x="147" y="364" width="70" height="70"/>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="کلید کولر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUY-h5-6jB">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="کلید کولر" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUY-h5-6jB">
                     <rect key="frame" x="123" y="512" width="117" height="28"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="117" id="4qe-65-ZYC"/>
@@ -51,24 +47,31 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Owf-pc-Ubf">
+                    <rect key="frame" x="35" y="227" width="294" height="31"/>
+                </slider>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2h-RK-AG6">
+                    <rect key="frame" x="134" y="20" width="95" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="ABG-e0-E3e"/>
+                        <constraint firstAttribute="width" constant="95" id="w39-2b-9tf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29894935344827589" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Idh-sR-KBq" firstAttribute="top" secondItem="nIm-ow-ygB" secondAttribute="bottom" constant="97" id="6yG-Lo-LWI"/>
-                <constraint firstItem="Idh-sR-KBq" firstAttribute="width" secondItem="nIm-ow-ygB" secondAttribute="width" id="8cG-SE-20H"/>
+                <constraint firstItem="Owf-pc-Ubf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7cI-kk-T7l"/>
                 <constraint firstAttribute="trailing" secondItem="71n-C8-rTP" secondAttribute="trailing" constant="18" id="ED6-hY-0lg"/>
-                <constraint firstItem="UMY-JS-hUY" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ESC-41-yCy"/>
-                <constraint firstItem="nIm-ow-ygB" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.19" id="F98-YX-a8l"/>
-                <constraint firstItem="UMY-JS-hUY" firstAttribute="width" secondItem="nIm-ow-ygB" secondAttribute="width" id="JRl-g9-oRS"/>
+                <constraint firstItem="L2h-RK-AG6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="FUB-OI-Y7c"/>
+                <constraint firstItem="L2h-RK-AG6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="GKf-Kb-ATF"/>
                 <constraint firstAttribute="bottom" secondItem="yUY-h5-6jB" secondAttribute="bottom" constant="20" id="N59-yT-OWh"/>
-                <constraint firstItem="nIm-ow-ygB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Oli-o9-uQL"/>
-                <constraint firstItem="Idh-sR-KBq" firstAttribute="height" secondItem="nIm-ow-ygB" secondAttribute="height" id="PkS-Ot-yau"/>
-                <constraint firstItem="Idh-sR-KBq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TYB-cm-zs1"/>
-                <constraint firstItem="UMY-JS-hUY" firstAttribute="height" secondItem="nIm-ow-ygB" secondAttribute="height" id="Ut2-3r-PMv"/>
-                <constraint firstItem="nIm-ow-ygB" firstAttribute="top" secondItem="UMY-JS-hUY" secondAttribute="bottom" constant="97" id="V52-4G-OJM"/>
+                <constraint firstItem="Owf-pc-Ubf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-38" id="Nsj-9X-D68"/>
+                <constraint firstItem="Owf-pc-Ubf" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.799" id="a19-Cc-iNg"/>
                 <constraint firstAttribute="bottom" secondItem="71n-C8-rTP" secondAttribute="bottom" constant="14" id="jeQ-4N-uIQ"/>
                 <constraint firstItem="yUY-h5-6jB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kAF-pP-qLJ"/>
-                <constraint firstItem="nIm-ow-ygB" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-48" id="xsx-rC-MWZ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -78,9 +81,6 @@
         </view>
     </objects>
     <resources>
-        <image name="CoolerFastOff" width="100" height="100"/>
-        <image name="CoolerSlowOff" width="100" height="100"/>
-        <image name="CoolerWaterOff" width="100" height="100"/>
         <image name="FavoriteOK" width="42" height="42"/>
         <image name="bgNode" width="177" height="290"/>
     </resources>
