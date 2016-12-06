@@ -59,7 +59,6 @@ enum SwitchType {
     case none
 }
 
-/// Arash: Enum for Coolerstates (Fast, Slow and Water Pump)
 
 /// Name of DB
 let DBNAME = "IHS15.sqlite"
@@ -182,40 +181,8 @@ struct RecieveType {
     
 }
 
-/// Arash: Enum of RecieveArray Types
-//    enum RecieveType:CustomStringConvertible {
-//        case ScenarioStatus
-//        case Setting
-//        case SwitchStatus
-//        case SwitchData
-//        case ScenarioData
-//        case NodeData
-//        case SectionData
-//        case RoomData
-//        case Notify
-//        case SyncData
-//        case RefreshData
-//
-//        var description : String {
-//            switch self {
-//            // Use Internationalization, as appropriate.
-//            case .ScenarioStatus: return "Bing";
-//            case .Setting: return "Setting";
-//            case .SwitchStatus: return "SwitchStatus";
-//            case .SwitchData: return "SwitchData";
-//            case .ScenarioData: return "ScenarioData";
-//            case .NodeData: return "NodeData";
-//            case .SectionData: return "SectionData";
-//            case .RoomData: return "RoomData";
-//            case .Notify: return "Notify";
-//            case .SyncData: return "SyncData";
-//            case .RefreshData: return "RefreshData";
-//
-//            }
-//        }
-//    }
 
-/// Arash: Enum of RecieveArray Actions
+/// Arash: Struct of RecieveArray Actions
 struct RecieveAction {
     static let Insert = "Insert"
     static let Delete = "Delete"

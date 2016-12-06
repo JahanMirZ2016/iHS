@@ -6,6 +6,8 @@
 //  Copyright © 2016 Ali Zare Sh. All rights reserved.
 //
 
+
+
 import UIKit
 
 @IBDesignable class Cooler: UIView {
@@ -116,7 +118,7 @@ import UIKit
         
     }
     
-    ///Arash: Set and refresh view based on switchmodel.
+    ///Arash: Set and refresh view based on switchmodel and its state.
     private func getStateAndRefreshView() {
         
         if switchModel?.nodeID != -1 {

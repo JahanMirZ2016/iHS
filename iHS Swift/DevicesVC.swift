@@ -25,7 +25,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if sectionArray![section].collapsed {
+        if !sectionArray![section].collapsed {
             return 0
         }
         return sectionArray![section].cells.count
@@ -46,6 +46,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         let cell = CellRoomsLeftAllignment(frame: CGRectMake(0 , 0 , tableView.frame.width , 80))
         cell.selectionStyle = .None
         cell.labelText = sectionArray![section].cells[indexPath.row].name
+        //Arash: Bug(image name sent by center is not a valid image in assets.)
         cell.imgImage = UIImage(named: sectionArray![section].cells[indexPath.row].icon)!
         return cell
     }

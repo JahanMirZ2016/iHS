@@ -704,7 +704,7 @@ class DBManager {
         db!.open()
         do {
             let query = "INSERT INTO Room (ID, Name , Icon , Sort , SectionID) VALUES (? , ? , ?, ? , ?)"
-            try db!.executeUpdate(query, values: [room.id , room.name , room.icon , room.sectionID , room.sort])
+            try db!.executeUpdate(query, values: [room.id , room.name , room.icon ,  room.sort , room.sectionID])
             db!.close()
             return true
         }catch let err as NSError {
