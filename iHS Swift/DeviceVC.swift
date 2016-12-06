@@ -7,7 +7,7 @@
 //
 
 /*
- Arash: Section2 - Secondary - Device View Controller
+ Arash: Section2 - Secondary - Device View Controller.(For showing each device switches.)
  */
 
 import UIKit

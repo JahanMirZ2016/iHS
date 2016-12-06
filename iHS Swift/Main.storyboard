@@ -476,6 +476,43 @@
             </objects>
             <point key="canvasLocation" x="1065" y="-563"/>
         </scene>
+        <!--NotificationVC-->
+        <scene sceneID="C2W-7P-IH4">
+            <objects>
+                <viewController id="SFO-nJ-Lsf" customClass="NotificationVC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mEO-lm-xj6"/>
+                        <viewControllerLayoutGuide type="bottom" id="DCv-3P-fEn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="91j-ic-2pH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sZB-5A-R04">
+                                <rect key="frame" x="0.0" y="28" width="375" height="639"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="SFO-nJ-Lsf" id="y1v-vv-sQi"/>
+                                    <outlet property="delegate" destination="SFO-nJ-Lsf" id="p5m-QX-Er9"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="sZB-5A-R04" secondAttribute="trailing" id="Q6e-NH-cmY"/>
+                            <constraint firstItem="sZB-5A-R04" firstAttribute="leading" secondItem="91j-ic-2pH" secondAttribute="leading" id="trJ-l0-V3D"/>
+                            <constraint firstItem="sZB-5A-R04" firstAttribute="top" secondItem="mEO-lm-xj6" secondAttribute="bottom" constant="8" id="xTX-TE-5w3"/>
+                            <constraint firstItem="DCv-3P-fEn" firstAttribute="top" secondItem="sZB-5A-R04" secondAttribute="bottom" id="ymv-ew-Ld5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="sZB-5A-R04" id="6aq-Lt-ueG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fMB-L4-9wV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1711.2" y="-375.56221889055473"/>
+        </scene>
         <!--Second PageTBC-->
         <scene sceneID="6j6-Cl-YMe">
             <objects>

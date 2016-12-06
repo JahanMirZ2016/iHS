@@ -162,5 +162,5 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         fetchAndRefresh()
     }
     
-
+    
 }
