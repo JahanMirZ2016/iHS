@@ -1,21 +1,17 @@
 //
-//  NotificationVC.swift
+//  NotifyVC.swift
 //  iHS Swift
 //
-//  Created by arash on 12/4/16.
+//  Created by arash on 12/7/16.
 //  Copyright © 2016 Ali Zare Sh. All rights reserved.
 //
 
-/*
- Arash: Section2 - Secondary - VC for Notifications.
- */
-
 import UIKit
 
-class NotificationVC: UIViewController {
+class NotifyVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    var notificationArray:[NotifyModel]?{
+    var notifyArray:[NotifyModel]?{
         didSet {
             tableView.reloadData()
         }
@@ -37,20 +33,25 @@ class NotificationVC: UIViewController {
     }
     
     private func fetchAndRefresh() {
-        notificationArray = DBManager.getAllNotifies()
+        notifyArray = DBManager.getAllNotifies()
     }
     
 }
 
 
 ///Arash : Extensions for UITablview Delegate and Datasource
-extension NotificationVC: UITableViewDataSource {
+extension NotifyVC: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = CellRooms(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        let cell = CellNotify(frame: CGRect(x: 0, y: 0, width: WIDTHPHONE, height: 120))
+        cell.textText = notifyArray![indexPath.row].notifyText
+        cell.titleText = notifyArray![indexPath.row].notifyTitle
+        cell.context = self
+        cell.notifyModel = notifyArray![indexPath.row]
+        cell.row = indexPath.row
         return cell
     }
     
@@ -62,7 +63,7 @@ extension NotificationVC: UITableViewDataSource {
 
 ///////
 
-extension NotificationVC: UITableViewDelegate {
+extension NotifyVC: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         

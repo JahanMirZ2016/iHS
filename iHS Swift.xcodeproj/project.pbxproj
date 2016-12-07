@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2566916F5A3B6A68D81AC50A /* libPods-iHS SwiftUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CC00DA651E7762CE8EF54B /* libPods-iHS SwiftUITests.a */; };
+		5B00F0E81DF7CE5A00C8BF5E /* CellNotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B00F0E71DF7CE5A00C8BF5E /* CellNotify.swift */; };
+		5B00F0EA1DF7CE7400C8BF5E /* CellNotify.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B00F0E91DF7CE7400C8BF5E /* CellNotify.xib */; };
+		5B00F0EC1DF7CEE200C8BF5E /* NotifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B00F0EB1DF7CEE200C8BF5E /* NotifyVC.swift */; };
 		5B06B69A1DD35F0A004E9877 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06B6991DD35F0A004E9877 /* TopBar.swift */; };
 		5B06B69C1DD36199004E9877 /* TopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B06B69B1DD36199004E9877 /* TopBar.xib */; };
 		5B06CBF51DF40CAD000C4DE6 /* TopBarRooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06CBF41DF40CAD000C4DE6 /* TopBarRooms.swift */; };
@@ -21,7 +24,6 @@
 		5B06CC0A1DF42F30000C4DE6 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06CC091DF42F30000C4DE6 /* Switch.swift */; };
 		5B06CC0C1DF42F47000C4DE6 /* Dimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06CC0B1DF42F47000C4DE6 /* Dimmer.swift */; };
 		5B06CC0F1DF42F5E000C4DE6 /* Dimmer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B06CC0E1DF42F5E000C4DE6 /* Dimmer.xib */; };
-		5B06CC111DF44222000C4DE6 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06CC101DF44222000C4DE6 /* NotificationVC.swift */; };
 		5B35C82A1DE6AC9A0054470B /* SyncRecieveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35C8291DE6AC9A0054470B /* SyncRecieveModel.swift */; };
 		5B3937FD1DDC515600808098 /* SectionRoomsLeftAllignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3937FC1DDC515600808098 /* SectionRoomsLeftAllignment.swift */; };
 		5B3937FF1DDC516E00808098 /* SectionRoomsLeftAllignment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3937FE1DDC516E00808098 /* SectionRoomsLeftAllignment.xib */; };
@@ -99,6 +101,9 @@
 
 /* Begin PBXFileReference section */
 		02749164C035E008FF644075 /* Pods-iHS SwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHS SwiftUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHS SwiftUITests/Pods-iHS SwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5B00F0E71DF7CE5A00C8BF5E /* CellNotify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellNotify.swift; sourceTree = "<group>"; };
+		5B00F0E91DF7CE7400C8BF5E /* CellNotify.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellNotify.xib; sourceTree = "<group>"; };
+		5B00F0EB1DF7CEE200C8BF5E /* NotifyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifyVC.swift; sourceTree = "<group>"; };
 		5B06B6991DD35F0A004E9877 /* TopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		5B06B69B1DD36199004E9877 /* TopBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopBar.xib; sourceTree = "<group>"; };
 		5B06CBF41DF40CAD000C4DE6 /* TopBarRooms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarRooms.swift; sourceTree = "<group>"; };
@@ -112,7 +117,6 @@
 		5B06CC091DF42F30000C4DE6 /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		5B06CC0B1DF42F47000C4DE6 /* Dimmer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimmer.swift; sourceTree = "<group>"; };
 		5B06CC0E1DF42F5E000C4DE6 /* Dimmer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Dimmer.xib; sourceTree = "<group>"; };
-		5B06CC101DF44222000C4DE6 /* NotificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
 		5B35C8291DE6AC9A0054470B /* SyncRecieveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncRecieveModel.swift; sourceTree = "<group>"; };
 		5B3937FC1DDC515600808098 /* SectionRoomsLeftAllignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionRoomsLeftAllignment.swift; sourceTree = "<group>"; };
 		5B3937FE1DDC516E00808098 /* SectionRoomsLeftAllignment.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionRoomsLeftAllignment.xib; sourceTree = "<group>"; };
@@ -236,11 +240,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5B00F0E61DF7CE1F00C8BF5E /* Notify */ = {
+			isa = PBXGroup;
+			children = (
+				5B00F0E71DF7CE5A00C8BF5E /* CellNotify.swift */,
+				5B00F0E91DF7CE7400C8BF5E /* CellNotify.xib */,
+			);
+			name = Notify;
+			sourceTree = "<group>";
+		};
 		5B06B68F1DD3487B004E9877 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				EED4DA081DDC36B400299ED0 /* Welcome.storyboard */,
 				5BCDCD5C1DD47FAE00CC3372 /* Main.storyboard */,
+				5B00F0E61DF7CE1F00C8BF5E /* Notify */,
 				5BEA78CF1DDAE4C500A71068 /* Scenarios */,
 				5BEA78CA1DDAD8E200A71068 /* Favorites */,
 				5B06CBFB1DF42E14000C4DE6 /* Device */,
@@ -295,7 +309,7 @@
 			children = (
 				5B06CBF81DF413CE000C4DE6 /* DeviceVC.swift */,
 				5B43C56C1DE2C8E500F8EDEF /* ScenarioDetailVC.swift */,
-				5B06CC101DF44222000C4DE6 /* NotificationVC.swift */,
+				5B00F0EB1DF7CEE200C8BF5E /* NotifyVC.swift */,
 			);
 			name = Secondary;
 			sourceTree = "<group>";
@@ -715,6 +729,7 @@
 				5B43C5671DE2BEFD00F8EDEF /* TopBarScenario.xib in Resources */,
 				5B3937FF1DDC516E00808098 /* SectionRoomsLeftAllignment.xib in Resources */,
 				5B6247C51DD700D500760F10 /* SectionRooms.xib in Resources */,
+				5B00F0EA1DF7CE7400C8BF5E /* CellNotify.xib in Resources */,
 				5BEA78D11DDAE4F000A71068 /* CellScenarios.xib in Resources */,
 				5B06CC0F1DF42F5E000C4DE6 /* Dimmer.xib in Resources */,
 				5B6247C11DD7007700760F10 /* CellRooms.xib in Resources */,
@@ -886,6 +901,7 @@
 				EECF738B1DE6AB75006DA1B4 /* Internet.swift in Sources */,
 				EED4DA131DDC49C500299ED0 /* LanguageVC.swift in Sources */,
 				5B06B69A1DD35F0A004E9877 /* TopBar.swift in Sources */,
+				5B00F0EC1DF7CEE200C8BF5E /* NotifyVC.swift in Sources */,
 				5B3938011DDC544700808098 /* CellRoomsLeftAllignment.swift in Sources */,
 				5BCDCD711DD47FF600CC3372 /* SettingVC.swift in Sources */,
 				5BDD8E821DEEE8EE007EFB62 /* ScenarioDetailCell.swift in Sources */,
@@ -899,13 +915,13 @@
 				5BCDCD6E1DD47FF600CC3372 /* FavoritesVC.swift in Sources */,
 				5B06CBF51DF40CAD000C4DE6 /* TopBarRooms.swift in Sources */,
 				5BE487571DDD887900635116 /* SyncSendModel.swift in Sources */,
-				5B06CC111DF44222000C4DE6 /* NotificationVC.swift in Sources */,
 				5BA3915F1DD9D28D009B0D2F /* TranslationModel.swift in Sources */,
 				5BCDCD6F1DD47FF600CC3372 /* DevicesVC.swift in Sources */,
 				5BDC76E71DD99F7A00F63E55 /* ScenarioModel.swift in Sources */,
 				5B06CBFD1DF42E6D000C4DE6 /* Cooler.swift in Sources */,
 				5BEA78CE1DDAD94300A71068 /* CellFavorites.swift in Sources */,
 				5BDC76E31DD99EBE00F63E55 /* NodeModel.swift in Sources */,
+				5B00F0E81DF7CE5A00C8BF5E /* CellNotify.swift in Sources */,
 				EE35A68F1DEEB3C90076DE76 /* Reachability.swift in Sources */,
 				EEDA15211DD33AC0007D1F3F /* AppDelegate.swift in Sources */,
 				5BDC76E51DD99F3000F63E55 /* NotifyModel.swift in Sources */,

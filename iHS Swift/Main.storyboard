@@ -476,10 +476,10 @@
             </objects>
             <point key="canvasLocation" x="1065" y="-563"/>
         </scene>
-        <!--NotificationVC-->
+        <!--View Controller-->
         <scene sceneID="C2W-7P-IH4">
             <objects>
-                <viewController id="SFO-nJ-Lsf" customClass="NotificationVC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SFO-nJ-Lsf" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mEO-lm-xj6"/>
                         <viewControllerLayoutGuide type="bottom" id="DCv-3P-fEn"/>
@@ -489,19 +489,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sZB-5A-R04">
-                                <rect key="frame" x="0.0" y="28" width="375" height="639"/>
+                                <rect key="frame" x="0.0" y="121" width="375" height="546"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="SFO-nJ-Lsf" id="y1v-vv-sQi"/>
                                     <outlet property="delegate" destination="SFO-nJ-Lsf" id="p5m-QX-Er9"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ta-aJ-A4L" customClass="TopBar" customModule="iHS_Swift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdX-XF-9Di">
+                                <rect key="frame" x="16" y="75" width="38" height="38"/>
+                                <state key="normal" backgroundImage="icon_back"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="sZB-5A-R04" firstAttribute="top" secondItem="wdX-XF-9Di" secondAttribute="bottom" constant="8" id="5Lt-mg-1e2"/>
                             <constraint firstAttribute="trailing" secondItem="sZB-5A-R04" secondAttribute="trailing" id="Q6e-NH-cmY"/>
+                            <constraint firstItem="wdX-XF-9Di" firstAttribute="leading" secondItem="91j-ic-2pH" secondAttribute="leadingMargin" id="ppV-OK-LLf"/>
                             <constraint firstItem="sZB-5A-R04" firstAttribute="leading" secondItem="91j-ic-2pH" secondAttribute="leading" id="trJ-l0-V3D"/>
-                            <constraint firstItem="sZB-5A-R04" firstAttribute="top" secondItem="mEO-lm-xj6" secondAttribute="bottom" constant="8" id="xTX-TE-5w3"/>
+                            <constraint firstItem="sZB-5A-R04" firstAttribute="top" secondItem="mEO-lm-xj6" secondAttribute="bottom" constant="101" id="xTX-TE-5w3"/>
                             <constraint firstItem="DCv-3P-fEn" firstAttribute="top" secondItem="sZB-5A-R04" secondAttribute="bottom" id="ymv-ew-Ld5"/>
                         </constraints>
                     </view>
@@ -549,6 +560,7 @@
         <image name="ScenarioHeader1" width="100" height="18"/>
         <image name="ScenarioHeader2" width="100" height="18"/>
         <image name="TrGray" width="128" height="128"/>
+        <image name="icon_back" width="38" height="38"/>
         <image name="icon_main_connection_status_local" width="24" height="24"/>
         <image name="lay_icon_alarm" width="24" height="24"/>
     </resources>
