@@ -15,6 +15,7 @@ import UIKit
 
 class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
     
+    @IBOutlet weak var topBar: TopBar!
     @IBOutlet weak var tableView: UITableView!
     
     var sectionArray : [SectionModel]? = [SectionModel()] {
@@ -39,7 +40,9 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
             let cell = CellRooms(frame: CGRectMake(0 , 0 , tableView.frame.width , 80))
             cell.selectionStyle = .None
             cell.labelText = sectionArray![section].cells[indexPath.row].name
-            cell.imgImage = UIImage(named: sectionArray![section].cells[indexPath.row].icon)!
+            if let image = UIImage(named: sectionArray![section].cells[indexPath.row].icon) {
+                cell.imgImage = image
+            }
             
             return cell
         }
@@ -47,7 +50,9 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         cell.selectionStyle = .None
         cell.labelText = sectionArray![section].cells[indexPath.row].name
         //Arash: Bug(image name sent by center is not a valid image in assets.)
-        cell.imgImage = UIImage(named: sectionArray![section].cells[indexPath.row].icon)!
+        if let image = UIImage(named: sectionArray![section].cells[indexPath.row].icon) {
+        cell.imgImage = image
+        }
         return cell
     }
     
@@ -114,6 +119,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         
         // BinMan1 : Update View for first Time after loaded this view controller
         fetchAndRefresh()
+        manageTopBar()
     }
     
     /// Arash : Set sectionroom click .
@@ -162,5 +168,24 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         fetchAndRefresh()
     }
     
+    ///Arash: Manage topbar for connection status and notify numbers.
+    private func manageTopBar() {
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDel.actionBarView = topBar
+        let notifyCount = DBManager.getAllNotSeenNotifies()
+        topBar.messageCount = String(notifyCount!.count)
+        switch appDel.actionBarState {
+        case ActionBarState.globalConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_server")
+            break
+        case ActionBarState.localConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_local")
+            break
+        case ActionBarState.noInternetConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_disconnected")
+            break
+        default : break
+        }
+    }
     
 }

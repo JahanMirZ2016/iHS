@@ -33,7 +33,7 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="w8A-2r-QVD">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w8A-2r-QVD">
                             <rect key="frame" x="26" y="2" width="171" height="171"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="w8A-2r-QVD" secondAttribute="height" multiplier="1:1" id="sCz-6y-LCQ"/>
@@ -66,7 +66,4 @@
             <point key="canvasLocation" x="34" y="-210"/>
         </view>
     </objects>
-    <resources>
-        <image name="2" width="320" height="568"/>
-    </resources>
 </document>

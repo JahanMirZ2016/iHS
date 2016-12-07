@@ -26,7 +26,7 @@
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2HT-65-cx0">
                     <rect key="frame" x="30" y="8" width="782" height="190"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="RXH-kI-gSc">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RXH-kI-gSc">
                             <rect key="frame" x="572" y="10" width="171" height="171"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="RXH-kI-gSc" secondAttribute="height" multiplier="1:1" id="wXi-z6-2aA"/>
@@ -66,7 +66,4 @@
             <point key="canvasLocation" x="34" y="-210"/>
         </view>
     </objects>
-    <resources>
-        <image name="2" width="320" height="568"/>
-    </resources>
 </document>

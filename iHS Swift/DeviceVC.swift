@@ -24,8 +24,11 @@ class DeviceVC: UIViewController {
     var switchView:UIView!
     var switchType = SwitchType.none
     
+    @IBOutlet weak var topBar: TopBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchAndRefresh()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         nodeType = nodeModel.nodeType
         createView(switchModel!)
@@ -38,35 +41,44 @@ class DeviceVC: UIViewController {
         fetchAndRefresh()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        manageTopBar()
+    }
+    
     ///Arash: Create View based on nodeType.
     private func createView(switchModel: SwitchModel) {
         
         //Pol
         if nodeType == 1 || nodeType==2 || nodeType==3 {
             
-            let view = Switch(frame: CGRect(x: WIDTHPHONE/4 , y: HEIGHTPHONE/4 , width: WIDTHPHONE/2 , height: HEIGHTPHONE/2 ))
+            let view = Switch(frame: CGRect(x: 50 , y: 100 , width: WIDTHPHONE - 100 , height: HEIGHTPHONE - 150 ))
             view.switchModel = switchModel
             switchType = .switchh
-            self.view.addSubview(view)
+            switchView = view
+            self.view.addSubview(switchView)
             
             //Dimmer
         }else if nodeType==4 || nodeType==5 {
-            let view = Dimmer(frame: CGRect(x: WIDTHPHONE/4 , y: HEIGHTPHONE/4 , width: WIDTHPHONE/2 , height: HEIGHTPHONE/2 ))
+            let view = Dimmer(frame: CGRect(x: 50 , y: 100 , width: WIDTHPHONE - 100 , height: HEIGHTPHONE - 150 ))
+            switchView = view
             view.switchModel = switchModel
             switchType = .dimmer
             self.view.addSubview(view)
             
             //Cooler
         }else if nodeType==6  {
-            let view = Cooler(frame: CGRect(x: WIDTHPHONE/4 , y: HEIGHTPHONE/4 , width: WIDTHPHONE/2 , height: HEIGHTPHONE/2 ))
+            let view = Cooler(frame: CGRect(x: 50 , y: 100 , width: WIDTHPHONE - 100 , height: HEIGHTPHONE - 150 ))
             view.switchModel = switchModel
             switchType = .cooler
+            switchView = view
             self.view.addSubview(view)
             
             
             //Curtain
         }else if nodeType==7 {
-            let view = Curtain(frame: CGRect(x: WIDTHPHONE/4 , y: HEIGHTPHONE/4 , width: WIDTHPHONE/2 , height: HEIGHTPHONE/2 ))
+            let view = Curtain(frame: CGRect(x: 50 , y: 100 , width: WIDTHPHONE - 100 , height: HEIGHTPHONE - 150 ))
+            switchView = view
             view.switchModel = switchModel
             switchType = .curtain
             self.view.addSubview(view)
@@ -88,21 +100,49 @@ class DeviceVC: UIViewController {
     ///Arash: Set switch type and refresh views based on data gathered from database.
     private func setSwitchType(switchType : SwitchType) {
         switch switchType {
-        case .cooler : (switchView as! Cooler).switchModel = switchModel
-        (switchView as! Cooler).nodeModel = nodeModel
+        case .cooler :
+            (switchView as! Cooler).switchModel = switchModel
+            (switchView as! Cooler).nodeModel = nodeModel
             break
-        case .curtain : (switchView as! Curtain).switchModel = switchModel
-        (switchView as! Cooler).nodeModel = nodeModel
+        case .curtain :
+            (switchView as! Curtain).switchModel = switchModel
+            (switchView as! Curtain).nodeModel = nodeModel
             break
-        case .dimmer : (switchView as! Dimmer).switchModel = switchModel
-        (switchView as! Cooler).nodeModel = nodeModel
+        case .dimmer :
+            (switchView as! Dimmer).switchModel = switchModel
+            (switchView as! Dimmer).nodeModel = nodeModel
             break
-        case .switchh : (switchView as! Switch).switchModel = switchModel
-        (switchView as! Cooler).nodeModel = nodeModel
+        case .switchh :
+            (switchView as! Switch).switchModel = switchModel
+            (switchView as! Switch).nodeModel = nodeModel
             break
         default : break
         }
     }
     
+    ///Arash: Manage topbar for connection status and notify numbers.
+    private func manageTopBar() {
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDel.actionBarView = topBar
+        let notifyCount = DBManager.getAllNotSeenNotifies()
+        topBar.messageCount = String(notifyCount!.count)
+        switch appDel.actionBarState {
+        case ActionBarState.globalConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_server")
+            break
+        case ActionBarState.localConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_local")
+            break
+        case ActionBarState.noInternetConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_disconnected")
+            break
+        default : break
+        }
+    }
+    
+    
+    @IBAction func selectorBack(sender: UIButton) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     
 }

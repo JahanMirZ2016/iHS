@@ -1007,7 +1007,7 @@ class DBManager {
             let query = "select IsBookmark from Node where ID=?"
             let result = try db!.executeQuery(query, values: [id])
             while result.next() {
-                isBookmark = Int(result.intForColumn("Value"))
+                isBookmark = Int(result.intForColumn("IsBookmark"))
             }
         } catch let err as NSError {
             Printer("DBManager isBookmark error : \(err.debugDescription)")
@@ -1030,6 +1030,30 @@ class DBManager {
             Printer("DBManager updateNodeBookmark error : \(err.debugDescription)")
             db!.close()
             return false
+        }
+    }
+    
+    class func getSwitchIDName(nodeID : Int , code : Int)->[SwitchModel]? {
+        let db = GetDBFromPath()
+        db!.open()
+        defer {db!.close()}
+        
+        do {
+            let query = "select ID,Name from Switch where NodeID=? and Code=?"
+            let result = try db!.executeQuery(query, values: [nodeID , code])
+            var models = [SwitchModel]()
+            while result.next() {
+                let model = SwitchModel()
+                model.id = Int(result.intForColumn("ID"))
+                model.name = result.stringForColumn("Name")
+                models.append(model)
+            }
+            db!.close()
+            return models
+        } catch let err as NSError {
+            Printer("DBManager getSwitchIDName error : \(err.debugDescription)")
+            db!.close()
+            return nil
         }
     }
     

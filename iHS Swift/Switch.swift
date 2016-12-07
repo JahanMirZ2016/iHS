@@ -10,6 +10,7 @@ import UIKit
 
 @IBDesignable class Switch: UIView {
     
+    @IBOutlet weak var btnFav: UIButton!
     @IBOutlet var view : UIView!
     var nodeModel:NodeModel?
     var switchModel:SwitchModel? {
@@ -34,7 +35,7 @@ import UIKit
     
     func createNib() {
         let bundle = NSBundle(forClass: self.dynamicType)
-        let nib = UINib(nibName: "Cooler", bundle: bundle)
+        let nib = UINib(nibName: "Switch", bundle: bundle)
         view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         view.frame = bounds
         view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
@@ -55,8 +56,8 @@ import UIKit
             sender.setBackgroundImage(UIImage(named: "SwitchOff"), forState: .Normal)
             state = 0
         }//else
-        //        NSMutableArray *arr=[data getSwitchIDName:node :pol];
-        //        [data setSwitchValue:[[[arr objectAtIndex:0] objectForKey:@"ID"]intValue]:state];
+        let array = DBManager.getSwitchIDName(switchModel!.nodeID, code: switchModel!.code)
+        SendSwitchValue(array![0].id , value: state!)
         
     }
     
@@ -79,6 +80,16 @@ import UIKit
     
     ///Arash: Set and refresh view based on switchmodel state.
     private func getStateAndRefreshView() {
+        
+        var fav = DBManager.isBookmark((switchModel?.nodeID)!)
+        if fav == 0
+        {
+            btnFav.setImage(UIImage(named: "FavoriteCancel"), forState: .Normal)
+        }
+        else
+        {
+            btnFav.setImage(UIImage(named: "FavoriteOK"), forState: .Normal)
+        }
         var state = DBManager.getNodeValue(0, nodeID: switchModel!.nodeID)
         if state == 1 {
             btnSwitch.setBackgroundImage(UIImage(named: "SwitchOn"), forState: .Normal)

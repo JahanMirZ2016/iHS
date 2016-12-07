@@ -55,6 +55,7 @@
                     <tabBarItem key="tabBarItem" title="" id="MEK-Qr-qCZ"/>
                     <connections>
                         <outlet property="tableView" destination="LQv-hv-42o" id="awb-Mv-vDS"/>
+                        <outlet property="topBar" destination="CIM-9l-Hcf" id="Wb8-T0-EgL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfg-rZ-pPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -123,16 +124,16 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ScenarioDetailCell" id="Lp8-RG-EIs" customClass="ScenarioDetailCell" customModule="iHS_Swift" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellScenarioDetail" id="Lp8-RG-EIs" customClass="ScenarioDetailCell" customModule="iHS_Swift" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="27" width="306" height="401"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="306" height="401"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b92-wW-9Kp">
+                                                        <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b92-wW-9Kp">
                                                             <rect key="frame" x="8" y="8" width="290" height="385"/>
-                                                            <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </webView>
                                                     </subviews>
                                                 </view>
@@ -207,6 +208,7 @@
                         <outlet property="btnDescription" destination="WnM-fo-88G" id="45B-68-Oky"/>
                         <outlet property="btnResults" destination="Xvn-AE-EWY" id="WFn-el-DQU"/>
                         <outlet property="collectionView" destination="MjR-Nt-2Jb" id="9Et-us-2fd"/>
+                        <outlet property="topBar" destination="bWr-03-CJy" id="Nip-6B-9BQ"/>
                         <outlet property="topBarScenario" destination="zCg-fy-doo" id="LDS-6c-tod"/>
                         <outlet property="viewCollection" destination="jdZ-bV-b9E" id="Z2A-ra-1IY"/>
                     </connections>
@@ -328,6 +330,7 @@
                         <outlet property="outletEn" destination="FUg-8Y-gG7" id="1F3-Yj-G1M"/>
                         <outlet property="outletIr" destination="B3w-20-wfq" id="PXg-0R-MR4"/>
                         <outlet property="outletTr" destination="RFf-Gc-5hi" id="MJP-MY-gFt"/>
+                        <outlet property="topBar" destination="hRw-Ws-Acp" id="wMf-th-gzL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XdA-0q-Ug1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -376,6 +379,7 @@
                     <tabBarItem key="tabBarItem" title="" id="FIl-ym-hGr"/>
                     <connections>
                         <outlet property="tableView" destination="o5L-q6-mHn" id="xQ8-1Q-Z06"/>
+                        <outlet property="topBar" destination="LLp-hC-pse" id="EnL-gg-E5i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1AB-S4-zvG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -469,17 +473,43 @@
                     <view key="view" contentMode="scaleToFill" id="c88-y4-krl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apd-KA-B5N" customClass="TopBar" customModule="iHS_Swift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="2cb-He-qaX"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmQ-4p-OKC">
+                                <rect key="frame" x="16" y="73" width="38" height="38"/>
+                                <state key="normal" backgroundImage="icon_back"/>
+                                <connections>
+                                    <action selector="selectorBack:" destination="n9F-Xw-Vd9" eventType="touchUpInside" id="L9m-BR-34D"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="apd-KA-B5N" firstAttribute="leading" secondItem="c88-y4-krl" secondAttribute="leading" id="2as-cq-o1R"/>
+                            <constraint firstItem="dmQ-4p-OKC" firstAttribute="leading" secondItem="c88-y4-krl" secondAttribute="leadingMargin" id="2vf-40-7Rp"/>
+                            <constraint firstItem="dmQ-4p-OKC" firstAttribute="top" secondItem="apd-KA-B5N" secondAttribute="bottom" constant="8" id="L6r-uA-jaf"/>
+                            <constraint firstItem="apd-KA-B5N" firstAttribute="top" secondItem="c88-y4-krl" secondAttribute="top" id="gvq-Eq-2Tl"/>
+                            <constraint firstAttribute="trailing" secondItem="apd-KA-B5N" secondAttribute="trailing" id="x2S-0Y-AiZ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="topBar" destination="apd-KA-B5N" id="rVq-sN-CoK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKs-Hd-85u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1065" y="-563"/>
+            <point key="canvasLocation" x="1064.8" y="-563.56821589205401"/>
         </scene>
-        <!--View Controller-->
+        <!--NotifyVC-->
         <scene sceneID="C2W-7P-IH4">
             <objects>
-                <viewController id="SFO-nJ-Lsf" sceneMemberID="viewController">
+                <viewController id="SFO-nJ-Lsf" customClass="NotifyVC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mEO-lm-xj6"/>
                         <viewControllerLayoutGuide type="bottom" id="DCv-3P-fEn"/>
@@ -518,6 +548,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="sZB-5A-R04" id="6aq-Lt-ueG"/>
+                        <outlet property="topBar" destination="1Ta-aJ-A4L" id="uDY-pW-7LO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fMB-L4-9wV" userLabel="First Responder" sceneMemberID="firstResponder"/>

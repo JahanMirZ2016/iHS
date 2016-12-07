@@ -16,6 +16,7 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var topBar: TopBar!
     
     /// Arash: reload the tableview.
     var scenarioArray = [ScenarioModel]() {
@@ -79,6 +80,7 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
         super.viewWillAppear(animated)
         // BinMan1 : Update View for first Time after loaded this view controller
         fetchAndRefresh()
+        manageTopBar()
     }
     
     override func didReceiveMemoryWarning() {
@@ -95,5 +97,25 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
     /// BinMan1 : observer for update scenario
     @objc private func updateView(notification : NSNotification ) {
         fetchAndRefresh()
+    }
+    
+    ///Arash: Manage topbar for connection status and notify numbers.
+    private func manageTopBar() {
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDel.actionBarView = topBar
+        let notifyCount = DBManager.getAllNotSeenNotifies()
+        topBar.messageCount = String(notifyCount!.count)
+        switch appDel.actionBarState {
+        case ActionBarState.globalConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_server")
+            break
+        case ActionBarState.localConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_local")
+            break
+        case ActionBarState.noInternetConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_disconnected")
+            break
+        default : break
+        }
     }
 }

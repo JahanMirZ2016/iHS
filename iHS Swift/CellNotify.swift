@@ -17,7 +17,7 @@ class CellNotify: UITableViewCell {
     @IBOutlet weak var imgBaloon: UIImageView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelText: UILabel!
-
+    
     
     var titleText:String {
         get {return labelTitle.text! } set { labelTitle.text = newValue }

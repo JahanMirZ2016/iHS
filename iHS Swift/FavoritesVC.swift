@@ -55,11 +55,13 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
         let vc = story.instantiateViewControllerWithIdentifier("deviceVC") as! DeviceVC
         let nodeModel = nodeArray[indexPath.row]
         vc.nodeModel = nodeModel
+        
         presentViewController(vc, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         fetchAndRefresh()
         if type == .rooms {
@@ -74,6 +76,7 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
         super.viewWillAppear(animated)
         fetchAndRefresh()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateView), name: NODE_UPDATE_VIEW, object: nil)
+        manageTopBar()
     }
     
     
@@ -90,6 +93,27 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
             nodeArray = DBManager.getAllNodes()!
         }
         collectionView.reloadData()
+    }
+    
+    
+    ///Arash: Manage topbar for connection status and notify numbers.
+    private func manageTopBar() {
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDel.actionBarView = topBar
+        let notifyCount = DBManager.getAllNotSeenNotifies()
+        topBar.messageCount = String(notifyCount!.count)
+        switch appDel.actionBarState {
+        case ActionBarState.globalConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_server")
+            break
+        case ActionBarState.localConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_local")
+            break
+        case ActionBarState.noInternetConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_disconnected")
+            break
+        default : break
+        }
     }
     
     

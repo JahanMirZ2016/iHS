@@ -10,6 +10,7 @@ import UIKit
 
 @IBDesignable class Curtain: UIView {
     
+    @IBOutlet weak var btnFav: UIButton!
     @IBOutlet var view : UIView!
     var nodeModel:NodeModel?
     var switchModel:SwitchModel? {
@@ -40,7 +41,7 @@ import UIKit
     
     func createNib() {
         let bundle = NSBundle(forClass: self.dynamicType)
-        let nib = UINib(nibName: "Cooler", bundle: bundle)
+        let nib = UINib(nibName: "Curtain", bundle: bundle)
         
         
         view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
@@ -99,9 +100,8 @@ import UIKit
         var arr = Array<NSDictionary>()
         let dic:NSDictionary = ["ID" : (switchModel?.id)! , "Name" : (switchModel?.name)!]
         arr.append(dic)
-        //[data setSwitchValue:[[[arr objectAtIndex:0] objectForKey:@"ID"]intValue]:state];
-        //send data to socket
-        getStateAndRefreshView()
+        let array = DBManager.getSwitchIDName(switchModel!.nodeID, code: switchModel!.code)
+        SendSwitchValue(array![0].id , value: state!)
     }
     
     ///Arash: Selector for favorite.
@@ -123,6 +123,16 @@ import UIKit
     
     ///Arash: Set and refresh view based on switchmodel state.
     private func getStateAndRefreshView() {
+        var fav = DBManager.isBookmark((switchModel?.nodeID)!)
+        if fav == 0
+        {
+            btnFav.setImage(UIImage(named: "FavoriteCancel"), forState: .Normal)
+        }
+        else
+        {
+            btnFav.setImage(UIImage(named: "FavoriteOK"), forState: .Normal)
+        }
+        
         if switchModel?.nodeID != -1 {
             let state = DBManager.getNodeValue(0 , nodeID: (switchModel?.nodeID)!)
             if state == 0 {

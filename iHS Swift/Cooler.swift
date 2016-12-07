@@ -20,6 +20,7 @@ import UIKit
         }
     }
     
+    @IBOutlet weak var btnFav: UIButton!
     @IBOutlet weak var labelNodeName: UILabel!
     @IBOutlet weak var labelWaterPump: UILabel!
     @IBOutlet weak var labelFast: UILabel!
@@ -38,6 +39,8 @@ import UIKit
         createNib()
     }
     
+
+    
     
     func createNib() {
         let bundle = NSBundle(forClass: self.dynamicType)
@@ -51,6 +54,7 @@ import UIKit
         labelFast.text = (DBManager.getTranslationOfSentences(SentencesID: [26]))[0]
         labelWaterPump.text = (DBManager.getTranslationOfSentences(SentencesID: [28]))[0]
         labelNodeName.text = nodeModel?.name
+
         addSubview(view)
         
     }
@@ -93,9 +97,13 @@ import UIKit
         var arr = Array<NSDictionary>()
         let dic:NSDictionary = ["ID" : (switchModel?.id)! , "Name" : (switchModel?.name)!]
         arr.append(dic)
+        let array = DBManager.getSwitchIDName(switchModel!.nodeID, code: switchModel!.code)
+        SendSwitchValue(array![0].id , value: state)
+        
         //[data setSwitchValue:[[[arr objectAtIndex:0] objectForKey:@"ID"]intValue]:state];
         //send data to socket
         switchModel?.value = state
+        getStateAndRefreshView()
         //        getStateAndRefreshView()
         
         
@@ -120,6 +128,16 @@ import UIKit
     
     ///Arash: Set and refresh view based on switchmodel and its state.
     private func getStateAndRefreshView() {
+        
+        var fav = DBManager.isBookmark((switchModel?.nodeID)!)
+        if fav == 0
+        {
+            btnFav.setImage(UIImage(named: "FavoriteCancel"), forState: .Normal)
+        }
+        else
+        {
+            btnFav.setImage(UIImage(named: "FavoriteOK"), forState: .Normal)
+        }
         
         if switchModel?.nodeID != -1 {
             var state = DBManager.getNodeValue(0 , nodeID: (switchModel?.nodeID)!)

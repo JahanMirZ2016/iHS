@@ -11,6 +11,7 @@ import UIKit
 class NotifyVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var topBar: TopBar!
     var notifyArray:[NotifyModel]?{
         didSet {
             tableView.reloadData()
@@ -24,16 +25,38 @@ class NotifyVC: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        manageTopBar()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateView(_:)), name: ACTIONBAR_UPDATE_VIEW, object: nil)
         
     }
     
+    ///Arash: updateView for new data.
     @objc private func updateView(notification : NSNotification ) {
         fetchAndRefresh()
     }
-    
+    ///Arash: Fetch data from DB and refresh view (with didSet)
     private func fetchAndRefresh() {
         notifyArray = DBManager.getAllNotifies()
+    }
+    
+    ///Arash: Manage topbar for connection status and notify numbers.
+    private func manageTopBar() {
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDel.actionBarView = topBar
+        let notifyCount = DBManager.getAllNotSeenNotifies()
+        topBar.messageCount = String(notifyCount!.count)
+        switch appDel.actionBarState {
+        case ActionBarState.globalConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_server")
+            break
+        case ActionBarState.localConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_local")
+            break
+        case ActionBarState.noInternetConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_disconnected")
+            break
+        default : break
+        }
     }
     
 }

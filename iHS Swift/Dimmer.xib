@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Dimmer" customModule="iHS_Swift" customModuleProvider="target">
             <connections>
+                <outlet property="btnFav" destination="71n-C8-rTP" id="xbC-DM-AJz"/>
                 <outlet property="labelNodeName" destination="yUY-h5-6jB" id="1C0-r3-nrG"/>
                 <outlet property="labelValue" destination="L2h-RK-AG6" id="app-BQ-YdI"/>
                 <outlet property="slider" destination="Owf-pc-Ubf" id="PwY-KB-cDk"/>
@@ -22,9 +23,8 @@
             <rect key="frame" x="0.0" y="0.0" width="364" height="560"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bgNode" translatesAutoresizingMaskIntoConstraints="NO" id="eiu-D6-7cj">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgNode" translatesAutoresizingMaskIntoConstraints="NO" id="eiu-D6-7cj">
                     <rect key="frame" x="0.0" y="0.0" width="364" height="560"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71n-C8-rTP">
                     <rect key="frame" x="304" y="504" width="42" height="42"/>
@@ -63,15 +63,19 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29894935344827589" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="eiu-D6-7cj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1f2-Du-ggR"/>
                 <constraint firstItem="Owf-pc-Ubf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7cI-kk-T7l"/>
+                <constraint firstAttribute="trailing" secondItem="eiu-D6-7cj" secondAttribute="trailing" id="CMO-6O-qR4"/>
                 <constraint firstAttribute="trailing" secondItem="71n-C8-rTP" secondAttribute="trailing" constant="18" id="ED6-hY-0lg"/>
                 <constraint firstItem="L2h-RK-AG6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="FUB-OI-Y7c"/>
                 <constraint firstItem="L2h-RK-AG6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="GKf-Kb-ATF"/>
+                <constraint firstAttribute="bottom" secondItem="eiu-D6-7cj" secondAttribute="bottom" id="MWG-oh-phD"/>
                 <constraint firstAttribute="bottom" secondItem="yUY-h5-6jB" secondAttribute="bottom" constant="20" id="N59-yT-OWh"/>
                 <constraint firstItem="Owf-pc-Ubf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-38" id="Nsj-9X-D68"/>
                 <constraint firstItem="Owf-pc-Ubf" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.799" id="a19-Cc-iNg"/>
                 <constraint firstAttribute="bottom" secondItem="71n-C8-rTP" secondAttribute="bottom" constant="14" id="jeQ-4N-uIQ"/>
                 <constraint firstItem="yUY-h5-6jB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kAF-pP-qLJ"/>
+                <constraint firstItem="eiu-D6-7cj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vtn-qN-n0n"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

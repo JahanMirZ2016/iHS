@@ -16,6 +16,7 @@ import UIKit
 class SettingVC: UIViewController {
     
     
+    @IBOutlet weak var topBar: TopBar!
     @IBOutlet weak var outletEn: UIButton!
     @IBOutlet weak var outletIr: UIButton!
     @IBOutlet weak var outletAr: UIButton!
@@ -28,6 +29,11 @@ class SettingVC: UIViewController {
         setSelectedLangImage()
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        manageTopBar()
     }
     
     /// Arash: Reset all registers and go to LanguageVC.
@@ -115,6 +121,26 @@ class SettingVC: UIViewController {
             break
         default :
             break
+        }
+    }
+    
+    ///Arash: Manage topbar for connection status and notify numbers.
+    private func manageTopBar() {
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDel.actionBarView = topBar
+        let notifyCount = DBManager.getAllNotSeenNotifies()
+        topBar.messageCount = String(notifyCount!.count)
+        switch appDel.actionBarState {
+        case ActionBarState.globalConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_server")
+            break
+        case ActionBarState.localConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_local")
+            break
+        case ActionBarState.noInternetConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_disconnected")
+            break
+        default : break
         }
     }
     

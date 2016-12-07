@@ -23,7 +23,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aGb-Cg-Zhy">
                     <rect key="frame" x="0.0" y="0.0" width="593" height="65"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_main_connection_status_local" translatesAutoresizingMaskIntoConstraints="NO" id="UO1-8j-o87">
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UO1-8j-o87">
                             <rect key="frame" x="553" y="26" width="35" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="35" id="A28-hh-dau"/>
@@ -102,7 +102,6 @@
     </objects>
     <resources>
         <image name="icon_logo_ihs_small" width="54" height="28"/>
-        <image name="icon_main_connection_status_local" width="24" height="24"/>
         <image name="lay_icon_alarm" width="24" height="24"/>
     </resources>
 </document>

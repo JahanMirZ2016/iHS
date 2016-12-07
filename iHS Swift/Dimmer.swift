@@ -10,6 +10,7 @@ import UIKit
 
 class Dimmer: UIView {
     
+    @IBOutlet weak var btnFav: UIButton!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var labelNodeName: UILabel!
     @IBOutlet weak var labelValue: UILabel!
@@ -35,7 +36,7 @@ class Dimmer: UIView {
     
     func createNib() {
         let bundle = NSBundle(forClass: self.dynamicType)
-        let nib = UINib(nibName: "Cooler", bundle: bundle)
+        let nib = UINib(nibName: "Dimmer", bundle: bundle)
         view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         view.frame = bounds
         view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
@@ -58,6 +59,17 @@ class Dimmer: UIView {
         DBManager.updateNodeBookmark((switchModel!.nodeID) , isBookmark : fav)
     }
     private func getStateAndRefreshView() {
+        
+        var fav = DBManager.isBookmark((switchModel?.nodeID)!)
+        if fav == 0
+        {
+            btnFav.setImage(UIImage(named: "FavoriteCancel"), forState: .Normal)
+        }
+        else
+        {
+            btnFav.setImage(UIImage(named: "FavoriteOK"), forState: .Normal)
+        }
+        
         let val = DBManager.getNodeValue(0, nodeID: switchModel!.nodeID)
         slider.minimumValue = 0
         slider.maximumValue = 0
@@ -73,8 +85,10 @@ class Dimmer: UIView {
     }
     
     @objc private func sliderValueChanged() {
-        let val = slider.value
+        let val = Int(slider.value)
         labelValue.text = "\(val)%"
+        let array = DBManager.getSwitchIDName(switchModel!.nodeID, code: slider.tag)
+        SendSwitchValue(array![0].id , value: Double(val))
 //        NSMutableArray *arr=[data getSwitchIDName:node :(int)slider1.tag];
 //        [data setSwitchValue:[[[arr objectAtIndex:0] objectForKey:@"ID"]intValue]:val];
     }

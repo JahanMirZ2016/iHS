@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Switch" customModule="iHS_Swift" customModuleProvider="target">
             <connections>
+                <outlet property="btnFav" destination="aG7-E4-nxE" id="u1u-XE-ibm"/>
                 <outlet property="btnSwitch" destination="TB0-cl-T0A" id="cad-2U-F9o"/>
                 <outlet property="labelKey" destination="XVE-fQ-ZAN" id="wV9-AF-rnZ"/>
                 <outlet property="labelNodeName" destination="Rka-PX-kLg" id="vPP-KO-B0e"/>
@@ -23,9 +24,8 @@
             <rect key="frame" x="0.0" y="0.0" width="364" height="560"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bgNode" translatesAutoresizingMaskIntoConstraints="NO" id="JLD-XL-pxF">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgNode" translatesAutoresizingMaskIntoConstraints="NO" id="JLD-XL-pxF">
                     <rect key="frame" x="0.0" y="0.0" width="364" height="560"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aG7-E4-nxE">
                     <rect key="frame" x="304" y="504" width="42" height="42"/>
@@ -71,14 +71,18 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="JLD-XL-pxF" secondAttribute="trailing" id="0lx-2D-W4M"/>
+                <constraint firstAttribute="bottom" secondItem="JLD-XL-pxF" secondAttribute="bottom" id="Fhp-mI-UxK"/>
                 <constraint firstItem="Rka-PX-kLg" firstAttribute="centerX" secondItem="mn5-Tl-mk5" secondAttribute="centerX" id="Gpu-BG-eD3"/>
                 <constraint firstAttribute="trailing" secondItem="aG7-E4-nxE" secondAttribute="trailing" constant="18" id="Omd-LO-21y"/>
                 <constraint firstItem="XVE-fQ-ZAN" firstAttribute="centerX" secondItem="mn5-Tl-mk5" secondAttribute="centerX" id="QoY-Db-fwp"/>
                 <constraint firstAttribute="bottom" secondItem="aG7-E4-nxE" secondAttribute="bottom" constant="14" id="WJO-Bn-6Kn"/>
                 <constraint firstItem="XVE-fQ-ZAN" firstAttribute="top" secondItem="TB0-cl-T0A" secondAttribute="bottom" constant="8" id="Xc5-gd-sUE"/>
                 <constraint firstItem="TB0-cl-T0A" firstAttribute="centerY" secondItem="mn5-Tl-mk5" secondAttribute="centerY" constant="-48" id="Zgm-GJ-Qez"/>
+                <constraint firstItem="JLD-XL-pxF" firstAttribute="top" secondItem="mn5-Tl-mk5" secondAttribute="top" id="mym-E3-ihl"/>
                 <constraint firstItem="TB0-cl-T0A" firstAttribute="width" secondItem="mn5-Tl-mk5" secondAttribute="width" multiplier="0.19" id="wB4-7y-qx7"/>
                 <constraint firstAttribute="bottom" secondItem="Rka-PX-kLg" secondAttribute="bottom" constant="20" id="x2s-t5-lMK"/>
+                <constraint firstItem="JLD-XL-pxF" firstAttribute="leading" secondItem="mn5-Tl-mk5" secondAttribute="leading" id="xvg-QH-wsO"/>
                 <constraint firstItem="TB0-cl-T0A" firstAttribute="centerX" secondItem="mn5-Tl-mk5" secondAttribute="centerX" constant="-1" id="yah-c2-KOK"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

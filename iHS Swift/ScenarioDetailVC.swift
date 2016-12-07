@@ -18,6 +18,7 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
     @IBOutlet weak var btnResults: UIButton!
     @IBOutlet weak var viewCollection: UIView!
     
+    @IBOutlet weak var topBar: TopBar!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var topBarScenario: TopBarScenario!
     
@@ -105,6 +106,7 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        manageTopBar()
         let headerTitles = DBManager.getTranslationOfSentences(SentencesID: [17 , 18 , 19])
         btnDescription.setTitle(headerTitles[0], forState: .Normal)
         btnConditions.setTitle(headerTitles[1], forState: .Normal)
@@ -172,4 +174,23 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
         btnConditions.setBackgroundImage(UIImage(named: "ScenarioHeader1"), forState: .Normal)
     }
     
+    ///Arash: Manage topbar for connection status and notify numbers.
+    private func manageTopBar() {
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDel.actionBarView = topBar
+        let notifyCount = DBManager.getAllNotSeenNotifies()
+        topBar.messageCount = String(notifyCount!.count)
+        switch appDel.actionBarState {
+        case ActionBarState.globalConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_server")
+            break
+        case ActionBarState.localConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_local")
+            break
+        case ActionBarState.noInternetConnection :
+            appDel.actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_disconnected")
+            break
+        default : break
+        }
+    }
 }
