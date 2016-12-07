@@ -18,6 +18,7 @@
                 <outlet property="btnOpenCurtain" destination="Tam-vs-21n" id="Ovg-5I-ojd"/>
                 <outlet property="btnStopCurtain" destination="tpW-Hp-w0D" id="QV0-7q-AJa"/>
                 <outlet property="labelClose" destination="YUe-Sh-LrI" id="b0s-jz-IYQ"/>
+                <outlet property="labelNodeName" destination="ENa-8e-ZbN" id="Cg4-Ox-Jgb"/>
                 <outlet property="labelOpen" destination="HHt-dx-9bB" id="yna-3Y-Yxu"/>
                 <outlet property="labelStop" destination="2OM-h6-ka5" id="foM-Uz-szW"/>
             </connections>
@@ -35,6 +36,9 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="rYg-lu-BCn" secondAttribute="height" multiplier="1:1" id="Q3F-eH-uFH"/>
                     </constraints>
+                    <connections>
+                        <action selector="selectorFav:" destination="-1" eventType="touchUpInside" id="IkJ-8K-kP7"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="کلید کولر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ENa-8e-ZbN">
                     <rect key="frame" x="8" y="508.5" width="296.5" height="36.5"/>

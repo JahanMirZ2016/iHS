@@ -54,6 +54,7 @@ class DeviceVC: UIViewController {
             
             let view = Switch(frame: CGRect(x: 50 , y: 100 , width: WIDTHPHONE - 100 , height: HEIGHTPHONE - 150 ))
             view.switchModel = switchModel
+            view.nodeModel = nodeModel
             switchType = .switchh
             switchView = view
             self.view.addSubview(switchView)
@@ -62,6 +63,7 @@ class DeviceVC: UIViewController {
         }else if nodeType==4 || nodeType==5 {
             let view = Dimmer(frame: CGRect(x: 50 , y: 100 , width: WIDTHPHONE - 100 , height: HEIGHTPHONE - 150 ))
             switchView = view
+            view.nodeModel = nodeModel
             view.switchModel = switchModel
             switchType = .dimmer
             self.view.addSubview(view)
@@ -70,6 +72,7 @@ class DeviceVC: UIViewController {
         }else if nodeType==6  {
             let view = Cooler(frame: CGRect(x: 50 , y: 100 , width: WIDTHPHONE - 100 , height: HEIGHTPHONE - 150 ))
             view.switchModel = switchModel
+            view.nodeModel = nodeModel
             switchType = .cooler
             switchView = view
             self.view.addSubview(view)
@@ -79,6 +82,7 @@ class DeviceVC: UIViewController {
         }else if nodeType==7 {
             let view = Curtain(frame: CGRect(x: 50 , y: 100 , width: WIDTHPHONE - 100 , height: HEIGHTPHONE - 150 ))
             switchView = view
+            view.nodeModel = nodeModel
             view.switchModel = switchModel
             switchType = .curtain
             self.view.addSubview(view)

@@ -11,6 +11,7 @@ import UIKit
 class NotifyVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
+    
     @IBOutlet weak var topBar: TopBar!
     var notifyArray:[NotifyModel]?{
         didSet {
@@ -21,7 +22,14 @@ class NotifyVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
+        tableView.separatorStyle = .None
+        tableView.backgroundColor = UIColor.clearColor()
+
+        
+        
     }
+    
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,22 +67,29 @@ class NotifyVC: UIViewController {
         }
     }
     
+    @IBAction func selectorBack(sender: UIButton) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
 
 
 ///Arash : Extensions for UITablview Delegate and Datasource
 extension NotifyVC: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
+    
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = CellNotify(frame: CGRect(x: 0, y: 0, width: WIDTHPHONE, height: 120))
-        cell.textText = notifyArray![indexPath.row].notifyText
-        cell.titleText = notifyArray![indexPath.row].notifyTitle
-        cell.context = self
-        cell.notifyModel = notifyArray![indexPath.row]
-        cell.row = indexPath.row
+//        cell.textText = notifyArray![indexPath.row].notifyText
+//        cell.titleText = notifyArray![indexPath.row].notifyTitle
+//        cell.context = self
+//        cell.notifyModel = notifyArray![indexPath.row]
+//        cell.row = indexPath.row
+        cell.backgroundColor = UIColor.clearColor()
+        cell.selectionStyle = .None
         return cell
     }
     
@@ -82,13 +97,25 @@ extension NotifyVC: UITableViewDataSource {
         return 1
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 200
+    }
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+
+    
 }
 
 ///////
 
 extension NotifyVC: UITableViewDelegate {
     
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
     }
+    
+
 }

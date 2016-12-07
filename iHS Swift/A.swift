@@ -153,14 +153,15 @@ func SendSwitchValue(id : Int , value : Double) {
     let mobileID = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.MobileID)
     var array = [NSDictionary]()
     var array2 = [NSDictionary]()
-    var dic2 = ["ID" : String(id) , "Value" : String(value)]
+    let dic2 = ["ID" : String(id) , "Value" : String(value)]
     array2.append(dic2)
-    var dic =  ["SwitchStatus" : array2 , "MessageID" : "0" , "RecieverID" : String(mobileID) , "Type" : "SwitchStatus" , "Action" : "Update" , "Date" : "2015-01-01 12:00:00"]
+    let dic =  ["SwitchStatus" : array2 , "MessageID" : "0" , "RecieverID" : String(mobileID) , "Type" : "SwitchStatus" , "Action" : "Update" , "Date" : "2015-01-01 12:00:00"]
     array.append(dic)
-    var json = JsonMaker.arrayToJson(array)
+    let json = JsonMaker.arrayToJson(array)
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-    appDel.socket.send(json)
-    
+    if appDel.socket.state == .connectToLocal || appDel.socket.state == .connectToServer {
+        appDel.socket.send(json)
+    }
     
 }
 

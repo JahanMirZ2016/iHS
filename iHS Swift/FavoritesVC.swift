@@ -17,9 +17,11 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
     
     var topBarBackTitle = ""
     var type = NodeType.favorites
+    var roomModel:RoomModel?
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var topBar: TopBar!
     @IBOutlet weak var topBarBack: TopBarRooms!
+    
     
     
     /// Arash: reload the collectionview.
@@ -74,6 +76,7 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        topBar.viewController = self
         fetchAndRefresh()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateView), name: NODE_UPDATE_VIEW, object: nil)
         manageTopBar()
@@ -90,8 +93,8 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
         if type == .favorites {
             nodeArray = DBManager.getAllFavorites()!
         }else {
-            nodeArray = DBManager.getAllNodes()!
-        }
+            nodeArray = DBManager.getAllRoomNodes(roomModel!.id)!
+                    }
         collectionView.reloadData()
     }
     

@@ -27,23 +27,7 @@ class SecondPageTBC: UITabBarController , CLLocationManagerDelegate {
         selectItemImage()
         setUpTabBar()
         setItemNames(DBManager.getTranslationOfSentences(SentencesID: [1 , 9 , 10 , 4]))
-        //        SendCustomerId()
-        //        Sync()
-        //        let centerIP = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.CenterIP)
-        //        let centerPort = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.CenterPort)
-        //        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        //        appDel.socket.open(IP: DBManager.getValueOfSettingsDB(Type: centerIP!)! , Port: Int(centerPort!)!)
-        //        SendCustomerId()
-        //        let a = Sync()
-        //        print(a)
-        //
-        
-        //        GPS()
-        //        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        //        appDel.socket.open(IP: "192.168.1.13", Port: 54127)
-        //        SendCustomerId()
-        //        Sync()
-        //
+
         
     }
     

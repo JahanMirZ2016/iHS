@@ -509,7 +509,7 @@
         <!--NotifyVC-->
         <scene sceneID="C2W-7P-IH4">
             <objects>
-                <viewController id="SFO-nJ-Lsf" customClass="NotifyVC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotifyVC" id="SFO-nJ-Lsf" customClass="NotifyVC" customModule="iHS_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mEO-lm-xj6"/>
                         <viewControllerLayoutGuide type="bottom" id="DCv-3P-fEn"/>
@@ -534,6 +534,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdX-XF-9Di">
                                 <rect key="frame" x="16" y="75" width="38" height="38"/>
                                 <state key="normal" backgroundImage="icon_back"/>
+                                <connections>
+                                    <action selector="selectorBack:" destination="SFO-nJ-Lsf" eventType="touchUpInside" id="QLq-TQ-Scl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

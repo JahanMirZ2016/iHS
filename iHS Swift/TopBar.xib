@@ -37,6 +37,9 @@
                                 <constraint firstAttribute="height" constant="40" id="xA0-f9-CGd"/>
                             </constraints>
                             <state key="normal" image="lay_icon_alarm"/>
+                            <connections>
+                                <action selector="selectorNotify:" destination="-1" eventType="touchUpInside" id="x8v-Zq-oGe"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Digital Home Controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nQ-nn-q2q">
                             <rect key="frame" x="61" y="33" width="431" height="27"/>

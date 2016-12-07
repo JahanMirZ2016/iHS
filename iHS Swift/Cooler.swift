@@ -53,7 +53,6 @@ import UIKit
         labelSlow.text = (DBManager.getTranslationOfSentences(SentencesID: [27]))[0]
         labelFast.text = (DBManager.getTranslationOfSentences(SentencesID: [26]))[0]
         labelWaterPump.text = (DBManager.getTranslationOfSentences(SentencesID: [28]))[0]
-        labelNodeName.text = nodeModel?.name
 
         addSubview(view)
         
@@ -128,7 +127,7 @@ import UIKit
     
     ///Arash: Set and refresh view based on switchmodel and its state.
     private func getStateAndRefreshView() {
-        
+        labelNodeName.text = nodeModel?.name
         var fav = DBManager.isBookmark((switchModel?.nodeID)!)
         if fav == 0
         {

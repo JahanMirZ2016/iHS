@@ -50,7 +50,6 @@ import UIKit
         labelClose.text = (DBManager.getTranslationOfSentences(SentencesID: [25]))[0]
         labelStop.text = (DBManager.getTranslationOfSentences(SentencesID: [24]))[0]
         labelOpen.text = (DBManager.getTranslationOfSentences(SentencesID: [23]))[0]
-        labelNodeName.text = nodeModel?.name
         addSubview(view)
     }
     
@@ -123,6 +122,7 @@ import UIKit
     
     ///Arash: Set and refresh view based on switchmodel state.
     private func getStateAndRefreshView() {
+        labelNodeName.text = nodeModel?.name
         var fav = DBManager.isBookmark((switchModel?.nodeID)!)
         if fav == 0
         {

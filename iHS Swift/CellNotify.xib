@@ -32,7 +32,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify Text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYI-c5-Dpt">
-                    <rect key="frame" x="44" y="118" width="319" height="151"/>
+                    <rect key="frame" x="44" y="118" width="319" height="150"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -48,21 +48,22 @@
                     </connections>
                 </button>
             </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="cYI-c5-Dpt" firstAttribute="leading" secondItem="7Yb-uo-RHl" secondAttribute="leading" constant="44" id="1R8-mb-2hj"/>
                 <constraint firstItem="ml6-s3-YHa" firstAttribute="height" secondItem="7Yb-uo-RHl" secondAttribute="height" multiplier="0.31" id="5Gi-eJ-wm9"/>
                 <constraint firstAttribute="trailing" secondItem="auI-1v-iTF" secondAttribute="trailing" constant="20" id="8qb-vW-TY0"/>
                 <constraint firstAttribute="bottom" secondItem="zOJ-Ma-yql" secondAttribute="bottom" constant="20" id="8wU-44-jLe"/>
+                <constraint firstItem="ml6-s3-YHa" firstAttribute="top" secondItem="auI-1v-iTF" secondAttribute="top" constant="5" id="ElU-Uf-5mU"/>
+                <constraint firstItem="cYI-c5-Dpt" firstAttribute="bottom" secondItem="auI-1v-iTF" secondAttribute="bottom" constant="-5" id="P7E-NT-ZtB"/>
+                <constraint firstItem="ml6-s3-YHa" firstAttribute="trailing" secondItem="auI-1v-iTF" secondAttribute="trailing" constant="-24" id="PK5-ge-zGB"/>
                 <constraint firstItem="cYI-c5-Dpt" firstAttribute="top" secondItem="ml6-s3-YHa" secondAttribute="bottom" constant="8" id="PXM-S4-sJz"/>
-                <constraint firstItem="ml6-s3-YHa" firstAttribute="top" secondItem="7Yb-uo-RHl" secondAttribute="top" constant="20" id="PY3-jj-iLg"/>
-                <constraint firstItem="ml6-s3-YHa" firstAttribute="leading" secondItem="7Yb-uo-RHl" secondAttribute="leading" constant="44" id="REP-c3-cdZ"/>
                 <constraint firstAttribute="bottom" secondItem="auI-1v-iTF" secondAttribute="bottom" constant="15" id="RK8-7h-wsZ"/>
                 <constraint firstItem="auI-1v-iTF" firstAttribute="top" secondItem="7Yb-uo-RHl" secondAttribute="top" constant="15" id="VfN-I0-Wps"/>
                 <constraint firstItem="zOJ-Ma-yql" firstAttribute="leading" secondItem="cYI-c5-Dpt" secondAttribute="trailing" constant="9" id="d03-aN-d97"/>
-                <constraint firstAttribute="bottom" secondItem="cYI-c5-Dpt" secondAttribute="bottom" constant="19" id="hTH-iL-Nrf"/>
-                <constraint firstAttribute="trailing" secondItem="ml6-s3-YHa" secondAttribute="trailing" constant="44" id="kv2-O7-n8d"/>
+                <constraint firstItem="ml6-s3-YHa" firstAttribute="leading" secondItem="auI-1v-iTF" secondAttribute="leading" constant="24" id="fwB-Wz-Jmc"/>
                 <constraint firstItem="auI-1v-iTF" firstAttribute="leading" secondItem="7Yb-uo-RHl" secondAttribute="leading" constant="20" id="mhi-Pg-bum"/>
                 <constraint firstAttribute="trailing" secondItem="zOJ-Ma-yql" secondAttribute="trailing" constant="44" id="sqM-S1-Foz"/>
+                <constraint firstItem="cYI-c5-Dpt" firstAttribute="leading" secondItem="ml6-s3-YHa" secondAttribute="leading" id="zkL-L8-Yh2"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

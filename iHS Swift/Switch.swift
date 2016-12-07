@@ -39,7 +39,6 @@ import UIKit
         view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         view.frame = bounds
         view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
-        labelNodeName.text = nodeModel?.name
         addSubview(view)
     }
     
@@ -80,7 +79,8 @@ import UIKit
     
     ///Arash: Set and refresh view based on switchmodel state.
     private func getStateAndRefreshView() {
-        
+        labelNodeName.text = nodeModel?.name
+
         var fav = DBManager.isBookmark((switchModel?.nodeID)!)
         if fav == 0
         {

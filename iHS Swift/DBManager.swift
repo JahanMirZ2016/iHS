@@ -980,6 +980,7 @@ class DBManager {
     class func getNodeValue(code : Int , nodeID node : Int)->Double? {
         let db = GetDBFromPath()
         db!.open()
+        defer {db?.close()}
         
         do {
             var val = 0.0
@@ -988,11 +989,9 @@ class DBManager {
             while result.next() {
                 val = result.doubleForColumn("Value")
             }
-            db!.close()
             return val
         } catch let err as NSError {
             Printer("DBManager get NodeValue error : \(err.debugDescription)")
-            db!.close()
             return nil
         }
     }
@@ -1024,15 +1023,14 @@ class DBManager {
         do {
             let query = "UPDATE Node SET IsBookmark=? WHERE ID=?"
             try db!.executeUpdate(query, values: [favorite , id])
-            db!.close()
             return true
         } catch let err as NSError {
             Printer("DBManager updateNodeBookmark error : \(err.debugDescription)")
-            db!.close()
             return false
         }
     }
     
+    ///Arash: Get switchmodel based on nodeID & code.
     class func getSwitchIDName(nodeID : Int , code : Int)->[SwitchModel]? {
         let db = GetDBFromPath()
         db!.open()
@@ -1048,11 +1046,38 @@ class DBManager {
                 model.name = result.stringForColumn("Name")
                 models.append(model)
             }
-            db!.close()
             return models
         } catch let err as NSError {
             Printer("DBManager getSwitchIDName error : \(err.debugDescription)")
-            db!.close()
+            return nil
+        }
+    }
+    
+    ///Arash: fetch all nodes of a room.
+    class func getAllRoomNodes(roomID:Int)->[NodeModel]? {
+        let db = GetDBFromPath()
+        db!.open()
+        defer {db!.close()}
+        
+        do {
+            let query = "select * from Node where RoomID=?"
+            let result = try db!.executeQuery(query, values: [roomID])
+            var models = [NodeModel]()
+            while result.next() {
+                let model = NodeModel()
+                model.id = Int(result.intForColumn("ID"))
+                model.name = result.stringForColumn("Name")
+                model.isBookmark = result.boolForColumn("IsBookmark")
+                //                model.isBookmark = Bool(Int(result.intForColumn("IsBookmark")))
+                model.icon = result.stringForColumn("Icon")
+                model.nodeType = Int(result.intForColumn("NodeType"))
+                model.roomID = roomID
+                model.status = Int(result.intForColumn("Status"))
+                models.append(model)
+            }
+            return models
+        } catch let err as NSError {
+            Printer("DBManager getSwitchIDName error : \(err.debugDescription)")
             return nil
         }
     }

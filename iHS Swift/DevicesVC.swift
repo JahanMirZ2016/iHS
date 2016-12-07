@@ -90,6 +90,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         let story = UIStoryboard(name: "Main", bundle: nil)
         let vc = story.instantiateViewControllerWithIdentifier("favoritesVC") as! FavoritesVC
         vc.type = .rooms
+        vc.roomModel = sectionArray![indexPath.section].cells[indexPath.row]
         vc.topBarBackTitle = "\(sectionArray![indexPath.section].name) / \(sectionArray![indexPath.section].cells[indexPath.row].name)"
         presentViewController(vc, animated: true, completion: nil)
     }
@@ -103,6 +104,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delaysContentTouches = false
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.backgroundColor = UIColor.clearColor()

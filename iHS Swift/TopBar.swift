@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable class TopBar: UIView {
     
-    
+    var viewController:UIViewController!
     @IBOutlet weak var imgConnection: UIImageView!
     
     @IBOutlet weak var labelMessage: UILabel!
@@ -64,5 +64,10 @@ import UIKit
         addSubview(view)
     }
     
+    @IBAction func selectorNotify(sender: UIButton) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NotifyVC")
+        viewController.presentViewController(vc, animated: true, completion: nil)
+        
+    }
     
 }

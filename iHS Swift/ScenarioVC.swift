@@ -32,7 +32,7 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
     
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = CellScenarios(frame: CGRectMake(0 , 0 , tableView.frame.width , 80))
-        cell.selectionStyle = .None
+        cell.selectionStyle = .Gray
         if scenarioArray[indexPath.row].active == 1 {
             cell.setImage = UIImage(named: "lay_scenario_status_on")
         } else {

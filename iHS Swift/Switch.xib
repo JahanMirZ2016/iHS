@@ -28,22 +28,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="364" height="560"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aG7-E4-nxE">
-                    <rect key="frame" x="304" y="504" width="42" height="42"/>
+                    <rect key="frame" x="312.5" y="508.5" width="36.5" height="36.5"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="42" id="chV-t6-SJW"/>
-                        <constraint firstAttribute="height" constant="42" id="hdj-6I-du6"/>
+                        <constraint firstAttribute="width" secondItem="aG7-E4-nxE" secondAttribute="height" multiplier="1:1" id="1jT-eg-Ysq"/>
                     </constraints>
                     <state key="normal" image="FavoriteOK"/>
                     <connections>
                         <action selector="selectorFav:" destination="-1" eventType="touchUpInside" id="pq1-xI-lyp"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="کلید تک پل" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rka-PX-kLg">
-                    <rect key="frame" x="123" y="512" width="117" height="28"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="117" id="adg-Mw-Ekj"/>
-                        <constraint firstAttribute="height" constant="28" id="bYR-4Q-5Rj"/>
-                    </constraints>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="کلید تک پل" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Rka-PX-kLg">
+                    <rect key="frame" x="8" y="512" width="296.5" height="33"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -69,19 +64,22 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="JLD-XL-pxF" secondAttribute="trailing" id="0lx-2D-W4M"/>
+                <constraint firstItem="Rka-PX-kLg" firstAttribute="top" secondItem="XVE-fQ-ZAN" secondAttribute="bottom" constant="202" id="4lV-7o-ry2"/>
                 <constraint firstAttribute="bottom" secondItem="JLD-XL-pxF" secondAttribute="bottom" id="Fhp-mI-UxK"/>
-                <constraint firstItem="Rka-PX-kLg" firstAttribute="centerX" secondItem="mn5-Tl-mk5" secondAttribute="centerX" id="Gpu-BG-eD3"/>
-                <constraint firstAttribute="trailing" secondItem="aG7-E4-nxE" secondAttribute="trailing" constant="18" id="Omd-LO-21y"/>
+                <constraint firstItem="Rka-PX-kLg" firstAttribute="leading" secondItem="mn5-Tl-mk5" secondAttribute="leading" constant="8" id="Nku-4j-Uge"/>
                 <constraint firstItem="XVE-fQ-ZAN" firstAttribute="centerX" secondItem="mn5-Tl-mk5" secondAttribute="centerX" id="QoY-Db-fwp"/>
-                <constraint firstAttribute="bottom" secondItem="aG7-E4-nxE" secondAttribute="bottom" constant="14" id="WJO-Bn-6Kn"/>
                 <constraint firstItem="XVE-fQ-ZAN" firstAttribute="top" secondItem="TB0-cl-T0A" secondAttribute="bottom" constant="8" id="Xc5-gd-sUE"/>
+                <constraint firstAttribute="bottom" secondItem="Rka-PX-kLg" secondAttribute="bottom" constant="15" id="YpT-0K-jfo"/>
                 <constraint firstItem="TB0-cl-T0A" firstAttribute="centerY" secondItem="mn5-Tl-mk5" secondAttribute="centerY" constant="-48" id="Zgm-GJ-Qez"/>
+                <constraint firstAttribute="bottom" secondItem="aG7-E4-nxE" secondAttribute="bottom" constant="15" id="gsr-9q-f7s"/>
+                <constraint firstItem="aG7-E4-nxE" firstAttribute="leading" secondItem="Rka-PX-kLg" secondAttribute="trailing" constant="8" id="msP-uH-WBr"/>
+                <constraint firstAttribute="width" secondItem="aG7-E4-nxE" secondAttribute="width" multiplier="10" id="mvc-Rb-u9i"/>
                 <constraint firstItem="JLD-XL-pxF" firstAttribute="top" secondItem="mn5-Tl-mk5" secondAttribute="top" id="mym-E3-ihl"/>
+                <constraint firstAttribute="trailing" secondItem="aG7-E4-nxE" secondAttribute="trailing" constant="15" id="onB-QL-uFF"/>
                 <constraint firstItem="TB0-cl-T0A" firstAttribute="width" secondItem="mn5-Tl-mk5" secondAttribute="width" multiplier="0.19" id="wB4-7y-qx7"/>
-                <constraint firstAttribute="bottom" secondItem="Rka-PX-kLg" secondAttribute="bottom" constant="20" id="x2s-t5-lMK"/>
                 <constraint firstItem="JLD-XL-pxF" firstAttribute="leading" secondItem="mn5-Tl-mk5" secondAttribute="leading" id="xvg-QH-wsO"/>
                 <constraint firstItem="TB0-cl-T0A" firstAttribute="centerX" secondItem="mn5-Tl-mk5" secondAttribute="centerX" constant="-1" id="yah-c2-KOK"/>
             </constraints>

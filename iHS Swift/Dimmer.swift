@@ -40,7 +40,6 @@ class Dimmer: UIView {
         view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         view.frame = bounds
         view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
-        labelNodeName.text = nodeModel?.name
         addSubview(view)
     }
     
@@ -59,8 +58,8 @@ class Dimmer: UIView {
         DBManager.updateNodeBookmark((switchModel!.nodeID) , isBookmark : fav)
     }
     private func getStateAndRefreshView() {
-        
-        var fav = DBManager.isBookmark((switchModel?.nodeID)!)
+        labelNodeName.text = nodeModel?.name
+        let fav = DBManager.isBookmark((switchModel?.nodeID)!)
         if fav == 0
         {
             btnFav.setImage(UIImage(named: "FavoriteCancel"), forState: .Normal)
@@ -72,15 +71,21 @@ class Dimmer: UIView {
         
         let val = DBManager.getNodeValue(0, nodeID: switchModel!.nodeID)
         slider.minimumValue = 0
-        slider.maximumValue = 0
+        slider.maximumValue = 100
+        //the slider triggers the associated action method just once, when the user releases the slider.
+        slider.continuous = false
         let trans = CGAffineTransformMakeRotation(CGFloat(M_PI) * 1.5)
-        let imgMax = UIImage(named: "DimmmerOn")?.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0))
-        let imgMin = UIImage(named: "DimmerOff")?.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+        let imgMax = UIImage(named: "DimmmerOff")?.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 20, 0))
+        let imgMin = UIImage(named: "DimmmerOn")?.resizableImageWithCapInsets(UIEdgeInsetsMake(20, 0, 0, 0))
+        slider.value = 0
+        slider.transform = trans
+        
         slider.setMaximumTrackImage(imgMax, forState: .Normal)
         slider.setMinimumTrackImage(imgMin, forState: .Normal)
         slider.setThumbImage(UIImage(), forState: .Normal)
         slider.setValue(Float(val!), animated: true)
-        slider.addTarget(self, action: #selector(sliderValueChanged), forControlEvents: .ValueChanged)
+        slider.addTarget(self, action: #selector(sliderValueChanged), forControlEvents: .ValueChanged )
+        
 
     }
     
@@ -88,7 +93,8 @@ class Dimmer: UIView {
         let val = Int(slider.value)
         labelValue.text = "\(val)%"
         let array = DBManager.getSwitchIDName(switchModel!.nodeID, code: slider.tag)
-        SendSwitchValue(array![0].id , value: Double(val))
+        Printer(val)
+//        SendSwitchValue(array![0].id , value: Double(val))
 //        NSMutableArray *arr=[data getSwitchIDName:node :(int)slider1.tag];
 //        [data setSwitchValue:[[[arr objectAtIndex:0] objectForKey:@"ID"]intValue]:val];
     }
@@ -97,4 +103,3 @@ class Dimmer: UIView {
 
 
 
-//labelNodeName.text = nodeModel?.name

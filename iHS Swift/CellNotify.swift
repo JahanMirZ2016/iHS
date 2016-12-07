@@ -41,7 +41,7 @@ class CellNotify: UITableViewCell {
     
     func createNib() {
         let bundle = NSBundle(forClass: self.dynamicType)
-        let nib = UINib(nibName: "CellNotification", bundle: bundle)
+        let nib = UINib(nibName: "CellNotify", bundle: bundle)
         view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         view.frame = bounds
         view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
