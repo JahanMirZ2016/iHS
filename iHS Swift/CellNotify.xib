@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,13 +25,16 @@
                     <rect key="frame" x="20" y="15" width="416" height="258"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ml6-s3-YHa">
-                    <rect key="frame" x="44" y="20" width="368" height="90"/>
+                    <rect key="frame" x="44" y="20" width="368" height="59"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="59" id="VsI-Et-WNz"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify Text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYI-c5-Dpt">
-                    <rect key="frame" x="44" y="118" width="319" height="150"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sadasd" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYI-c5-Dpt">
+                    <rect key="frame" x="44" y="87" width="320" height="174"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -50,20 +52,19 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="ml6-s3-YHa" firstAttribute="height" secondItem="7Yb-uo-RHl" secondAttribute="height" multiplier="0.31" id="5Gi-eJ-wm9"/>
                 <constraint firstAttribute="trailing" secondItem="auI-1v-iTF" secondAttribute="trailing" constant="20" id="8qb-vW-TY0"/>
                 <constraint firstAttribute="bottom" secondItem="zOJ-Ma-yql" secondAttribute="bottom" constant="20" id="8wU-44-jLe"/>
                 <constraint firstItem="ml6-s3-YHa" firstAttribute="top" secondItem="auI-1v-iTF" secondAttribute="top" constant="5" id="ElU-Uf-5mU"/>
-                <constraint firstItem="cYI-c5-Dpt" firstAttribute="bottom" secondItem="auI-1v-iTF" secondAttribute="bottom" constant="-5" id="P7E-NT-ZtB"/>
+                <constraint firstItem="cYI-c5-Dpt" firstAttribute="leading" secondItem="auI-1v-iTF" secondAttribute="leading" constant="24" id="FNA-eT-QuG"/>
+                <constraint firstItem="cYI-c5-Dpt" firstAttribute="trailing" secondItem="auI-1v-iTF" secondAttribute="trailing" constant="-72" id="Kln-f1-9we"/>
+                <constraint firstItem="cYI-c5-Dpt" firstAttribute="bottom" secondItem="auI-1v-iTF" secondAttribute="bottom" constant="-12" id="P7E-NT-ZtB"/>
                 <constraint firstItem="ml6-s3-YHa" firstAttribute="trailing" secondItem="auI-1v-iTF" secondAttribute="trailing" constant="-24" id="PK5-ge-zGB"/>
                 <constraint firstItem="cYI-c5-Dpt" firstAttribute="top" secondItem="ml6-s3-YHa" secondAttribute="bottom" constant="8" id="PXM-S4-sJz"/>
                 <constraint firstAttribute="bottom" secondItem="auI-1v-iTF" secondAttribute="bottom" constant="15" id="RK8-7h-wsZ"/>
                 <constraint firstItem="auI-1v-iTF" firstAttribute="top" secondItem="7Yb-uo-RHl" secondAttribute="top" constant="15" id="VfN-I0-Wps"/>
-                <constraint firstItem="zOJ-Ma-yql" firstAttribute="leading" secondItem="cYI-c5-Dpt" secondAttribute="trailing" constant="9" id="d03-aN-d97"/>
+                <constraint firstItem="zOJ-Ma-yql" firstAttribute="trailing" secondItem="auI-1v-iTF" secondAttribute="trailing" constant="-24" id="cMQ-sc-Ea1"/>
                 <constraint firstItem="ml6-s3-YHa" firstAttribute="leading" secondItem="auI-1v-iTF" secondAttribute="leading" constant="24" id="fwB-Wz-Jmc"/>
                 <constraint firstItem="auI-1v-iTF" firstAttribute="leading" secondItem="7Yb-uo-RHl" secondAttribute="leading" constant="20" id="mhi-Pg-bum"/>
-                <constraint firstAttribute="trailing" secondItem="zOJ-Ma-yql" secondAttribute="trailing" constant="44" id="sqM-S1-Foz"/>
-                <constraint firstItem="cYI-c5-Dpt" firstAttribute="leading" secondItem="ml6-s3-YHa" secondAttribute="leading" id="zkL-L8-Yh2"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

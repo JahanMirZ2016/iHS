@@ -13,9 +13,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopBarScenario" customModule="iHS_Swift" customModuleProvider="target">
             <connections>
+                <outlet property="btnActive" destination="Zpd-AJ-fYJ" id="axj-Tj-K0o"/>
                 <outlet property="btnBack" destination="o6m-xh-Nls" id="jYM-c0-LdB"/>
-                <outlet property="btnOnOff" destination="Zpd-AJ-fYJ" id="usg-Ue-0oL"/>
-                <outlet property="btnRun" destination="F9S-PX-lWd" id="HtN-vx-lcg"/>
+                <outlet property="btnStart" destination="F9S-PX-lWd" id="Vid-zN-Z1f"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -30,7 +30,7 @@
                     </constraints>
                     <state key="normal" backgroundImage="lay_onoff_off_normal"/>
                     <connections>
-                        <action selector="selectorOnOff:" destination="-1" eventType="touchUpInside" id="p8V-Wb-GD5"/>
+                        <action selector="selectorActive:" destination="-1" eventType="touchUpInside" id="6LL-eH-qI9"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o6m-xh-Nls">
@@ -51,7 +51,7 @@
                     </constraints>
                     <state key="normal" backgroundImage="lay_list_run_normal"/>
                     <connections>
-                        <action selector="selectorRun:" destination="-1" eventType="touchUpInside" id="Z7d-PZ-hNn"/>
+                        <action selector="selectorStart:" destination="-1" eventType="touchUpInside" id="EYb-NS-8oD"/>
                     </connections>
                 </button>
             </subviews>

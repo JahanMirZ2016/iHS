@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopBar" customModule="iHS_Swift" customModuleProvider="target">
             <connections>
+                <outlet property="btnNotify" destination="6AD-Tr-tIt" id="aSG-Fh-H6H"/>
                 <outlet property="imgConnection" destination="UO1-8j-o87" id="kMV-LW-efo"/>
                 <outlet property="labelMessage" destination="Ft0-QI-8yP" id="3q6-yO-PeT"/>
             </connections>

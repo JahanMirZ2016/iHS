@@ -19,6 +19,7 @@ class CellScenarios: UITableViewCell {
     @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var img: UIImageView!
     
+    
     var textName:String? {
         get {
             return labelName.text

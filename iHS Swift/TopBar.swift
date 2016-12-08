@@ -15,6 +15,7 @@ import UIKit
     
     @IBOutlet weak var labelMessage: UILabel!
     
+    @IBOutlet weak var btnNotify: UIButton!
     /// Set Image for different kind of connections. (UIImage)
     var connectionImage:UIImage! {
         set {

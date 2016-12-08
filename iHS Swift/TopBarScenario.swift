@@ -10,11 +10,16 @@ import UIKit
 
 @IBDesignable class TopBarScenario: UIView {
     
+    @IBOutlet weak var btnStart: UIButton!
+    @IBOutlet weak var btnActive: UIButton!
     @IBOutlet var view : UIView!
-    
+    var scenarioModel:ScenarioModel! {
+        didSet {
+            updateTopBar()
+        }
+    }
     @IBOutlet weak var btnBack: UIButton!
-    @IBOutlet weak var btnRun: UIButton!
-    @IBOutlet weak var btnOnOff: UIButton!
+    
     
     var context:ScenarioDetailVC?
     
@@ -32,7 +37,7 @@ import UIKit
             return nil
         }
         set {
-            btnRun.setImage(newValue, forState: .Normal)
+            btnStart.setImage(newValue, forState: .Normal)
         }
     }
     
@@ -41,7 +46,7 @@ import UIKit
             return nil
         }
         set {
-            btnOnOff.setImage(newValue, forState: .Normal)
+            btnActive.setImage(newValue, forState: .Normal)
         }
     }
     
@@ -71,13 +76,50 @@ import UIKit
         addSubview(view)
     }
     
-    @IBAction func selectorOnOff(sender: UIButton) {
+    private func updateTopBar() {
+        if scenarioModel.active == 1 {
+            btnActive.setBackgroundImage(UIImage(named : "BtnScenarioA"), forState: .Normal )
+        } else {
+            btnActive.setBackgroundImage(UIImage(named: "BtnScenarioD"), forState: .Normal)
+        }
+        if scenarioModel.isStarted == 0 {
+            btnStart.setBackgroundImage(UIImage(named: "ScenarioOff"), forState: .Normal)
+        } else {
+            btnStart.hidden = true
+        }
     }
     
-    @IBAction func selectorRun(sender: UIButton) {
-    }
     @IBAction func selectorBack(sender: UIButton) {
         context?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    @IBAction func selectorStart(sender: UIButton) {
+        if scenarioModel.isStarted == 0 {
+            if SetScenarioStarted(scenarioModel) {
+                scenarioModel.isStarted = 1
+                btnStart.hidden = true
+            }
+        }
+    }
+    
+    
+    
+    @IBAction func selectorActive(sender: UIButton) {
+        if scenarioModel.active == 0 {
+            scenarioModel.active = 1
+            btnActive.setBackgroundImage(UIImage(named : "BtnScenarioA"), forState: .Normal)
+        } else if scenarioModel.active == 1 {
+            scenarioModel.active = 0
+            btnActive.setBackgroundImage(UIImage(named : "BtnScenarioD"), forState: .Normal)
+            context!.showAlert()
+
+            
+        } else if scenarioModel.active == -1 {
+            context!.showAlert()
+            
+
+        }
     }
     
     

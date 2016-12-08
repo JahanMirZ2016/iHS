@@ -526,10 +526,12 @@
                                     <outlet property="delegate" destination="SFO-nJ-Lsf" id="p5m-QX-Er9"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ta-aJ-A4L" customClass="TopBar" customModule="iHS_Swift" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ta-aJ-A4L" customClass="TopBar" customModule="iHS_Swift" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="2mm-WJ-Afl"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdX-XF-9Di">
                                 <rect key="frame" x="16" y="75" width="38" height="38"/>
@@ -542,7 +544,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sZB-5A-R04" firstAttribute="top" secondItem="wdX-XF-9Di" secondAttribute="bottom" constant="8" id="5Lt-mg-1e2"/>
+                            <constraint firstItem="1Ta-aJ-A4L" firstAttribute="leading" secondItem="91j-ic-2pH" secondAttribute="leading" id="A7F-2f-LiO"/>
                             <constraint firstAttribute="trailing" secondItem="sZB-5A-R04" secondAttribute="trailing" id="Q6e-NH-cmY"/>
+                            <constraint firstItem="1Ta-aJ-A4L" firstAttribute="top" secondItem="91j-ic-2pH" secondAttribute="top" id="msc-mH-Z8b"/>
+                            <constraint firstAttribute="trailing" secondItem="1Ta-aJ-A4L" secondAttribute="trailing" id="oIQ-IF-X5o"/>
                             <constraint firstItem="wdX-XF-9Di" firstAttribute="leading" secondItem="91j-ic-2pH" secondAttribute="leadingMargin" id="ppV-OK-LLf"/>
                             <constraint firstItem="sZB-5A-R04" firstAttribute="leading" secondItem="91j-ic-2pH" secondAttribute="leading" id="trJ-l0-V3D"/>
                             <constraint firstItem="sZB-5A-R04" firstAttribute="top" secondItem="mEO-lm-xj6" secondAttribute="bottom" constant="101" id="xTX-TE-5w3"/>

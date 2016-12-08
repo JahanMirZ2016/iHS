@@ -165,6 +165,25 @@ func SendSwitchValue(id : Int , value : Double) {
     
 }
 
+///Arash: Set Scenario is started and send this informatio to center/server.
+func SetScenarioStarted(scenarioModel : ScenarioModel)->Bool {
+    let mobileID = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.MobileID)
+    var array = [NSDictionary]()
+    var array2 = [NSDictionary]()
+    let dic2 = ["ID" : String(scenarioModel.id) , "Active" : "2"]
+    array2.append(dic2)
+    let dic = ["ScenarioStatus" : array2 , "MessageID" : "0" , "RecieverID" : String(mobileID) , "Type" : "ScenarioStatus" , "Action" : "Update" , "Date" : "2015-01-01 12:00:00"]
+    array.append(dic)
+    let json = JsonMaker.arrayToJson(array)
+    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+    if appDel.socket.state == .connectToLocal || appDel.socket.state == .connectToServer {
+        if appDel.socket.send(json) {
+            return true
+        }
+    }
+    return false
+}
+
 /// BinMan1 : Structor of Setttings table types
 struct TypeOfSettings {
     static let LanguageID = "LanguageID"
@@ -206,22 +225,6 @@ struct RecieveAction {
     static let Update = "Update"
 }
 
-//extension UIDevice {
-//    public var SSID: String {
-//        get {
-//            let interfaces:CFArray! = CNCopySupportedInterfaces()
-//            for i in 0..<CFArrayGetCount(interfaces){
-//                let interfaceName: UnsafePointer<Void>
-//                    =  CFArrayGetValueAtIndex(interfaces, i)
-//                let rec = unsafeBitCast(interfaceName, AnyObject.self)
-//                let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)")
-//                if unsafeInterfaceData != nil {
-//                    let interfaceData = unsafeInterfaceData! as NSDictionary
-//                    let currentSSID = interfaceData["SSID"] as! String
-//
-//            }
-//        }
-//    }
-//}
+
 
 

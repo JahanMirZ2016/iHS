@@ -7,7 +7,7 @@
 //
 
 /*
-  Arash: Section2 - Secondary - ScenarioDetail View Controller
+ Arash: Section2 - Secondary - ScenarioDetail View Controller
  */
 
 import UIKit
@@ -17,7 +17,7 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
     @IBOutlet weak var btnConditions: UIButton!
     @IBOutlet weak var btnResults: UIButton!
     @IBOutlet weak var viewCollection: UIView!
-    
+    var alertView:AlertScenarioDetail?
     @IBOutlet weak var topBar: TopBar!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var topBarScenario: TopBarScenario!
@@ -91,6 +91,7 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateView), name: SCENARIO_UPDATE_VIEW, object: nil)
         topBarScenario.context = self
+        topBarScenario.scenarioModel = scenarioModel
         
     }
     
@@ -193,4 +194,24 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
         default : break
         }
     }
+    
+    ///Arash: Show alert dialog if scenario state == -1
+    func showAlert() {
+        alertView = AlertScenarioDetail(frame: CGRect(x: 0, y: 0, width: WIDTHPHONE, height: HEIGHTPHONE))
+        alertView?.labelMessage.numberOfLines = 3
+        alertView?.labelMessage.text = DBManager.getTranslationOfSentences(SentencesID: [29])[0]
+        if SELECTEDLANGID == LangID.PERSIAN || SELECTEDLANGID == LangID.ARABIC {
+            alertView?.labelMessage.textAlignment = .Right
+        }
+        alertView?.btnOK.setTitle("OK", forState: .Normal)
+        alertView!.context = self
+        view.addSubview(alertView!)
+    }
+    
+    ///Arash: Hide alert dialog
+    func hideAlert() {
+        alertView?.removeFromSuperview()
+    }
+    
+    
 }
