@@ -184,6 +184,25 @@ func SetScenarioStarted(scenarioModel : ScenarioModel)->Bool {
     return false
 }
 
+func SetScenarioActive(scenarioModel : ScenarioModel)-> Bool {
+    let mobileID = DBManager.getValueOfSettingsDB(Type: TypeOfSettings.MobileID)
+    var array = [NSDictionary]()
+    var array2 = [NSDictionary]()
+    let dic2 = ["ID" : String(scenarioModel.id) , "Active" : String(scenarioModel.active)]
+    array2.append(dic2)
+    let dic = ["ScenarioStatus" : array2 , "MessageID" : "0" , "RecieverID" : String(mobileID) , "Type" : "ScenarioStatus" , "Action" : "Update" , "Date" : "2015-01-01 12:00:00"]
+    array.append(dic2)
+    let json = JsonMaker.arrayToJson(array)
+    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+    if appDel.socket.state == .connectToLocal || appDel.socket.state == .connectToServer {
+        if appDel.socket.send(json) {
+            return true
+        }
+    }
+    return false
+    
+}
+
 /// BinMan1 : Structor of Setttings table types
 struct TypeOfSettings {
     static let LanguageID = "LanguageID"
@@ -224,6 +243,7 @@ struct RecieveAction {
     static let Delete = "Delete"
     static let Update = "Update"
 }
+
 
 
 

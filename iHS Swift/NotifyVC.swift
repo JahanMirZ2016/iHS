@@ -13,7 +13,7 @@ class NotifyVC: UIViewController {
     
     
     @IBOutlet weak var topBar: TopBar!
-    var notifyArray:[NotifyModel]?{
+    var notifyArray:[NotifyModel]? = [NotifyModel](){
         didSet {
             tableView.reloadData()
         }
@@ -21,6 +21,9 @@ class NotifyVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Load last 10 notifies and mark them as seen.
+        loadNotifies()
+        
         topBar.btnNotify.hidden = true
         topBar.labelMessage.hidden = true
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
@@ -28,8 +31,8 @@ class NotifyVC: UIViewController {
         tableView.backgroundColor = UIColor.clearColor()
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableViewAutomaticDimension
-//        tableView.setNeedsLayout()
-//        tableView.layoutIfNeeded()
+        //        tableView.setNeedsLayout()
+        //        tableView.layoutIfNeeded()
         tableView.reloadData()
         
         
@@ -40,7 +43,8 @@ class NotifyVC: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         manageTopBar()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateView(_:)), name: ACTIONBAR_UPDATE_VIEW, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(ACTIONBAR_UPDATE_VIEW, object: ActionBarState.notify as AnyObject)
+        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateView(_:)), name: ACTIONBAR_UPDATE_VIEW, object: nil)
         
     }
     
@@ -73,6 +77,11 @@ class NotifyVC: UIViewController {
         }
     }
     
+    ///Arash: Load last 10 notifies stored in database.
+    private func loadNotifies() {
+        notifyArray = DBManager.getLastNotifies()
+    }
+    
     @IBAction func selectorBack(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -93,7 +102,8 @@ extension NotifyVC: UITableViewDataSource {
         //        cell.context = self
         //        cell.notifyModel = notifyArray![indexPath.row]
         //        cell.row = indexPath.row
-
+        
+        
         cell.layoutIfNeeded()
         cell.backgroundColor = UIColor.clearColor()
         cell.selectionStyle = .None
@@ -119,6 +129,8 @@ extension NotifyVC: UITableViewDataSource {
 ///////
 
 extension NotifyVC: UITableViewDelegate {
+    
+    
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

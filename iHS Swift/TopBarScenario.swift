@@ -112,14 +112,11 @@ import UIKit
         } else if scenarioModel.active == 1 {
             scenarioModel.active = 0
             btnActive.setBackgroundImage(UIImage(named : "BtnScenarioD"), forState: .Normal)
-            context!.showAlert()
-
-            
+            //            context!.showAlert()
         } else if scenarioModel.active == -1 {
             context!.showAlert()
-            
-
         }
+        SetScenarioActive(scenarioModel)
     }
     
     

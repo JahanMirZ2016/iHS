@@ -51,7 +51,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         cell.labelText = sectionArray![section].cells[indexPath.row].name
         //Arash: Bug(image name sent by center is not a valid image in assets.)
         if let image = UIImage(named: sectionArray![section].cells[indexPath.row].icon) {
-        cell.imgImage = image
+            cell.imgImage = image
         }
         return cell
     }

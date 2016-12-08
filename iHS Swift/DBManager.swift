@@ -251,6 +251,44 @@ class DBManager {
         }
     }
     
+    ///Arash: Get last 10 notifies.
+    class func getLastNotifies()->[NotifyModel]? {
+        let db = GetDBFromPath()
+        db!.open()
+        defer {db?.close()}
+        do {
+            let query = "SELECT NotifyTitle,NotifyText FROM Notify ORDER BY ID DESC LIMIT 0,10"
+            let result = try db!.executeQuery(query, values: nil)
+            var models = [NotifyModel]()
+            while result.next() {
+                let model = NotifyModel()
+                model.id = Int(result.intForColumn("ID"))
+                model.notifyText = result.stringForColumn("NotifyText")
+                model.notifyTitle = result.stringForColumn("NotifyTitle")
+                model.seen = result.boolForColumn("Seen")
+                updateLastNotifies(notifyID: model.id)
+                
+                models.append(model)
+            }
+            return models
+        } catch let err as NSError {
+            Printer("DBManager getLastNotifies error : \(err.debugDescription)")
+            return nil
+        }
+    }
+    
+    ///Arash: Update last seen notifies.
+    class func updateLastNotifies(notifyID id : Int) {
+        let db = GetDBFromPath()
+        db!.open()
+        defer{db?.close()}
+        do {
+            let query = "UPDATE Notify SET Seen = ? WHERE ID = ?"
+            try db!.executeUpdate(query, values: [1 , id])
+        } catch let err as NSError {
+            Printer("DBManger updateLastNotifies error : \(err.debugDescription)")
+        }
+    }
     
     /// BinMan1 : Get All Nodes From Node table
     class func getAllNotifies() -> [NotifyModel]? {

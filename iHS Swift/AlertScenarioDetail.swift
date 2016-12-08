@@ -48,4 +48,7 @@ class AlertScenarioDetail: UIView {
         context?.hideAlert()
     }
     
+    @IBAction func gestureHide(sender: UITapGestureRecognizer) {
+        context!.hideAlert()
+    }
 }

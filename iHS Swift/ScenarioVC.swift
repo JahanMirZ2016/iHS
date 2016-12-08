@@ -39,7 +39,11 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
             cell.setImage = UIImage(named: "lay_scenario_status_off")
         }
         cell.textName = scenarioArray[indexPath.row].name
-        cell.textDescription = scenarioArray[indexPath.row].condition
+        let description = scenarioArray[indexPath.row].description
+        
+        cell.textDescription = description.html2String
+        
+        
         return cell
     }
     
@@ -53,7 +57,7 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
         vc.scenarioID = scenarioArray[indexPath.row].id
         presentViewController(vc, animated: true, completion: nil)
         vc.scenarioModel = scenarioArray[indexPath.row]
-
+        
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -120,3 +124,23 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
         }
     }
 }
+
+///Arash: Convert html to string.
+extension String {
+    
+    var html2AttributedString: NSAttributedString? {
+        guard
+            let data = dataUsingEncoding(NSUTF8StringEncoding)
+            else { return nil }
+        do {
+            return try NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,NSCharacterEncodingDocumentAttribute:NSUTF8StringEncoding], documentAttributes: nil)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+            return  nil
+        }
+    }
+    var html2String: String {
+        return html2AttributedString?.string ?? ""
+    }
+}
+

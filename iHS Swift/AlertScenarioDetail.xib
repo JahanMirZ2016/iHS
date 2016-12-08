@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,9 +25,13 @@
                 <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yrd-IG-pQR">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="nle-nX-zkX" appends="YES" id="1Jy-6H-i65"/>
+                    </connections>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Alert" translatesAutoresizingMaskIntoConstraints="NO" id="Rbx-WO-tnI">
-                    <rect key="frame" x="16" y="217" width="343" height="216"/>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Alert" translatesAutoresizingMaskIntoConstraints="NO" id="Rbx-WO-tnI">
+                    <rect key="frame" x="16" y="193" width="343" height="240"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgD-mG-RB2">
                     <rect key="frame" x="147" y="383" width="80" height="30"/>
@@ -41,30 +46,39 @@
                         <action selector="selectorOK:" destination="-1" eventType="touchUpInside" id="NJt-vd-VF1"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6xp-2O-Tpa">
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6xp-2O-Tpa">
                     <rect key="frame" x="29" y="277" width="317" height="98"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Alert-1" translatesAutoresizingMaskIntoConstraints="NO" id="vkz-r9-cxn">
+                    <rect key="frame" x="162.5" y="209" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="vkz-r9-cxn" secondAttribute="height" multiplier="1:1" id="nFC-Uz-Opv"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="fgD-mG-RB2" firstAttribute="bottom" secondItem="Rbx-WO-tnI" secondAttribute="bottom" constant="-20" id="0hL-q1-pb9"/>
                 <constraint firstItem="6xp-2O-Tpa" firstAttribute="leading" secondItem="Rbx-WO-tnI" secondAttribute="leading" constant="13" id="4aC-YM-j2e"/>
                 <constraint firstAttribute="bottom" secondItem="Yrd-IG-pQR" secondAttribute="bottom" id="65j-9X-9e1"/>
+                <constraint firstItem="vkz-r9-cxn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8AM-xe-Rmt"/>
                 <constraint firstAttribute="trailing" secondItem="Rbx-WO-tnI" secondAttribute="trailing" constant="16" id="KTU-Zu-9bx"/>
+                <constraint firstItem="vkz-r9-cxn" firstAttribute="top" secondItem="Rbx-WO-tnI" secondAttribute="top" constant="16" id="Ka6-8J-yka"/>
                 <constraint firstItem="Rbx-WO-tnI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="P91-z8-S5H"/>
                 <constraint firstItem="fgD-mG-RB2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QXv-3e-U60"/>
                 <constraint firstItem="Yrd-IG-pQR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="R8C-V1-W6G"/>
                 <constraint firstItem="fgD-mG-RB2" firstAttribute="top" secondItem="6xp-2O-Tpa" secondAttribute="bottom" constant="8" id="TbF-sK-1TN"/>
                 <constraint firstItem="6xp-2O-Tpa" firstAttribute="trailing" secondItem="Rbx-WO-tnI" secondAttribute="trailing" constant="-13" id="Zz3-2Z-7WA"/>
-                <constraint firstAttribute="height" secondItem="Rbx-WO-tnI" secondAttribute="height" multiplier="3.35" constant="-56.600000000000023" id="buU-uy-YYm"/>
+                <constraint firstAttribute="height" secondItem="Rbx-WO-tnI" secondAttribute="height" multiplier="3.35" constant="-137" id="buU-uy-YYm"/>
                 <constraint firstAttribute="trailing" secondItem="Yrd-IG-pQR" secondAttribute="trailing" id="gvj-k9-evT"/>
-                <constraint firstItem="Rbx-WO-tnI" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-8.5" id="qjB-51-zjB"/>
+                <constraint firstItem="6xp-2O-Tpa" firstAttribute="top" secondItem="vkz-r9-cxn" secondAttribute="bottom" constant="18" id="qQb-Wq-Xpp"/>
+                <constraint firstItem="Rbx-WO-tnI" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-20.5" id="qjB-51-zjB"/>
                 <constraint firstItem="Yrd-IG-pQR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qk2-Ty-Wqo"/>
                 <constraint firstItem="Rbx-WO-tnI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="yIJ-uY-vvK"/>
-                <constraint firstItem="6xp-2O-Tpa" firstAttribute="top" secondItem="Rbx-WO-tnI" secondAttribute="top" constant="60" id="zX2-pL-ZhP"/>
+                <constraint firstItem="6xp-2O-Tpa" firstAttribute="top" secondItem="Rbx-WO-tnI" secondAttribute="top" constant="84" id="zX2-pL-ZhP"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -72,9 +86,16 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="32.5" y="57.5"/>
         </view>
+        <tapGestureRecognizer id="nle-nX-zkX">
+            <connections>
+                <action selector="gestureHide:" destination="-1" id="XLK-hQ-2eV"/>
+                <outlet property="delegate" destination="-1" id="ehB-52-kKO"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="Alert" width="300" height="150"/>
+        <image name="Alert-1" width="256" height="256"/>
         <image name="BtnRegister" width="120" height="40"/>
     </resources>
 </document>
