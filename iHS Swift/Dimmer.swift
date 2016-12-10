@@ -107,6 +107,8 @@ class Dimmer: UIView {
         let array = DBManager.getSwitchIDName(switchModel!.nodeID, code: slider.tag)
         Printer(val)
         SendSwitchValue(array![0].id , value: Double(val))
+        switchModel?.value = Double(val)
+        getStateAndRefreshView()
         //        NSMutableArray *arr=[data getSwitchIDName:node :(int)slider1.tag];
         //        [data setSwitchValue:[[[arr objectAtIndex:0] objectForKey:@"ID"]intValue]:val];
     }

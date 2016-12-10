@@ -106,19 +106,23 @@ import UIKit
     
     
     @IBAction func selectorActive(sender: UIButton) {
-        if scenarioModel.active == 0 {
-            scenarioModel.active = 1
-            btnActive.setBackgroundImage(UIImage(named : "BtnScenarioA"), forState: .Normal)
-        } else if scenarioModel.active == 1 {
-            scenarioModel.active = 0
-            btnActive.setBackgroundImage(UIImage(named : "BtnScenarioD"), forState: .Normal)
-            //            context!.showAlert()
-        } else if scenarioModel.active == -1 {
-            context!.showAlert()
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        if appDel.socket != nil {
+            if appDel.socket.state == .connectToServer || appDel.socket.state == .connectToLocal {
+                if scenarioModel.active == 0 {
+                    scenarioModel.active = 1
+                    btnActive.setBackgroundImage(UIImage(named : "BtnScenarioA"), forState: .Normal)
+                } else if scenarioModel.active == 1 {
+                    scenarioModel.active = 0
+                    btnActive.setBackgroundImage(UIImage(named : "BtnScenarioD"), forState: .Normal)
+                    //            context!.showAlert()
+                } else if scenarioModel.active == -1 {
+                    context!.showAlert()
+                }
+                SetScenarioActive(scenarioModel)
+            }
         }
-        SetScenarioActive(scenarioModel)
     }
-    
     
     
     

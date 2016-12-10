@@ -98,7 +98,7 @@ import UIKit
         var arr = Array<NSDictionary>()
         let dic:NSDictionary = ["ID" : (switchModel?.id)! , "Name" : (switchModel?.name)!]
         arr.append(dic)
-        let array = DBManager.getSwitchIDName(switchModel!.nodeID, code: switchModel!.code)
+        let array = DBManager.getSwitchIDName(switchModel!.nodeID, code: tag)
         SendSwitchValue(array![0].id , value: state)
         
         //[data setSwitchValue:[[[arr objectAtIndex:0] objectForKey:@"ID"]intValue]:state];

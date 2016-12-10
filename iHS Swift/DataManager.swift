@@ -349,6 +349,7 @@ class DataManager {
         }
     }
     
+    ///Arash: Analyze the jsonstring and determine that its jsonObject or jsonArray.
     class func JSONAnalyzer(json:NSString ) {
         
         if json.substringWithRange(NSRange(location: 0, length: 1)) == "[" {

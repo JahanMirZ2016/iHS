@@ -24,9 +24,6 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lay_expandablelist_parrent_normal.9-1" translatesAutoresizingMaskIntoConstraints="NO" id="ChK-sW-uCe">
                     <rect key="frame" x="20" y="3" width="392" height="77"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="392" id="wWQ-xh-66D"/>
-                    </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="N3E-Ko-4mo">
                     <rect key="frame" x="377" y="32" width="16" height="16"/>

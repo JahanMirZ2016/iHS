@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iHS Swift/SocketManager.swift"
-            timestampString = "503038051.949094"
+            filePath = "iHS Swift/Dimmer.swift"
+            timestampString = "503047607.176376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "recieve()"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "sliderValueChanged()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

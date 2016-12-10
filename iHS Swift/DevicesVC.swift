@@ -38,7 +38,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         let section = indexPath.section
         if SELECTEDLANGID == LangID.PERSIAN || SELECTEDLANGID == LangID.ARABIC {
             let cell = CellRooms(frame: CGRectMake(0 , 0 , tableView.frame.width , 80))
-            cell.selectionStyle = .None
+            cell.selectionStyle = .Blue
             cell.labelText = sectionArray![section].cells[indexPath.row].name
             if let image = UIImage(named: sectionArray![section].cells[indexPath.row].icon) {
                 cell.imgImage = image
@@ -47,7 +47,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
             return cell
         }
         let cell = CellRoomsLeftAllignment(frame: CGRectMake(0 , 0 , tableView.frame.width , 80))
-        cell.selectionStyle = .None
+        cell.selectionStyle = .Blue
         cell.labelText = sectionArray![section].cells[indexPath.row].name
         //Arash: Bug(image name sent by center is not a valid image in assets.)
         if let image = UIImage(named: sectionArray![section].cells[indexPath.row].icon) {
