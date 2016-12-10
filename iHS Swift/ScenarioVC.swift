@@ -41,7 +41,7 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
         cell.textName = scenarioArray[indexPath.row].name
         let description = scenarioArray[indexPath.row].description
         
-        cell.textDescription = description.html2String
+        cell.textName = description.html2String
         
         
         return cell
@@ -73,6 +73,7 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        topBar.viewController = self
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.backgroundColor = UIColor.clearColor()

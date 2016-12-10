@@ -39,7 +39,7 @@ import UIKit
         createNib()
     }
     
-
+    
     
     
     func createNib() {
@@ -53,7 +53,7 @@ import UIKit
         labelSlow.text = (DBManager.getTranslationOfSentences(SentencesID: [27]))[0]
         labelFast.text = (DBManager.getTranslationOfSentences(SentencesID: [26]))[0]
         labelWaterPump.text = (DBManager.getTranslationOfSentences(SentencesID: [28]))[0]
-
+        
         addSubview(view)
         
     }

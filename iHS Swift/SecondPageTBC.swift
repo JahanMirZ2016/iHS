@@ -22,12 +22,12 @@ class SecondPageTBC: UITabBarController , CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         selectItemImage()
         setUpTabBar()
         setItemNames(DBManager.getTranslationOfSentences(SentencesID: [1 , 9 , 10 , 4]))
-
+        
         
     }
     
@@ -77,5 +77,5 @@ class SecondPageTBC: UITabBarController , CLLocationManagerDelegate {
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage(named: "tab-bar-bg")
     }
-  
+    
 }

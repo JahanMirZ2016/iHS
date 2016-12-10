@@ -44,10 +44,12 @@ class AlertScenarioDetail: UIView {
         addSubview(view)
     }
     
+    ///Arash: Selector(btn) for hiding the alert.
     @IBAction func selectorOK(sender: UIButton) {
         context?.hideAlert()
     }
     
+    ///Arash: Gesture for hiding the alert.
     @IBAction func gestureHide(sender: UITapGestureRecognizer) {
         context!.hideAlert()
     }

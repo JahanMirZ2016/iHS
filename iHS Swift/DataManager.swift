@@ -37,7 +37,6 @@ class DataManager {
             appDel.socket.rDelegate = appDel.self
             appDel.startCheckingInternet()
         }
-        
     }
     
     /// Arash : Insert into section table.
@@ -73,7 +72,7 @@ class DataManager {
             nodeModel.name = (object as! NSDictionary)["Name"] as! String
             nodeModel.icon = "Node" + ((object as! NSDictionary)["Icon"] as! String)
             nodeModel.id = (object as! NSDictionary)["ID"] as! Int
-//            nodeModel.isBookmark = (object as! NSDictionary)["IsBookmark"] as! Bool
+            //            nodeModel.isBookmark = (object as! NSDictionary)["IsBookmark"] as! Bool
             nodeModel.nodeType = (object as! NSDictionary)["NodeType"] as! Int
             nodeModel.roomID = (object as! NSDictionary)["RoomID"] as! Int
             nodeModel.status = (object as! NSDictionary)["Status"] as! Int

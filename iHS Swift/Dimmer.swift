@@ -75,8 +75,8 @@ class Dimmer: UIView {
         //the slider triggers the associated action method just once, when the user releases the slider.
         slider.continuous = false
         let trans = CGAffineTransformMakeRotation(CGFloat(M_PI) * 1.5)
-        let imgMax = UIImage(named: "DimmmerOff")?.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 20, 0))
-        let imgMin = UIImage(named: "DimmmerOn")?.resizableImageWithCapInsets(UIEdgeInsetsMake(20, 0, 0, 0))
+        let imgMax = UIImage(named: "DimmmerOff")?.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+        let imgMin = UIImage(named: "DimmmerOn")?.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0))
         slider.value = 0
         slider.transform = trans
         
@@ -94,7 +94,7 @@ class Dimmer: UIView {
         labelValue.text = "\(val)%"
         let array = DBManager.getSwitchIDName(switchModel!.nodeID, code: slider.tag)
         Printer(val)
-//        SendSwitchValue(array![0].id , value: Double(val))
+        SendSwitchValue(array![0].id , value: Double(val))
 //        NSMutableArray *arr=[data getSwitchIDName:node :(int)slider1.tag];
 //        [data setSwitchValue:[[[arr objectAtIndex:0] objectForKey:@"ID"]intValue]:val];
     }

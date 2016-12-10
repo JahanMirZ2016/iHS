@@ -25,6 +25,7 @@ class SettingVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        topBar.viewController = self
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         setSelectedLangImage()
         

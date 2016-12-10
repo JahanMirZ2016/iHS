@@ -16,7 +16,6 @@ class CellScenarios: UITableViewCell {
     
     
     @IBOutlet weak var labelName: UILabel!
-    @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var img: UIImageView!
     
     
@@ -29,14 +28,14 @@ class CellScenarios: UITableViewCell {
         }
     }
     
-    var textDescription:String? {
-        get {
-            return labelDescription.text
-        }
-        set {
-            labelDescription.text = newValue
-        }
-    }
+//    var textDescription:String? {
+//        get {
+//            return labelDescription.text
+//        }
+//        set {
+//            labelDescription.text = newValue
+//        }
+//    }
     
     var setImage:UIImage? {
         get {

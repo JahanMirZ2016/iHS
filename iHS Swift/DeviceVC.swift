@@ -105,20 +105,20 @@ class DeviceVC: UIViewController {
     private func setSwitchType(switchType : SwitchType) {
         switch switchType {
         case .cooler :
-            (switchView as! Cooler).switchModel = switchModel
             (switchView as! Cooler).nodeModel = nodeModel
+            (switchView as! Cooler).switchModel = switchModel
             break
         case .curtain :
-            (switchView as! Curtain).switchModel = switchModel
             (switchView as! Curtain).nodeModel = nodeModel
+            (switchView as! Curtain).switchModel = switchModel
             break
         case .dimmer :
-            (switchView as! Dimmer).switchModel = switchModel
             (switchView as! Dimmer).nodeModel = nodeModel
+            (switchView as! Dimmer).switchModel = switchModel
             break
         case .switchh :
-            (switchView as! Switch).switchModel = switchModel
             (switchView as! Switch).nodeModel = nodeModel
+            (switchView as! Switch).switchModel = switchModel
             break
         default : break
         }

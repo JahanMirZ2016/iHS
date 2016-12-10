@@ -104,6 +104,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        topBar.viewController = self
         tableView.delaysContentTouches = false
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
