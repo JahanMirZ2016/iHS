@@ -8,6 +8,10 @@
 
 import UIKit
 
+/*
+ Arash : Dimmer Device
+ */
+
 class Dimmer: UIView {
     
     @IBOutlet weak var btnFav: UIButton!
@@ -40,6 +44,24 @@ class Dimmer: UIView {
         view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         view.frame = bounds
         view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
+        
+        slider.minimumValue = 0
+        slider.maximumValue = 100
+        //the slider triggers the associated action method just once, when the user releases the slider.
+        slider.continuous = false
+        let trans = CGAffineTransformMakeRotation(CGFloat(M_PI) * 1.5)
+        let imgMax = UIImage(named: "DimmmerOff")?.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+        let imgMin = UIImage(named: "DimmmerOn")?.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+        slider.value = 0
+        slider.transform = trans
+        
+        slider.setMaximumTrackImage(imgMax, forState: .Normal)
+        slider.setMinimumTrackImage(imgMin, forState: .Normal)
+        slider.setThumbImage(UIImage(), forState: .Normal)
+        slider.setValue(Float(0), animated: true)
+//        slider.addTarget(self, action: #selector(sliderValueChanged), forControlEvents: .ValueChanged )
+
+        
         addSubview(view)
     }
     
@@ -57,6 +79,8 @@ class Dimmer: UIView {
         }//else
         DBManager.updateNodeBookmark((switchModel!.nodeID) , isBookmark : fav)
     }
+    
+    ///Arash: Set and refresh view based on switchmodel and its state.
     private func getStateAndRefreshView() {
         labelNodeName.text = nodeModel?.name
         let fav = DBManager.isBookmark((switchModel?.nodeID)!)
@@ -70,23 +94,11 @@ class Dimmer: UIView {
         }
         
         let val = DBManager.getNodeValue(0, nodeID: switchModel!.nodeID)
-        slider.minimumValue = 0
-        slider.maximumValue = 100
-        //the slider triggers the associated action method just once, when the user releases the slider.
-        slider.continuous = false
-        let trans = CGAffineTransformMakeRotation(CGFloat(M_PI) * 1.5)
-        let imgMax = UIImage(named: "DimmmerOff")?.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0))
-        let imgMin = UIImage(named: "DimmmerOn")?.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0))
-        slider.value = 0
-        slider.transform = trans
-        
-        slider.setMaximumTrackImage(imgMax, forState: .Normal)
-        slider.setMinimumTrackImage(imgMin, forState: .Normal)
-        slider.setThumbImage(UIImage(), forState: .Normal)
+
         slider.setValue(Float(val!), animated: true)
         slider.addTarget(self, action: #selector(sliderValueChanged), forControlEvents: .ValueChanged )
         
-
+        
     }
     
     @objc private func sliderValueChanged() {
@@ -95,8 +107,8 @@ class Dimmer: UIView {
         let array = DBManager.getSwitchIDName(switchModel!.nodeID, code: slider.tag)
         Printer(val)
         SendSwitchValue(array![0].id , value: Double(val))
-//        NSMutableArray *arr=[data getSwitchIDName:node :(int)slider1.tag];
-//        [data setSwitchValue:[[[arr objectAtIndex:0] objectForKey:@"ID"]intValue]:val];
+        //        NSMutableArray *arr=[data getSwitchIDName:node :(int)slider1.tag];
+        //        [data setSwitchValue:[[[arr objectAtIndex:0] objectForKey:@"ID"]intValue]:val];
     }
     
 }

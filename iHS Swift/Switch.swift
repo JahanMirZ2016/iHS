@@ -6,6 +6,10 @@
 //  Copyright © 2016 Ali Zare Sh. All rights reserved.
 //
 
+/*
+ Arash : Switch Device
+ */
+
 import UIKit
 
 @IBDesignable class Switch: UIView {
@@ -43,7 +47,7 @@ import UIKit
     }
     
     @IBAction func selectorPols(sender: UIButton) {
-        var tag = sender.tag
+        let tag = sender.tag
         var state = DBManager.getNodeValue(tag, nodeID: switchModel!.nodeID)
         if state == 0//Off
         {
@@ -77,11 +81,11 @@ import UIKit
     }
     
     
-    ///Arash: Set and refresh view based on switchmodel state.
+    ///Arash: Set and refresh view based on switchmodel and its state.
     private func getStateAndRefreshView() {
         labelNodeName.text = nodeModel?.name
 
-        var fav = DBManager.isBookmark((switchModel?.nodeID)!)
+        let fav = DBManager.isBookmark((switchModel?.nodeID)!)
         if fav == 0
         {
             btnFav.setImage(UIImage(named: "FavoriteCancel"), forState: .Normal)
@@ -90,7 +94,7 @@ import UIKit
         {
             btnFav.setImage(UIImage(named: "FavoriteOK"), forState: .Normal)
         }
-        var state = DBManager.getNodeValue(0, nodeID: switchModel!.nodeID)
+        let state = DBManager.getNodeValue(0, nodeID: switchModel!.nodeID)
         if state == 1 {
             btnSwitch.setBackgroundImage(UIImage(named: "SwitchOn"), forState: .Normal)
         }else {

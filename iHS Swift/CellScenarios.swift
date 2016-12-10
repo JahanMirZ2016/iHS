@@ -1,8 +1,8 @@
 //
-//  CellScenario.swift
+//  CellScenarios.swift
 //  iHS Swift
 //
-//  Created by arash on 11/15/16.
+//  Created by arash on 12/10/16.
 //  Copyright © 2016 Ali Zare Sh. All rights reserved.
 //
 
@@ -28,14 +28,14 @@ class CellScenarios: UITableViewCell {
         }
     }
     
-//    var textDescription:String? {
-//        get {
-//            return labelDescription.text
-//        }
-//        set {
-//            labelDescription.text = newValue
-//        }
-//    }
+    //    var textDescription:String? {
+    //        get {
+    //            return labelDescription.text
+    //        }
+    //        set {
+    //            labelDescription.text = newValue
+    //        }
+    //    }
     
     var setImage:UIImage? {
         get {
@@ -44,9 +44,9 @@ class CellScenarios: UITableViewCell {
         set {
             img.image = newValue
         }
-   
+        
     }
-
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         createNib()
@@ -70,6 +70,6 @@ class CellScenarios: UITableViewCell {
         
         addSubview(view)
     }
-
-
+    
+    
 }

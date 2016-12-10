@@ -277,11 +277,10 @@ class DBManager {
         }
     }
     
-    ///Arash: Update last seen notifies.
+    ///Arash: Update last seen notifies.(mark notify as seen.)
     class func updateLastNotifies(notifyID id : Int) {
         let db = GetDBFromPath()
-        db!.open()
-        defer{db?.close()}
+        
         do {
             let query = "UPDATE Notify SET Seen = ? WHERE ID = ?"
             try db!.executeUpdate(query, values: [1 , id])

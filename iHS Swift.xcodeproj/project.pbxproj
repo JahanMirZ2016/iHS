@@ -36,6 +36,7 @@
 		5B6247C31DD700BB00760F10 /* CellRooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6247C21DD700BB00760F10 /* CellRooms.swift */; };
 		5B6247C51DD700D500760F10 /* SectionRooms.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6247C41DD700D500760F10 /* SectionRooms.xib */; };
 		5B6247C71DD700E800760F10 /* SectionRooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6247C61DD700E800760F10 /* SectionRooms.swift */; };
+		5B689F9F1DFBD23600E791EF /* CellScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B689F9E1DFBD23600E791EF /* CellScenarios.swift */; };
 		5BA3915B1DD9D1C0009B0D2F /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3915A1DD9D1C0009B0D2F /* SettingsModel.swift */; };
 		5BA3915D1DD9D203009B0D2F /* SwitchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3915C1DD9D203009B0D2F /* SwitchModel.swift */; };
 		5BA3915F1DD9D28D009B0D2F /* TranslationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3915E1DD9D28D009B0D2F /* TranslationModel.swift */; };
@@ -58,7 +59,6 @@
 		5BEA78CC1DDAD91700A71068 /* CellFavorites.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BEA78CB1DDAD91700A71068 /* CellFavorites.xib */; };
 		5BEA78CE1DDAD94300A71068 /* CellFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA78CD1DDAD94300A71068 /* CellFavorites.swift */; };
 		5BEA78D11DDAE4F000A71068 /* CellScenarios.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BEA78D01DDAE4F000A71068 /* CellScenarios.xib */; };
-		5BEA78D31DDAE50F00A71068 /* CellScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA78D21DDAE50F00A71068 /* CellScenario.swift */; };
 		5BEB4EE91DF93A2100051746 /* AlertScenarioDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BEB4EE81DF93A2100051746 /* AlertScenarioDetail.xib */; };
 		5BEB4EEB1DF93A3000051746 /* AlertScenarioDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB4EEA1DF93A3000051746 /* AlertScenarioDetail.swift */; };
 		9076CD0CDE56C977F16A007A /* libPods-iHS SwiftTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC69544FCADE95E58F157AC /* libPods-iHS SwiftTests.a */; };
@@ -131,6 +131,7 @@
 		5B6247C21DD700BB00760F10 /* CellRooms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellRooms.swift; sourceTree = "<group>"; };
 		5B6247C41DD700D500760F10 /* SectionRooms.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionRooms.xib; sourceTree = "<group>"; };
 		5B6247C61DD700E800760F10 /* SectionRooms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionRooms.swift; sourceTree = "<group>"; };
+		5B689F9E1DFBD23600E791EF /* CellScenarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellScenarios.swift; sourceTree = "<group>"; };
 		5BA3915A1DD9D1C0009B0D2F /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		5BA3915C1DD9D203009B0D2F /* SwitchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchModel.swift; sourceTree = "<group>"; };
 		5BA3915E1DD9D28D009B0D2F /* TranslationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationModel.swift; sourceTree = "<group>"; };
@@ -153,7 +154,6 @@
 		5BEA78CB1DDAD91700A71068 /* CellFavorites.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellFavorites.xib; sourceTree = "<group>"; };
 		5BEA78CD1DDAD94300A71068 /* CellFavorites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellFavorites.swift; sourceTree = "<group>"; };
 		5BEA78D01DDAE4F000A71068 /* CellScenarios.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellScenarios.xib; sourceTree = "<group>"; };
-		5BEA78D21DDAE50F00A71068 /* CellScenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellScenario.swift; sourceTree = "<group>"; };
 		5BEB4EE81DF93A2100051746 /* AlertScenarioDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertScenarioDetail.xib; sourceTree = "<group>"; };
 		5BEB4EEA1DF93A3000051746 /* AlertScenarioDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertScenarioDetail.swift; sourceTree = "<group>"; };
 		696FC33BFC8868DAEABD38FF /* Pods-iHS SwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHS SwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iHS SwiftTests/Pods-iHS SwiftTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -481,7 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				5BEA78D01DDAE4F000A71068 /* CellScenarios.xib */,
-				5BEA78D21DDAE50F00A71068 /* CellScenario.swift */,
+				5B689F9E1DFBD23600E791EF /* CellScenarios.swift */,
 				5BDD8E801DEEE8AC007EFB62 /* ScenarioDetail */,
 			);
 			name = Scenarios;
@@ -919,6 +919,7 @@
 				5B00F0EC1DF7CEE200C8BF5E /* NotifyVC.swift in Sources */,
 				5B3938011DDC544700808098 /* CellRoomsLeftAllignment.swift in Sources */,
 				5BCDCD711DD47FF600CC3372 /* SettingVC.swift in Sources */,
+				5B689F9F1DFBD23600E791EF /* CellScenarios.swift in Sources */,
 				5BDD8E821DEEE8EE007EFB62 /* ScenarioDetailCell.swift in Sources */,
 				5B06CC0A1DF42F30000C4DE6 /* Switch.swift in Sources */,
 				5B06CC0C1DF42F47000C4DE6 /* Dimmer.swift in Sources */,
@@ -945,7 +946,6 @@
 				5B35C82A1DE6AC9A0054470B /* SyncRecieveModel.swift in Sources */,
 				5BC2B5911DE02F1800D3F597 /* DataManager.swift in Sources */,
 				EED4DA151DDC49C500299ED0 /* RegisterVC.swift in Sources */,
-				5BEA78D31DDAE50F00A71068 /* CellScenario.swift in Sources */,
 				5B06CBF91DF413CE000C4DE6 /* DeviceVC.swift in Sources */,
 				EED4DA0E1DDC372C00299ED0 /* JsonSerializer.swift in Sources */,
 			);

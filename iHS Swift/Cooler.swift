@@ -6,7 +6,9 @@
 //  Copyright © 2016 Ali Zare Sh. All rights reserved.
 //
 
-
+/*
+ Arash : Cooler Device
+ */
 
 import UIKit
 
@@ -128,7 +130,7 @@ import UIKit
     ///Arash: Set and refresh view based on switchmodel and its state.
     private func getStateAndRefreshView() {
         labelNodeName.text = nodeModel?.name
-        var fav = DBManager.isBookmark((switchModel?.nodeID)!)
+        let fav = DBManager.isBookmark((switchModel?.nodeID)!)
         if fav == 0
         {
             btnFav.setImage(UIImage(named: "FavoriteCancel"), forState: .Normal)

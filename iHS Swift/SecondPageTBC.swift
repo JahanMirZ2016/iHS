@@ -17,8 +17,8 @@ import CoreLocation
 class SecondPageTBC: UITabBarController , CLLocationManagerDelegate {
     
     var locationManager:CLLocationManager?
-    var selectedImageArray:[String] = ["Favorite" , "Node" , "Scenario" , "Setting"]
-    var unselectedImageArray:[String] = ["FavoriteA" , "NodeA" , "ScenarioA" , "SettingA"]
+    var selectedImageArray:[String] = ["FavoriteA" , "NodeA" , "ScenarioA" , "SettingA"]
+    var unselectedImageArray:[String] = ["Favorite" , "Node" , "Scenario" , "Setting"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

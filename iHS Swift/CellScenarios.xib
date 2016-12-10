@@ -13,8 +13,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CellScenarios" customModule="iHS_Swift" customModuleProvider="target">
             <connections>
-                <outlet property="img" destination="N3E-Ko-4mo" id="bf9-mv-sNR"/>
-                <outlet property="labelName" destination="dUN-tR-cAK" id="DU3-Oe-mJ8"/>
+                <outlet property="img" destination="N3E-Ko-4mo" id="Xef-YC-Hgw"/>
+                <outlet property="labelName" destination="dUN-tR-cAK" id="ACV-Hm-5a2"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
