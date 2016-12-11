@@ -26,7 +26,7 @@ import UIKit
     @IBOutlet weak var labelNodeName: UILabel!
     @IBOutlet weak var labelClose: UILabel!
     @IBOutlet weak var labelStop: UILabel!
-    @IBOutlet weak var labelOpen: UILabel!
+   @IBOutlet weak var labelOpen: UILabel!
     @IBOutlet weak var btnOpenCurtain: UIButton!
     @IBOutlet weak var btnStopCurtain: UIButton!
     @IBOutlet weak var btnCloseCurtain: UIButton!
