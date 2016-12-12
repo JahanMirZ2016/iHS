@@ -67,7 +67,7 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
         
     }
     
-    /// Arash: Set header images.
+    /// Arash: Set header images when scroll finished.
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let visibleRect = CGRect(origin: self.collectionView.contentOffset, size: self.collectionView.bounds.size)
         let visiblePoint = CGPointMake(CGRectGetMidX(visibleRect), CGRectGetMidY(visibleRect))

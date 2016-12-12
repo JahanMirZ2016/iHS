@@ -26,7 +26,7 @@ import UIKit
     @IBOutlet weak var labelNodeName: UILabel!
     @IBOutlet weak var labelClose: UILabel!
     @IBOutlet weak var labelStop: UILabel!
-   @IBOutlet weak var labelOpen: UILabel!
+    @IBOutlet weak var labelOpen: UILabel!
     @IBOutlet weak var btnOpenCurtain: UIButton!
     @IBOutlet weak var btnStopCurtain: UIButton!
     @IBOutlet weak var btnCloseCurtain: UIButton!
@@ -103,7 +103,7 @@ import UIKit
         var arr = Array<NSDictionary>()
         let dic:NSDictionary = ["ID" : (switchModel?.id)! , "Name" : (switchModel?.name)!]
         arr.append(dic)
-        let array = DBManager.getSwitchIDName(switchModel!.nodeID, code: switchModel!.code)
+        let array = DBManager.getSwitchIDName(switchModel!.nodeID, code: 0)
         SendSwitchValue(array![0].id , value: state!)
     }
     

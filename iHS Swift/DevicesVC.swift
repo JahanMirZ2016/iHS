@@ -34,6 +34,7 @@ class DevicesVC: UIViewController , UITableViewDelegate , UITableViewDataSource 
         //        return sectionArray![section].collapsed ? sectionArray![section].cells.count : 0
     }
     
+    ///Arash: Return cell based on language. (left-allignment / right-allignment)
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let section = indexPath.section
         if SELECTEDLANGID == LangID.PERSIAN || SELECTEDLANGID == LangID.ARABIC {

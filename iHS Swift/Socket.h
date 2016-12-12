@@ -9,7 +9,7 @@
 #ifndef Socket_h
 #define Socket_h
 
-
+#include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -22,12 +22,13 @@
 struct sockaddr_in server_in;
 int sock, conn;
 //struct hostent *server;
-char buffer[1];
+char buffer[10];
 
 
 int connectToSocket(char* server_ip , int server_port);
 long sendData(char* message);
 char* recieveData();
 int closeSocket();
+char* concat(const char *a, const char *b);
 
 #endif /* Socket_h */

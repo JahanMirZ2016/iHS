@@ -6,6 +6,10 @@
 //  Copyright © 2016 Ali Zare Sh. All rights reserved.
 //
 
+/*
+ Arash: View for display Alert.
+ */
+
 import UIKit
 
 class AlertScenarioDetail: UIView {

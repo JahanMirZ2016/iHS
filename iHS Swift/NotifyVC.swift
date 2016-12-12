@@ -98,11 +98,11 @@ extension NotifyVC: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = CellNotify(frame: CGRect(x: 0, y: 0, width: WIDTHPHONE, height: 0))
-                cell.textText = notifyArray![indexPath.row].notifyText
-                cell.titleText = notifyArray![indexPath.row].notifyTitle
-                cell.context = self
-                cell.notifyModel = notifyArray![indexPath.row]
-                cell.row = indexPath.row
+        cell.textText = notifyArray![indexPath.row].notifyText
+        cell.titleText = notifyArray![indexPath.row].notifyTitle
+        cell.context = self
+        cell.notifyModel = notifyArray![indexPath.row]
+        cell.row = indexPath.row
         
         
         cell.layoutIfNeeded()

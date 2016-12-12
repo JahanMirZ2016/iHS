@@ -13,6 +13,7 @@ protocol RecieveSocketDelegate : class {
     func recieve(rData : NSString)
 }
 
+///Arash: Enum for socket state.
 enum SocketState {
     case none
     case disconnect
@@ -61,22 +62,20 @@ class SocketManager {
             var tempString = NSString()
             while true {
                 let data = recieveData()
-                if NSString(UTF8String: data) == "RecieveFailed" {
-                    break
+                if NSString(UTF8String: data) != nil {
+                    if NSString(UTF8String: data) != "RecieveFailed" {
+                        self.rDelegate?.recieve(String(UTF8String: UnsafeMutablePointer<CChar>(data))!)
+                    }else {
+                        break
+                    }
                 }
                 
-                if data[0] == 10 || data[0] == 13 {
-                    self.rDelegate?.recieve(tempString)
-                    tempString = ""
-                    continue
-                }
-                
-                if NSString(UTF8String: data) != "" && NSString(UTF8String: data) != nil {
-                    tempString = (tempString as String) + (NSString(UTF8String : data) as! String)
-                }
             }
+            
         }
     }
+    
+    
     
     /// BinMan1 : Close socket connection
     
@@ -88,9 +87,10 @@ class SocketManager {
         return true
     }
     
-    
-    deinit {
-        SOCKET_IP = ""
-        SOCKET_PORT = -1
-    }
 }
+
+//deinit {
+//    SOCKET_IP = ""
+//    SOCKET_PORT = -1
+//}
+

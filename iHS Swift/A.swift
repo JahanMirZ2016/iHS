@@ -44,7 +44,7 @@ struct ActionBarState {
 //    case globalConnection
 //}
 
-/// Arash: Node Type VC
+/// Arash: Node Type VC (rooms->nodes [rooms] , favorites->nodes [favorites]
 enum NodeType {
     case favorites
     case rooms
@@ -82,7 +82,6 @@ func GetDBFromPath () -> FMDatabase? {
             return nil
         }
     }
-    
 }
 
 /// Language ID Selected By User
@@ -196,12 +195,12 @@ func SetScenarioActive(scenarioModel : ScenarioModel)-> Bool {
     array.append(dic)
     let json = JsonMaker.arrayToJson(array)
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-//    if appDel.socket != nil {
-//        if appDel.socket.state == .connectToLocal || appDel.socket.state == .connectToServer {
-            if appDel.socket.send(json) {
-                return true
-//            }
-//        }
+    //    if appDel.socket != nil {
+    //        if appDel.socket.state == .connectToLocal || appDel.socket.state == .connectToServer {
+    if appDel.socket.send(json) {
+        return true
+        //            }
+        //        }
     }
     return false
     

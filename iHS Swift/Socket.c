@@ -42,13 +42,36 @@ long sendData(char* message) {
 }
 
 char* recieveData() {
-    memset(buffer, 0, sizeof(buffer));
-    if (recv(sock, buffer, sizeof(buffer), 0) < 0)
-        return "RecieveFailed";
+        memset(buffer, 0, sizeof(buffer));
+        long int index;
+        char* result = "";
+    while ((index = recv(sock, buffer, sizeof(buffer), 0)) > 0) {
+        result = concat(result, buffer);
+        printf("%s", result);
+        memset(buffer, 0, sizeof(buffer));
+        if (((result[strlen(result)-1] == 10 || result[strlen(result)-1] == 13 ))) {
+            break;
+        }
+    }
+        if (index < 0) {
+            return "RecieveFailed";
+        }
     
-    return buffer;
-}
+        
+        return result;
+    }
+
 
 int closeSocket() {
     return close(sock);
+}
+
+///Arash: Concatenate 2 strings.
+char* concat(const char *a, const char *b)
+{
+    char *result = malloc(strlen(a)+strlen(b)+1);//+1 for the zero-terminator
+    //in real code you would check for errors in malloc here
+    strcpy(result, a);
+    strcat(result, b);
+    return result;
 }

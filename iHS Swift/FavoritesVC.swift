@@ -94,7 +94,7 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
             nodeArray = DBManager.getAllFavorites()!
         }else {
             nodeArray = DBManager.getAllRoomNodes(roomModel!.id)!
-                    }
+        }
         collectionView.reloadData()
     }
     
