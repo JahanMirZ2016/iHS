@@ -38,7 +38,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="کلید تک پل" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Rka-PX-kLg">
-                    <rect key="frame" x="8" y="512" width="296.5" height="33"/>
+                    <rect key="frame" x="8" y="524.5" width="296.5" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -67,7 +67,6 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="JLD-XL-pxF" secondAttribute="trailing" id="0lx-2D-W4M"/>
-                <constraint firstItem="Rka-PX-kLg" firstAttribute="top" secondItem="XVE-fQ-ZAN" secondAttribute="bottom" constant="202" id="4lV-7o-ry2"/>
                 <constraint firstAttribute="bottom" secondItem="JLD-XL-pxF" secondAttribute="bottom" id="Fhp-mI-UxK"/>
                 <constraint firstItem="Rka-PX-kLg" firstAttribute="leading" secondItem="mn5-Tl-mk5" secondAttribute="leading" constant="8" id="Nku-4j-Uge"/>
                 <constraint firstItem="XVE-fQ-ZAN" firstAttribute="centerX" secondItem="mn5-Tl-mk5" secondAttribute="centerX" id="QoY-Db-fwp"/>

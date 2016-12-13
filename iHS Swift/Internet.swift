@@ -27,7 +27,8 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
     private func checking() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.reachabilityChanged(_:)), name: ReachabilityChangedNotification, object: nil)
         do {
-            self.network = try Reachability(hostname: "https://www.google.com")
+            self.network = try Reachability.reachabilityForInternetConnection()
+            
             try self.network.startNotifier()
         } catch let err as NSError {
             Printer("reachability error : \(err.debugDescription)")
@@ -172,7 +173,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
             return true
         }
         
-        return false
+        return true
     }//        return true
     
     
@@ -192,7 +193,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
         return (currentSSID , currentBSSID)
     }
     
-    /// Arash: Send location data.
+    ///Arash: Send location data.
     @objc func GPS() {
         dispatch_async(dispatch_get_main_queue()) {
             self.locationManager = CLLocationManager()
@@ -206,7 +207,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
         
     }
     
-    
+    ///Arash: Protocol(listener) for location changes.
     internal func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         
@@ -237,7 +238,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
         Printer(error.debugDescription)
     }
     
-    /// Arash: Func for initializing the timer after removing from memory.
+    /// Arash: Func for initializing the timer after being removed from memory.
     private func fireTimer() {
         timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: #selector(self.GPS), userInfo: nil, repeats: true)
         timer.fire()

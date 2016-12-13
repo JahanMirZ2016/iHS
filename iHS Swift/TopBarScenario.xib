@@ -44,10 +44,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9S-PX-lWd">
-                    <rect key="frame" x="169" y="0.0" width="37" height="50"/>
+                    <rect key="frame" x="169.5" y="1.5" width="36" height="47.5"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="F9S-PX-lWd" secondAttribute="height" multiplier="3:4" id="XmF-Ir-65Z"/>
-                        <constraint firstAttribute="height" constant="50" id="eNg-IT-yF4"/>
                     </constraints>
                     <state key="normal" backgroundImage="lay_list_run_normal"/>
                     <connections>
@@ -59,10 +58,10 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Zpd-AJ-fYJ" secondAttribute="trailing" constant="27" id="CuC-eT-qzm"/>
                 <constraint firstItem="o6m-xh-Nls" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-1" id="Lwu-RX-aUr"/>
-                <constraint firstItem="F9S-PX-lWd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Vkb-0u-eyh"/>
                 <constraint firstItem="F9S-PX-lWd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="crr-DY-fLd"/>
                 <constraint firstItem="F9S-PX-lWd" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="czI-9B-XIh"/>
                 <constraint firstItem="Zpd-AJ-fYJ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="edv-Uy-0iR"/>
+                <constraint firstAttribute="height" secondItem="F9S-PX-lWd" secondAttribute="height" multiplier="1.05" id="muo-Ax-ObB"/>
                 <constraint firstItem="Zpd-AJ-fYJ" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.7" id="pmX-UH-a5g"/>
                 <constraint firstItem="o6m-xh-Nls" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="yH6-sg-Kts"/>
                 <constraint firstItem="o6m-xh-Nls" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.8" id="zNZ-38-SR8"/>

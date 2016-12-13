@@ -53,7 +53,6 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                     <constraints>
-                        <constraint firstItem="zRN-VM-0d0" firstAttribute="centerY" secondItem="UX3-3y-SmH" secondAttribute="centerY" id="1Xk-up-ILg"/>
                         <constraint firstAttribute="bottom" secondItem="UX3-3y-SmH" secondAttribute="bottom" id="36j-GS-gKb"/>
                         <constraint firstAttribute="trailing" secondItem="UX3-3y-SmH" secondAttribute="trailing" constant="25" id="Ccg-9T-Kmg"/>
                         <constraint firstItem="DlP-F2-TAK" firstAttribute="centerY" secondItem="UX3-3y-SmH" secondAttribute="centerY" id="DLA-Cx-6Qc"/>
@@ -63,6 +62,7 @@
                         <constraint firstItem="N3h-LZ-BXg" firstAttribute="leading" secondItem="DlP-F2-TAK" secondAttribute="trailing" constant="8" id="PaP-j3-Isc"/>
                         <constraint firstItem="zRN-VM-0d0" firstAttribute="trailing" secondItem="UX3-3y-SmH" secondAttribute="trailing" constant="-32.5" id="S4b-mx-RBE"/>
                         <constraint firstItem="N3h-LZ-BXg" firstAttribute="height" secondItem="zRN-VM-0d0" secondAttribute="height" id="Tp1-Xq-3If"/>
+                        <constraint firstItem="zRN-VM-0d0" firstAttribute="centerY" secondItem="v5h-f4-SqC" secondAttribute="centerY" id="Uxf-T6-MPb"/>
                         <constraint firstItem="UX3-3y-SmH" firstAttribute="leading" secondItem="v5h-f4-SqC" secondAttribute="leading" constant="25" id="Vu1-BV-Gct"/>
                         <constraint firstItem="DlP-F2-TAK" firstAttribute="leading" secondItem="UX3-3y-SmH" secondAttribute="leading" constant="24" id="cmC-5C-N4u"/>
                         <constraint firstItem="UX3-3y-SmH" firstAttribute="top" secondItem="v5h-f4-SqC" secondAttribute="top" id="g2c-T8-3zf"/>
