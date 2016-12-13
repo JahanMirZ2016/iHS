@@ -93,8 +93,10 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
                 verificationModel.ExKey = exkey
                 verificationModel.Serial = serial!
                 
+                Printer("Json of VerificationModel \(verificationModel)")
+                
                 let jsonData = JSONSerializer.toJson(verificationModel).stringByAppendingString("\n")
-                Printer("JsonData \(jsonData)")
+                Printer("Json of JsonData \(jsonData)")
                 
                 
                 if appDel.socket.send(jsonData) {

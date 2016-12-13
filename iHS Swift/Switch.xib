@@ -43,7 +43,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TB0-cl-T0A">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TB0-cl-T0A">
                     <rect key="frame" x="146" y="197" width="70" height="70"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="TB0-cl-T0A" secondAttribute="height" multiplier="1:1" id="dJS-zr-CUH"/>

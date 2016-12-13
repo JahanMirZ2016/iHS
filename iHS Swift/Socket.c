@@ -47,7 +47,6 @@ char* recieveData() {
         char* result = "";
     while ((index = recv(sock, buffer, sizeof(buffer), 0)) > 0) {
         result = concat(result, buffer);
-        printf("%s", result);
         memset(buffer, 0, sizeof(buffer));
         if (((result[strlen(result)-1] == 10 || result[strlen(result)-1] == 13 ))) {
             break;

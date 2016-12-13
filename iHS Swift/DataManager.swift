@@ -351,21 +351,22 @@ class DataManager {
     
     ///Arash: Analyze the jsonstring and determine that its jsonObject or jsonArray.
     class func JSONAnalyzer(json:NSString ) {
-        
-        if json.substringWithRange(NSRange(location: 0, length: 1)) == "[" {
-            do {
-                let jsonArray =  try JSONSerializer.toArray(json as String)
-                JSONArrayAnalyzer(jsonArray as! Array<NSDictionary>)
-            } catch let error as NSError {
-                Printer("Json Array Failed : \(error.debugDescription)")
-            }
-            
-        } else if json.substringWithRange(NSRange(location: 0, length: 1)) == "{" {
-            do {
-                let jsonObject = try JSONSerializer.toDictionary(json as String)
-                JSONObjectAnalyzer(JsonDic: jsonObject)
-            } catch let e as NSError {
-                Printer("Json Object Failed : \(e.debugDescription)")
+        if json != "" {
+            if json.substringWithRange(NSRange(location: 0, length: 1)) == "[" {
+                do {
+                    let jsonArray =  try JSONSerializer.toArray(json as String)
+                    JSONArrayAnalyzer(jsonArray as! Array<NSDictionary>)
+                } catch let error as NSError {
+                    Printer("Json Array Failed : \(error.debugDescription)")
+                }
+                
+            } else if json.substringWithRange(NSRange(location: 0, length: 1)) == "{" {
+                do {
+                    let jsonObject = try JSONSerializer.toDictionary(json as String)
+                    JSONObjectAnalyzer(JsonDic: jsonObject)
+                } catch let e as NSError {
+                    Printer("Json Object Failed : \(e.debugDescription)")
+                }
             }
         }
     }

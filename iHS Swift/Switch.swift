@@ -51,12 +51,12 @@ import UIKit
         var state = DBManager.getNodeValue(tag, nodeID: switchModel!.nodeID)
         if state == 0//Off
         {
-            sender.setBackgroundImage(UIImage(named: "SwitchOn"), forState: .Normal)
+//            sender.setBackgroundImage(UIImage(named: "SwitchOn"), forState: .Normal)
             state = 1
         }//if
         else
         {
-            sender.setBackgroundImage(UIImage(named: "SwitchOff"), forState: .Normal)
+//            sender.setBackgroundImage(UIImage(named: "SwitchOff"), forState: .Normal)
             state = 0
         }//else
         let array = DBManager.getSwitchIDName(switchModel!.nodeID, code: switchModel!.code)

@@ -126,7 +126,7 @@ func Sync() -> Bool {
     arrayMain.append(dic3)
     
     let jsonData = JsonMaker.arrayToJson(arrayMain)
-    Printer("Sync : \(jsonData.debugDescription)")
+    Printer("Json Of Sync : \(jsonData.debugDescription)")
     return appDel.socket.send(jsonData)
 }
 
@@ -144,6 +144,7 @@ func SendCustomerId() -> Bool {
     
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     
+    Printer("Json Of CustomerID \(jsonData.debugDescription)")
     return appDel.socket.send(jsonData)
 }
 
