@@ -27,6 +27,7 @@ let NODE_UPDATE_VIEW = "nodeUpdateView"
 let SECTION_UPDATE_VIEW = "sectionUpdateView"
 let SWITCH_UPDATE_VIEW = "switchUpdateView"
 let ACTIONBAR_UPDATE_VIEW = "notifyUpdateView"
+let NOTIFY_UPDATE_VIEW = "notifyUpdate"
 
 /// Arash : Struct for control the state of actionbar View
 struct ActionBarState {

@@ -96,7 +96,7 @@ class Dimmer: UIView {
         let val = DBManager.getNodeValue(0, nodeID: switchModel!.nodeID)
         
         slider.setValue(Float(val!), animated: true)
-        labelValue.text = "\(val!)%"
+        labelValue.text = "\(Int(val!))%"
         slider.addTarget(self, action: #selector(sliderValueChanged), forControlEvents: .ValueChanged )
         
         

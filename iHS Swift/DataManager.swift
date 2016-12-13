@@ -332,7 +332,9 @@ class DataManager {
                     /// master.setNotify
                     
                     /// callNotification
+                    NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_UPDATE_VIEW, object: ActionBarState.notify as AnyObject)
                     NSNotificationCenter.defaultCenter().postNotificationName(ACTIONBAR_UPDATE_VIEW, object: ActionBarState.notify as AnyObject)
+                    
                 }
                 break
             ///RecieveType.SyncData

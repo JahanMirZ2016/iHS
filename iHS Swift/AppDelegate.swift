@@ -123,11 +123,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
     
     /// BinMan1 : ActionBar Update View Observer
     @objc private func updateActionBar(notification : NSNotification) {
+        actionBarView.messageCount = "\(DBManager.getAllNotSeenNotifies()!.count)"
         let state = notification.object as! String
         switch state {
-        case ActionBarState.notify:
-            actionBarView.messageCount = "\(DBManager.getAllNotSeenNotifies()!.count)"
-            break
+//        case ActionBarState.notify:
+//            actionBarView.messageCount = "\(DBManager.getAllNotSeenNotifies()!.count)"
+//            break
         case ActionBarState.noInternetConnection:
             actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_disconnected")
             actionBarState = ActionBarState.noInternetConnection
