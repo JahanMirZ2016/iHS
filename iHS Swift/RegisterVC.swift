@@ -73,6 +73,7 @@ class RegisterVC: UIViewController {
             let transitionStyle = UIModalTransitionStyle.FlipHorizontal
             barcodeVC.modalTransitionStyle = transitionStyle
             self.presentViewController(barcodeVC, animated: true, completion: nil)
+            
         }else {
             Printer("Error")
         }

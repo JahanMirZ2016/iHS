@@ -70,6 +70,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
                 let serverPort = Int(DBManager.getValueOfSettingsDB(Type: TypeOfSettings.ServerPort)!)!
                 if appDel.socket == nil {
                     appDel.socket = SocketManager()
+                    appDel.socket.rDelegate = appDel.self
                 }
                 
                 if appDel.socket.state == .none || appDel.socket.state == .disconnect {
@@ -103,6 +104,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
             
             if appDel.socket == nil {
                 appDel.socket = SocketManager()
+                appDel.socket.rDelegate = appDel.self
             }
             
             if appDel.socket.state == .none || appDel.socket.state == .disconnect {
@@ -134,6 +136,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
             
             if appDel.socket == nil {
                 appDel.socket = SocketManager()
+                appDel.socket.rDelegate = appDel.self
             }
             
             if appDel.socket.state == .none || appDel.socket.state == .disconnect {
@@ -169,9 +172,9 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
             return true
         }
         
-//        return false
-        return true
-    }
+        return false
+    }//        return true
+    
     
     /// BinMan1 : Get wifi SSID and wifi BSSID (Mac address)
     private func fetchSSIDAndBSSIDInfo() -> (String , String) {
@@ -200,7 +203,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
             self.locationManager!.startUpdatingLocation()
             self.locationManager.pausesLocationUpdatesAutomatically = false
         }
-
+        
     }
     
     

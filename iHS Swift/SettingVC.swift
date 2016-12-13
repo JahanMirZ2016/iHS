@@ -98,11 +98,15 @@ class SettingVC: UIViewController {
     
     
     
-    /// Arash : Run app from the start(LanguageVC).
+    ///Arash : Run app from the start(LanguageVC).
     private func startAppAgain() {
         let storyBoard = UIStoryboard(name: "Welcome", bundle: nil)
         let languageVC = storyBoard.instantiateViewControllerWithIdentifier("languageVC")
-        self.presentViewController(languageVC, animated: true, completion: nil)
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        appDel.window!.rootViewController = languageVC
+        appDel.window!.makeKeyAndVisible()
+
     }
     
     /// Arash : Set Image Selected Language

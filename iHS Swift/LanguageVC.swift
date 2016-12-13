@@ -27,27 +27,27 @@ class LanguageVC: UIViewController {
         setLangID(LangID: SELECTEDLANGID)
         setSelectedLangImage()
         
-        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        let a = appDel.socket.open(IP: "192.168.1.13", Port: 54128)
-
-        
-        let verificationModel = VerificationModel()
-        verificationModel.Type = "RequestRegisterMobile"
-        verificationModel.MobileName = "arash"
-        verificationModel.ExKey = "123456789"
-        verificationModel.Serial = "33E096FC-151D-4669-9579-F478BBD4B5C8"
-        
-        Printer("Json of VerificationModel \(verificationModel)")
-        
-        let jsonData = JSONSerializer.toJson(verificationModel).stringByAppendingString("\n")
-        Printer("Json of JsonData \(jsonData)")
-        
-        if appDel.socket.send(jsonData) {
-            let vc = UIStoryboard(name: "Main" , bundle: nil).instantiateViewControllerWithIdentifier("SecondPageTBC")
-            let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-            appDel.window!.rootViewController = vc
-            appDel.window!.makeKeyAndVisible()
-        }
+//        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let a = appDel.socket.open(IP: "192.168.1.13", Port: 54128)
+//        
+//        
+//        let verificationModel = VerificationModel()
+//        verificationModel.Type = "RequestRegisterMobile"
+//        verificationModel.MobileName = "arash"
+//        verificationModel.ExKey = "123456789"
+//        verificationModel.Serial = "33E096FC-151D-4669-9579-F478BBD4B5C8"
+//        
+//        Printer("Json of VerificationModel \(verificationModel)")
+//        
+//        let jsonData = JSONSerializer.toJson(verificationModel).stringByAppendingString("\n")
+//        Printer("Json of JsonData \(jsonData)")
+//        
+//        if appDel.socket.send(jsonData) {
+//            let vc = UIStoryboard(name: "Main" , bundle: nil).instantiateViewControllerWithIdentifier("SecondPageTBC")
+//            let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+//            appDel.window!.rootViewController = vc
+//            appDel.window!.makeKeyAndVisible()
+//        }
         
     }
     

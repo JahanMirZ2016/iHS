@@ -23,21 +23,6 @@ class SecondPageTBC: UITabBarController , CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let verificationModel = VerificationModel()
-//        verificationModel.Type = "RequestRegisterMobile"
-//        verificationModel.MobileName = ""
-//        verificationModel.ExKey = ""
-//        verificationModel.Serial = ""
-//        
-//        Printer("Json of VerificationModel \(verificationModel)")
-//        
-//        let jsonData = JSONSerializer.toJson(verificationModel).stringByAppendingString("\n")
-//        Printer("Json of JsonData \(jsonData)")
-//        
-//        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-//        if appDel.socket.send(jsonData) {
-//        }
-        
         selectItemImage()
         setUpTabBar()
         setItemNames(DBManager.getTranslationOfSentences(SentencesID: [1 , 9 , 10 , 4]))

@@ -102,8 +102,10 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
                 if appDel.socket.send(jsonData) {
                     let vc = UIStoryboard(name: "Main" , bundle: nil).instantiateViewControllerWithIdentifier("SecondPageTBC")
                     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+                    
                     appDel.window!.rootViewController = vc
                     appDel.window!.makeKeyAndVisible()
+                    dismissViewControllerAnimated(true, completion: nil)
                     
                 }
                 
