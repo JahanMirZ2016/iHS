@@ -64,7 +64,8 @@ class SocketManager {
                 let data = recieveData()
                 if NSString(UTF8String: data) != nil {
                     if NSString(UTF8String: data) != "RecieveFailed" {
-                        self.rDelegate?.recieve(String(UTF8String: UnsafeMutablePointer<CChar>(data))!)
+//                        self.rDelegate?.recieve(String(UTF8String: UnsafeMutablePointer<CChar>(data))!)
+                        self.rDelegate?.recieve(NSString(UTF8String: data)!)
                     }else {
                         break
                     }

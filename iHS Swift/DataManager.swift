@@ -31,12 +31,16 @@ class DataManager {
         
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         
-        if appDel.socket.close() {
-            appDel.socket = nil
-            appDel.socket = SocketManager()
-            appDel.socket.rDelegate = appDel.self
-            appDel.startCheckingInternet()
-        }
+                if appDel.socket.close() {
+                    appDel.socket = nil
+                    appDel.socket = SocketManager()
+                    appDel.socket.rDelegate = appDel.self
+                    appDel.startCheckingInternet()
+                }
+        
+//        appDel.socket = SocketManager()
+//        appDel.socket.rDelegate = appDel.self
+//        appDel.startCheckingInternet()
     }
     
     /// Arash : Insert into section table.
@@ -106,6 +110,7 @@ class DataManager {
             scenarioModel.id = (object as! NSDictionary)["ID"] as! Int
             scenarioModel.isStarted = (object as! NSDictionary)["IsStarted"] as! Int
             scenarioModel.result = (object as! NSDictionary)["DetailsResults"] as! String
+            scenarioModel.name = (object as! NSDictionary)["Name"] as! String
             DBManager.insertScenario(ScenarioModel: scenarioModel)
         }
     }
@@ -319,6 +324,7 @@ class DataManager {
                 let notifyArray = object["Notify"] as! Array<NSDictionary>
                 for dic in notifyArray {
                     let notifyModel = NotifyModel()
+//                    notifyModel.id = dic["ID"] as! Int
                     notifyModel.notifyTitle = dic["NotifyTitle"] as! String
                     notifyModel.notifyText = dic["NotifyText"] as! String
                     notifyModel.seen = false
@@ -336,7 +342,7 @@ class DataManager {
                 break
             ///RecieveType.SyncData
             case RecieveType.RefreshData :
-                let refreshDataArray = object["Notify"] as! Array<Dictionary<String , AnyObject>>
+                let refreshDataArray = object["RefreshData"] as! Array<Dictionary<String , AnyObject>>
                 let dic = refreshDataArray[0]
                 let str:NSString = JsonMaker.dictionaryToJson(dic)
                 JSONAnalyzer(str)
@@ -364,6 +370,9 @@ class DataManager {
                 do {
                     let jsonObject = try JSONSerializer.toDictionary(json as String)
                     JSONObjectAnalyzer(JsonDic: jsonObject)
+                    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+//                    appDel.socket.close()
+//                    appDel.socket = nil
                 } catch let e as NSError {
                     Printer("Json Object Failed : \(e.debugDescription)")
                 }

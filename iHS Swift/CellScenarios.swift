@@ -18,6 +18,7 @@ class CellScenarios: UITableViewCell {
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var img: UIImageView!
     
+    @IBOutlet weak var labelDes: UILabel!
     
     var textName:String? {
         get {
@@ -25,6 +26,15 @@ class CellScenarios: UITableViewCell {
         }
         set {
             labelName.text = newValue
+        }
+    }
+    
+    var textDes:String? {
+        get {
+            return labelDes.text
+        }
+        set {
+            labelDes.text = newValue
         }
     }
     

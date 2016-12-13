@@ -18,11 +18,25 @@ class SecondPageTBC: UITabBarController , CLLocationManagerDelegate {
     
     var locationManager:CLLocationManager?
     var selectedImageArray:[String] = ["FavoriteA" , "NodeA" , "ScenarioA" , "SettingA"]
-    var unselectedImageArray:[String] = ["Favorite" , "Node" , "Scenario" , "Setting"]
+    var unselectedImageArray:[String] = ["Favorite" , "Nodee" , "Scenario" , "Setting"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        let verificationModel = VerificationModel()
+//        verificationModel.Type = "RequestRegisterMobile"
+//        verificationModel.MobileName = ""
+//        verificationModel.ExKey = ""
+//        verificationModel.Serial = ""
+//        
+//        Printer("Json of VerificationModel \(verificationModel)")
+//        
+//        let jsonData = JSONSerializer.toJson(verificationModel).stringByAppendingString("\n")
+//        Printer("Json of JsonData \(jsonData)")
+//        
+//        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+//        if appDel.socket.send(jsonData) {
+//        }
         
         selectItemImage()
         setUpTabBar()

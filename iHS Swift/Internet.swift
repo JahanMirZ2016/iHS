@@ -169,7 +169,8 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
             return true
         }
         
-        return false
+//        return false
+        return true
     }
     
     /// BinMan1 : Get wifi SSID and wifi BSSID (Mac address)

@@ -45,9 +45,6 @@
                         <constraint firstAttribute="height" constant="40" id="Afn-m0-Rvh"/>
                         <constraint firstAttribute="width" constant="40" id="gTj-cn-Jps"/>
                     </constraints>
-                    <connections>
-                        <action selector="selectorRemove:" destination="-1" eventType="touchUpInside" id="m7v-wy-RPu"/>
-                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

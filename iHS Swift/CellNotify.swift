@@ -51,11 +51,6 @@ class CellNotify: UITableViewCell {
         addSubview(view)
     }
     
-    @IBAction func selectorRemove(sender: UIButton) {
-        DBManager.deleteNotify(NotifyID: notifyModel.id)
-        context.tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: row, inSection: 0)], withRowAnimation: .Right)
-        context.notifyArray = DBManager.getAllNotifies()
-        
-    }
+
     
 }

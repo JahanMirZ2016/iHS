@@ -54,7 +54,7 @@ class NotifyVC: UIViewController {
     }
     ///Arash: Fetch data from DB and refresh view (with didSet)
     private func fetchAndRefresh() {
-        notifyArray = DBManager.getAllNotifies()
+        notifyArray = DBManager.getLastNotifies()
     }
     
     ///Arash: Manage topbar for connection status and notify numbers.
@@ -80,6 +80,7 @@ class NotifyVC: UIViewController {
     ///Arash: Load last 10 notifies stored in database.
     private func loadNotifies() {
         notifyArray = DBManager.getLastNotifies()
+//        DBManager.updateLastNotifies()
     }
     
     @IBAction func selectorBack(sender: UIButton) {
@@ -133,10 +134,11 @@ extension NotifyVC: UITableViewDelegate {
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .Normal, title: "    ") { (action, indexPath) in
             
-            DBManager.deleteNotify(NotifyID: self.notifyArray![indexPath.row].id)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
             
-            //            self.notifyArray?.removeAtIndex(indexPath.row)
+            DBManager.deleteNotify(self.notifyArray![indexPath.row].notifyText, notifyTitle: self.notifyArray![indexPath.row].notifyTitle)
+            //            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
+            
+            self.notifyArray?.removeAtIndex(indexPath.row)
             self.loadNotifies()
             
             

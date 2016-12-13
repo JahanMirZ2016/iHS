@@ -178,11 +178,14 @@ func SetScenarioStarted(scenarioModel : ScenarioModel)->Bool {
     array.append(dic)
     let json = JsonMaker.arrayToJson(array)
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-    if appDel.socket.state == .connectToLocal || appDel.socket.state == .connectToServer {
-        if appDel.socket.send(json) {
-            return true
+    if appDel.socket != nil {
+        if appDel.socket.state == .connectToLocal || appDel.socket.state == .connectToServer {
+            if appDel.socket.send(json) {
+                return true
+            }
         }
     }
+    
     return false
 }
 

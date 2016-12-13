@@ -43,9 +43,6 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Owf-pc-Ubf">
-                    <rect key="frame" x="35" y="241" width="294" height="31"/>
-                </slider>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2h-RK-AG6">
                     <rect key="frame" x="134" y="20" width="95" height="30"/>
                     <constraints>
@@ -56,6 +53,12 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Owf-pc-Ubf">
+                    <rect key="frame" x="82.5" y="243" width="199" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="195" id="sm8-MT-sAs"/>
+                    </constraints>
+                </slider>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
@@ -67,8 +70,7 @@
                 <constraint firstItem="L2h-RK-AG6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="GKf-Kb-ATF"/>
                 <constraint firstAttribute="bottom" secondItem="yUY-h5-6jB" secondAttribute="bottom" constant="15" id="LSt-iM-HrG"/>
                 <constraint firstAttribute="bottom" secondItem="eiu-D6-7cj" secondAttribute="bottom" id="MWG-oh-phD"/>
-                <constraint firstItem="Owf-pc-Ubf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-24" id="Nsj-9X-D68"/>
-                <constraint firstItem="Owf-pc-Ubf" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.799" id="a19-Cc-iNg"/>
+                <constraint firstItem="Owf-pc-Ubf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-22" id="Nsj-9X-D68"/>
                 <constraint firstItem="yUY-h5-6jB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="dB7-Dv-dA2"/>
                 <constraint firstAttribute="width" secondItem="71n-C8-rTP" secondAttribute="width" multiplier="10" id="lSj-er-aPF"/>
                 <constraint firstAttribute="trailing" secondItem="71n-C8-rTP" secondAttribute="trailing" constant="15" id="lkR-ix-aao"/>

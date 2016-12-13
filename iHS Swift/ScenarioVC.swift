@@ -39,11 +39,8 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
             cell.setImage = UIImage(named: "lay_scenario_status_off")
         }
         cell.textName = scenarioArray[indexPath.row].name
-        let description = scenarioArray[indexPath.row].description
-        
-        cell.textName = description.html2String
-        
-        
+        cell.textDes = scenarioArray[indexPath.row].des
+
         return cell
     }
     

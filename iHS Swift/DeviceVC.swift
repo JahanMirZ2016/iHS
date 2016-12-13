@@ -28,6 +28,7 @@ class DeviceVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        topBar.viewController = self
         fetchAndRefresh()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         nodeType = nodeModel.nodeType

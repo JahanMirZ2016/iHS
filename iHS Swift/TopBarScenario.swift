@@ -98,6 +98,7 @@ import UIKit
         if scenarioModel.isStarted == 0 {
             if SetScenarioStarted(scenarioModel) {
                 scenarioModel.isStarted = 1
+                DBManager.updateScenario(scenarioModel)
                 btnStart.hidden = true
             }
         }

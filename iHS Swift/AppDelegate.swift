@@ -20,15 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
     var actionBarView = TopBar()
     
     /// BinMan1 : Action Bar Property
-//    var actionBar : TopBar? {
-//        set {
-//            actionBarView = newValue!
-//        }
-//        
-//        get {
-//            return actionBarView
-//        }
-//    }
+    //    var actionBar : TopBar? {
+    //        set {
+    //            actionBarView = newValue!
+    //        }
+    //
+    //        get {
+    //            return actionBarView
+    //        }
+    //    }
     
     
     
@@ -113,34 +113,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
     /// BinMan1 : delegate function for get data and pass to datamanager
     func recieve(rData: NSString) {
         dispatch_async(dispatch_get_main_queue()) {
-            Printer("khkhkhkh : \(rData)")
-            DataManager.JSONAnalyzer(rData)
+            //            Printer("khkhkhkh : \(rData)")
+            if rData != "" {
+                DataManager.JSONAnalyzer(rData)
+            }
         }
     }
     
     
     /// BinMan1 : ActionBar Update View Observer
     @objc private func updateActionBar(notification : NSNotification) {
-                let state = notification.object as! String
-                switch state {
-                case ActionBarState.notify:
-                    actionBarView.messageCount = "\(DBManager.getAllNotSeenNotifies()!.count)"
-                    break
-                case ActionBarState.noInternetConnection:
-                    actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_disconnected")
-                    actionBarState = ActionBarState.noInternetConnection
-                    break
-                case ActionBarState.localConnection:
-                    actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_local")
-                    actionBarState = ActionBarState.localConnection
-                    break
-                case ActionBarState.globalConnection:
-                    actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_server")
-                    actionBarState = ActionBarState.globalConnection
-                    break
-                default:
-                    break
-                }
+        let state = notification.object as! String
+        switch state {
+        case ActionBarState.notify:
+            actionBarView.messageCount = "\(DBManager.getAllNotSeenNotifies()!.count)"
+            break
+        case ActionBarState.noInternetConnection:
+            actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_disconnected")
+            actionBarState = ActionBarState.noInternetConnection
+            break
+        case ActionBarState.localConnection:
+            actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_local")
+            actionBarState = ActionBarState.localConnection
+            break
+        case ActionBarState.globalConnection:
+            actionBarView.connectionImage = UIImage(named: "icon_main_connection_status_server")
+            actionBarState = ActionBarState.globalConnection
+            break
+        default:
+            break
+        }
     }
 }
 

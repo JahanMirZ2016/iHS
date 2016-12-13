@@ -217,8 +217,8 @@ class DBManager {
         let db = GetDBFromPath()
         db!.open()
         do {
-            let query = "INSERT INTO Notify (ID, NotifyTitle , NotifyText ,Seen) VALUES (?, ? , ? , ? )"
-            try db!.executeUpdate(query, values: [notify.id , notify.notifyTitle , notify.notifyText , notify.seen])
+            let query = "insert into Notify (NotifyTitle,NotifyText,Seen) values(? ,? ,? )"
+            try db!.executeUpdate(query, values: [notify.notifyTitle , notify.notifyText , notify.seen])
             db!.close()
             return true
         }catch let err as NSError {
@@ -262,11 +262,12 @@ class DBManager {
             var models = [NotifyModel]()
             while result.next() {
                 let model = NotifyModel()
-                model.id = Int(result.intForColumn("ID"))
+//                model.id = Int(result.intForColumn("ID"))
                 model.notifyText = result.stringForColumn("NotifyText")
                 model.notifyTitle = result.stringForColumn("NotifyTitle")
                 model.seen = result.boolForColumn("Seen")
-                updateLastNotifies(notifyID: model.id)
+                
+                //                updateLastNotifies(notifyID: model.id)
                 
                 models.append(model)
             }
@@ -278,12 +279,15 @@ class DBManager {
     }
     
     ///Arash: Update last seen notifies.(mark notify as seen.)
-    class func updateLastNotifies(notifyID id : Int) {
+    class func updateLastNotifies() {
         let db = GetDBFromPath()
+        db?.open()
         
         do {
-            let query = "UPDATE Notify SET Seen = ? WHERE ID = ?"
-            try db!.executeUpdate(query, values: [1 , id])
+//            let query = "UPDATE Notify SET Seen = ? WHERE ID = ?"
+            let query = "UPDATE Notify SET Seen = ?"
+
+            try db!.executeUpdate(query, values: [1])
         } catch let err as NSError {
             Printer("DBManger updateLastNotifies error : \(err.debugDescription)")
         }
@@ -342,13 +346,13 @@ class DBManager {
     }
     
     /// BinMan1 : Delete specific record from Notify table
-    class func deleteNotify(NotifyID  id : Int) -> Bool {
+    class func deleteNotify(notifyText: String , notifyTitle : String) -> Bool {
         let db = GetDBFromPath()
         db!.open()
         
         do {
-            let query = "DELETE FROM Notify WHERE ID = ?"
-            try db!.executeUpdate(query, values: [id])
+            let query = "DELETE FROM Notify WHERE NotifyTitle = ? AND NotifyText = ?"
+            try db!.executeUpdate(query, values: [notifyTitle , notifyText])
             db!.close()
             return true
         } catch let err as NSError {

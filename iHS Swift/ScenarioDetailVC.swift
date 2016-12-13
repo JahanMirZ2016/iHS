@@ -31,6 +31,8 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
     var scenarioModel = ScenarioModel() {
         didSet {
             collectionView.reloadData()
+            topBarScenario.scenarioModel = scenarioModel
+
         }
     }
     
@@ -91,7 +93,6 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateView), name: SCENARIO_UPDATE_VIEW, object: nil)
         topBarScenario.context = self
-        topBarScenario.scenarioModel = scenarioModel
         
     }
     
@@ -113,6 +114,8 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
         btnConditions.setTitle(headerTitles[1], forState: .Normal)
         btnResults.setTitle(headerTitles[2], forState: .Normal)
         fetchAndRefresh()
+        topBarScenario.scenarioModel = scenarioModel
+
     }
     
     
