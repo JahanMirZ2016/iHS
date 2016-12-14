@@ -70,9 +70,13 @@ class RegisterVC: UIViewController {
             let storyBoard = UIStoryboard(name: "Welcome", bundle: nil)
             let barcodeVC = storyBoard.instantiateViewControllerWithIdentifier("barcodeVC") as! BarcodeVC
             barcodeVC.registerName = edtRegisterName.text!
-            let transitionStyle = UIModalTransitionStyle.FlipHorizontal
+            let transitionStyle = UIModalTransitionStyle.PartialCurl
             barcodeVC.modalTransitionStyle = transitionStyle
             self.presentViewController(barcodeVC, animated: true, completion: nil)
+            
+
+
+            
             
         }else {
             Printer("Error")

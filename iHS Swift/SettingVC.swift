@@ -127,6 +127,20 @@ class SettingVC: UIViewController {
         let languageVC = storyBoard.instantiateViewControllerWithIdentifier("languageVC")
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         
+        //        if let app = UIApplication.sharedApplication().delegate as? AppDelegate, let window = app.window {
+        //            if let viewControllers = window.rootViewController?.childViewControllers {
+        //                for viewController in viewControllers {
+        //                    viewController.dismissViewControllerAnimated(false, completion: nil)
+        //                }
+        //            }
+        //        }
+        if appDel.socket != nil {
+            appDel.socket.close()
+            appDel.socket.state = .none
+        }
+        appDel.network.network.stopNotifier()
+        let rootVC = appDel.window?.rootViewController
+        rootVC?.view.removeFromSuperview()
         appDel.window!.rootViewController = languageVC
         appDel.window!.makeKeyAndVisible()
         

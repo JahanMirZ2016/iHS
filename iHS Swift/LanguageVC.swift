@@ -104,7 +104,7 @@ class LanguageVC: UIViewController {
         if transition.x < 0 {
             let storyBoard = UIStoryboard(name: "Welcome", bundle: nil)
             let welcomeVC = storyBoard.instantiateViewControllerWithIdentifier("welcomeVC")
-            let transitionStyle = UIModalTransitionStyle.FlipHorizontal
+            let transitionStyle = UIModalTransitionStyle.PartialCurl
             welcomeVC.modalTransitionStyle = transitionStyle
             self.presentViewController(welcomeVC, animated: true, completion: nil)
         }

@@ -84,6 +84,15 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
             
             if DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterIP, UpdateValue: centerIP) && DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterPort, UpdateValue: String(centerPort)) && DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ExKey, UpdateValue: exkey) {
                 let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+                //Arash: Check socket status for safety.
+                if appDel.socket == nil {
+                    appDel.socket = SocketManager()
+                }
+                //Arash: Check socket status for safety.
+                //                if appDel.socket.state == .connectToLocal || appDel.socket.state == .connectToServer {
+                //                    appDel.socket.close()
+                //                    appDel.socket.state = .none
+                //                }
                 appDel.socket.open(IP: centerIP, Port: centerPort)
                 let serial = UIDevice.currentDevice().identifierForVendor?.UUIDString
                 // Arash : Creating model for sending json.
@@ -106,10 +115,9 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
                     appDel.window!.rootViewController = vc
                     appDel.window!.makeKeyAndVisible()
                     dismissViewControllerAnimated(true, completion: nil)
-                    
                 }
-                
             }
+            
         } catch let err as NSError {
             Printer(err.debugDescription)
         }

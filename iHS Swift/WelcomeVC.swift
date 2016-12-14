@@ -39,7 +39,9 @@ class WelcomeVC: UIViewController {
         if transition.x < -5 {
             let storyBoard = UIStoryboard(name: "Welcome", bundle: nil)
             let registerVC = storyBoard.instantiateViewControllerWithIdentifier("registerVC")
-            let transitionStyle = UIModalTransitionStyle.FlipHorizontal
+//            let transitionStyle = UIModalTransitionStyle.FlipHorizontal
+            let transitionStyle = UIModalTransitionStyle.PartialCurl
+
             registerVC.modalTransitionStyle = transitionStyle
             self.presentViewController(registerVC, animated: true, completion: nil)
         } else if transition.x > 10 {
@@ -48,4 +50,7 @@ class WelcomeVC: UIViewController {
         sender.setTranslation(CGPointZero, inView: self.view)
     }
     
+
+    
+
 }

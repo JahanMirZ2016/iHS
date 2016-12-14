@@ -13,7 +13,7 @@ import CoreLocation
 
 class Internet :  NSObject ,CLLocationManagerDelegate{
     
-    private var network : Reachability!
+     var network : Reachability!
     private var locationManager:CLLocationManager!
     //    private var timer : NSTimer!
     
