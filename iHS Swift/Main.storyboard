@@ -296,7 +296,14 @@
                                 <state key="normal" title="Sync Data" backgroundImage="BtnRegister">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="selectorSync:" destination="IOF-DN-c8N" eventType="touchUpInside" id="YHI-T7-GnX"/>
+                                </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="igE-qE-z5s">
+                                <rect key="frame" x="177" y="400" width="20" height="20"/>
+                                <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -307,6 +314,7 @@
                             <constraint firstItem="rmk-HC-1qh" firstAttribute="centerY" secondItem="adh-jb-gdw" secondAttribute="centerY" constant="37.5" id="8mI-hN-fAB"/>
                             <constraint firstItem="XK4-nP-B4C" firstAttribute="centerY" secondItem="adh-jb-gdw" secondAttribute="centerY" constant="-63" id="AIU-Z1-t3r"/>
                             <constraint firstItem="B3w-20-wfq" firstAttribute="leading" secondItem="FUg-8Y-gG7" secondAttribute="trailing" constant="8.5" id="C5N-Lv-84o"/>
+                            <constraint firstItem="igE-qE-z5s" firstAttribute="top" secondItem="rmk-HC-1qh" secondAttribute="bottom" constant="8" id="Dgf-QD-MRD"/>
                             <constraint firstItem="XK4-nP-B4C" firstAttribute="height" secondItem="FUg-8Y-gG7" secondAttribute="height" id="Fq9-Hz-11g"/>
                             <constraint firstItem="B3w-20-wfq" firstAttribute="height" secondItem="FUg-8Y-gG7" secondAttribute="height" id="LQ1-fe-EUc"/>
                             <constraint firstItem="FUg-8Y-gG7" firstAttribute="centerY" secondItem="adh-jb-gdw" secondAttribute="centerY" constant="-63" id="Mnn-KA-W4S"/>
@@ -322,10 +330,12 @@
                             <constraint firstItem="FUg-8Y-gG7" firstAttribute="width" secondItem="adh-jb-gdw" secondAttribute="width" multiplier="0.11" id="kmm-BB-UDT"/>
                             <constraint firstItem="B3w-20-wfq" firstAttribute="centerY" secondItem="adh-jb-gdw" secondAttribute="centerY" constant="-62" id="nCc-m2-htg"/>
                             <constraint firstItem="rmk-HC-1qh" firstAttribute="centerX" secondItem="adh-jb-gdw" secondAttribute="centerX" id="rMf-1M-zbs"/>
+                            <constraint firstItem="igE-qE-z5s" firstAttribute="centerX" secondItem="adh-jb-gdw" secondAttribute="centerX" id="xo0-Qz-WYr"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="Yol-YE-u8e"/>
                     <connections>
+                        <outlet property="indicator" destination="igE-qE-z5s" id="Nqh-Fd-sK9"/>
                         <outlet property="outletAr" destination="XK4-nP-B4C" id="Ks3-Fd-Mjb"/>
                         <outlet property="outletEn" destination="FUg-8Y-gG7" id="1F3-Yj-G1M"/>
                         <outlet property="outletIr" destination="B3w-20-wfq" id="PXg-0R-MR4"/>

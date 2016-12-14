@@ -92,7 +92,7 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
                 verificationModel.MobileName = registerName
                 verificationModel.ExKey = exkey
                 verificationModel.Serial = serial!
-                
+                DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CustomerName, UpdateValue: registerName)
                 Printer("Json of VerificationModel \(verificationModel)")
                 
                 let jsonData = JSONSerializer.toJson(verificationModel).stringByAppendingString("\n")

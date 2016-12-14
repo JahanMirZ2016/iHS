@@ -28,6 +28,7 @@ let SECTION_UPDATE_VIEW = "sectionUpdateView"
 let SWITCH_UPDATE_VIEW = "switchUpdateView"
 let ACTIONBAR_UPDATE_VIEW = "notifyUpdateView"
 let NOTIFY_UPDATE_VIEW = "notifyUpdate"
+let SYNC_UPDATE_VIEW = "syncUpdateView"
 
 /// Arash : Struct for control the state of actionbar View
 struct ActionBarState {
@@ -200,12 +201,9 @@ func SetScenarioActive(scenarioModel : ScenarioModel)-> Bool {
     array.append(dic)
     let json = JsonMaker.arrayToJson(array)
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-    //    if appDel.socket != nil {
-    //        if appDel.socket.state == .connectToLocal || appDel.socket.state == .connectToServer {
+
     if appDel.socket.send(json) {
         return true
-        //            }
-        //        }
     }
     return false
     

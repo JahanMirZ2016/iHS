@@ -45,6 +45,7 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellFavorites", forIndexPath: indexPath) as! CellFavorites
         cell.image = nodeArray[indexPath.item].icon
+        cell.text = nodeArray[indexPath.item].name
         return cell
     }
     
@@ -57,13 +58,15 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
         let vc = story.instantiateViewControllerWithIdentifier("deviceVC") as! DeviceVC
         let nodeModel = nodeArray[indexPath.row]
         vc.nodeModel = nodeModel
-        
         presentViewController(vc, animated: true, completion: nil)
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         fetchAndRefresh()
         if type == .rooms {

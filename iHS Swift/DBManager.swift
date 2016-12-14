@@ -262,13 +262,9 @@ class DBManager {
             var models = [NotifyModel]()
             while result.next() {
                 let model = NotifyModel()
-//                model.id = Int(result.intForColumn("ID"))
                 model.notifyText = result.stringForColumn("NotifyText")
                 model.notifyTitle = result.stringForColumn("NotifyTitle")
                 model.seen = result.boolForColumn("Seen")
-                
-                //                updateLastNotifies(notifyID: model.id)
-                
                 models.append(model)
             }
             return models
@@ -282,11 +278,11 @@ class DBManager {
     class func updateLastNotifies() {
         let db = GetDBFromPath()
         db?.open()
+        defer{db?.close()}
         
         do {
-//            let query = "UPDATE Notify SET Seen = ? WHERE ID = ?"
             let query = "UPDATE Notify SET Seen = ?"
-
+            
             try db!.executeUpdate(query, values: [1])
         } catch let err as NSError {
             Printer("DBManger updateLastNotifies error : \(err.debugDescription)")

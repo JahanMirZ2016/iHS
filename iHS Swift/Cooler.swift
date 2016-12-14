@@ -73,24 +73,24 @@ import UIKit
             if state==0 { //Off
                 state=1
             }else{
-                state=0;
-            }//if
+                state=0
+            }
         }
         else if tag == 1
         {
             if state==1 {
-                state=0;
+                state=0
             }else{
-                state=1;
-            }//else if
+                state=1
+            }
         }
         else if tag == 2
         {
             if state == 2 {
                 state=0
             }else{
-                state=2;
-            }//else
+                state=2
+            }
             if tag==2 {
                 tag = 1
             }

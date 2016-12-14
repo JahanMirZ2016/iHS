@@ -90,6 +90,7 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        topBar.viewController = self
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateView), name: SCENARIO_UPDATE_VIEW, object: nil)
         topBarScenario.context = self

@@ -59,8 +59,7 @@ class Dimmer: UIView {
         slider.setMinimumTrackImage(imgMin, forState: .Normal)
         slider.setThumbImage(UIImage(), forState: .Normal)
         slider.setValue(Float(0), animated: true)
-        //        slider.addTarget(self, action: #selector(sliderValueChanged), forControlEvents: .ValueChanged )
-        
+
         
         addSubview(view)
     }
@@ -71,12 +70,12 @@ class Dimmer: UIView {
         {
             sender.setImage(UIImage(named: "FavoriteOK"), forState: .Normal)
             fav = 1
-        }//if
+        }
         else
         {
             sender.setImage(UIImage(named: "FavoriteCancel"), forState: .Normal)
             fav = 0
-        }//else
+        }
         DBManager.updateNodeBookmark((switchModel!.nodeID) , isBookmark : fav)
     }
     
@@ -109,10 +108,7 @@ class Dimmer: UIView {
         Printer(val)
         SendSwitchValue(array![0].id , value: Double(val))
         switchModel?.value = Double(val)
-        //        getStateAndRefreshView()
-        
-        //        NSMutableArray *arr=[data getSwitchIDName:node :(int)slider1.tag];
-        //        [data setSwitchValue:[[[arr objectAtIndex:0] objectForKey:@"ID"]intValue]:val];
+
     }
     
 }

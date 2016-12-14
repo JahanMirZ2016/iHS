@@ -44,8 +44,6 @@ class NotifyVC: UIViewController {
         super.viewWillAppear(animated)
         manageTopBar()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateView(_:)), name: NOTIFY_UPDATE_VIEW, object: nil)
-//        NSNotificationCenter.defaultCenter().postNotificationName(ACTIONBAR_UPDATE_VIEW, object: ActionBarState.notify as AnyObject)
-        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateView(_:)), name: ACTIONBAR_UPDATE_VIEW, object: nil)
         
     }
     

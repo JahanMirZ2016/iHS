@@ -16,6 +16,7 @@ import UIKit
 class SettingVC: UIViewController {
     
     
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var topBar: TopBar!
     @IBOutlet weak var outletEn: UIButton!
     @IBOutlet weak var outletIr: UIButton!
@@ -28,6 +29,7 @@ class SettingVC: UIViewController {
         topBar.viewController = self
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         setSelectedLangImage()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateView(_:)), name: SYNC_UPDATE_VIEW, object: nil)
         
         // Do any additional setup after loading the view.
     }
@@ -43,6 +45,27 @@ class SettingVC: UIViewController {
         startAppAgain()
     }
     
+    ///Arash: Delete all data and sync from center.
+    @IBAction func selectorSync(sender: UIButton) {
+        
+        
+        var jsonArray = Array<Dictionary<String,AnyObject>>()
+        let recieverArray:NSArray = [DBManager.getValueOfSettingsDB(Type: TypeOfSettings.MobileID)!]
+        let obj = Dictionary<String,AnyObject>()
+        let objArray:NSArray = [obj]
+        let jsonObject:Dictionary<String,AnyObject> = ["MessagID" : 0 , "Type" : "RefreshData" , "Action" : "Update" , "Date" : "2015-01-01 12:00:00" , "RecieverIDs" : recieverArray , "MobileName" : DBManager.getValueOfSettingsDB(Type: TypeOfSettings.CustomerName)! , "ExKey" : DBManager.getValueOfSettingsDB(Type: TypeOfSettings.ExKey)! , "RefreshData" : objArray]
+        jsonArray.append(jsonObject)
+        let json = JsonMaker.arrayToJson(jsonArray)
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        if appDel.socket != nil {
+            if appDel.socket.state == .connectToLocal || appDel.socket.state == .connectToServer {
+                DBManager.resetFactory()
+                if appDel.socket.send(json) {
+                    indicator.startAnimating()
+                }
+            }
+        }
+    }
     
     
     /// Arash : Language Buttons
@@ -106,7 +129,7 @@ class SettingVC: UIViewController {
         
         appDel.window!.rootViewController = languageVC
         appDel.window!.makeKeyAndVisible()
-
+        
     }
     
     /// Arash : Set Image Selected Language
@@ -147,6 +170,10 @@ class SettingVC: UIViewController {
             break
         default : break
         }
+    }
+    
+    @objc private func updateView(notification : NSNotification) {
+        indicator.stopAnimating()
     }
     
 }

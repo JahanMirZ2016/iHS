@@ -66,39 +66,39 @@ import UIKit
         }else if state==0 && tag==2
         {
             return
-        }//if
+        }
         else if state==0 && tag==0
         {
             state=1
-        }//else if
+        }
         else if state==0 && tag==1
         {
             state=2
-        }//else if
+        }
         else if state==1 && tag==2
         {
             state=0
-        }//if
+        }
         else if state==1 && tag==0
         {
             return
-        }//else if
+        }
         else if state==1 && tag==1
         {
             state=2
-        }//else if
+        }
         else if state==2 && tag==2
         {
             state=0
-        }//if
+        }
         else if state==2 && tag==0
         {
             state=1
-        }//else if
+        }
         else if state==2 && tag==1
         {
             return
-        }//else if
+        }
         
         var arr = Array<NSDictionary>()
         let dic:NSDictionary = ["ID" : (switchModel?.id)! , "Name" : (switchModel?.name)!]

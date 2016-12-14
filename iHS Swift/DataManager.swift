@@ -31,16 +31,16 @@ class DataManager {
         
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         
-                if appDel.socket.close() {
-                    appDel.socket = nil
-                    appDel.socket = SocketManager()
-                    appDel.socket.rDelegate = appDel.self
-                    appDel.startCheckingInternet()
-                }
+        if appDel.socket.close() {
+            appDel.socket = nil
+            appDel.socket = SocketManager()
+            appDel.socket.rDelegate = appDel.self
+            appDel.startCheckingInternet()
+        }
         
-//        appDel.socket = SocketManager()
-//        appDel.socket.rDelegate = appDel.self
-//        appDel.startCheckingInternet()
+        //        appDel.socket = SocketManager()
+        //        appDel.socket.rDelegate = appDel.self
+        //        appDel.startCheckingInternet()
     }
     
     /// Arash : Insert into section table.
@@ -131,7 +131,7 @@ class DataManager {
             let CenterPort = (object as! NSDictionary)["CenterPort"] as! Int
             let LastMessageID = (object as! NSDictionary)["LastMessageID"] as! Int
             let ExKey = (object as! NSDictionary)["ExKey"] as! String
-            let CustomerName = (object as! NSDictionary)["CustomerName"] as! String
+            //            let CustomerName = (object as! NSDictionary)["CustomerName"] as! String
             //            let Register = (object as! NSDictionary)["Register"] as! String
             let Ver = (object as! NSDictionary)["Ver"] as! String
             DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ServerIP, UpdateValue: ServerIP)
@@ -144,9 +144,11 @@ class DataManager {
             DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterPort, UpdateValue: String(CenterPort))
             DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.LastMessageID, UpdateValue: String(LastMessageID))
             DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ExKey, UpdateValue: ExKey)
-            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CustomerName, UpdateValue: CustomerName)
-            //            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Register, UpdateValue: Register)
+
             DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Ver, UpdateValue: Ver)
+            NSNotificationCenter.defaultCenter().postNotificationName(SYNC_UPDATE_VIEW, object: nil)
+            //            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CustomerName, UpdateValue: CustomerName)
+            //            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Register, UpdateValue: Register)
             //            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.LanguageID, UpdateValue: LanguageID)
             //            for keyValue in (object as! NSDictionary) {
             //                let type = keyValue.key as! String
@@ -324,7 +326,7 @@ class DataManager {
                 let notifyArray = object["Notify"] as! Array<NSDictionary>
                 for dic in notifyArray {
                     let notifyModel = NotifyModel()
-//                    notifyModel.id = dic["ID"] as! Int
+                    //                    notifyModel.id = dic["ID"] as! Int
                     notifyModel.notifyTitle = dic["NotifyTitle"] as! String
                     notifyModel.notifyText = dic["NotifyText"] as! String
                     notifyModel.seen = false
@@ -372,8 +374,8 @@ class DataManager {
                     let jsonObject = try JSONSerializer.toDictionary(json as String)
                     JSONObjectAnalyzer(JsonDic: jsonObject)
                     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-//                    appDel.socket.close()
-//                    appDel.socket = nil
+                    //                    appDel.socket.close()
+                    //                    appDel.socket = nil
                 } catch let e as NSError {
                     Printer("Json Object Failed : \(e.debugDescription)")
                 }
