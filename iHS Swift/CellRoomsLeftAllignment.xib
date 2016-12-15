@@ -53,6 +53,7 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="2HT-65-cx0" secondAttribute="bottom" id="3wa-sH-dmG"/>
                 <constraint firstAttribute="trailing" secondItem="2HT-65-cx0" secondAttribute="trailing" constant="30" id="Kn8-w2-iGs"/>
@@ -63,7 +64,16 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="bg1-oG-yvc" appends="YES" id="oWl-Od-DDU"/>
+            </connections>
             <point key="canvasLocation" x="34" y="-210"/>
         </view>
+        <tapGestureRecognizer id="bg1-oG-yvc">
+            <connections>
+                <action selector="gestureSegue:" destination="-1" id="wBz-fF-8yZ"/>
+                <outlet property="delegate" destination="-1" id="ldD-Wc-w2B"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

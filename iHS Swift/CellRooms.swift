@@ -14,6 +14,8 @@ import UIKit
 
 class CellRooms: UITableViewCell {
     
+    var context:DevicesVC!
+    var indexPath:NSIndexPath!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var viewMiddle: UIView!
@@ -36,7 +38,7 @@ class CellRooms: UITableViewCell {
             img.image = newValue
         }
     }
-
+    
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -59,9 +61,17 @@ class CellRooms: UITableViewCell {
         view.frame = bounds
         view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
         viewMiddle.layer.cornerRadius = 15
-
+        
         addSubview(view)
     }
     
+    @IBAction func gestureSegue(sender: UITapGestureRecognizer) {
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewControllerWithIdentifier("favoritesVC") as! FavoritesVC
+        vc.type = .rooms
+        vc.roomModel = context.sectionArray![indexPath.section].cells[indexPath.row]
+        vc.topBarBackTitle = "\(context.sectionArray![indexPath.section].name) / \(context.sectionArray![indexPath.section].cells[indexPath.row].name)"
+        context.presentViewController(vc, animated: true, completion: nil)
+    }
     
 }

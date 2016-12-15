@@ -14,7 +14,8 @@ import UIKit
 
 class CellScenarios: UITableViewCell {
     
-    
+    var context:ScenarioVC!
+    var indexPath:NSIndexPath!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var img: UIImageView!
     
@@ -81,5 +82,14 @@ class CellScenarios: UITableViewCell {
         addSubview(view)
     }
     
+    ///Arash: Perform a segue to ScenarioDetailsVC.
+    @IBAction func gestureSegue(sender: UITapGestureRecognizer) {
+        print("A")
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewControllerWithIdentifier("scenarioDetailVC") as! ScenarioDetailVC
+        vc.scenarioID = context.scenarioArray[indexPath.row].id
+        context.presentViewController(vc, animated: true, completion: nil)
+        vc.scenarioModel = context.scenarioArray[indexPath.row]
+    }
     
 }

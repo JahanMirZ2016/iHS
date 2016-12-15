@@ -10,6 +10,8 @@ import UIKit
 
 class CellRoomsLeftAllignment: UITableViewCell {
     
+    var context:DevicesVC!
+    var indexPath:NSIndexPath!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var viewMiddle: UIView!
@@ -49,7 +51,7 @@ class CellRoomsLeftAllignment: UITableViewCell {
     func createNib() {
         let bundle = NSBundle(forClass: self.dynamicType)
         let nib = UINib(nibName: "CellRoomsLeftAllignment", bundle: bundle)
-
+        
         view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         view.frame = bounds
         view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
@@ -58,4 +60,12 @@ class CellRoomsLeftAllignment: UITableViewCell {
         addSubview(view)
     }
     
+    @IBAction func gestureSegue(sender: UITapGestureRecognizer) {
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewControllerWithIdentifier("favoritesVC") as! FavoritesVC
+        vc.type = .rooms
+        vc.roomModel = context.sectionArray![indexPath.section].cells[indexPath.row]
+        vc.topBarBackTitle = "\(context.sectionArray![indexPath.section].name) / \(context.sectionArray![indexPath.section].cells[indexPath.row].name)"
+        context.presentViewController(vc, animated: true, completion: nil)
+    }
 }

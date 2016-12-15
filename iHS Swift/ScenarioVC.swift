@@ -32,15 +32,17 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
     
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = CellScenarios(frame: CGRectMake(0 , 0 , tableView.frame.width , 80))
-        cell.selectionStyle = .Gray
+        cell.selectionStyle = .None
         if scenarioArray[indexPath.row].active == 1 {
             cell.setImage = UIImage(named: "lay_scenario_status_on")
         } else {
             cell.setImage = UIImage(named: "lay_scenario_status_off")
         }
+        //Arash: providing cell context for tapGesture segue.
+        cell.context = self
         cell.textName = scenarioArray[indexPath.row].name
         cell.textDes = scenarioArray[indexPath.row].des
-
+        cell.indexPath = indexPath
         return cell
     }
     
@@ -48,14 +50,14 @@ class ScenarioVC: UIViewController , UITableViewDelegate , UITableViewDataSource
         return 1
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewControllerWithIdentifier("scenarioDetailVC") as! ScenarioDetailVC
-        vc.scenarioID = scenarioArray[indexPath.row].id
-        presentViewController(vc, animated: true, completion: nil)
-        vc.scenarioModel = scenarioArray[indexPath.row]
-        
-    }
+    //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    //        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    //        let vc = storyBoard.instantiateViewControllerWithIdentifier("scenarioDetailVC") as! ScenarioDetailVC
+    //        vc.scenarioID = scenarioArray[indexPath.row].id
+    //        presentViewController(vc, animated: true, completion: nil)
+    //        vc.scenarioModel = scenarioArray[indexPath.row]
+    //
+    //    }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         

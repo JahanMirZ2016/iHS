@@ -45,6 +45,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="AHy-Qt-eV2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-18" id="2kA-e7-EOT"/>
                 <constraint firstAttribute="bottom" secondItem="ChK-sW-uCe" secondAttribute="bottom" constant="3" id="5EB-40-0dT"/>
@@ -67,8 +68,17 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="9S3-KI-O7G" appends="YES" id="IG6-4m-ti4"/>
+            </connections>
             <point key="canvasLocation" x="10" y="294"/>
         </view>
+        <tapGestureRecognizer id="9S3-KI-O7G">
+            <connections>
+                <action selector="gestureSegue:" destination="-1" id="htE-ji-idX"/>
+                <outlet property="delegate" destination="-1" id="yB2-5O-YXI"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="2" width="320" height="568"/>
