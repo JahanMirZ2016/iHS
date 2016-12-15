@@ -24,27 +24,27 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RNV-iA-NFS">
-                    <rect key="frame" x="0.0" y="10" width="597" height="189"/>
+                    <rect key="frame" x="0.0" y="3" width="597" height="196"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Section7" translatesAutoresizingMaskIntoConstraints="NO" id="lke-cX-Izz">
-                            <rect key="frame" x="25" y="0.0" width="547" height="189"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Section6" translatesAutoresizingMaskIntoConstraints="NO" id="lke-cX-Izz">
+                            <rect key="frame" x="25" y="0.0" width="547" height="196"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PuY-8h-3B1">
-                            <rect key="frame" x="499" y="75" width="38" height="38"/>
+                            <rect key="frame" x="498" y="78" width="39" height="39"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="PuY-8h-3B1" secondAttribute="height" multiplier="1:1" id="yno-wy-Cpf"/>
                             </constraints>
                             <state key="normal" backgroundImage="lay_expandablelist_parrent_arrow_close"/>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ubh-2L-XvP">
-                            <rect key="frame" x="63" y="39" width="111" height="111"/>
+                            <rect key="frame" x="63" y="40.5" width="115" height="115"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Ubh-2L-XvP" secondAttribute="height" multiplier="1:1" id="d3S-ox-3lU"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="واحد ۱" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATy-nf-lhR">
-                            <rect key="frame" x="182" y="39" width="292" height="111"/>
+                            <rect key="frame" x="186" y="40.5" width="287" height="115"/>
                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -75,7 +75,7 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="RNV-iA-NFS" firstAttribute="top" secondItem="3zT-NZ-kYZ" secondAttribute="top" constant="10" id="W09-LN-kjU"/>
+                <constraint firstItem="RNV-iA-NFS" firstAttribute="top" secondItem="3zT-NZ-kYZ" secondAttribute="top" constant="3" id="W09-LN-kjU"/>
                 <constraint firstAttribute="trailing" secondItem="RNV-iA-NFS" secondAttribute="trailing" id="wTh-iO-8me"/>
                 <constraint firstAttribute="bottom" secondItem="RNV-iA-NFS" secondAttribute="bottom" id="xre-JQ-PXw"/>
                 <constraint firstItem="RNV-iA-NFS" firstAttribute="leading" secondItem="3zT-NZ-kYZ" secondAttribute="leading" id="yZS-mp-btU"/>
@@ -94,7 +94,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="Section7" width="414" height="60"/>
+        <image name="Section6" width="320" height="60"/>
         <image name="lay_expandablelist_parrent_arrow_close" width="38" height="38"/>
     </resources>
 </document>

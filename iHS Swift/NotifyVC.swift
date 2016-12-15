@@ -154,5 +154,9 @@ extension NotifyVC: UITableViewDelegate {
         return [delete]
     }
     
+    ///Arash: Change statusbar style(light content color)
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
     
 }

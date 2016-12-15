@@ -73,15 +73,14 @@ class RegisterVC: UIViewController {
             let transitionStyle = UIModalTransitionStyle.PartialCurl
             barcodeVC.modalTransitionStyle = transitionStyle
             self.presentViewController(barcodeVC, animated: true, completion: nil)
-            
 
-
-            
-            
         }else {
             Printer("Error")
         }
     }
-    
+    ///Arash: Change statusbar style(light content color)
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
     
 }

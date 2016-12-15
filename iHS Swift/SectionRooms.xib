@@ -24,27 +24,27 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5h-f4-SqC">
-                    <rect key="frame" x="0.0" y="10" width="597" height="180"/>
+                    <rect key="frame" x="0.0" y="3" width="597" height="187"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Section7" translatesAutoresizingMaskIntoConstraints="NO" id="UX3-3y-SmH">
-                            <rect key="frame" x="25" y="0.0" width="547" height="180"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Section6" translatesAutoresizingMaskIntoConstraints="NO" id="UX3-3y-SmH">
+                            <rect key="frame" x="25" y="0.0" width="547" height="187"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="واحد ۱" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3h-LZ-BXg">
-                            <rect key="frame" x="93" y="37" width="333" height="106"/>
+                            <rect key="frame" x="94.5" y="38.5" width="327.5" height="110"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DlP-F2-TAK">
-                            <rect key="frame" x="49" y="72" width="36" height="36"/>
+                            <rect key="frame" x="49" y="75" width="37.5" height="37"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="DlP-F2-TAK" secondAttribute="height" multiplier="1:1" id="wsd-Vn-U0M"/>
                             </constraints>
                             <state key="normal" backgroundImage="lay_expandablelist_parrent_arrow_close"/>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zRN-VM-0d0">
-                            <rect key="frame" x="434" y="37" width="105.5" height="106"/>
+                            <rect key="frame" x="430" y="38.5" width="109.5" height="110"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="zRN-VM-0d0" secondAttribute="height" multiplier="1:1" id="VTD-VW-78d"/>
                             </constraints>
@@ -75,7 +75,7 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="v5h-f4-SqC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="AMG-zH-Mtj"/>
+                <constraint firstItem="v5h-f4-SqC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="3" id="AMG-zH-Mtj"/>
                 <constraint firstAttribute="bottom" secondItem="v5h-f4-SqC" secondAttribute="bottom" id="Yuz-yt-6tE"/>
                 <constraint firstAttribute="trailing" secondItem="v5h-f4-SqC" secondAttribute="trailing" id="f9H-Hh-oiB"/>
                 <constraint firstItem="v5h-f4-SqC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="h2S-aJ-mex"/>
@@ -94,7 +94,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="Section7" width="414" height="60"/>
+        <image name="Section6" width="320" height="60"/>
         <image name="lay_expandablelist_parrent_arrow_close" width="38" height="38"/>
     </resources>
 </document>

@@ -150,4 +150,8 @@ class DeviceVC: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    ///Arash: Change statusbar style(light content color)
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 }

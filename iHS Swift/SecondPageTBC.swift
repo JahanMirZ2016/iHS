@@ -77,4 +77,5 @@ class SecondPageTBC: UITabBarController , CLLocationManagerDelegate {
         UITabBar.appearance().backgroundImage = UIImage(named: "tab-bar-bg")
     }
     
+
 }

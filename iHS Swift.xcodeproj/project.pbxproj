@@ -380,9 +380,9 @@
 			isa = PBXGroup;
 			children = (
 				5B6247C41DD700D500760F10 /* SectionRooms.xib */,
+				5B3937FE1DDC516E00808098 /* SectionRoomsLeftAllignment.xib */,
 				5B6247C61DD700E800760F10 /* SectionRooms.swift */,
 				5B3937FC1DDC515600808098 /* SectionRoomsLeftAllignment.swift */,
-				5B3937FE1DDC516E00808098 /* SectionRoomsLeftAllignment.xib */,
 			);
 			name = Section;
 			sourceTree = "<group>";

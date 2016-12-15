@@ -217,5 +217,8 @@ class ScenarioDetailVC: UIViewController , UICollectionViewDataSource , UICollec
         alertView?.removeFromSuperview()
     }
     
-    
+    ///Arash: Change statusbar style(light content color)
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 }

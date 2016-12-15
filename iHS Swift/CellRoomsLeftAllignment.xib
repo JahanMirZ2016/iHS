@@ -24,16 +24,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2HT-65-cx0">
-                    <rect key="frame" x="30" y="8" width="782" height="190"/>
+                    <rect key="frame" x="30" y="4" width="782" height="194"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RXH-kI-gSc">
-                            <rect key="frame" x="572" y="10" width="171" height="171"/>
+                            <rect key="frame" x="592.5" y="10" width="174.5" height="175"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="RXH-kI-gSc" secondAttribute="height" multiplier="1:1" id="wXi-z6-2aA"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F78-nf-Y89">
-                            <rect key="frame" x="30" y="11" width="534" height="171"/>
+                            <rect key="frame" x="30" y="11" width="554.5" height="175"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,8 +43,8 @@
                     <color key="backgroundColor" white="1" alpha="0.19973060340000001" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="F78-nf-Y89" firstAttribute="leading" secondItem="2HT-65-cx0" secondAttribute="leading" constant="30" id="6Og-v1-sFv"/>
+                        <constraint firstAttribute="trailing" secondItem="RXH-kI-gSc" secondAttribute="trailing" constant="15" id="DcH-3x-R3C"/>
                         <constraint firstItem="RXH-kI-gSc" firstAttribute="leading" secondItem="F78-nf-Y89" secondAttribute="trailing" constant="8" id="Zxx-rS-f19"/>
-                        <constraint firstAttribute="trailing" secondItem="RXH-kI-gSc" secondAttribute="trailing" constant="39" id="a8f-Qv-qPC"/>
                         <constraint firstItem="RXH-kI-gSc" firstAttribute="centerY" secondItem="2HT-65-cx0" secondAttribute="centerY" constant="0.5" id="d3i-an-DlN"/>
                         <constraint firstItem="RXH-kI-gSc" firstAttribute="height" secondItem="2HT-65-cx0" secondAttribute="height" multiplier="0.9" id="tYZ-v1-icG"/>
                         <constraint firstItem="F78-nf-Y89" firstAttribute="height" secondItem="RXH-kI-gSc" secondAttribute="height" id="z09-A7-Rb8"/>
@@ -56,7 +56,7 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="2HT-65-cx0" secondAttribute="bottom" id="3wa-sH-dmG"/>
                 <constraint firstAttribute="trailing" secondItem="2HT-65-cx0" secondAttribute="trailing" constant="30" id="Kn8-w2-iGs"/>
-                <constraint firstItem="2HT-65-cx0" firstAttribute="top" secondItem="cFW-re-N8W" secondAttribute="top" constant="8" id="SDA-pf-M9k"/>
+                <constraint firstItem="2HT-65-cx0" firstAttribute="top" secondItem="cFW-re-N8W" secondAttribute="top" constant="4" id="SDA-pf-M9k"/>
                 <constraint firstItem="2HT-65-cx0" firstAttribute="leading" secondItem="cFW-re-N8W" secondAttribute="leading" constant="30" id="teL-88-ZD9"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

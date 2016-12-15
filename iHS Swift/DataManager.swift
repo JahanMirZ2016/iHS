@@ -144,7 +144,7 @@ class DataManager {
             DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CenterPort, UpdateValue: String(CenterPort))
             DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.LastMessageID, UpdateValue: String(LastMessageID))
             DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.ExKey, UpdateValue: ExKey)
-
+            
             DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.Ver, UpdateValue: Ver)
             NSNotificationCenter.defaultCenter().postNotificationName(SYNC_UPDATE_VIEW, object: nil)
             //            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CustomerName, UpdateValue: CustomerName)
@@ -244,7 +244,7 @@ class DataManager {
                 let switchDataArray = object["SwitchData"] as! Array<NSDictionary>
                 for dic in switchDataArray {
                     let switchModel = SwitchModel()
-                    switchModel.code = dic["Code"] as! Int
+                    switchModel.code = Int(dic["Code"] as! String)!
                     switchModel.id = dic["ID"] as! Int
                     switchModel.name = dic["Name"] as! String
                     switchModel.nodeID = dic["NodeID"] as! Int

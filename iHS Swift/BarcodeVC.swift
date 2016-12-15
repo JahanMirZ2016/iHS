@@ -93,28 +93,30 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
                 //                    appDel.socket.close()
                 //                    appDel.socket.state = .none
                 //                }
-                appDel.socket.open(IP: centerIP, Port: centerPort)
-                let serial = UIDevice.currentDevice().identifierForVendor?.UUIDString
-                // Arash : Creating model for sending json.
-                let verificationModel = VerificationModel()
-                verificationModel.Type = "RequestRegisterMobile"
-                verificationModel.MobileName = registerName
-                verificationModel.ExKey = exkey
-                verificationModel.Serial = serial!
-                DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CustomerName, UpdateValue: registerName)
-                Printer("Json of VerificationModel \(verificationModel)")
                 
-                let jsonData = JSONSerializer.toJson(verificationModel).stringByAppendingString("\n")
-                Printer("Json of JsonData \(jsonData)")
-                
-                
-                if appDel.socket.send(jsonData) {
-                    let vc = UIStoryboard(name: "Main" , bundle: nil).instantiateViewControllerWithIdentifier("SecondPageTBC")
-                    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+                if appDel.socket.open(IP: centerIP, Port: centerPort) {
+                    let serial = UIDevice.currentDevice().identifierForVendor?.UUIDString
+                    // Arash : Creating model for sending json.
+                    let verificationModel = VerificationModel()
+                    verificationModel.Type = "RequestRegisterMobile"
+                    verificationModel.MobileName = registerName
+                    verificationModel.ExKey = exkey
+                    verificationModel.Serial = serial!
+                    DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CustomerName, UpdateValue: registerName)
+                    Printer("Json of VerificationModel \(verificationModel)")
                     
-                    appDel.window!.rootViewController = vc
-                    appDel.window!.makeKeyAndVisible()
-                    dismissViewControllerAnimated(true, completion: nil)
+                    let jsonData = JSONSerializer.toJson(verificationModel).stringByAppendingString("\n")
+                    Printer("Json of JsonData \(jsonData)")
+                    
+                    
+                    if appDel.socket.send(jsonData) {
+                        let vc = UIStoryboard(name: "Main" , bundle: nil).instantiateViewControllerWithIdentifier("SecondPageTBC")
+                        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+                        
+                        appDel.window!.rootViewController = vc
+                        appDel.window!.makeKeyAndVisible()
+                        dismissViewControllerAnimated(true, completion: nil)
+                    }
                 }
             }
             
@@ -185,6 +187,9 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
-    
+    ///Arash: Change statusbar style(light content color)
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
     
 }

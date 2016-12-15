@@ -37,6 +37,7 @@ class SettingVC: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         manageTopBar()
+        indicator.stopAnimating()
     }
     
     /// Arash: Reset all registers and go to LanguageVC.
@@ -188,6 +189,11 @@ class SettingVC: UIViewController {
     
     @objc private func updateView(notification : NSNotification) {
         indicator.stopAnimating()
+    }
+    
+    ///Arash: Change statusbar style(light content color)
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
 }

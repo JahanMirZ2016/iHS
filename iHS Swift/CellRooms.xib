@@ -24,17 +24,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uz1-w2-611">
-                    <rect key="frame" x="30" y="8" width="782" height="190"/>
+                    <rect key="frame" x="30" y="4" width="782" height="194"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5f-1j-skB">
-                            <rect key="frame" x="225" y="10" width="534" height="171"/>
+                            <rect key="frame" x="217.5" y="10" width="541.5" height="175"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w8A-2r-QVD">
-                            <rect key="frame" x="26" y="2" width="171" height="171"/>
+                            <rect key="frame" x="15" y="2" width="174.5" height="174.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="w8A-2r-QVD" secondAttribute="height" multiplier="1:1" id="sCz-6y-LCQ"/>
                             </constraints>
@@ -48,13 +48,13 @@
                         <constraint firstAttribute="trailing" secondItem="C5f-1j-skB" secondAttribute="trailing" constant="23" id="cvQ-tk-x4T"/>
                         <constraint firstAttribute="bottom" secondItem="C5f-1j-skB" secondAttribute="bottom" constant="9" id="gDu-k5-lCh"/>
                         <constraint firstItem="w8A-2r-QVD" firstAttribute="height" secondItem="Uz1-w2-611" secondAttribute="height" multiplier="0.9" id="wgg-PO-jhe"/>
-                        <constraint firstItem="w8A-2r-QVD" firstAttribute="leading" secondItem="Uz1-w2-611" secondAttribute="leading" constant="26" id="zc3-0S-V6V"/>
+                        <constraint firstItem="w8A-2r-QVD" firstAttribute="leading" secondItem="Uz1-w2-611" secondAttribute="leading" constant="15" id="zc3-0S-V6V"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Uz1-w2-611" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="4n3-Yc-0ju"/>
+                <constraint firstItem="Uz1-w2-611" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="4n3-Yc-0ju"/>
                 <constraint firstItem="Uz1-w2-611" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="7CQ-N6-XXL"/>
                 <constraint firstAttribute="trailing" secondItem="Uz1-w2-611" secondAttribute="trailing" constant="30" id="8Xv-AM-oYG"/>
                 <constraint firstAttribute="bottom" secondItem="Uz1-w2-611" secondAttribute="bottom" id="K8e-72-JRh"/>
