@@ -66,7 +66,7 @@ class FavoritesVC: UIViewController , UICollectionViewDelegate , UICollectionVie
         super.viewDidLoad()
         
         
-
+        
         view.backgroundColor = UIColor(patternImage: UIImage(named: "bgMain")!)
         fetchAndRefresh()
         if type == .rooms {
