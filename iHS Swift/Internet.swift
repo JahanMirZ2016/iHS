@@ -173,7 +173,7 @@ class Internet :  NSObject ,CLLocationManagerDelegate{
             return true
         }
         
-        return true
+        return false
     }
     
     

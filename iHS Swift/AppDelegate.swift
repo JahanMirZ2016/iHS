@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateActionBar(_:)), name: ACTIONBAR_UPDATE_VIEW, object: nil)
+        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateActionBar(_:)), name: ACTIONBAR_UPDATE_VIEW, object: nil)
         socket = SocketManager()
         socket.rDelegate = self
         
@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , RecieveSocketDelegate {
             Printer("AppDelegate Error : Can't get Language ID From Settings Table of DB")
         }
         
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert , .Badge , .Sound], categories: nil))
+        //        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert , .Badge , .Sound], categories: nil))
         chooseVC()
         
         

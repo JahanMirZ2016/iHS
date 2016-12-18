@@ -70,7 +70,7 @@ class RegisterVC: UIViewController {
             let storyBoard = UIStoryboard(name: "Welcome", bundle: nil)
             let barcodeVC = storyBoard.instantiateViewControllerWithIdentifier("barcodeVC") as! BarcodeVC
             barcodeVC.registerName = edtRegisterName.text!
-            let transitionStyle = UIModalTransitionStyle.PartialCurl
+            let transitionStyle = UIModalTransitionStyle.CrossDissolve
             barcodeVC.modalTransitionStyle = transitionStyle
             self.presentViewController(barcodeVC, animated: true, completion: nil)
 
@@ -82,5 +82,38 @@ class RegisterVC: UIViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
+    
+    
+    
+//        override func viewDidAppear(animated: Bool) {
+//            super.viewDidAppear(animated)
+//            DBManager.getValueOfSettingsDB(Type: TypeOfSettings.CustomerName)
+//    
+//            let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+//            appDel.socket.open(IP: "192.168.1.13", Port: 54128)
+//    
+//    
+//            let verificationModel = VerificationModel()
+//            verificationModel.Type = "RequestRegisterMobile"
+//            verificationModel.MobileName = "dfdfdfd"
+//            verificationModel.ExKey = "123456789"
+//            verificationModel.Serial = "33E096FC-151D-4669-9579-F478BBD4B5C8"
+//            DBManager.updateValuesOfSettingsDB(Type: TypeOfSettings.CustomerName, UpdateValue: "arash")
+//    
+//    
+//            Printer("Json of VerificationModel \(verificationModel)")
+//    
+//            let jsonData = JSONSerializer.toJson(verificationModel).stringByAppendingString("\n")
+//            Printer("Json of JsonData \(jsonData)")
+//    
+//            if appDel.socket.send(jsonData) {
+//                let vc = UIStoryboard(name: "Main" , bundle: nil).instantiateViewControllerWithIdentifier("SecondPageTBC")
+//                let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+//                appDel.window!.rootViewController = vc
+//                appDel.window!.makeKeyAndVisible()
+//            }
+//    
+//        }
+
     
 }

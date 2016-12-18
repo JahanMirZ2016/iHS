@@ -113,9 +113,12 @@ class BarcodeVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate {
                         let vc = UIStoryboard(name: "Main" , bundle: nil).instantiateViewControllerWithIdentifier("SecondPageTBC")
                         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
                         
+                        let rootVC = appDel.window?.rootViewController
+                        rootVC?.view.removeFromSuperview()
                         appDel.window!.rootViewController = vc
                         appDel.window!.makeKeyAndVisible()
-                        dismissViewControllerAnimated(true, completion: nil)
+//                        dismissViewControllerAnimated(true, completion: nil)
+                        self.navigationController?.popToRootViewControllerAnimated(true)
                     }
                 }
             }

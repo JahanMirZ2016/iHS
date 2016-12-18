@@ -42,23 +42,24 @@ long sendData(char* message) {
 }
 
 char* recieveData() {
-        memset(buffer, 0, sizeof(buffer));
-        long int index;
-        char* result = "";
+    memset(buffer, 0, sizeof(buffer));
+    long int index;
+    char* result = "";
     while ((index = recv(sock, buffer, sizeof(buffer), 0)) > 0) {
         result = concat(result, buffer);
-        memset(buffer, 0, sizeof(buffer));
-        if (((result[strlen(result)-1] == 10 || result[strlen(result)-1] == 13 ))) {
+        if (buffer[0] == 10 || buffer[0] == 13) {
             break;
         }
-    }
-        if (index < 0) {
-            return "RecieveFailed";
-        }
-    
         
-        return result;
+        memset(buffer, 0, sizeof(buffer));
     }
+    if (index < 0) {
+        return "RecieveFailed";
+    }
+    
+    
+    return result;
+}
 
 
 int closeSocket() {
